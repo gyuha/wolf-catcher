@@ -13,3 +13,10 @@
 ```bash
 peotry install
 ```
+
+> 🚀 See below for PySide6 installation error in poety </br>
+> https://github.com/python-poetry/poetry/issues/1413#issuecomment-557195997
+
+
+## References
+* [Qt for Python](https://doc.qt.io/qtforpython/index.html)
