@@ -17,6 +17,7 @@ peotry install
 > 🚀 See below for PySide6 installation error in poety </br>
 > https://github.com/python-poetry/poetry/issues/1413#issuecomment-557195997
 
-
 ## References
+
 * [Qt for Python](https://doc.qt.io/qtforpython/index.html)
+* [초보자를 위한 Python GUI 프로그래밍 - PyQt5 - WikiDocs](https://wikidocs.net/book/2944)
