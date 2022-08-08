@@ -438,8 +438,8 @@ h11 = ">=0.9.0,<1"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "606fb7a2c48ec8a0ec537538aee2b9fbfb35c6ff492e865d7b48eb69a495ce02"
+python-versions = "3.8.10"
+content-hash = "0733d111cdee7f3a4ef8867237f210f604c1d92e472909a6c05cdd7e68f180b2"
 
 [metadata.files]
 altgraph = [
