@@ -491,6 +491,23 @@
         "documentation": {}
     },
     {
+        "label": "QClipboard",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "PySide6.QtWidgets",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QApplication",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -675,6 +692,30 @@
         "documentation": {}
     },
     {
+        "label": "QApplication",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMainWindow",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QApplication",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QMainWindow",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -692,11 +733,76 @@
         "documentation": {}
     },
     {
+        "label": "Singleton",
+        "importPath": "src.util.Singleton",
+        "description": "src.util.Singleton",
+        "isExtraImport": true,
+        "detail": "src.util.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "src.util.Singleton",
+        "description": "src.util.Singleton",
+        "isExtraImport": true,
+        "detail": "src.util.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "src.util.Singleton",
+        "description": "src.util.Singleton",
+        "isExtraImport": true,
+        "detail": "src.util.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
         "label": "Ui_MainWindow",
         "importPath": "src.ui.Ui_MainWindow",
         "description": "src.ui.Ui_MainWindow",
         "isExtraImport": true,
         "detail": "src.ui.Ui_MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "WebCrawring",
+        "importPath": "src.util.WebCrawring",
+        "description": "src.util.WebCrawring",
+        "isExtraImport": true,
+        "detail": "src.util.WebCrawring",
+        "documentation": {}
+    },
+    {
+        "label": "Clipboard",
+        "importPath": "src.util.Clipboard",
+        "description": "src.util.Clipboard",
+        "isExtraImport": true,
+        "detail": "src.util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "src.util.Config",
+        "description": "src.util.Config",
+        "isExtraImport": true,
+        "detail": "src.util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "MainWindow",
+        "importPath": "src.MainWindow",
+        "description": "src.MainWindow",
+        "isExtraImport": true,
+        "detail": "src.MainWindow",
         "documentation": {}
     },
     {
@@ -799,12 +905,48 @@
         "documentation": {}
     },
     {
+        "label": "Clipboard",
+        "kind": 6,
+        "importPath": "src.util.Clipboard",
+        "description": "src.util.Clipboard",
+        "peekOfCode": "class Clipboard(metaclass=Singleton):\n    def __init__(self):\n        super(Clipboard, self).__init__()\n        QApplication.clipboard().dataChanged.connect(self.clipboard_changed)\n    def clipboard_changed(self):\n        text = QApplication.clipboard().text()\n        print('📢[Clipboard.py:15]: ', text)",
+        "detail": "src.util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "src.util.Config",
+        "description": "src.util.Config",
+        "peekOfCode": "class Config(metaclass=Singleton):\n    def __init__(self):\n        super(Config, self).__init__()\n        self.readData()\n    def readData(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)\n    @property\n    def data(self):\n        return self._data",
+        "detail": "src.util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "kind": 6,
+        "importPath": "src.util.Singleton",
+        "description": "src.util.Singleton",
+        "peekOfCode": "class Singleton(type):\n    _instances = {}\n    def __call__(cls, *args, **kwargs):\n        if cls not in cls._instances:\n            cls._instances[cls] = super(\n                Singleton, cls).__call__(*args, **kwargs)\n        return cls._instances[cls]",
+        "detail": "src.util.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "WebCrawring",
+        "kind": 6,
+        "importPath": "src.util.WebCrawring",
+        "description": "src.util.WebCrawring",
+        "peekOfCode": "class WebCrawring(metaclass=Singleton):\n    def __init__(self):\n        super(WebCrawring, self).__init__()",
+        "detail": "src.util.WebCrawring",
+        "documentation": {}
+    },
+    {
         "label": "MainWindow",
         "kind": 6,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\nif __name__ == \"__main__\":\n    app = QApplication(sys.argv)\n    window = MainWindow()\n    window.show()\n    sys.exit(app.exec())",
-        "detail": "main",
+        "importPath": "src.MainWindow",
+        "description": "src.MainWindow",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)",
+        "detail": "src.MainWindow",
         "documentation": {}
     }
 ]

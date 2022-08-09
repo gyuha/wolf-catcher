@@ -11,7 +11,8 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true,
-        ".venv": false
+        ".venv": true,
+        ".qt_for_python": true
     },
     "explorerExclude.backup": {},
     "qtForPython.rcc.path": "c:\\workspace\\wolf-catcher\\.venv\\Lib\\site-packages\\PySide6\\designer.exe",

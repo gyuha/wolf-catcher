@@ -1,0 +1,7 @@
+wfwf:
+  name: 늑대 닷컴
+  url: https://wfwf219.com/
+  file_extensions: cbz
+  download_path: wfwf
+  filter:
+    - wfwf
