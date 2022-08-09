@@ -13,5 +13,8 @@
         "**/.factorypath": true,
         ".venv": false
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "qtForPython.rcc.path": "c:\\workspace\\wolf-catcher\\.venv\\Lib\\site-packages\\PySide6\\designer.exe",
+    "qtForPython.designer.path": "c:\\workspace\\wolf-catcher\\.venv\\Lib\\site-packages\\PySide6\\designer.exe",
+    "qtForPython.uic.path": "c:\\workspace\\wolf-catcher\\.venv\\Lib\\site-packages\\PySide6\\uic.exe"
 }
