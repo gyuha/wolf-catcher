@@ -1,15 +1,18 @@
-import PySide6.QtWidgets
-from src.util.Singleton import Singleton
+import typing
+import re
+
 from PySide6.QtWidgets import QApplication
-from PySide6.QtGui import QClipboard
-from PySide6.QtCore import QObject, Signal 
+from PySide6.QtCore import QObject, Signal, SignalInstance
+
+from src.util.Config import Config 
 
 class Clipboard(QObject):
-    on_add_clipboard = Signal(str)
+    add_clipboard: SignalInstance  = Signal(str, object)
 
-    def __init__(self):
+    def __init__(self, parent: typing.Optional[QObject] = None) -> None:
         super(Clipboard, self).__init__()
         self.last_text = QApplication.clipboard().text()
+        self.config = Config()
         QApplication.clipboard().dataChanged.connect(self.clipboard_changed)
     
 
@@ -18,6 +21,11 @@ class Clipboard(QObject):
 
         if not text.strip() or self.last_text.__eq__(text):
             return
+        site = self.config.get_site_config(text)
+
+        if not site:
+            return;
+
         self.last_text = text
-        self.on_add_clipboard.emit(text)
+        self.add_clipboard.emit(text, site)
     

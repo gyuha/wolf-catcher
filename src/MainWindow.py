@@ -23,10 +23,11 @@ class MainWindow(QMainWindow):
     
     def init_slot(self):
         """Initial Slots"""
-        self.clipbard.on_add_clipboard.connect(self.on_add_clipboard)
+        self.clipbard.add_clipboard.connect(self.add_clipboard)
 
 
     @Slot(str, result=None)
-    def on_add_clipboard(self, text):
+    def add_clipboard(self, text: str, config: object):
+        print('📢[MainWindow.py:31]: ', config)
         self.ui.statusbar.showMessage(text)
 
