@@ -219,6 +219,38 @@
         "documentation": {}
     },
     {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QFile",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -749,14 +781,6 @@
         "documentation": {}
     },
     {
-        "label": "Singleton",
-        "importPath": "src.util.Singleton",
-        "description": "src.util.Singleton",
-        "isExtraImport": true,
-        "detail": "src.util.Singleton",
-        "documentation": {}
-    },
-    {
         "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
@@ -909,7 +933,7 @@
         "kind": 6,
         "importPath": "src.util.Clipboard",
         "description": "src.util.Clipboard",
-        "peekOfCode": "class Clipboard(metaclass=Singleton):\n    def __init__(self):\n        super(Clipboard, self).__init__()\n        QApplication.clipboard().dataChanged.connect(self.clipboard_changed)\n    def clipboard_changed(self):\n        text = QApplication.clipboard().text()\n        print('📢[Clipboard.py:15]: ', text)",
+        "peekOfCode": "class Clipboard(QObject):\n    on_add_clipboard = Signal(str)\n    def __init__(self):\n        super(Clipboard, self).__init__()\n        self.last_text = QApplication.clipboard().text()\n        QApplication.clipboard().dataChanged.connect(self.clipboard_changed)\n    def clipboard_changed(self):\n        text = QApplication.clipboard().text()\n        if not text.strip() or self.last_text.__eq__(text):\n            return",
         "detail": "src.util.Clipboard",
         "documentation": {}
     },
@@ -918,7 +942,7 @@
         "kind": 6,
         "importPath": "src.util.Config",
         "description": "src.util.Config",
-        "peekOfCode": "class Config(metaclass=Singleton):\n    def __init__(self):\n        super(Config, self).__init__()\n        self.readData()\n    def readData(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)\n    @property\n    def data(self):\n        return self._data",
+        "peekOfCode": "class Config():\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)\n    @property\n    def data(self):\n        return self._data",
         "detail": "src.util.Config",
         "documentation": {}
     },
@@ -936,7 +960,7 @@
         "kind": 6,
         "importPath": "src.util.WebCrawring",
         "description": "src.util.WebCrawring",
-        "peekOfCode": "class WebCrawring(metaclass=Singleton):\n    def __init__(self):\n        super(WebCrawring, self).__init__()",
+        "peekOfCode": "class WebCrawring(QObject):\n    def __init__(self):\n        super(WebCrawring, self).__init__()",
         "detail": "src.util.WebCrawring",
         "documentation": {}
     },
@@ -945,7 +969,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()\n    def init_slot(self):",
         "detail": "src.MainWindow",
         "documentation": {}
     }
