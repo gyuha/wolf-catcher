@@ -72,6 +72,30 @@
         "documentation": {}
     },
     {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "SignalInstance",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QCoreApplication",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -309,6 +333,14 @@
         "description": "PySide6.QtCore",
         "isExtraImport": true,
         "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
         "documentation": {}
     },
     {
@@ -860,6 +892,31 @@
         "documentation": {}
     },
     {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "attrgetter",
+        "importPath": "operator",
+        "description": "operator",
+        "isExtraImport": true,
+        "detail": "operator",
+        "documentation": {}
+    },
+    {
+        "label": "WfWf",
+        "importPath": "src.site.Wfwf",
+        "description": "src.site.Wfwf",
+        "isExtraImport": true,
+        "detail": "src.site.Wfwf",
+        "documentation": {}
+    },
+    {
         "label": "Ui_MainWindow",
         "importPath": "src.ui.Ui_MainWindow",
         "description": "src.ui.Ui_MainWindow",
@@ -1225,6 +1282,24 @@
         "documentation": {}
     },
     {
+        "label": "SiteBase",
+        "kind": 6,
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "peekOfCode": "class SiteBase: \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]",
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "WfWf",
+        "kind": 6,
+        "importPath": "src.site.Wfwf",
+        "description": "src.site.Wfwf",
+        "peekOfCode": "class WfWf(QObject, SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name",
+        "detail": "src.site.Wfwf",
+        "documentation": {}
+    },
+    {
         "label": "Ui_Form",
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
@@ -1283,7 +1358,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()\n    def init_slot(self):",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.init_sites()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
         "detail": "src.MainWindow",
         "documentation": {}
     }
