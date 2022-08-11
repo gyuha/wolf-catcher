@@ -3,7 +3,6 @@ from PySide6.QtCore import QObject, Signal, SignalInstance
 
 from util.Config import Config
 
-
 class Site(QObject):
 
     def __init__(self) -> None:
@@ -22,3 +21,4 @@ class Site(QObject):
 
         for key in self.sites:
             print('📢[Site.py:24]: ', self.sites[key].site_name)
+            print('📢[Site.py:24]: ', self.sites[key].get_chapter_list("http://www."))

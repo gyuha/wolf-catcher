@@ -6,7 +6,7 @@ from util.WebCrawring import WebCrawring
 from util.Clipboard import Clipboard
 from util.Config import Config
 
-from src.site.Site import Site
+from util.Site import Site
 
 
 class MainWindow(QMainWindow):
