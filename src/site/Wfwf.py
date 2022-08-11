@@ -1,7 +1,7 @@
 from PySide6.QtCore import QObject, Signal, SignalInstance
 from src.site.SiteBase import SiteBase
 
-class WfWf(QObject, SiteBase):
+class Wfwf(QObject, SiteBase):
 
     def __init__(self, config):
         SiteBase.__init__(self, config)

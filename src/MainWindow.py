@@ -3,7 +3,6 @@ from operator import attrgetter
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Slot
-from src.site.Wfwf import WfWf
 
 from src.ui.Ui_MainWindow import Ui_MainWindow
 from src.util.WebCrawring import WebCrawring
@@ -35,19 +34,15 @@ class MainWindow(QMainWindow):
         return mod
 
     def init_sites(self):
-        self.sites = []
+        self.sites = dict()
 
         for config in self.config.data["site"]:
-            mod = self.load_module_func("src.site."+config["class_name"])
-            print('📢[MainWindow.py:44]: ', mod)
-            # mod = importlib.import_module(
-            #     "src.site."+config["class_name"], config["class_name"])
-            # print('📢[MainWindow.py:42]: ', mod(config))
+            class_module = getattr(self.load_module_func("src.site."+config["class_name"]), config["class_name"])
+            module = class_module(config)
+            self.sites[module.site_name] = module
 
-            # self.sites.append(mod(config))
-
-        for site in self.sites:
-            print('📢[MainWindow.py:40]: ', site.site_name)
+        for key in self.sites:
+            print('📢[MainWindow.py:40]: ', self.sites[key].site_name)
 
     @Slot(str, result=None)
     def add_clipboard(self, text: str, config: object):
