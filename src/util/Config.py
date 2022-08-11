@@ -1,7 +1,7 @@
 import yaml
 import re
 
-from src.util.Singleton import Singleton
+from util.Singleton import Singleton
 
 class Config(metaclass=Singleton):
 

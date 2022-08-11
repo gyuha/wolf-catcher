@@ -1,5 +1,5 @@
 from PySide6.QtCore import QObject
-from src.util.Singleton import Singleton
+from util.Singleton import Singleton
 
 
 class WebCrawring(QObject):

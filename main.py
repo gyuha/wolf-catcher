@@ -1,7 +1,9 @@
-import sys
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
+
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import QFile
-from src.MainWindow import MainWindow
+from MainWindow import MainWindow
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

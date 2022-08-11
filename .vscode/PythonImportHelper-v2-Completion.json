@@ -299,6 +299,39 @@
         "documentation": {}
     },
     {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
         "label": "QBrush",
         "importPath": "PySide6.QtGui",
         "description": "PySide6.QtGui",
@@ -806,22 +839,6 @@
         "documentation": {}
     },
     {
-        "label": "Config",
-        "importPath": "src.util.Config",
-        "description": "src.util.Config",
-        "isExtraImport": true,
-        "detail": "src.util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "src.util.Config",
-        "description": "src.util.Config",
-        "isExtraImport": true,
-        "detail": "src.util.Config",
-        "documentation": {}
-    },
-    {
         "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
@@ -832,18 +849,18 @@
     },
     {
         "label": "Singleton",
-        "importPath": "src.util.Singleton",
-        "description": "src.util.Singleton",
+        "importPath": "util.Singleton",
+        "description": "util.Singleton",
         "isExtraImport": true,
-        "detail": "src.util.Singleton",
+        "detail": "util.Singleton",
         "documentation": {}
     },
     {
         "label": "Singleton",
-        "importPath": "src.util.Singleton",
-        "description": "src.util.Singleton",
+        "importPath": "util.Singleton",
+        "description": "util.Singleton",
         "isExtraImport": true,
-        "detail": "src.util.Singleton",
+        "detail": "util.Singleton",
         "documentation": {}
     },
     {
@@ -856,43 +873,44 @@
         "documentation": {}
     },
     {
-        "label": "attrgetter",
-        "importPath": "operator",
-        "description": "operator",
-        "isExtraImport": true,
-        "detail": "operator",
-        "documentation": {}
-    },
-    {
         "label": "Ui_MainWindow",
-        "importPath": "src.ui.Ui_MainWindow",
-        "description": "src.ui.Ui_MainWindow",
+        "importPath": "ui.Ui_MainWindow",
+        "description": "ui.Ui_MainWindow",
         "isExtraImport": true,
-        "detail": "src.ui.Ui_MainWindow",
+        "detail": "ui.Ui_MainWindow",
         "documentation": {}
     },
     {
         "label": "WebCrawring",
-        "importPath": "src.util.WebCrawring",
-        "description": "src.util.WebCrawring",
+        "importPath": "util.WebCrawring",
+        "description": "util.WebCrawring",
         "isExtraImport": true,
-        "detail": "src.util.WebCrawring",
+        "detail": "util.WebCrawring",
         "documentation": {}
     },
     {
         "label": "Clipboard",
-        "importPath": "src.util.Clipboard",
-        "description": "src.util.Clipboard",
+        "importPath": "util.Clipboard",
+        "description": "util.Clipboard",
         "isExtraImport": true,
-        "detail": "src.util.Clipboard",
+        "detail": "util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
         "documentation": {}
     },
     {
         "label": "MainWindow",
-        "importPath": "src.MainWindow",
-        "description": "src.MainWindow",
+        "importPath": "MainWindow",
+        "description": "MainWindow",
         "isExtraImport": true,
-        "detail": "src.MainWindow",
+        "detail": "MainWindow",
         "documentation": {}
     },
     {
@@ -992,6 +1010,24 @@
         "description": "src.site.Wfwf",
         "peekOfCode": "class Wfwf(QObject, SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name",
         "detail": "src.site.Wfwf",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigTest",
+        "kind": 6,
+        "importPath": "src.test.url_test",
+        "description": "src.test.url_test",
+        "peekOfCode": "class ConfigTest(unittest.TestCase): \n    def setUp(self):\n        pass\n    def tearDown(self):\n        pass\n    def test_config(self):\n        config = Config()\n        self.assertEqual(config.data[\"site\"][0][\"name\"], \"wfwf\")\n# unittest를 실행\nif __name__ == '__main__':  ",
+        "detail": "src.test.url_test",
+        "documentation": {}
+    },
+    {
+        "label": "custom_function",
+        "kind": 2,
+        "importPath": "src.test.url_test",
+        "description": "src.test.url_test",
+        "peekOfCode": "def custom_function(file_name):\n    with open(file_name, 'rt') as f:\n        return sum(1 for _ in f)\nclass ConfigTest(unittest.TestCase): \n    def setUp(self):\n        pass\n    def tearDown(self):\n        pass\n    def test_config(self):\n        config = Config()",
+        "detail": "src.test.url_test",
         "documentation": {}
     },
     {

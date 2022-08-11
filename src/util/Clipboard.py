@@ -4,7 +4,7 @@ import re
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QObject, Signal, SignalInstance
 
-from src.util.Config import Config 
+from util.Config import Config 
 
 class Clipboard(QObject):
     add_clipboard: SignalInstance  = Signal(str, object)
