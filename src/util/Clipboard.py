@@ -1,6 +1,3 @@
-import typing
-import re
-
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QObject, Signal, SignalInstance
 
@@ -9,7 +6,7 @@ from util.Config import Config
 class Clipboard(QObject):
     add_clipboard: SignalInstance  = Signal(str, object)
 
-    def __init__(self, parent: typing.Optional[QObject] = None) -> None:
+    def __init__(self) -> None:
         super(Clipboard, self).__init__()
         self.last_text = QApplication.clipboard().text()
         self.config = Config()

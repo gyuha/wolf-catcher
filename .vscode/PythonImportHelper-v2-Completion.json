@@ -27,11 +27,12 @@
         "documentation": {}
     },
     {
-        "label": "abstractmethod",
-        "importPath": "abc",
-        "description": "abc",
+        "label": "importlib",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "abc",
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
         "documentation": {}
     },
     {
@@ -299,6 +300,54 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
         "label": "SiteBase",
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
@@ -313,30 +362,6 @@
         "importPath": "unittest",
         "description": "unittest",
         "detail": "unittest",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
         "documentation": {}
     },
     {
@@ -788,14 +813,6 @@
         "documentation": {}
     },
     {
-        "label": "QApplication",
-        "importPath": "PySide6.QtWidgets",
-        "description": "PySide6.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide6.QtWidgets",
-        "documentation": {}
-    },
-    {
         "label": "QMainWindow",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -805,14 +822,6 @@
     },
     {
         "label": "QApplication",
-        "importPath": "PySide6.QtWidgets",
-        "description": "PySide6.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide6.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QMainWindow",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
         "isExtraImport": true,
@@ -829,12 +838,12 @@
         "documentation": {}
     },
     {
-        "label": "typing",
+        "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "typing",
-        "description": "typing",
-        "detail": "typing",
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
         "documentation": {}
     },
     {
@@ -847,15 +856,6 @@
         "documentation": {}
     },
     {
-        "label": "yaml",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "yaml",
-        "description": "yaml",
-        "detail": "yaml",
-        "documentation": {}
-    },
-    {
         "label": "Singleton",
         "importPath": "util.Singleton",
         "description": "util.Singleton",
@@ -869,15 +869,6 @@
         "description": "util.Singleton",
         "isExtraImport": true,
         "detail": "util.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "importlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "importlib",
-        "description": "importlib",
-        "detail": "importlib",
         "documentation": {}
     },
     {
@@ -902,6 +893,14 @@
         "description": "util.Clipboard",
         "isExtraImport": true,
         "detail": "util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "Site",
+        "importPath": "src.site.Site",
+        "description": "src.site.Site",
+        "isExtraImport": true,
+        "detail": "src.site.Site",
         "documentation": {}
     },
     {
@@ -1003,11 +1002,20 @@
         "documentation": {}
     },
     {
+        "label": "Site",
+        "kind": 6,
+        "importPath": "src.site.Site",
+        "description": "src.site.Site",
+        "peekOfCode": "class Site(QObject):\n    def __init__(self) -> None:\n        super(Site, self).__init__()\n        self.config = Config()\n        self.init_sites()\n    def init_sites(self):\n        self.sites = dict()\n        for config in self.config.data[\"site\"]:\n            class_module = getattr(importlib.import_module(\n                \"src.site.\"+config[\"class_name\"]), config[\"class_name\"])",
+        "detail": "src.site.Site",
+        "documentation": {}
+    },
+    {
         "label": "SiteBase",
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase: \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n    @abstractmethod\n    def chapter_list(self, url):\n        pass",
+        "peekOfCode": "class SiteBase(ABC): \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n    @abstractmethod\n    def get_chapter_list(self, url):\n        pass\n    @abstractmethod\n    def get_imgs(self, url):",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },
@@ -1016,7 +1024,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(QObject, SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name\n    def get_chapter_list(self, url):\n        print('📢[Wfwf.py:14]: ', url)\n    def get_imgs(self, url):\n        print('📢[Wfwf.py:17]: ', url)",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -1061,7 +1069,7 @@
         "kind": 6,
         "importPath": "src.util.Clipboard",
         "description": "src.util.Clipboard",
-        "peekOfCode": "class Clipboard(QObject):\n    add_clipboard: SignalInstance  = Signal(str, object)\n    def __init__(self, parent: typing.Optional[QObject] = None) -> None:\n        super(Clipboard, self).__init__()\n        self.last_text = QApplication.clipboard().text()\n        self.config = Config()\n        QApplication.clipboard().dataChanged.connect(self.clipboard_changed)\n    def clipboard_changed(self):\n        text = QApplication.clipboard().text()\n        if not text.strip() or self.last_text.__eq__(text):",
+        "peekOfCode": "class Clipboard(QObject):\n    add_clipboard: SignalInstance  = Signal(str, object)\n    def __init__(self) -> None:\n        super(Clipboard, self).__init__()\n        self.last_text = QApplication.clipboard().text()\n        self.config = Config()\n        QApplication.clipboard().dataChanged.connect(self.clipboard_changed)\n    def clipboard_changed(self):\n        text = QApplication.clipboard().text()\n        if not text.strip() or self.last_text.__eq__(text):",
         "detail": "src.util.Clipboard",
         "documentation": {}
     },
@@ -1097,7 +1105,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.init_sites()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
         "detail": "src.MainWindow",
         "documentation": {}
     }
