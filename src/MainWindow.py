@@ -37,7 +37,8 @@ class MainWindow(QMainWindow):
         self.sites = dict()
 
         for config in self.config.data["site"]:
-            class_module = getattr(self.load_module_func("src.site."+config["class_name"]), config["class_name"])
+            class_module = getattr(self.load_module_func(
+                "src.site."+config["class_name"]), config["class_name"])
             module = class_module(config)
             self.sites[module.site_name] = module
 
