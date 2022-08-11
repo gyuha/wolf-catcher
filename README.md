@@ -29,3 +29,4 @@ peotry install
 * [PyQt5 Tutorial - 파이썬으로 만드는 나만의 GUI 프로그램 - WikiDocs](https://wikidocs.net/book/2165) (2020)
 * [초보자를 위한 Python GUI 프로그래밍 - PyQt5 - WikiDocs](https://wikidocs.net/book/2944) (2021)
 * [파이썬 - 기본을 갈고 닦자!](https://wikidocs.net/book/1553)
+* [파이썬 코딩 도장](https://dojang.io/course/view.php?id=7)
