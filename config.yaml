@@ -2,11 +2,14 @@ site:
   - name: wfwf
     class_name: Wfwf
     title: 늑대 닷컴
-    url: https://wfwf219.com/
+    url: https://wfwf220.com/
     file_extensions: cbz
     download_path: wfwf
     filter: 
       - https://wfwf[0-9]+.com/.*?toon=[0-9]+
+    url_format: 
+      - list: /cl?toon={0}
+      - capter: /cv?toon={0}&num={1}
   # - name: manatoki
   #   class_name: Manatoki
   #   title: 마나토끼

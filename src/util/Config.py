@@ -3,19 +3,21 @@ import re
 
 from util.Singleton import Singleton
 
-class Config(metaclass=Singleton):
+class Config():
+
+    @property
+    def data(self):
+        return self._data
+
 
     def __init__(self):
         super(Config, self).__init__()
         self.read_data()
     
+
     def read_data(self):
         with open('config.yaml', 'r', encoding='utf-8') as file:
             self._data = yaml.load(file, Loader=yaml.FullLoader)
-
-    @property
-    def data(self):
-        return self._data
 
 
     def get_site_config(self, url: str):
@@ -23,7 +25,4 @@ class Config(metaclass=Singleton):
             for filter in data["filter"]:
                 if re.search(filter, url):
                     return data
-
-
-    
 

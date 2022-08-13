@@ -10,6 +10,7 @@ class Site(QObject):
         self.config = Config()
         self.init_sites()
 
+
     def init_sites(self):
         self.sites = dict()
 

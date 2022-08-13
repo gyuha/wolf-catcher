@@ -378,6 +378,22 @@
         "documentation": {}
     },
     {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "SignalInstance",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -917,6 +933,140 @@
         "documentation": {}
     },
     {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
+        "label": "Pool",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "images_compress",
+        "importPath": "util.image",
+        "description": "util.image",
+        "isExtraImport": true,
+        "detail": "util.image",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "driver",
+        "importPath": "lib2to3.pgen2",
+        "description": "lib2to3.pgen2",
+        "isExtraImport": true,
+        "detail": "lib2to3.pgen2",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "DesiredCapabilities",
+        "importPath": "selenium.webdriver.common.desired_capabilities",
+        "description": "selenium.webdriver.common.desired_capabilities",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.desired_capabilities",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "QtSingleton",
+        "importPath": "util.QtSingleton",
+        "description": "util.QtSingleton",
+        "isExtraImport": true,
+        "detail": "util.QtSingleton",
+        "documentation": {}
+    },
+    {
         "label": "importlib",
         "kind": 6,
         "isExtraImport": true,
@@ -1321,7 +1471,7 @@
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase(ABC): \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n    @abstractmethod\n    def get_chapter_info(self, url):\n        pass\n    @abstractmethod\n    def get_chapter_list(self, url):",
+        "peekOfCode": "class SiteBase(ABC): \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n    @abstractmethod\n    def get_chapter_info(self, url):\n        pass\n    @abstractmethod\n    def get_img_list(self, url):",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },
@@ -1330,7 +1480,7 @@
         "kind": 6,
         "importPath": "src.site.TitleInfo",
         "description": "src.site.TitleInfo",
-        "peekOfCode": "class TitleInfo:\n    def __init__(self):\n        self.info = {\n            'author': '',\n            'skip': 0,\n            'title': '',\n            'tags': [],\n            'id': 0,\n            'last_updated': ''\n        }",
+        "peekOfCode": "class TitleInfo:\n    def __init__(self):\n        self.id = None\n        # 챕터 정보\n        self.info = {\n            'author': '',\n            'skip': 0,\n            'title': '',\n            'tags': [],\n            'id': 0,",
         "detail": "src.site.TitleInfo",
         "documentation": {}
     },
@@ -1339,7 +1489,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name\n    def get_chapter_info(self, url:str):\n        print('📢[Wfwf.py:13]: ', url)\n    def get_chapter_list(self, url):\n        print('📢[Wfwf.py:14]: ', url)",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name\n    def get_chapter_info(self, url:str):\n        print('📢[Wfwf.py:13]: ', id)\n    def get_chapter_list(self, url):\n        print('📢[Wfwf.py:14]: ', url)",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -1393,8 +1543,80 @@
         "kind": 6,
         "importPath": "src.util.Config",
         "description": "src.util.Config",
-        "peekOfCode": "class Config(metaclass=Singleton):\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)\n    @property\n    def data(self):\n        return self._data",
+        "peekOfCode": "class Config():\n    @property\n    def data(self):\n        return self._data\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)",
         "detail": "src.util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "strip_file_path",
+        "kind": 2,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "def strip_file_path(path):\n    \"\"\"\n    윈도우에서 사용이 가능한 파일 명으로 변경\n    \"\"\"\n    path = re.sub(r\"NEW\\t+\", \"\", path)\n    path = path.replace('\\n', '')\n    path = re.sub(r\"\\t.*$\", \"\", path)\n    path = path.replace(':', '').replace('?', '').replace(\n        '/', '').replace('!', '').replace('\\\\', '')\n    path = path.replace(\"「\", \" \").replace(\"」\", '').replace(\".\", \"\")",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "images_download",
+        "kind": 2,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "def images_download(title, save_path, images):\n    pathlib.Path(save_path).mkdir(parents=True, exist_ok=True)\n    target = []\n    # c = Config()\n    for i, img in enumerate(images):\n        # img = re.sub(r\"mangashow\\d.me\", c.getName(), img[0])\n        target.append([img, save_path, i+1])\n    pool = Pool(processes=cpu_count())\n    try:\n        # for tar in target:",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "timed_loop",
+        "kind": 2,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "def timed_loop(iterator, timeout):\n    start_time = time.time()\n    iterator = iter(iterator)\n    while True:\n        elapsed_time = time.time() - start_time\n        if elapsed_time > timeout:\n            raise TimeoutError(\"long_running_function took too long!\")\n        try:\n            yield next(iterator)\n        except StopIteration:",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "zip_folder",
+        "kind": 2,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]\n    num = p[2]\n    name = \"%03d\" % (num,) + \".jpg\"",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "CUSTOM_USER_AGENT",
+        "kind": 5,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "CUSTOM_USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \\\n(KHTML, like Gecko) Chrome/40.0.2214.91 Safari/537.36'\ndef strip_file_path(path):\n    \"\"\"\n    윈도우에서 사용이 가능한 파일 명으로 변경\n    \"\"\"\n    path = re.sub(r\"NEW\\t+\", \"\", path)\n    path = path.replace('\\n', '')\n    path = re.sub(r\"\\t.*$\", \"\", path)\n    path = path.replace(':', '').replace('?', '').replace(",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "images_compress",
+        "kind": 2,
+        "importPath": "src.util.image",
+        "description": "src.util.image",
+        "peekOfCode": "def images_compress(save_path):\n    for f in os.listdir(save_path):\n        fname = os.path.join(save_path, f)\n        __convert(fname)\nif __name__ == \"__main__\":\n    images_compress(\"...\")",
+        "detail": "src.util.image",
+        "documentation": {}
+    },
+    {
+        "label": "QtSingleton",
+        "kind": 6,
+        "importPath": "src.util.QtSingleton",
+        "description": "src.util.QtSingleton",
+        "peekOfCode": "class QtSingleton(QObject):\n    __instance = None\n    def __new__(cls, *args, **kwargs):\n        if not isinstance(cls.__instance, cls):\n            cls.__instance = QObject.__new__(cls, *args, **kwargs)\n            return cls.__instance",
+        "detail": "src.util.QtSingleton",
+        "documentation": {}
+    },
+    {
+        "label": "SeleniumWorker",
+        "kind": 6,
+        "importPath": "src.util.SeleniumWorker",
+        "description": "src.util.SeleniumWorker",
+        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    current_browser = 'firefox'\n    browser = None\n    def driver_init(self):\n        print(\"Web Driver loading...\", end=\"\\r\")\n        options = Options()\n        # options.add_argument(\"--headless\")\n        # options.add_argument(\"--log-level=3\")\n        # options.add_argument('--disable-gpu')",
+        "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
     {

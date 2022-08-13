@@ -3,6 +3,7 @@ from PySide6.QtCore import QObject, Signal, SignalInstance
 
 from util.Config import Config 
 
+
 class Clipboard(QObject):
     add_clipboard: SignalInstance  = Signal(str, object)
 

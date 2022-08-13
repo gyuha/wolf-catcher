@@ -12,9 +12,5 @@ class SiteBase(ABC):
         pass
     
     @abstractmethod
-    def get_chapter_list(self, url):
-        pass
-    
-    @abstractmethod
     def get_img_list(self, url):
         pass

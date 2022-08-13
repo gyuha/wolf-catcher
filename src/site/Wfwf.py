@@ -8,9 +8,9 @@ class Wfwf(SiteBase):
     @property
     def site_name(self):
         return self.name
-
+    
     def get_chapter_info(self, url:str):
-        print('📢[Wfwf.py:13]: ', url)
+        print('📢[Wfwf.py:13]: ', id)
     
     def get_chapter_list(self, url):
         print('📢[Wfwf.py:14]: ', url)

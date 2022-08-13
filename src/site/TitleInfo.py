@@ -3,6 +3,8 @@ import json
 class TitleInfo:
 
     def __init__(self):
+        self.id = None
+        # 챕터 정보
         self.info = {
             'author': '',
             'skip': 0,
@@ -11,6 +13,8 @@ class TitleInfo:
             'id': 0,
             'last_updated': ''
         }
+        # 챕터 목록 ID
+        self.list = []
 
 
     def set_info(self, info):
