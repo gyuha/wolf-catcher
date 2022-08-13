@@ -1543,7 +1543,7 @@
         "kind": 6,
         "importPath": "src.util.Config",
         "description": "src.util.Config",
-        "peekOfCode": "class Config():\n    @property\n    def data(self):\n        return self._data\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)",
+        "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self._data\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)",
         "detail": "src.util.Config",
         "documentation": {}
     },

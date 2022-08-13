@@ -3,7 +3,7 @@ import re
 
 from util.Singleton import Singleton
 
-class Config():
+class Config(metaclass=Singleton):
 
     @property
     def data(self):
