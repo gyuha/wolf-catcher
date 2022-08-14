@@ -25,6 +25,7 @@ class SeleniumWorker(QtSingleton):
     __timeout = 10
     __is_getting = False
 
+
     @property
     def brower(self):
         return self.__browser
@@ -32,15 +33,16 @@ class SeleniumWorker(QtSingleton):
 
     def __init__(self):
         super().__init__()
-        config = Config()
+        self.config = Config()
+        self.__is_getting = False
 
-        self.__brower_type = config.setting["brower"]
+        self.__brower_type = self.config.setting["browser"]
 
         self.__driver_init()
 
 
     def __driver_init(self):
-        print("[{}] Web Driver loading...".format(self.config.browser), end="\r")
+        print("[{}] Web Driver loading...".format(self.config.setting["browser"]), end="\r")
 
         if self.__brower_type == 'chrome':
             """ 
@@ -78,11 +80,10 @@ class SeleniumWorker(QtSingleton):
             self.__browser = self.__driver_init()
 
 
-    @retry(TimeoutError, tries=__tries)
-    @timeout(__timeout)
-    def get_with_retry(self, driver, url):
+    @retry(tries=__tries)
+    def get_with_retry(self, url):
         self.__is_getting = True
-        driver.get(url)
+        self.__browser.get(url)
         self.__is_getting = False
 
 

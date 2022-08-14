@@ -65,9 +65,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="getButton">
         <property name="text">
-         <string>PushButton</string>
+         <string>Get Button</string>
         </property>
        </widget>
       </item>

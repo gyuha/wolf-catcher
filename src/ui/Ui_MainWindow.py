@@ -59,10 +59,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.pushButton_2)
 
-        self.pushButton = QPushButton(self.centralwidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.getButton = QPushButton(self.centralwidget)
+        self.getButton.setObjectName(u"getButton")
 
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.horizontalLayout.addWidget(self.getButton)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -101,7 +101,7 @@ class Ui_MainWindow(object):
         self.action_clipboard_toggle.setText(QCoreApplication.translate("MainWindow", u"\ud074\ub9bd\ubcf4\ub4dc\uc5d0\uc11c \ucd94\uac00", None))
         self.action_exit.setText(QCoreApplication.translate("MainWindow", u"\uc885\ub8cc(&q)", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.getButton.setText(QCoreApplication.translate("MainWindow", u"Get Button", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\uc791\uc5c5", None))
         self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\ub3c4\uc6c0\ub9d0", None))
         self.menu_3.setTitle(QCoreApplication.translate("MainWindow", u"\uc635\uc158", None))

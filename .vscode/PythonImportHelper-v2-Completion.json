@@ -1166,6 +1166,15 @@
         "documentation": {}
     },
     {
+        "label": "Ui_MainWindo",
+        "kind": 6,
+        "importPath": ".qt_for_python.uic.MainWindow",
+        "description": ".qt_for_python.uic.MainWindow",
+        "peekOfCode": "class Ui_MainWindow\n{\npublic:\n    QAction *action_always_top;\n    QAction *action_clipboard_toggle;\n    QAction *action_exit;\n    QWidget *centralwidget;\n    QVBoxLayout *verticalLayout;\n    QListWidget *listWidget;\n    QHBoxLayout *horizontalLayout;",
+        "detail": ".qt_for_python.uic.MainWindow",
+        "documentation": {}
+    },
+    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.Scripts.activate_this",
@@ -1674,7 +1683,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.seleniumWorker = SeleniumWorker()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.seleniumWorker = SeleniumWorker()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()",
         "detail": "src.MainWindow",
         "documentation": {}
     }
