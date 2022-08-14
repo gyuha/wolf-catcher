@@ -9,16 +9,24 @@ site:
     url: https://wfwf220.com/
     file_extensions: cbz
     download_path: wfwf
-    filter: 
+    filter:
       - https://wfwf[0-9]+.com/.*?toon=[0-9]+
-    url_format: 
-      - list: /cl?toon={0}
-      - capter: /cv?toon={0}&num={1}
+    url_format:
+      list:
+        filter: /cl?toon={0}
+        visible_condition:
+          type: xpath
+          text: //*[@id="content"]/div[3]/div[1]/div
+      capter:
+        filter: /cv?toon={0}&num={1}
+        visible_condition:
+          type: xpath
+          text: /html/body/section[1]/div[5]/img
   # - name: manatoki
   #   class_name: Manatoki
   #   title: 마나토끼
   #   url: https://manatoki148.net/
   #   file_extensions: cbz
   #   download_path: manatoki
-  #   filter: 
+  #   filter:
   #     - manatoki

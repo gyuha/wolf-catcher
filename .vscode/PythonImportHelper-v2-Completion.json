@@ -1019,6 +1019,22 @@
         "documentation": {}
     },
     {
+        "label": "Condition",
+        "importPath": "msilib.schema",
+        "description": "msilib.schema",
+        "isExtraImport": true,
+        "detail": "msilib.schema",
+        "documentation": {}
+    },
+    {
+        "label": "wait",
+        "importPath": "multiprocessing.connection",
+        "description": "multiprocessing.connection",
+        "isExtraImport": true,
+        "detail": "multiprocessing.connection",
+        "documentation": {}
+    },
+    {
         "label": "webdriver",
         "importPath": "selenium",
         "description": "selenium",
@@ -1064,6 +1080,46 @@
         "description": "selenium.webdriver.firefox.options",
         "isExtraImport": true,
         "detail": "selenium.webdriver.firefox.options",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "GetTimeoutException",
+        "importPath": "lib.exceptions",
+        "description": "lib.exceptions",
+        "isExtraImport": true,
+        "detail": "lib.exceptions",
         "documentation": {}
     },
     {
@@ -1505,6 +1561,15 @@
         "description": "src.downloader.Downloader",
         "peekOfCode": "class Downloader:\n    def __init__(self):\n        print('📢[Downloader.py:4]: ', self)",
         "detail": "src.downloader.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "GetTimeoutException",
+        "kind": 6,
+        "importPath": "src.lib.exceptions",
+        "description": "src.lib.exceptions",
+        "peekOfCode": "class GetTimeoutException(Exception):\n    \"\"\"\n    Base exception\n    \"\"\"\n    pass",
+        "detail": "src.lib.exceptions",
         "documentation": {}
     },
     {
