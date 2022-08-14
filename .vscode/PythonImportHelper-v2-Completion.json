@@ -1075,6 +1075,30 @@
         "documentation": {}
     },
     {
+        "label": "retry",
+        "importPath": "retry",
+        "description": "retry",
+        "isExtraImport": true,
+        "detail": "retry",
+        "documentation": {}
+    },
+    {
+        "label": "timeout",
+        "importPath": "timeout_decorator",
+        "description": "timeout_decorator",
+        "isExtraImport": true,
+        "detail": "timeout_decorator",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutError",
+        "importPath": "timeout_decorator",
+        "description": "timeout_decorator",
+        "isExtraImport": true,
+        "detail": "timeout_decorator",
+        "documentation": {}
+    },
+    {
         "label": "importlib",
         "kind": 6,
         "isExtraImport": true,
@@ -1551,7 +1575,7 @@
         "kind": 6,
         "importPath": "src.util.Config",
         "description": "src.util.Config",
-        "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self.__data\n    @data.setter\n    def data(self, value):\n        self.__data = value\n    @property\n    def browser(self):\n        return self.__data[\"browser\"]",
+        "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self.__data\n    @data.setter\n    def data(self, value):\n        self.__data = value\n    @property\n    def setting(self):\n        return self.__data[\"setting\"]",
         "detail": "src.util.Config",
         "documentation": {}
     },
@@ -1623,7 +1647,7 @@
         "kind": 6,
         "importPath": "src.util.SeleniumWorker",
         "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    config = Config()\n    __browser = None\n    @property\n    def brower(self):\n        return self.__browser\n    def __init__(self):\n        super().__init__()\n        self.driver_init()",
+        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    __browser = None\n    __brower_type = 'chrome'\n    __tries = 5\n    __timeout = 10\n    __is_getting = False\n    @property\n    def brower(self):\n        return self.__browser",
         "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },

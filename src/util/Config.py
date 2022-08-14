@@ -15,8 +15,8 @@ class Config(metaclass=Singleton):
         self.__data = value
     
     @property
-    def browser(self):
-        return self.__data["browser"]
+    def setting(self):
+        return self.__data["setting"]
 
 
     def __init__(self):

@@ -12,13 +12,18 @@ from util.Config import Config
 
 from util.QtSingleton import QtSingleton
 
+from retry import retry
+from timeout_decorator import timeout, TimeoutError
+
 
 class SeleniumWorker(QtSingleton):
     progress_changed = Signal(int)
 
-    config = Config()
-
     __browser = None
+    __brower_type = 'chrome'
+    __tries = 5
+    __timeout = 10
+    __is_getting = False
 
     @property
     def brower(self):
@@ -27,13 +32,17 @@ class SeleniumWorker(QtSingleton):
 
     def __init__(self):
         super().__init__()
-        self.driver_init()
+        config = Config()
+
+        self.__brower_type = config.setting["brower"]
+
+        self.__driver_init()
 
 
-    def driver_init(self):
+    def __driver_init(self):
         print("[{}] Web Driver loading...".format(self.config.browser), end="\r")
 
-        if self.config.browser == 'chrome':
+        if self.__brower_type == 'chrome':
             """ 
             Chrome
             """
@@ -43,7 +52,7 @@ class SeleniumWorker(QtSingleton):
                 executable_path=driver_file, 
                 options=options)
 
-        elif self.config.browser == 'firefox':
+        elif self.__brower_type == 'firefox':
             """
             Firefox
             """
@@ -66,7 +75,15 @@ class SeleniumWorker(QtSingleton):
     def reconnect(self):
         if self.__browser:
             self.__browser.close()
-            self.__browser = self.driver_init()
+            self.__browser = self.__driver_init()
+
+
+    @retry(TimeoutError, tries=__tries)
+    @timeout(__timeout)
+    def get_with_retry(self, driver, url):
+        self.__is_getting = True
+        driver.get(url)
+        self.__is_getting = False
 
 
     def do_work(self):
