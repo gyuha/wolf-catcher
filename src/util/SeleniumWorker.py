@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 from selenium import webdriver
 from lib.exceptions import GetTimeoutException
 from util.Config import Config
@@ -21,31 +22,39 @@ from util.QtSingleton import QtSingleton
 
 from retry import retry
 from timeout_decorator import timeout, TimeoutError
+import urllib
+
+from .file_name import download_from_url
 
 
 class SeleniumWorker(QtSingleton):
     progress_changed = Signal(int)
 
     __browser = None
-    __brower_type = 'chrome'
+    __browser_type = 'chrome'
     __tries = 5
     __timeout = 10
     __is_getting = False
+    __is_complete = False
 
     @property
-    def brower(self):
+    def browser(self):
         return self.__browser
 
     @property
     def is_getting(self):
         return self.__is_getting
 
+    @property
+    def is_complete(self):
+        return self.__is_complete
+
     def __init__(self):
         super().__init__()
         self.config = Config()
         self.__is_getting = False
 
-        self.__brower_type = self.config.setting["browser"]
+        self.__browser_type = self.config.setting["browser"]
 
         self.__driver_init()
 
@@ -53,7 +62,7 @@ class SeleniumWorker(QtSingleton):
         print("[{}] Web Driver loading...".format(
             self.config.setting["browser"]), end="\r")
 
-        if self.__brower_type == 'chrome':
+        if self.__browser_type == 'chrome':
             """ 
             Chrome
             """
@@ -63,7 +72,7 @@ class SeleniumWorker(QtSingleton):
                 executable_path=driver_file,
                 options=options)
 
-        elif self.__brower_type == 'firefox':
+        elif self.__browser_type == 'firefox':
             """
             Firefox
             """
@@ -97,11 +106,12 @@ class SeleniumWorker(QtSingleton):
         elif type == "xpath":
             return By.XPATH
 
-    @retry(GetTimeoutException, tries=__tries)
+    # @retry(GetTimeoutException, tries=__tries)
     def get_with_retry(self, url, type = "xpath", text = "html"):
         if (self.__is_getting):
             return
 
+        self.__is_complete = False
         self.__is_getting = True
         self.__browser.get(url)
 
@@ -109,16 +119,32 @@ class SeleniumWorker(QtSingleton):
 
         try:
             element = wait.until(
-                EC.visibility_of_element_located(
+                visibility_of_element_located((
                     self.condition_by(type), 
-                    text
-                )
+                    "/html"
+                ))
             )
             self.__is_getting = False
+            self.__is_complete = True
         except TimeoutException:
+            self.__is_complete = False
             raise GetTimeoutException
-        finally:
-            self.__is_getting = False
+
+        self.__is_getting = False
+        return
+            
+    
+    def download_image(self, xpath):
+        img = self.__browser.find_element(By.XPATH, xpath)
+        src = img.get_attribute('src')
+
+        # img.screenshot("test.png")
+        with open('Logo.png', 'wb') as file:
+            file.write(img.screenshot_as_png)
+        print('📢[SeleniumWorker.py:141]: ', src)
+        # download_from_url([src, './', 0])
+        # download the image
+        # urllib.urlretrieve(src, "my_image.png")
 
     def do_work(self):
         progress = 0

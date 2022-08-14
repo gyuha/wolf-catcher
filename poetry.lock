@@ -876,7 +876,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8.10"
-content-hash = "3a7ebca752ab4f784eec335e2ca4deb4636ef9c7e6c94339de0af16ac34716b1"
+content-hash = "8ecbd4d8a0ad68a36dbb28dfd525b8bb43ff6c1ef981b57c908a89f35ec087cb"
 
 [metadata.files]
 altgraph = [

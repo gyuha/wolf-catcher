@@ -80,6 +80,8 @@ def zip_folder(filename, path):
         zipf.write(os.path.join(path, f), os.path.basename(f))
     zipf.close()
 
+def download_from_url(p):
+    __download_from_url(p)
 
 def __download_from_url(p):
     url = p[0]

@@ -1011,6 +1011,14 @@
         "documentation": {}
     },
     {
+        "label": "QtWidgets",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
         "label": "driver",
         "importPath": "lib2to3.pgen2",
         "description": "lib2to3.pgen2",
@@ -1115,6 +1123,14 @@
         "documentation": {}
     },
     {
+        "label": "visibility_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
         "label": "GetTimeoutException",
         "importPath": "lib.exceptions",
         "description": "lib.exceptions",
@@ -1152,6 +1168,15 @@
         "description": "timeout_decorator",
         "isExtraImport": true,
         "detail": "timeout_decorator",
+        "documentation": {}
+    },
+    {
+        "label": "urllib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "urllib",
+        "description": "urllib",
+        "detail": "urllib",
         "documentation": {}
     },
     {
@@ -1193,6 +1218,14 @@
         "description": "src.util.SeleniumWorker",
         "isExtraImport": true,
         "detail": "src.util.SeleniumWorker",
+        "documentation": {}
+    },
+    {
+        "label": "alert",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
         "documentation": {}
     },
     {
@@ -1685,7 +1718,16 @@
         "kind": 2,
         "importPath": "src.util.file_name",
         "description": "src.util.file_name",
-        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]\n    num = p[2]\n    name = \"%03d\" % (num,) + \".jpg\"",
+        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()\ndef download_from_url(p):\n    __download_from_url(p)\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]",
+        "detail": "src.util.file_name",
+        "documentation": {}
+    },
+    {
+        "label": "download_from_url",
+        "kind": 2,
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "peekOfCode": "def download_from_url(p):\n    __download_from_url(p)\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]\n    num = p[2]\n    name = \"%03d\" % (num,) + \".jpg\"\n    output_path = os.path.join(output_path, name)\n    try:\n        requests.urllib3.disable_warnings()",
         "detail": "src.util.file_name",
         "documentation": {}
     },
@@ -1708,6 +1750,15 @@
         "documentation": {}
     },
     {
+        "label": "alert",
+        "kind": 2,
+        "importPath": "src.util.message",
+        "description": "src.util.message",
+        "peekOfCode": "def alert(text):\n    error_dialog = QtWidgets.QErrorMessage()\n    error_dialog.showMessage(text)",
+        "detail": "src.util.message",
+        "documentation": {}
+    },
+    {
         "label": "QtSingleton",
         "kind": 6,
         "importPath": "src.util.QtSingleton",
@@ -1721,7 +1772,7 @@
         "kind": 6,
         "importPath": "src.util.SeleniumWorker",
         "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    __browser = None\n    __brower_type = 'chrome'\n    __tries = 5\n    __timeout = 10\n    __is_getting = False\n    @property\n    def brower(self):\n        return self.__browser",
+        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    __browser = None\n    __browser_type = 'chrome'\n    __tries = 5\n    __timeout = 10\n    __is_getting = False\n    __is_complete = False\n    @property\n    def browser(self):",
         "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
