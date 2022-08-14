@@ -5,7 +5,10 @@ from PySide6.QtCore import Signal
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
+from util.Config import Config
 
 from util.QtSingleton import QtSingleton
 
@@ -13,39 +16,57 @@ from util.QtSingleton import QtSingleton
 class SeleniumWorker(QtSingleton):
     progress_changed = Signal(int)
 
-    current_browser = 'firefox'
-    browser = None
+    config = Config()
+
+    __browser = None
+
+    @property
+    def brower(self):
+        return self.__browser
+
+
+    def __init__(self):
+        super().__init__()
+        self.driver_init()
 
 
     def driver_init(self):
-        print("Web Driver loading...", end="\r")
-        options = Options()
-        # options.add_argument("--headless")
-        # options.add_argument("--log-level=3")
-        # options.add_argument('--disable-gpu')
+        print("[{}] Web Driver loading...".format(self.config.browser), end="\r")
 
-        if self.current_browser == 'chrome':
+        if self.config.browser == 'chrome':
+            """ 
+            Chrome
+            """
             driver_file = './driver/chromedriver.exe'
-            self.browser = webdriver.Chrome(
-                driver_file, chrome_options=options)
-        elif self.current_browser == 'firefox':
-            driver_file = './driver/geckodriver.exe'
-            self.browser = webdriver.Firefox(
-                executable_path=driver_file, firefox_options=options)
+            options = ChromeOptions()
+            self.__browser = webdriver.Chrome(
+                executable_path=driver_file, 
+                options=options)
 
-        if self.browser:
-            self.browser.implicitly_wait(5)
+        elif self.config.browser == 'firefox':
+            """
+            Firefox
+            """
+            driver_file = './driver/geckodriver.exe'
+            options = FirefoxOptions()
+            options.headless = False
+            self.__browser = webdriver.Firefox(
+                executable_path=driver_file, 
+                options=options)
+
+        if self.__browser:
+            self.__browser.implicitly_wait(5)
 
 
     def driver_close(self):
-        if self.browser:
-            self.browser.close()
+        if self.__browser:
+            self.__browser.close()
 
 
     def reconnect(self):
-        if self.browser:
-            self.browser.close()
-            self.browser = self.driver_init()
+        if self.__browser:
+            self.__browser.close()
+            self.__browser = self.driver_init()
 
 
     def do_work(self):

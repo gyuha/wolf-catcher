@@ -1,3 +1,4 @@
+browser: firefox
 site:
   - name: wfwf
     class_name: Wfwf

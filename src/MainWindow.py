@@ -2,11 +2,11 @@ from PySide6.QtWidgets import QMainWindow
 from PySide6.QtCore import Slot
 
 from ui.Ui_MainWindow import Ui_MainWindow
-from util.WebCrawring import WebCrawring
 from util.Clipboard import Clipboard
 from util.Config import Config
 
 from util.Site import Site
+from src.util.SeleniumWorker import SeleniumWorker
 
 
 class MainWindow(QMainWindow):
@@ -15,9 +15,9 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
 
         self.config = Config()
-        self.web_crawring = WebCrawring()
         self.clipbard = Clipboard()
         self.sites = Site()
+        self.seleniumWorker = SeleniumWorker()
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

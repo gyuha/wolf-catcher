@@ -146,6 +146,14 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
         "label": "QCoreApplication",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -395,14 +403,6 @@
     },
     {
         "label": "SignalInstance",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -925,14 +925,6 @@
         "documentation": {}
     },
     {
-        "label": "Singleton",
-        "importPath": "util.Singleton",
-        "description": "util.Singleton",
-        "isExtraImport": true,
-        "detail": "util.Singleton",
-        "documentation": {}
-    },
-    {
         "label": "pathlib",
         "kind": 6,
         "isExtraImport": true,
@@ -1059,6 +1051,22 @@
         "documentation": {}
     },
     {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.firefox.options",
+        "description": "selenium.webdriver.firefox.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.firefox.options",
+        "documentation": {}
+    },
+    {
         "label": "QtSingleton",
         "importPath": "util.QtSingleton",
         "description": "util.QtSingleton",
@@ -1084,14 +1092,6 @@
         "documentation": {}
     },
     {
-        "label": "WebCrawring",
-        "importPath": "util.WebCrawring",
-        "description": "util.WebCrawring",
-        "isExtraImport": true,
-        "detail": "util.WebCrawring",
-        "documentation": {}
-    },
-    {
         "label": "Clipboard",
         "importPath": "util.Clipboard",
         "description": "util.Clipboard",
@@ -1105,6 +1105,14 @@
         "description": "util.Site",
         "isExtraImport": true,
         "detail": "util.Site",
+        "documentation": {}
+    },
+    {
+        "label": "SeleniumWorker",
+        "importPath": "src.util.SeleniumWorker",
+        "description": "src.util.SeleniumWorker",
+        "isExtraImport": true,
+        "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
     {
@@ -1543,7 +1551,7 @@
         "kind": 6,
         "importPath": "src.util.Config",
         "description": "src.util.Config",
-        "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self._data\n    def __init__(self):\n        super(Config, self).__init__()\n        self.read_data()\n    def read_data(self):\n        with open('config.yaml', 'r', encoding='utf-8') as file:\n            self._data = yaml.load(file, Loader=yaml.FullLoader)",
+        "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self.__data\n    @data.setter\n    def data(self, value):\n        self.__data = value\n    @property\n    def browser(self):\n        return self.__data[\"browser\"]",
         "detail": "src.util.Config",
         "documentation": {}
     },
@@ -1615,7 +1623,7 @@
         "kind": 6,
         "importPath": "src.util.SeleniumWorker",
         "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    current_browser = 'firefox'\n    browser = None\n    def driver_init(self):\n        print(\"Web Driver loading...\", end=\"\\r\")\n        options = Options()\n        # options.add_argument(\"--headless\")\n        # options.add_argument(\"--log-level=3\")\n        # options.add_argument('--disable-gpu')",
+        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    config = Config()\n    __browser = None\n    @property\n    def brower(self):\n        return self.__browser\n    def __init__(self):\n        super().__init__()\n        self.driver_init()",
         "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
@@ -1638,20 +1646,11 @@
         "documentation": {}
     },
     {
-        "label": "WebCrawring",
-        "kind": 6,
-        "importPath": "src.util.WebCrawring",
-        "description": "src.util.WebCrawring",
-        "peekOfCode": "class WebCrawring(QObject):\n    def __init__(self):\n        super(WebCrawring, self).__init__()",
-        "detail": "src.util.WebCrawring",
-        "documentation": {}
-    },
-    {
         "label": "MainWindow",
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.web_crawring = WebCrawring()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.seleniumWorker = SeleniumWorker()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_slot()",
         "detail": "src.MainWindow",
         "documentation": {}
     }
