@@ -1,5 +1,5 @@
 setting:
-  browser: firefox
+  browser: chrome
   tries: 5
   timeout: 10
 site:

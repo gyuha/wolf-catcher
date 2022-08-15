@@ -386,6 +386,30 @@
         "documentation": {}
     },
     {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -925,12 +949,12 @@
         "documentation": {}
     },
     {
-        "label": "pathlib",
+        "label": "requests",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "detail": "pathlib",
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
         "documentation": {}
     },
     {
@@ -943,12 +967,11 @@
         "documentation": {}
     },
     {
-        "label": "zipfile",
-        "kind": 6,
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
         "isExtraImport": true,
-        "importPath": "zipfile",
-        "description": "zipfile",
-        "detail": "zipfile",
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
@@ -968,12 +991,29 @@
         "documentation": {}
     },
     {
-        "label": "requests",
+        "label": "ThreadPool",
+        "importPath": "multiprocessing.pool",
+        "description": "multiprocessing.pool",
+        "isExtraImport": true,
+        "detail": "multiprocessing.pool",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
         "documentation": {}
     },
     {
@@ -1044,18 +1084,10 @@
     },
     {
         "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
+        "importPath": "seleniumwire",
+        "description": "seleniumwire",
         "isExtraImport": true,
-        "detail": "selenium",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
+        "detail": "seleniumwire",
         "documentation": {}
     },
     {
@@ -1128,6 +1160,14 @@
         "description": "selenium.webdriver.support.expected_conditions",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
         "documentation": {}
     },
     {
@@ -1684,6 +1724,33 @@
         "description": "src.util.Config",
         "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self.__data\n    @data.setter\n    def data(self, value):\n        self.__data = value\n    @property\n    def setting(self):\n        return self.__data[\"setting\"]",
         "detail": "src.util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "DownloaderSignal",
+        "kind": 6,
+        "importPath": "src.util.Downloader",
+        "description": "src.util.Downloader",
+        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()",
+        "detail": "src.util.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "Downloader",
+        "kind": 6,
+        "importPath": "src.util.Downloader",
+        "description": "src.util.Downloader",
+        "peekOfCode": "class Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()\n        files = []\n    def run(self):\n        if len(self.files):\n            self.signals.download_error.emit(\"empty list\")\n            return\n        self.download_run()",
+        "detail": "src.util.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "HEADERS",
+        "kind": 5,
+        "importPath": "src.util.Downloader",
+        "description": "src.util.Downloader",
+        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()\n        files = []\n    def run(self):\n        if len(self.files):",
+        "detail": "src.util.Downloader",
         "documentation": {}
     },
     {

@@ -1,7 +1,8 @@
 from lib2to3.pgen2 import driver
 from msilib.schema import Condition
 from multiprocessing.connection import wait
-from selenium import webdriver
+# from selenium import webdriver
+from seleniumwire import webdriver
 
 from PySide6.QtCore import Signal
 
@@ -138,6 +139,8 @@ class SeleniumWorker(QtSingleton):
         img = self.__browser.find_element(By.XPATH, xpath)
         src = img.get_attribute('src')
 
+        print('📢[SeleniumWorker.py:141]: ', src)
+        urllib.urlretrieve(src, "filename.png")
         # img.screenshot("test.png")
         with open('Logo.png', 'wb') as file:
             file.write(img.screenshot_as_png)
