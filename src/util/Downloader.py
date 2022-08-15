@@ -25,6 +25,7 @@ class Downloader(QThread):
             self.signals.download_error.emit("empty list")
             return
         self.download_run()
+        # https://opensourceoptions.com/blog/use-python-to-download-multiple-files-or-urls-in-parallel/
         
 
     def add_files(self, path, urls):
