@@ -1,31 +1,22 @@
-from lib2to3.pgen2 import driver
-from msilib.schema import Condition
-from multiprocessing.connection import wait
-# from selenium import webdriver
-from seleniumwire import webdriver
+import urllib
+
+from selenium import webdriver
 
 from PySide6.QtCore import Signal
 
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located
-from selenium import webdriver
+
 from lib.exceptions import GetTimeoutException
 from util.Config import Config
 
 from util.QtSingleton import QtSingleton
 
-from retry import retry
-from timeout_decorator import timeout, TimeoutError
 import urllib
-
-from .file_name import download_from_url
 
 
 class SeleniumWorker(QtSingleton):
@@ -133,32 +124,4 @@ class SeleniumWorker(QtSingleton):
 
         self.__is_getting = False
         return
-            
     
-    def download_image(self, xpath):
-        img = self.__browser.find_element(By.XPATH, xpath)
-        src = img.get_attribute('src')
-
-        print('📢[SeleniumWorker.py:141]: ', src)
-        urllib.urlretrieve(src, "filename.png")
-        # img.screenshot("test.png")
-        with open('Logo.png', 'wb') as file:
-            file.write(img.screenshot_as_png)
-        print('📢[SeleniumWorker.py:141]: ', src)
-        # download_from_url([src, './', 0])
-        # download the image
-        # urllib.urlretrieve(src, "my_image.png")
-
-    def do_work(self):
-        progress = 0
-        browser = webdriver.Firefox()
-        links = ['http://www.somesite.com/',
-                 'http://www.somesite.com/page2',
-                 'http://www.somesite.com/page3']
-
-        for link in links:
-            browser.get(link)
-            progress += 100 / len(links)
-            self.progress_changed.emit(progress)
-
-        browser.close()

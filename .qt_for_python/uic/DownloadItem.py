@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form
+class Ui_DownloadItem
 {
 public:
     QHBoxLayout *horizontalLayout;
@@ -39,16 +39,16 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QLabel *status_label;
 
-    void setupUi(QWidget *Form)
+    void setupUi(QWidget *DownloadItem)
     {
-        if (Form->objectName().isEmpty())
-            Form->setObjectName(QString::fromUtf8("Form"));
-        Form->resize(592, 70);
-        horizontalLayout = new QHBoxLayout(Form);
+        if (DownloadItem->objectName().isEmpty())
+            DownloadItem->setObjectName(QString::fromUtf8("DownloadItem"));
+        DownloadItem->resize(592, 70);
+        horizontalLayout = new QHBoxLayout(DownloadItem);
         horizontalLayout->setSpacing(5);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(5, 5, 5, 5);
-        image_label = new QLabel(Form);
+        image_label = new QLabel(DownloadItem);
         image_label->setObjectName(QString::fromUtf8("image_label"));
         image_label->setMinimumSize(QSize(60, 60));
         image_label->setMaximumSize(QSize(60, 60));
@@ -60,7 +60,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label = new QLabel(Form);
+        label = new QLabel(DownloadItem);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setPointSize(11);
@@ -73,7 +73,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        folder_open_button = new QPushButton(Form);
+        folder_open_button = new QPushButton(DownloadItem);
         folder_open_button->setObjectName(QString::fromUtf8("folder_open_button"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/icons/folder-open.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -82,7 +82,7 @@ public:
 
         horizontalLayout_2->addWidget(folder_open_button);
 
-        delete_button = new QPushButton(Form);
+        delete_button = new QPushButton(DownloadItem);
         delete_button->setObjectName(QString::fromUtf8("delete_button"));
         delete_button->setLayoutDirection(Qt::LeftToRight);
         delete_button->setAutoFillBackground(false);
@@ -93,7 +93,7 @@ public:
 
         horizontalLayout_2->addWidget(delete_button);
 
-        cancel_button = new QPushButton(Form);
+        cancel_button = new QPushButton(DownloadItem);
         cancel_button->setObjectName(QString::fromUtf8("cancel_button"));
         cancel_button->setEnabled(true);
         QIcon icon2;
@@ -108,7 +108,7 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        progress_bar = new QProgressBar(Form);
+        progress_bar = new QProgressBar(DownloadItem);
         progress_bar->setObjectName(QString::fromUtf8("progress_bar"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -124,7 +124,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        status_label = new QLabel(Form);
+        status_label = new QLabel(DownloadItem);
         status_label->setObjectName(QString::fromUtf8("status_label"));
 
         horizontalLayout_3->addWidget(status_label);
@@ -137,26 +137,26 @@ public:
 
         horizontalLayout->setStretch(1, 1);
 
-        retranslateUi(Form);
+        retranslateUi(DownloadItem);
 
-        QMetaObject::connectSlotsByName(Form);
+        QMetaObject::connectSlotsByName(DownloadItem);
     } // setupUi
 
-    void retranslateUi(QWidget *Form)
+    void retranslateUi(QWidget *DownloadItem)
     {
-        Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
+        DownloadItem->setWindowTitle(QCoreApplication::translate("DownloadItem", "Form", nullptr));
         image_label->setText(QString());
-        label->setText(QCoreApplication::translate("Form", "TextLabel", nullptr));
+        label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
         folder_open_button->setText(QString());
         delete_button->setText(QString());
         cancel_button->setText(QString());
-        status_label->setText(QCoreApplication::translate("Form", "TextLabel", nullptr));
+        status_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Form: public Ui_Form {};
+    class DownloadItem: public Ui_DownloadItem {};
 } // namespace Ui
 
 QT_END_NAMESPACE

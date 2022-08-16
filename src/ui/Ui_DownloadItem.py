@@ -20,16 +20,16 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QProgressBar,
     QWidget)
 import resources_rc
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(592, 70)
-        self.horizontalLayout = QHBoxLayout(Form)
+class Ui_DownloadItem(object):
+    def setupUi(self, DownloadItem):
+        if not DownloadItem.objectName():
+            DownloadItem.setObjectName(u"DownloadItem")
+        DownloadItem.resize(592, 70)
+        self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
-        self.image_label = QLabel(Form)
+        self.image_label = QLabel(DownloadItem)
         self.image_label.setObjectName(u"image_label")
         self.image_label.setMinimumSize(QSize(60, 60))
         self.image_label.setMaximumSize(QSize(60, 60))
@@ -41,7 +41,7 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label = QLabel(Form)
+        self.label = QLabel(DownloadItem)
         self.label.setObjectName(u"label")
         font = QFont()
         font.setPointSize(11)
@@ -54,7 +54,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
-        self.folder_open_button = QPushButton(Form)
+        self.folder_open_button = QPushButton(DownloadItem)
         self.folder_open_button.setObjectName(u"folder_open_button")
         icon = QIcon()
         icon.addFile(u":/icon/icons/folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -63,7 +63,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_2.addWidget(self.folder_open_button)
 
-        self.delete_button = QPushButton(Form)
+        self.delete_button = QPushButton(DownloadItem)
         self.delete_button.setObjectName(u"delete_button")
         self.delete_button.setLayoutDirection(Qt.LeftToRight)
         self.delete_button.setAutoFillBackground(False)
@@ -74,7 +74,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_2.addWidget(self.delete_button)
 
-        self.cancel_button = QPushButton(Form)
+        self.cancel_button = QPushButton(DownloadItem)
         self.cancel_button.setObjectName(u"cancel_button")
         self.cancel_button.setEnabled(True)
         icon2 = QIcon()
@@ -89,7 +89,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.progress_bar = QProgressBar(Form)
+        self.progress_bar = QProgressBar(DownloadItem)
         self.progress_bar.setObjectName(u"progress_bar")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -105,7 +105,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
 
-        self.status_label = QLabel(Form)
+        self.status_label = QLabel(DownloadItem)
         self.status_label.setObjectName(u"status_label")
 
         self.horizontalLayout_3.addWidget(self.status_label)
@@ -118,18 +118,18 @@ class Ui_Form(object):
 
         self.horizontalLayout.setStretch(1, 1)
 
-        self.retranslateUi(Form)
+        self.retranslateUi(DownloadItem)
 
-        QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(DownloadItem)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+    def retranslateUi(self, DownloadItem):
+        DownloadItem.setWindowTitle(QCoreApplication.translate("DownloadItem", u"Form", None))
         self.image_label.setText("")
-        self.label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
         self.folder_open_button.setText("")
         self.delete_button.setText("")
         self.cancel_button.setText("")
-        self.status_label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.status_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
     # retranslateUi
 

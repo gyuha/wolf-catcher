@@ -38,7 +38,7 @@ class Downloader:
         pool = ThreadPool(cpus - 1)
         self.send_count = 0
         try:
-            results = pool.imap_unordered(self.download_url_to_file, self.files)
+            results = pool.imap_unordered(self.__download_url_to_file, self.files)
             for result in results:
                 print('url:', result)
         finally:
@@ -49,7 +49,7 @@ class Downloader:
 
 
     # @retry(exceptions=Exception, tries=5, delay=0)
-    def download_url_to_file(self, args: list) -> None:
+    def __download_url_to_file(self, args: list) -> None:
         url, path, referer, number = args[0], args[1], args[2], args[3]
 
         headers = HEADERS
@@ -64,15 +64,20 @@ class Downloader:
         try:
             response = session.get(url, stream=True, verify=False)
 
-            # response = session.get(url, headers=headers)
+            if response.status_code > 200:
+                raise Exception("Response error : {}"%(response.code))
+
             self.__save_file(path, number, response)
-            self.send_count = self.send_count + 1
-            print('📢[Downloader.py:71]: ', self.send_count)
-            self.signals.download_state.emit(self.send_count)
+            self.__download_state_emit()
         except Exception as e:
             print("Exception in download_url_to_file(): ", e)
         
         return number
+    
+    def __download_state_emit(self):
+        self.send_count = self.send_count + 1
+        self.signals.download_state.emit(self.send_count)
+
 
     
     def __save_file(self, path: str, number: int, response: Response):

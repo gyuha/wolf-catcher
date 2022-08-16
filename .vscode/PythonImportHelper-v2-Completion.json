@@ -706,6 +706,15 @@
         "documentation": {}
     },
     {
+        "label": "PySide6.QtWidgets",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QApplication",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -890,6 +899,22 @@
         "documentation": {}
     },
     {
+        "label": "QWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QListWidgetItem",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QMainWindow",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -1067,51 +1092,28 @@
         "documentation": {}
     },
     {
-        "label": "driver",
-        "importPath": "lib2to3.pgen2",
-        "description": "lib2to3.pgen2",
+        "label": "QtCore",
+        "importPath": "PySide6",
+        "description": "PySide6",
         "isExtraImport": true,
-        "detail": "lib2to3.pgen2",
+        "detail": "PySide6",
         "documentation": {}
     },
     {
-        "label": "Condition",
-        "importPath": "msilib.schema",
-        "description": "msilib.schema",
+        "label": "urllib",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "msilib.schema",
-        "documentation": {}
-    },
-    {
-        "label": "wait",
-        "importPath": "multiprocessing.connection",
-        "description": "multiprocessing.connection",
-        "isExtraImport": true,
-        "detail": "multiprocessing.connection",
+        "importPath": "urllib",
+        "description": "urllib",
+        "detail": "urllib",
         "documentation": {}
     },
     {
         "label": "webdriver",
-        "importPath": "seleniumwire",
-        "description": "seleniumwire",
+        "importPath": "selenium",
+        "description": "selenium",
         "isExtraImport": true,
-        "detail": "seleniumwire",
-        "documentation": {}
-    },
-    {
-        "label": "DesiredCapabilities",
-        "importPath": "selenium.webdriver.common.desired_capabilities",
-        "description": "selenium.webdriver.common.desired_capabilities",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.desired_capabilities",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.chrome.options",
-        "description": "selenium.webdriver.chrome.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.chrome.options",
+        "detail": "selenium",
         "documentation": {}
     },
     {
@@ -1147,14 +1149,6 @@
         "documentation": {}
     },
     {
-        "label": "expected_conditions",
-        "importPath": "selenium.webdriver.support",
-        "description": "selenium.webdriver.support",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support",
-        "documentation": {}
-    },
-    {
         "label": "TimeoutException",
         "importPath": "selenium.common.exceptions",
         "description": "selenium.common.exceptions",
@@ -1168,14 +1162,6 @@
         "description": "selenium.webdriver.support.expected_conditions",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
         "documentation": {}
     },
     {
@@ -1195,45 +1181,28 @@
         "documentation": {}
     },
     {
-        "label": "retry",
-        "importPath": "retry",
-        "description": "retry",
-        "isExtraImport": true,
-        "detail": "retry",
-        "documentation": {}
-    },
-    {
-        "label": "timeout",
-        "importPath": "timeout_decorator",
-        "description": "timeout_decorator",
-        "isExtraImport": true,
-        "detail": "timeout_decorator",
-        "documentation": {}
-    },
-    {
-        "label": "TimeoutError",
-        "importPath": "timeout_decorator",
-        "description": "timeout_decorator",
-        "isExtraImport": true,
-        "detail": "timeout_decorator",
-        "documentation": {}
-    },
-    {
-        "label": "urllib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "urllib",
-        "description": "urllib",
-        "detail": "urllib",
-        "documentation": {}
-    },
-    {
         "label": "importlib",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "importlib",
         "description": "importlib",
         "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "Ui_DownloadItem",
+        "importPath": "ui.Ui_DownloadItem",
+        "description": "ui.Ui_DownloadItem",
+        "isExtraImport": true,
+        "detail": "ui.Ui_DownloadItem",
+        "documentation": {}
+    },
+    {
+        "label": "DownloadItem",
+        "importPath": "DownloadItem",
+        "description": "DownloadItem",
+        "isExtraImport": true,
+        "detail": "DownloadItem",
         "documentation": {}
     },
     {
@@ -1302,11 +1271,11 @@
         "documentation": {}
     },
     {
-        "label": "Ui_For",
+        "label": "Ui_DownloadIte",
         "kind": 6,
         "importPath": ".qt_for_python.uic.DownloadItem",
         "description": ".qt_for_python.uic.DownloadItem",
-        "peekOfCode": "class Ui_Form\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
+        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
         "detail": ".qt_for_python.uic.DownloadItem",
         "documentation": {}
     },
@@ -1315,7 +1284,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.MainWindow",
         "description": ".qt_for_python.uic.MainWindow",
-        "peekOfCode": "class Ui_MainWindow\n{\npublic:\n    QAction *action_always_top;\n    QAction *action_clipboard_toggle;\n    QAction *action_exit;\n    QWidget *centralwidget;\n    QVBoxLayout *verticalLayout;\n    QListWidget *listWidget;\n    QHBoxLayout *horizontalLayout;",
+        "peekOfCode": "class Ui_MainWindow\n{\npublic:\n    QAction *action_always_top;\n    QAction *action_clipboard_toggle;\n    QAction *action_exit;\n    QWidget *centralwidget;\n    QVBoxLayout *verticalLayout;\n    QListWidget *item_list;\n    QHBoxLayout *horizontalLayout;",
         "detail": ".qt_for_python.uic.MainWindow",
         "documentation": {}
     },
@@ -1707,11 +1676,11 @@
         "documentation": {}
     },
     {
-        "label": "Ui_Form",
+        "label": "Ui_DownloadItem",
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
         "description": "src.ui.Ui_DownloadItem",
-        "peekOfCode": "class Ui_Form(object):\n    def setupUi(self, Form):\n        if not Form.objectName():\n            Form.setObjectName(u\"Form\")\n        Form.resize(592, 70)\n        self.horizontalLayout = QHBoxLayout(Form)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)\n        self.image_label = QLabel(Form)",
+        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)\n        self.image_label = QLabel(DownloadItem)",
         "detail": "src.ui.Ui_DownloadItem",
         "documentation": {}
     },
@@ -1878,12 +1847,75 @@
         "documentation": {}
     },
     {
+        "label": "DownloadItem",
+        "kind": 6,
+        "importPath": "src.DownloadItem",
+        "description": "src.DownloadItem",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)",
+        "detail": "src.DownloadItem",
+        "documentation": {}
+    },
+    {
         "label": "MainWindow",
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
         "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.sites = Site()\n        self.seleniumWorker = SeleniumWorker()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()",
         "detail": "src.MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "generate_all_ui2py",
+        "kind": 2,
+        "importPath": "generate_all_ui2py",
+        "description": "generate_all_ui2py",
+        "peekOfCode": "def generate_all_ui2py(path: str):\n    files = os.listdir(path)\n    ui_list = []\n    pattern = re.compile(r'.*\\.ui$')\n    for it in files:\n        if pattern.match(it):\n            ui_list.append(it)\n    for it in ui_list:\n        file_path = os.path.join(path, it)\n        file_name_without_ext = os.path.basename(file_path)[:-3]",
+        "detail": "generate_all_ui2py",
+        "documentation": {}
+    },
+    {
+        "label": "qInitResources",
+        "kind": 2,
+        "importPath": "resources_rc",
+        "description": "resources_rc",
+        "peekOfCode": "def qInitResources():\n    QtCore.qRegisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)\ndef qCleanupResources():\n    QtCore.qUnregisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)\nqInitResources()",
+        "detail": "resources_rc",
+        "documentation": {}
+    },
+    {
+        "label": "qCleanupResources",
+        "kind": 2,
+        "importPath": "resources_rc",
+        "description": "resources_rc",
+        "peekOfCode": "def qCleanupResources():\n    QtCore.qUnregisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)\nqInitResources()",
+        "detail": "resources_rc",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_data",
+        "kind": 5,
+        "importPath": "resources_rc",
+        "description": "resources_rc",
+        "peekOfCode": "qt_resource_data = b\"\\\n\\x00\\x00\\x0d\\x06\\\n\\x89\\\nPNG\\x0d\\x0a\\x1a\\x0a\\x00\\x00\\x00\\x0dIHDR\\x00\\\n\\x00\\x00\\xe8\\x00\\x00\\x01\\x00\\x08\\x03\\x00\\x00\\x00\\x8e\\x17\\xca\\x11\\\n\\x00\\x00\\x00\\x04gAMA\\x00\\x00\\xb1\\x8f\\x0b\\xfca\\x05\\\n\\x00\\x00\\x00 cHRM\\x00\\x00z&\\x00\\x00\\x80\\x84\\\n\\x00\\x00\\xfa\\x00\\x00\\x00\\x80\\xe8\\x00\\x00u0\\x00\\x00\\xea`\\\n\\x00\\x00:\\x98\\x00\\x00\\x17p\\x9c\\xbaQ<\\x00\\x00\\x00\\x07\\\ntIME\\x07\\xe5\\x06\\x0a\\x12;\\x0a\\xa9eDm\\x00\\",
+        "detail": "resources_rc",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_name",
+        "kind": 5,
+        "importPath": "resources_rc",
+        "description": "resources_rc",
+        "peekOfCode": "qt_resource_name = b\"\\\n\\x00\\x04\\\n\\x00\\x06\\xfa^\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\\n\\x00\\x05\\\n\\x00o\\xa6S\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\x00s\\\n\\x00\\x14\\",
+        "detail": "resources_rc",
+        "documentation": {}
+    },
+    {
+        "label": "qt_resource_struct",
+        "kind": 5,
+        "importPath": "resources_rc",
+        "description": "resources_rc",
+        "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x03\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x1e\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x01\\x82}\\x80\\xacP\\\n\\x00\\x00\\x00f\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00! \\",
+        "detail": "resources_rc",
         "documentation": {}
     }
 ]

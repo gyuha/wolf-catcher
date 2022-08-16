@@ -1,5 +1,7 @@
-from PySide6.QtWidgets import QMainWindow
+import PySide6.QtWidgets
 from PySide6.QtCore import Slot
+from PySide6.QtWidgets import QListWidgetItem, QMainWindow
+from DownloadItem import DownloadItem
 
 from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
@@ -9,8 +11,6 @@ from util.Downloader import Downloader
 from util.Site import Site
 from src.util.SeleniumWorker import SeleniumWorker
 from util.message import alert
-
-import requests
 
 
 class MainWindow(QMainWindow):
@@ -30,12 +30,18 @@ class MainWindow(QMainWindow):
         self.init_connect()
         self.init_slot()
 
+        widget = DownloadItem()
+
+        # self.ui.item_list.setItemWidget()
+
+
     def init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
 
     def init_slot(self):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
+    
 
     @Slot(str, result=None)
     def add_clipboard(self, text: str, config: object):

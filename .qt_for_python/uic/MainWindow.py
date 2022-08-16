@@ -33,7 +33,7 @@ public:
     QAction *action_exit;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QListWidget *item_list;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_2;
@@ -66,10 +66,10 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        listWidget = new QListWidget(centralwidget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        item_list = new QListWidget(centralwidget);
+        item_list->setObjectName(QString::fromUtf8("item_list"));
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(item_list);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -90,7 +90,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        verticalLayout->setStretch(0, 1);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
