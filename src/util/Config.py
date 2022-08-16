@@ -34,4 +34,5 @@ class Config(metaclass=Singleton):
             for filter in data["filter"]:
                 if re.search(filter, url):
                     return data
+        return None
 
