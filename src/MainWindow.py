@@ -30,11 +30,10 @@ class MainWindow(QMainWindow):
         self.init_connect()
         self.init_slot()
 
-        widget = DownloadItem()
-        my_item = QListWidgetItem(self.ui.item_list)
-        my_item.setSizeHint(widget.sizeHint())
-        self.ui.item_list.addItem(my_item)
-        self.ui.item_list.setItemWidget(my_item, widget)
+        self.add_item_list()
+        self.add_item_list()
+        self.add_item_list()
+
 
 
         # self.ui.item_list.setItemWidget()
@@ -72,3 +71,14 @@ class MainWindow(QMainWindow):
             return self.site.sites[config]
 
         raise Exception("It's an invalid site.")
+
+    
+    # region item_list
+    def add_item_list(self):
+        widget = DownloadItem()
+        my_item = QListWidgetItem(self.ui.item_list)
+        my_item.setSizeHint(widget.sizeHint())
+        self.ui.item_list.addItem(my_item)
+        self.ui.item_list.setItemWidget(my_item, widget)
+
+    # endregion
