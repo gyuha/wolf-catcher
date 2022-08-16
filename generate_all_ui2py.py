@@ -14,6 +14,7 @@ def generate_all_ui2py(path: str):
         file_path = os.path.join(path, it)
         file_name_without_ext = os.path.basename(file_path)[:-3]
         cmd = f'pyside6-uic {file_path} > {path}{os.sep}Ui_{file_name_without_ext}.py'
+        print('📢', cmd)
         os.popen(cmd)
 
 

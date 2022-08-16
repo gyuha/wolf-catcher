@@ -41,14 +41,14 @@ class Ui_DownloadItem(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label = QLabel(DownloadItem)
-        self.label.setObjectName(u"label")
+        self.title_label = QLabel(DownloadItem)
+        self.title_label.setObjectName(u"title_label")
         font = QFont()
         font.setPointSize(11)
         font.setBold(True)
-        self.label.setFont(font)
+        self.title_label.setFont(font)
 
-        self.horizontalLayout_2.addWidget(self.label)
+        self.horizontalLayout_2.addWidget(self.title_label)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -126,7 +126,7 @@ class Ui_DownloadItem(object):
     def retranslateUi(self, DownloadItem):
         DownloadItem.setWindowTitle(QCoreApplication.translate("DownloadItem", u"Form", None))
         self.image_label.setText("")
-        self.label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
+        self.title_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
         self.folder_open_button.setText("")
         self.delete_button.setText("")
         self.cancel_button.setText("")

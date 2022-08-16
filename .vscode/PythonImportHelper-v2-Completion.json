@@ -1231,10 +1231,10 @@
     },
     {
         "label": "Site",
-        "importPath": "site.Site",
-        "description": "site.Site",
+        "importPath": "src.site.Site",
+        "description": "src.site.Site",
         "isExtraImport": true,
-        "detail": "site.Site",
+        "detail": "src.site.Site",
         "documentation": {}
     },
     {
@@ -1275,7 +1275,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.DownloadItem",
         "description": ".qt_for_python.uic.DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
+        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
         "detail": ".qt_for_python.uic.DownloadItem",
         "documentation": {}
     },

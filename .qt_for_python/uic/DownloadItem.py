@@ -29,7 +29,7 @@ public:
     QLabel *image_label;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label;
+    QLabel *title_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *folder_open_button;
     QPushButton *delete_button;
@@ -60,14 +60,14 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label = new QLabel(DownloadItem);
-        label->setObjectName(QString::fromUtf8("label"));
+        title_label = new QLabel(DownloadItem);
+        title_label->setObjectName(QString::fromUtf8("title_label"));
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
-        label->setFont(font);
+        title_label->setFont(font);
 
-        horizontalLayout_2->addWidget(label);
+        horizontalLayout_2->addWidget(title_label);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -146,7 +146,7 @@ public:
     {
         DownloadItem->setWindowTitle(QCoreApplication::translate("DownloadItem", "Form", nullptr));
         image_label->setText(QString());
-        label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
+        title_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
         folder_open_button->setText(QString());
         delete_button->setText(QString());
         cancel_button->setText(QString());

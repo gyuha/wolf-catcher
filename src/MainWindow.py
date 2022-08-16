@@ -8,7 +8,7 @@ from util.Clipboard import Clipboard
 from util.Config import Config
 from util.Downloader import Downloader
 
-from site.Site import Site
+from src.site.Site import Site
 from src.util.SeleniumWorker import SeleniumWorker
 from util.message import alert
 
@@ -31,6 +31,11 @@ class MainWindow(QMainWindow):
         self.init_slot()
 
         widget = DownloadItem()
+        my_item = QListWidgetItem(self.ui.item_list)
+        my_item.setSizeHint(widget.sizeHint())
+        self.ui.item_list.addItem(my_item)
+        self.ui.item_list.setItemWidget(my_item, widget)
+
 
         # self.ui.item_list.setItemWidget()
 

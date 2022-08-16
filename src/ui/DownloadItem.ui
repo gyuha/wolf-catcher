@@ -56,7 +56,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="title_label">
          <property name="font">
           <font>
            <pointsize>11</pointsize>
