@@ -56,7 +56,6 @@ def images_download(title, save_path, images):
     images_compress(save_path)
 
     zip_folder(save_path + "-" + strip_file_path(title) + ".cbz", save_path)
-    shutil.rmtree(save_path, ignore_errors=True)
 
 
 def timed_loop(iterator, timeout):
@@ -80,33 +79,3 @@ def zip_folder(filename, path):
         zipf.write(os.path.join(path, f), os.path.basename(f))
     zipf.close()
 
-def download_from_url(p):
-    __download_from_url(p)
-
-def __download_from_url(p):
-    url = p[0]
-    output_path = p[1]
-    num = p[2]
-
-    name = "%03d" % (num,) + ".jpg"
-    output_path = os.path.join(output_path, name)
-
-    try:
-        requests.urllib3.disable_warnings()
-        s = requests.Session()
-        s.headers.update({'User-Agent': CUSTOM_USER_AGENT})
-        r = s.get(url[0], stream=True, verify=False)
-        if (r.status_code == 404):
-            r = s.get(url[0].replace('img.', 's3.'), stream=True, verify=False)
-        if (r.status_code == 404):
-            r = s.get(url[0].replace('cdnwowmax', 's3.cdnwowmax'),
-                      stream=True, verify=False)
-        if (r.status_code == 404 and len(url) == 2):
-            r = s.get(url[1], stream=True, verify=False)
-        if (r.status_code == 404 and len(url) == 2):
-            r = s.get(url[1].replace('img.', 's3.'), stream=True, verify=False)
-        with open(output_path, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=4096):
-                f.write(chunk)
-    except:
-        return
