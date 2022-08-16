@@ -949,11 +949,28 @@
         "documentation": {}
     },
     {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "requests",
         "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "requests",
+        "description": "requests",
+        "isExtraImport": true,
         "detail": "requests",
         "documentation": {}
     },
@@ -964,6 +981,22 @@
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "Pool",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
@@ -1005,15 +1038,6 @@
         "importPath": "pathlib",
         "description": "pathlib",
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "zipfile",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "zipfile",
-        "description": "zipfile",
-        "detail": "zipfile",
         "documentation": {}
     },
     {
@@ -1242,6 +1266,14 @@
         "description": "util.Clipboard",
         "isExtraImport": true,
         "detail": "util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "Downloader",
+        "importPath": "util.Downloader",
+        "description": "util.Downloader",
+        "isExtraImport": true,
+        "detail": "util.Downloader",
         "documentation": {}
     },
     {
@@ -1731,7 +1763,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()",
+        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n    def add_files(self, path: str, urls: list, referer):\n        for url in urls:",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -1740,7 +1772,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()\n        files = []\n    def run(self):\n        if len(self.files):\n            self.signals.download_error.emit(\"empty list\")\n            return\n        self.download_run()",
+        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n    def add_files(self, path: str, urls: list, referer):\n        for url in urls:\n            self.files.append([url, path, referer, len(self.files) + 1])\n        print('📢[Downloader.py:46]: ', self.files)\n    def download_run(self) -> None:",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -1749,7 +1781,7 @@
         "kind": 5,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self):\n        super()\n        files = []\n    def run(self):\n        if len(self.files):",
+        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
