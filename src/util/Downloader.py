@@ -1,7 +1,8 @@
 import os
 import re
+from urllib import response
 import requests
-from requests import Response
+from requests import Response, Session
 from multiprocessing import cpu_count
 from multiprocessing.pool import ThreadPool
 from PySide6.QtCore import QObject, Signal
@@ -38,7 +39,7 @@ class Downloader:
         pool = ThreadPool(cpus - 1)
         self.send_count = 0
         try:
-            results = pool.imap_unordered(self.download_url_to_file, self.files)
+            results = pool.imap_unordered(self.download_images_from_url, self.files)
             for result in results:
                 print('url:', result)
         finally:
@@ -48,10 +49,7 @@ class Downloader:
             print('📢[Downloader.py:49]: ', self.downloading)
 
 
-    # @retry(exceptions=Exception, tries=5, delay=0)
-    def download_url_to_file(self, args: list) -> None:
-        url, path, referer, number = args[0], args[1], args[2], args[3]
-
+    def __reqeust_session(self, referer = "") -> Session:
         headers = HEADERS
 
         if referer:
@@ -61,24 +59,42 @@ class Downloader:
         session = requests.Session()
         session.headers.update(headers)
 
+        return session
+
+
+    # @retry(exceptions=Exception, tries=5, delay=0)
+    def download_images_from_url(self, args: list) -> None:
+        url, path, referer, number = args[0], args[1], args[2], args[3]
+
+        session = self.__reqeust_session(referer)
+
         try:
             response = session.get(url, stream=True, verify=False)
 
-            # response = session.get(url, headers=headers)
-            self.__save_file(path, number, response)
+            file_path = os.path.join(path, "%03d" % (number) + ".jpg")
+            self.__save_file(file_path, response)
+
             self.send_count = self.send_count + 1
-            print('📢[Downloader.py:71]: ', self.send_count)
             self.signals.download_state.emit(self.send_count)
         except Exception as e:
             print("Exception in download_url_to_file(): ", e)
         
         return number
+    
+
+    def download_image_from_url(self, url: str, file_path: str, referer: str) -> None:
+        session = self.__reqeust_session(referer)
+
+        try:
+            response = session.get(url, stream=True, verify=False)
+            self.__save_file(file_path, response)
+        except Exception as e:
+            print("Exception in download_image_from_url(): ", e)
+
 
     
-    def __save_file(self, path: str, number: int, response: Response):
-        pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-
-        file_path = os.path.join(path, "%03d" % (number) + ".jpg")
+    def __save_file(self, file_path: str, response: Response):
+        pathlib.Path(os.path.dirname(file_path)).mkdir(parents=True, exist_ok=True)
 
         try:
             with open(file_path, 'wb') as f:
