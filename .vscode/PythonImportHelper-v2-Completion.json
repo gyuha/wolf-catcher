@@ -386,14 +386,6 @@
         "documentation": {}
     },
     {
-        "label": "QThread",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
         "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -923,6 +915,15 @@
         "documentation": {}
     },
     {
+        "label": "zipfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "zipfile",
+        "description": "zipfile",
+        "detail": "zipfile",
+        "documentation": {}
+    },
+    {
         "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
@@ -949,15 +950,6 @@
         "documentation": {}
     },
     {
-        "label": "zipfile",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "zipfile",
-        "description": "zipfile",
-        "detail": "zipfile",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -975,24 +967,7 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
         "label": "cpu_count",
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "isExtraImport": true,
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
-        "label": "Pool",
         "importPath": "multiprocessing",
         "description": "multiprocessing",
         "isExtraImport": true,
@@ -1038,6 +1013,15 @@
         "importPath": "pathlib",
         "description": "pathlib",
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
         "documentation": {}
     },
     {
@@ -1750,6 +1734,15 @@
         "documentation": {}
     },
     {
+        "label": "Compressor",
+        "kind": 6,
+        "importPath": "src.util.Compressor",
+        "description": "src.util.Compressor",
+        "peekOfCode": "class Compressor:\n    @classmethod\n    def zip_folder(cls, filename: str, path: str, remove_origin = False):\n        \"\"\"\n        폴더 압축하기\n        \"\"\"\n        zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n        for f in os.listdir(path):\n            zipf.write(os.path.join(path, f), os.path.basename(f))\n        zipf.close()",
+        "detail": "src.util.Compressor",
+        "documentation": {}
+    },
+    {
         "label": "Config",
         "kind": 6,
         "importPath": "src.util.Config",
@@ -1763,7 +1756,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n    def add_files(self, path: str, urls: list, referer):\n        for url in urls:",
+        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n    def add_files(self, path: str, urls: list, referer):",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -1772,7 +1765,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n    def add_files(self, path: str, urls: list, referer):\n        for url in urls:\n            self.files.append([url, path, referer, len(self.files) + 1])\n        print('📢[Downloader.py:46]: ', self.files)\n    def download_run(self) -> None:",
+        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n    def add_files(self, path: str, urls: list, referer):\n        self.files = [];\n        for url in urls:\n            self.files.append([url, path, referer, len(self.files) + 1])",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -1817,16 +1810,7 @@
         "kind": 2,
         "importPath": "src.util.file_name",
         "description": "src.util.file_name",
-        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()\ndef download_from_url(p):\n    __download_from_url(p)\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "download_from_url",
-        "kind": 2,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "def download_from_url(p):\n    __download_from_url(p)\ndef __download_from_url(p):\n    url = p[0]\n    output_path = p[1]\n    num = p[2]\n    name = \"%03d\" % (num,) + \".jpg\"\n    output_path = os.path.join(output_path, name)\n    try:\n        requests.urllib3.disable_warnings()",
+        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()",
         "detail": "src.util.file_name",
         "documentation": {}
     },
