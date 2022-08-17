@@ -15,7 +15,9 @@ class Wfwf(SiteBase):
             self.url_format["list"]["visible_condition"]["text"]
         )
         browser = self.seleniumWorker.browser
-        title = browser.find_element(By.XPATH, "//*[@id=\"content\"]/div[2]/div[3]/h1").text
+        title = browser.find_element(
+            'xpath', 
+            "//*[@id=\"content\"]/div[2]/div[3]/h1").text
         print('📢[Wfwf.py:20]: ', title)
         # print('📢[Wfwf.py:18]', self.seleniumWorker.page_source)
 

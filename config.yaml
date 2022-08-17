@@ -1,6 +1,6 @@
 setting:
   browser: chrome
-  headless: filter
+  headless: true
   tries: 5
   timeout: 10
 site:

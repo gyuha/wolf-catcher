@@ -47,13 +47,14 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
         self.__is_getting = False
 
         self.__browser_type = self.config.setting["browser"]
+        print('📢[SeleniumWorker.py:50]: ', self.config.setting["headless"])
         self.__driver_init()
 
 
     def __driver_init(self):
 
         print("[{}] Web Driver loading...".format(
-            self.config.setting["browser"]), end="\r")
+            self.__browser_type), end="\r")
 
         if self.__browser_type == 'chrome':
             """ 
@@ -61,7 +62,7 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
             """
             driver_file = './driver/chromedriver.exe'
             options = ChromeOptions()
-            options.headless = False
+            options.headless = self.config.setting["headless"]
             self.__browser = webdriver.Chrome(
                 executable_path=driver_file,
                 options=options)
@@ -72,7 +73,7 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
             """
             driver_file = './driver/geckodriver.exe'
             options = FirefoxOptions()
-            options.headless = False
+            options.headless = self.config.setting["headless"]
             self.__browser = webdriver.Firefox(
                 executable_path=driver_file,
                 options=options)
@@ -115,7 +116,7 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
         try:
             element = wait.until(
                 visibility_of_element_located((
-                    self.condition_by(type), 
+                    type, 
                     "/html"
                 ))
             )

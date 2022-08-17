@@ -5,6 +5,7 @@ import re
 from src.util.file_name import strip_file_path
 from util.Config import Config
 from util.SeleniumWorker import SeleniumWorker
+from selenium.webdriver.common.by import By
 
 class SiteBase(ABC): 
     def __init__(self, seleniumWorker: SeleniumWorker, config: Config):
@@ -50,3 +51,9 @@ class SiteBase(ABC):
         path = os.path.join(base_path, self.strip_file_path(title))
         pathlib.Path(path).mkdir(parents=True, exist_ok=True)
         return path
+    
+    def __find_type(self, type: str) -> By:
+        if type == 'xpath':
+            return By.XPATH
+        
+        return By
