@@ -345,7 +345,7 @@
         "documentation": {}
     },
     {
-        "label": "Signal",
+        "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -354,6 +354,14 @@
     },
     {
         "label": "Slot",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -409,6 +417,46 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "SeleniumWorker",
+        "importPath": "util.SeleniumWorker",
+        "description": "util.SeleniumWorker",
+        "isExtraImport": true,
+        "detail": "util.SeleniumWorker",
+        "documentation": {}
+    },
+    {
+        "label": "SeleniumWorker",
+        "importPath": "util.SeleniumWorker",
+        "description": "util.SeleniumWorker",
+        "isExtraImport": true,
+        "detail": "util.SeleniumWorker",
+        "documentation": {}
+    },
+    {
+        "label": "SeleniumWorker",
+        "importPath": "util.SeleniumWorker",
+        "description": "util.SeleniumWorker",
+        "isExtraImport": true,
+        "detail": "util.SeleniumWorker",
+        "documentation": {}
+    },
+    {
         "label": "ABC",
         "importPath": "abc",
         "description": "abc",
@@ -422,6 +470,32 @@
         "description": "abc",
         "isExtraImport": true,
         "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "strip_file_path",
+        "importPath": "src.util.file_name",
+        "description": "src.util.file_name",
+        "isExtraImport": true,
+        "detail": "src.util.file_name",
         "documentation": {}
     },
     {
@@ -439,6 +513,38 @@
         "description": "src.site.SiteBase",
         "isExtraImport": true,
         "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
         "documentation": {}
     },
     {
@@ -967,15 +1073,6 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "Singleton",
         "importPath": "util.Singleton",
         "description": "util.Singleton",
@@ -1038,15 +1135,6 @@
         "description": "multiprocessing.pool",
         "isExtraImport": true,
         "detail": "multiprocessing.pool",
-        "documentation": {}
-    },
-    {
-        "label": "pathlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -1150,14 +1238,6 @@
         "documentation": {}
     },
     {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
         "label": "TimeoutException",
         "importPath": "selenium.common.exceptions",
         "description": "selenium.common.exceptions",
@@ -1195,14 +1275,6 @@
         "description": "ui.Ui_DownloadItem",
         "isExtraImport": true,
         "detail": "ui.Ui_DownloadItem",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "site.SiteBase",
-        "description": "site.SiteBase",
-        "isExtraImport": true,
-        "detail": "site.SiteBase",
         "documentation": {}
     },
     {
@@ -1643,7 +1715,7 @@
         "kind": 6,
         "importPath": "src.site.Site",
         "description": "src.site.Site",
-        "peekOfCode": "class Site(QObject):\n    def __init__(self) -> None:\n        super(Site, self).__init__()\n        self.config = Config()\n        self.init_sites()\n    def init_sites(self):\n        self.sites = dict()\n        for config in self.config.data[\"site\"]:\n            class_module = getattr(importlib.import_module(\n                \"src.site.\"+config[\"class_name\"]), config[\"class_name\"])",
+        "peekOfCode": "class Site(QObject):\n    def __init__(self, seleniumWorker: SeleniumWorker) -> None:\n        super(Site, self).__init__()\n        self.seleniumWorker = seleniumWorker\n        self.config = Config()\n        self.init_sites()\n    def init_sites(self):\n        self.sites = dict()\n        for config in self.config.data[\"site\"]:\n            print('📢[Site.py:18]: ', config)",
         "detail": "src.site.Site",
         "documentation": {}
     },
@@ -1652,7 +1724,7 @@
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase(ABC): \n    def __init__(self, config):\n        self.name = config[\"name\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n    @abstractmethod\n    def get_chapter_info(self, url):\n        pass\n    @abstractmethod\n    def get_img_list(self, url):",
+        "peekOfCode": "class SiteBase(ABC): \n    def __init__(self, seleniumWorker: SeleniumWorker, config: Config):\n        self.seleniumWorker = seleniumWorker\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]\n    @property\n    def site_name(self):",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },
@@ -1670,7 +1742,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config):\n        SiteBase.__init__(self, config)\n    @property\n    def site_name(self):\n        return self.name\n    def get_chapter_info(self, url:str):\n        print('📢[Wfwf.py:13]: ', id)\n    def get_chapter_list(self, url):\n        print('📢[Wfwf.py:14]: ', url)",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, seleniumWorker: SeleniumWorker,  config: Config):\n        SiteBase.__init__(self, seleniumWorker, config)\n    def get_chapter_info(self, url:str):\n        self.seleniumWorker.get_with_retry(\n            url, \n            self.url_format[\"list\"][\"visible_condition\"][\"type\"],\n            self.url_format[\"list\"][\"visible_condition\"][\"text\"]\n        )\n        browser = self.seleniumWorker.browser",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -1832,7 +1904,7 @@
         "kind": 6,
         "importPath": "src.util.QtSingleton",
         "description": "src.util.QtSingleton",
-        "peekOfCode": "class QtSingleton(QObject):\n    __instance = None\n    def __new__(cls, *args, **kwargs):\n        if not isinstance(cls.__instance, cls):\n            cls.__instance = QObject.__new__(cls, *args, **kwargs)\n            return cls.__instance",
+        "peekOfCode": "class QtSingleton(type(QObject), type):\n    def __init__(cls, name, bases, dict):\n        super().__init__(name, bases, dict)\n        cls._instance = None\n    def __call__(cls, *args, **kwargs):\n        if cls._instance is None:\n            cls._instance = super().__call__(*args, **kwargs)\n        return cls._instance",
         "detail": "src.util.QtSingleton",
         "documentation": {}
     },
@@ -1841,7 +1913,7 @@
         "kind": 6,
         "importPath": "src.util.SeleniumWorker",
         "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorker(QtSingleton):\n    progress_changed = Signal(int)\n    __browser = None\n    __browser_type = 'chrome'\n    __tries = 5\n    __timeout = 10\n    __is_getting = False\n    __is_complete = False\n    @property\n    def browser(self):",
+        "peekOfCode": "class SeleniumWorker(QObject, metaclass=QtSingleton):\n    __browser = None\n    __browser_type = 'firefox'\n    __tries = 5\n    __timeout = 10\n    __is_getting = False\n    __is_complete = False\n    @property\n    def browser(self):\n        return self.__browser",
         "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
@@ -1859,7 +1931,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, site: SiteBase):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.site = site",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str, site: SiteBase):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = site\n        self.dowload_capter_list()\n    def dowload_capter_list(self):\n        self.site.get_chapter_info(self.url)",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
@@ -1868,8 +1940,17 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.site = Site()\n        self.seleniumWorker = SeleniumWorker()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.seleniumWorker = SeleniumWorker()\n        self.clipbard = Clipboard()\n        self.site = Site(self.seleniumWorker)\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()",
         "detail": "src.MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "QtSingleton",
+        "kind": 6,
+        "importPath": "test.t",
+        "description": "test.t",
+        "peekOfCode": "class QtSingleton(QObject):\n    __instance = None\n    def __new__(cls, *args, **kwargs):\n        if not isinstance(cls.__instance, cls):\n            cls.__instance = QObject.__new__(cls, *args, **kwargs)\n        return cls.__instance\nif __name__ == \"__main__\":\n    class AA(QtSingleton):\n        def __init__(self):\n            super().__init__()",
+        "detail": "test.t",
         "documentation": {}
     },
     {

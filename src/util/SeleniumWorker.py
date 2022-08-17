@@ -2,7 +2,7 @@ import urllib
 
 from selenium import webdriver
 
-from PySide6.QtCore import Signal
+from PySide6.QtCore import QObject
 
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -19,11 +19,10 @@ from util.QtSingleton import QtSingleton
 import urllib
 
 
-class SeleniumWorker(QtSingleton):
-    progress_changed = Signal(int)
+class SeleniumWorker(QObject, metaclass=QtSingleton):
 
     __browser = None
-    __browser_type = 'chrome'
+    __browser_type = 'firefox'
     __tries = 5
     __timeout = 10
     __is_getting = False
@@ -41,16 +40,18 @@ class SeleniumWorker(QtSingleton):
     def is_complete(self):
         return self.__is_complete
 
+
     def __init__(self):
         super().__init__()
         self.config = Config()
         self.__is_getting = False
 
         self.__browser_type = self.config.setting["browser"]
-
         self.__driver_init()
 
+
     def __driver_init(self):
+
         print("[{}] Web Driver loading...".format(
             self.config.setting["browser"]), end="\r")
 
@@ -60,6 +61,7 @@ class SeleniumWorker(QtSingleton):
             """
             driver_file = './driver/chromedriver.exe'
             options = ChromeOptions()
+            options.headless = False
             self.__browser = webdriver.Chrome(
                 executable_path=driver_file,
                 options=options)
@@ -78,6 +80,7 @@ class SeleniumWorker(QtSingleton):
         if self.__browser:
             self.__browser.implicitly_wait(5)
 
+
     def driver_close(self):
         if self.__browser:
             self.__browser.close()
@@ -85,7 +88,7 @@ class SeleniumWorker(QtSingleton):
     def reconnect(self):
         if self.__browser:
             self.__browser.close()
-            self.__browser = self.__driver_init()
+            self.__browser = self.driver_init()
 
     def condition(self, type, text):
         pass
@@ -125,3 +128,6 @@ class SeleniumWorker(QtSingleton):
         self.__is_getting = False
         return
     
+    @property
+    def page_source(self):
+        return self.browser.page_source

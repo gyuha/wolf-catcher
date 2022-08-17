@@ -9,6 +9,7 @@ from util.Config import Config
 from util.Downloader import Downloader
 
 from src.site.Site import Site
+from src.site.SiteBase import SiteBase
 from src.util.SeleniumWorker import SeleniumWorker
 from util.message import alert
 
@@ -20,21 +21,15 @@ class MainWindow(QMainWindow):
 
         self.config = Config()
 
-        self.clipbard = Clipboard()
-        self.site = Site()
-
         self.seleniumWorker = SeleniumWorker()
+        self.clipbard = Clipboard()
+        self.site = Site(self.seleniumWorker)
+
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.init_connect()
         self.init_slot()
-
-        self.add_item_list()
-        self.add_item_list()
-        self.add_item_list()
-
-
 
         # self.ui.item_list.setItemWidget()
 
@@ -47,35 +42,35 @@ class MainWindow(QMainWindow):
         self.clipbard.add_clipboard.connect(self.add_clipboard)
     
 
-    @Slot(str, result=None)
+    @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
+        print('📢[MainWindow.py:52]: ', config)
+        print('📢[MainWindow.py:52]: ', text)
         self.ui.statusbar.showMessage(text)
-        self.add_item_list(text, site);
+        # self.add_item_list(text, site);
 
     def get_button(self):
         if self.seleniumWorker.is_getting:
             return
 
-        Downloader().download_image_from_url("https://img8cloud.net/13991/ec7450ed_281_0.jpg",
-                                             "./test/a.jpg", "https://wfwf220.com/")
+        url = "https://wfwf220.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
+
+        self.add_item_list(
+            url,
+            self.site.get_config_by_url(url)
+            )
+        # Downloader().download_image_from_url("https://img8cloud.net/13991/ec7450ed_281_0.jpg",
+        #                                      "./test/a.jpg", "https://wfwf220.com/")
 
     @Slot(int)
     def download_state(self, num):
         print('📢[MainWindow.py:67] => complete', num)
 
 
-    def get_site_config(self, url: str):
-        config = self.config.get_site_config(url)
-
-        if config in self.site.sites:
-            return self.site.sites[config]
-
-        raise Exception("It's an invalid site.")
-
     
     # region item_list
-    def add_item_list(self):
-        widget = DownloadItem(self.get_site_config())
+    def add_item_list(self, url: str, site: SiteBase):
+        widget = DownloadItem(url, site)
         my_item = QListWidgetItem(self.ui.item_list)
         my_item.setSizeHint(widget.sizeHint())
         self.ui.item_list.addItem(my_item)

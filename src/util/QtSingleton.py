@@ -1,9 +1,14 @@
 from PySide6.QtCore import QObject
 
-class QtSingleton(QObject):
-    __instance = None
+"""
+ref : https://stackoverflow.com/questions/59459770/receiving-pyqtsignal-from-singleton
+"""
+class QtSingleton(type(QObject), type):
+    def __init__(cls, name, bases, dict):
+        super().__init__(name, bases, dict)
+        cls._instance = None
 
-    def __new__(cls, *args, **kwargs):
-        if not isinstance(cls.__instance, cls):
-            cls.__instance = QObject.__new__(cls, *args, **kwargs)
-            return cls.__instance
+    def __call__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__call__(*args, **kwargs)
+        return cls._instance
