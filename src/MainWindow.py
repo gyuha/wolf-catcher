@@ -49,8 +49,8 @@ class MainWindow(QMainWindow):
 
     @Slot(str, result=None)
     def add_clipboard(self, text: str, config: object):
-        print('📢[MainWindow.py:31]: ', config)
         self.ui.statusbar.showMessage(text)
+        self.add_item_list(text, site);
 
     def get_button(self):
         if self.seleniumWorker.is_getting:
@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
     
     # region item_list
     def add_item_list(self):
-        widget = DownloadItem()
+        widget = DownloadItem(self.get_site_config())
         my_item = QListWidgetItem(self.ui.item_list)
         my_item.setSizeHint(widget.sizeHint())
         self.ui.item_list.addItem(my_item)

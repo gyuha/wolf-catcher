@@ -1198,6 +1198,14 @@
         "documentation": {}
     },
     {
+        "label": "SiteBase",
+        "importPath": "site.SiteBase",
+        "description": "site.SiteBase",
+        "isExtraImport": true,
+        "detail": "site.SiteBase",
+        "documentation": {}
+    },
+    {
         "label": "DownloadItem",
         "importPath": "DownloadItem",
         "description": "DownloadItem",
@@ -1851,7 +1859,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, site: SiteBase):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.site = site",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
