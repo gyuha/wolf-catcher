@@ -1,4 +1,4 @@
-import asyncio
+from PySide6.QtCore import QObject, QThread, Signal, Slot
 from util.Config import Config
 from util.SeleniumWorker import SeleniumWorker
 from src.site.SiteBase import SiteBase
@@ -8,23 +8,33 @@ from selenium.webdriver.common.by import By
 class Wfwf(SiteBase):
     def __init__(self, seleniumWorker: SeleniumWorker,  config: Config):
         SiteBase.__init__(self, seleniumWorker, config)
+        self.seleniumWorker.signals.url_get_state.connect(self.url_get_state)
     
-    async def get_chapter_info(self, url:str):
-        await self.seleniumWorker.get_by_url(
+    @Slot(int)
+    def url_get_state(self, state: int):
+        print('📢[Wfwf.py:15]: ', state)
+        title = self.seleniumWorker.browser.find_element(
+            'xpath', 
+            "//*[@id=\"content\"]/div[2]/div[3]/h1").text
+        print('📢[Wfwf.py:20]: ', title)
+
+    def get_chapter_info(self, url:str):
+        self.seleniumWorker.set_url_info(
             url,
             self.url_format["list"]["visible_condition"]["type"],
             self.url_format["list"]["visible_condition"]["text"]
         )
+        self.seleniumWorker.start()
         # self.seleniumWorker.get_with_retry(
         #     url, 
         #     self.url_format["list"]["visible_condition"]["type"],
         #     self.url_format["list"]["visible_condition"]["text"]
         # )
-        browser = await self.seleniumWorker.browser
-        title = await browser.find_element(
-            'xpath', 
-            "//*[@id=\"content\"]/div[2]/div[3]/h1").text
-        print('📢[Wfwf.py:20]: ', title)
+        # browser = self.seleniumWorker.browser
+        # title = browser.find_element(
+        #     'xpath', 
+        #     "//*[@id=\"content\"]/div[2]/div[3]/h1").text
+        # print('📢[Wfwf.py:20]: ', title)
         # print('📢[Wfwf.py:18]', self.seleniumWorker.page_source)
 
     

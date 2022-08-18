@@ -15,4 +15,4 @@ class DownloadItem(QWidget):
     
     def dowload_capter_list(self):
         print('📢[DownloadItem.py:17]: ', self.url)
-        asyncio.run(self.site.get_chapter_info(self.url))
+        self.site.get_chapter_info(self.url)

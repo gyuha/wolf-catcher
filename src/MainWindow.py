@@ -11,6 +11,7 @@ from util.Downloader import Downloader
 from src.site.Site import Site
 from src.site.SiteBase import SiteBase
 from src.util.SeleniumWorker import SeleniumWorker
+# from util.Scraper import Scraper
 from util.message import alert
 
 
@@ -21,7 +22,8 @@ class MainWindow(QMainWindow):
 
         self.config = Config()
 
-        self.seleniumWorker = SeleniumWorker()
+        # self.Scraper = Scraper()
+        self.seleniumWorker = SeleniumWorker(self)
         self.clipbard = Clipboard()
         self.site = Site(self.seleniumWorker)
 
@@ -53,8 +55,10 @@ class MainWindow(QMainWindow):
         if self.seleniumWorker.is_getting:
             return
 
-        url = "https://wfwf220.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
+        url = "https://wfwf221.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
 
+        # self.seleniumWorker.url = url
+        # self.seleniumWorker.start()
         self.add_item_list(
             url,
             self.site.get_config_by_url(url)
