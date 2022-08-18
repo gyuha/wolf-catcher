@@ -515,20 +515,21 @@
         "documentation": {}
     },
     {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
         "documentation": {}
     },
     {
@@ -1222,43 +1223,35 @@
         "documentation": {}
     },
     {
-        "label": "Options",
-        "importPath": "selenium.webdriver.chrome.options",
-        "description": "selenium.webdriver.chrome.options",
+        "label": "get_session",
+        "importPath": "arsenic",
+        "description": "arsenic",
         "isExtraImport": true,
-        "detail": "selenium.webdriver.chrome.options",
+        "detail": "arsenic",
         "documentation": {}
     },
     {
-        "label": "Options",
-        "importPath": "selenium.webdriver.firefox.options",
-        "description": "selenium.webdriver.firefox.options",
+        "label": "keys",
+        "importPath": "arsenic",
+        "description": "arsenic",
         "isExtraImport": true,
-        "detail": "selenium.webdriver.firefox.options",
+        "detail": "arsenic",
         "documentation": {}
     },
     {
-        "label": "WebDriverWait",
-        "importPath": "selenium.webdriver.support.ui",
-        "description": "selenium.webdriver.support.ui",
+        "label": "browsers",
+        "importPath": "arsenic",
+        "description": "arsenic",
         "isExtraImport": true,
-        "detail": "selenium.webdriver.support.ui",
+        "detail": "arsenic",
         "documentation": {}
     },
     {
-        "label": "TimeoutException",
-        "importPath": "selenium.common.exceptions",
-        "description": "selenium.common.exceptions",
+        "label": "services",
+        "importPath": "arsenic",
+        "description": "arsenic",
         "isExtraImport": true,
-        "detail": "selenium.common.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "visibility_of_element_located",
-        "importPath": "selenium.webdriver.support.expected_conditions",
-        "description": "selenium.webdriver.support.expected_conditions",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.expected_conditions",
+        "detail": "arsenic",
         "documentation": {}
     },
     {
@@ -1750,7 +1743,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, seleniumWorker: SeleniumWorker,  config: Config):\n        SiteBase.__init__(self, seleniumWorker, config)\n    def get_chapter_info(self, url:str):\n        self.seleniumWorker.get_with_retry(\n            url, \n            self.url_format[\"list\"][\"visible_condition\"][\"type\"],\n            self.url_format[\"list\"][\"visible_condition\"][\"text\"]\n        )\n        browser = self.seleniumWorker.browser",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, seleniumWorker: SeleniumWorker,  config: Config):\n        SiteBase.__init__(self, seleniumWorker, config)\n    async def get_chapter_info(self, url:str):\n        await self.seleniumWorker.get_by_url(\n            url,\n            self.url_format[\"list\"][\"visible_condition\"][\"type\"],\n            self.url_format[\"list\"][\"visible_condition\"][\"text\"]\n        )\n        # self.seleniumWorker.get_with_retry(",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -1939,7 +1932,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str, site: SiteBase):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = site\n        self.dowload_capter_list()\n    def dowload_capter_list(self):\n        self.site.get_chapter_info(self.url)",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str, site: SiteBase):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = site\n        self.dowload_capter_list()\n    def dowload_capter_list(self):\n        print('📢[DownloadItem.py:17]: ', self.url)",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

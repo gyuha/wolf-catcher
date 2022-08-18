@@ -22,7 +22,7 @@ class SiteBase(ABC):
         return self.name
 
     @abstractmethod
-    def get_chapter_info(self, url):
+    async def get_chapter_info(self, url):
         pass
     
     @abstractmethod

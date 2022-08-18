@@ -1,3 +1,4 @@
+import asyncio
 from PySide6.QtWidgets import QWidget
 from ui.Ui_DownloadItem import Ui_DownloadItem
 from src.site.SiteBase import SiteBase
@@ -13,4 +14,5 @@ class DownloadItem(QWidget):
         self.dowload_capter_list()
     
     def dowload_capter_list(self):
-        self.site.get_chapter_info(self.url)
+        print('📢[DownloadItem.py:17]: ', self.url)
+        asyncio.run(self.site.get_chapter_info(self.url))

@@ -1,15 +1,11 @@
 import urllib
+import asyncio
 
 from selenium import webdriver
 
 from PySide6.QtCore import QObject
 
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.expected_conditions import visibility_of_element_located
+from arsenic import get_session, keys, browsers, services
 
 from lib.exceptions import GetTimeoutException
 from util.Config import Config
@@ -117,7 +113,7 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
             element = wait.until(
                 visibility_of_element_located((
                     type, 
-                    "/html"
+                    text
                 ))
             )
             self.__is_getting = False
@@ -128,6 +124,19 @@ class SeleniumWorker(QObject, metaclass=QtSingleton):
 
         self.__is_getting = False
         return
+    
+    async def get_by_url(self, url, type = "xpath", text = "html"):
+        self.__browser.get(url)
+        wait = await WebDriverWait(self.__browser, timeout=self.__timeout)
+        try:
+            await wait.until(
+                visibility_of_element_located((
+                    type, 
+                    text
+                ))
+            )
+        except TimeoutException:
+            raise GetTimeoutException
     
     @property
     def page_source(self):
