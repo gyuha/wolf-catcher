@@ -361,14 +361,6 @@
         "documentation": {}
     },
     {
-        "label": "QObject",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
         "label": "QFile",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -529,6 +521,14 @@
         "isExtraImport": true,
         "importPath": "asyncio",
         "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "Queue",
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "isExtraImport": true,
         "detail": "asyncio",
         "documentation": {}
     },
@@ -1335,6 +1335,14 @@
         "documentation": {}
     },
     {
+        "label": "randrange",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "os,",
         "kind": 6,
         "isExtraImport": true,
@@ -1946,11 +1954,29 @@
         "documentation": {}
     },
     {
-        "label": "QtSingleton",
+        "label": "Product",
         "kind": 6,
         "importPath": "test.t",
         "description": "test.t",
-        "peekOfCode": "class QtSingleton(QObject):\n    __instance = None\n    def __new__(cls, *args, **kwargs):\n        if not isinstance(cls.__instance, cls):\n            cls.__instance = QObject.__new__(cls, *args, **kwargs)\n        return cls.__instance\nif __name__ == \"__main__\":\n    class AA(QtSingleton):\n        def __init__(self):\n            super().__init__()",
+        "peekOfCode": "class Product:\n    def __init__(self, name: str, checkout_time: float):\n        self.name = name\n        self.checkout_time = checkout_time\nclass Customer:\n    def __init__(self, customer_id, products):\n        self.customer_id = customer_id\n        self.products = products\nasync def checkout_customer(queue: Queue, cashier_number: int):\n    while True:",
+        "detail": "test.t",
+        "documentation": {}
+    },
+    {
+        "label": "Customer",
+        "kind": 6,
+        "importPath": "test.t",
+        "description": "test.t",
+        "peekOfCode": "class Customer:\n    def __init__(self, customer_id, products):\n        self.customer_id = customer_id\n        self.products = products\nasync def checkout_customer(queue: Queue, cashier_number: int):\n    while True:\n        customer: Customer = await queue.get()\n        print(f'Cashier {cashier_number} '\n              f'checking out customer '\n              f'{customer.customer_id}')",
+        "detail": "test.t",
+        "documentation": {}
+    },
+    {
+        "label": "generate_customer",
+        "kind": 2,
+        "importPath": "test.t",
+        "description": "test.t",
+        "peekOfCode": "def generate_customer(customer_id: int) -> Customer:\n    all_products = [Product('beer', 2),\n                    Product('bananas', .5),\n                    Product('sausage', .2),\n                    Product('diapers', .2)]\n    products = [all_products[randrange(len(all_products))]\n                for _ in range(randrange(10))]\n    return Customer(customer_id, products)\nasync def customer_generator(queue: Queue):\n    customer_count = 0",
         "detail": "test.t",
         "documentation": {}
     },
