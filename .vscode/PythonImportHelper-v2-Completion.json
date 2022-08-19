@@ -2012,11 +2012,20 @@
         "documentation": {}
     },
     {
-        "label": "WebGetState",
+        "label": "GET_STATE",
         "kind": 6,
         "importPath": "src.site.browser.WebGet",
         "description": "src.site.browser.WebGet",
-        "peekOfCode": "class WebGetState(Enum):\n    ready = 0\n    loading = 1\n    done = 2\n    error = 3\nclass WebGetSignal(QObject):\n    get_state = Signal()\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):",
+        "peekOfCode": "class GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)",
+        "detail": "src.site.browser.WebGet",
+        "documentation": {}
+    },
+    {
+        "label": "GET_TYPE",
+        "kind": 6,
+        "importPath": "src.site.browser.WebGet",
+        "description": "src.site.browser.WebGet",
+        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser",
         "detail": "src.site.browser.WebGet",
         "documentation": {}
     },
@@ -2025,7 +2034,7 @@
         "kind": 6,
         "importPath": "src.site.browser.WebGet",
         "description": "src.site.browser.WebGet",
-        "peekOfCode": "class WebGetSignal(QObject):\n    get_state = Signal()\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = WebGetState.ready\n    @property",
+        "peekOfCode": "class WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property",
         "detail": "src.site.browser.WebGet",
         "documentation": {}
     },
@@ -2034,7 +2043,7 @@
         "kind": 6,
         "importPath": "src.site.browser.WebGet",
         "description": "src.site.browser.WebGet",
-        "peekOfCode": "class WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = WebGetState.ready\n    @property\n    def browser(self):\n        return self.__browser",
+        "peekOfCode": "class WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property\n    def browser(self):\n        return self.__browser",
         "detail": "src.site.browser.WebGet",
         "documentation": {}
     },

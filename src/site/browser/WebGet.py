@@ -12,15 +12,20 @@ from lib.exceptions import GetTimeoutException
 from util.Config import Config
 
 
-class WebGetState(Enum):
-    ready = 0
-    loading = 1
-    done = 2
-    error = 3
+class GET_STATE(Enum):
+    READY = 0
+    LOADING = 1
+    DONE = 2
+    ERROR = 3
+
+
+class GET_TYPE(Enum):
+    CHAPTER_INFO = 0
+    IMAGE_LIST = 1
 
 
 class WebGetSignal(QObject):
-    get_state = Signal()
+    get_state = Signal(GET_TYPE, GET_STATE)
 
 
 class WebGet(QThread):
@@ -30,23 +35,29 @@ class WebGet(QThread):
         self.config = Config()
         self.__browser = browser
         self.__timeout = self.config.setting["timeout"]
-        self.state = WebGetState.ready
+        self.state = GET_STATE.READY
 
     @property
     def browser(self):
         return self.__browser
 
     def run(self):
-        if self.state == WebGetState.loading:
+        if self.state == GET_STATE.LOADING:
             raise Exception("Now loading...")
-        self.get()
+        self.__get()
 
-    def condition(self, url: str, find_by: By = By.XPATH, condition: str = "html"):
+    def condition(
+        self, type: GET_TYPE, url: str, find_by: By = By.XPATH, condition: str = "html"
+    ):
+        self.__get_type = type
         self.__url = url
         self.__find_by = find_by
         self.__condition = condition
 
     def __get(self):
+        self.signals.get_state.emit(self.__get_type, GET_STATE.LOADING)
+        self.get_state = GET_STATE.LOADING
+
         self.__browser.get(self.__url)
         wait = WebDriverWait(self.__browser, timeout=self.__timeout)
 
@@ -54,9 +65,9 @@ class WebGet(QThread):
             wait.until(
                 visibility_of_element_located((self.__find_by, self.__condition))
             )
-            self.signals.get_state.emit(WebGetState.done)
+            self.signals.get_state.emit(self.__get_type, GET_STATE.DONE)
         except TimeoutException:
-            self.signals.get_state.emit(WebGetState.error)
+            self.signals.get_state.emit(self.__get_type, GET_STATE.ERROR)
             raise GetTimeoutException
         finally:
-            self.get_state = WebGetState.ready
+            self.get_state = GET_STATE.READY
