@@ -1,15 +1,17 @@
 import importlib
+import time
 from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import QObject, QThread, Signal, Slot
 from src.site.browser.BrowserGet import BrowserGet, GET_STATE, GET_TYPE
-from src.site.Site import Site
+from src.site.SiteLoader import SiteLoader
 from ui.Ui_DownloadItem import Ui_DownloadItem
 from src.site.SiteBase import SiteBase
 from util.Config import Config
+from plyer import notification
 
 
 class DownloadItem(QWidget):
     def __init__(self, url: str):
-        print("📢[DownloadItem.py:10]: ", url)
         super(DownloadItem, self).__init__()
 
         self.config = Config()
@@ -17,31 +19,37 @@ class DownloadItem(QWidget):
         self.ui.setupUi(self)
 
         self.url = url
-        self.site = self.load_site_class(self.url)
-        # print("📢[DownloadItem.py:16]: ", self.site)
-        self.browserGet = BrowserGet(self, self.site.browser)
 
-        # 리스트 받기
-        self.dowload_capter_list()
+        self.__init_site(url)
 
-    def load_site_class(self, url) -> SiteBase:
+    def __init_site(self, url):
         config = self.config.get_site_config(url)
+        if config == None:
+            return
+        self.siteLoader = SiteLoader(self, config)
+        self.siteLoader.signals.on_site_loaded.connect(self.__on_site_loaded)
+        self.siteLoader.is_loading = True
+        self.siteLoader.start()
 
-        if config is None:
-            raise Exception("Could not find config")
+    def __on_site_loaded(self):
+        self.site = self.siteLoader.site_class
+        self.browser = self.site.browser
+        self.browserGet = BrowserGet(self, self.browser)
+        self.get_url_capter_info()
 
-        class_module = getattr(
-            importlib.import_module("src.site." + config["class_name"]),
-            config["class_name"],
-        )
-
-        if class_module is None:
-            return None
-        module = class_module(config)
-        return module
-
-    def dowload_capter_list(self):
+    def get_url_capter_info(self):
         self.browserGet.condition(GET_TYPE.CHAPTER_INFO, self.url)
         self.browserGet.start()
         # print('📢[DownloadItem.py:17]: ', self.url)
         # self.site.get_chapter_info(self.url)
+
+    @Slot(GET_TYPE, GET_STATE)
+    def on_get_url_complete(self, type: GET_TYPE, state: GET_STATE):
+        if state != GET_STATE.DONE:
+            notification.notify(
+                title="안내",
+                message="챕터의 내용을 받지 못 했습니다.",
+                app_name="Wolf",
+                app_icon="bluemen_white.ico",  # 'C:\\icon_32x32.ico'
+                timeout=3,  # seconds
+            )

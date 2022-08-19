@@ -144,6 +144,14 @@
         "documentation": {}
     },
     {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "Signal",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -152,7 +160,7 @@
         "documentation": {}
     },
     {
-        "label": "SignalInstance",
+        "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -441,6 +449,38 @@
     },
     {
         "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -768,55 +808,6 @@
         "documentation": {}
     },
     {
-        "label": "importlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "importlib",
-        "description": "importlib",
-        "detail": "importlib",
-        "documentation": {}
-    },
-    {
-        "label": "Singleton",
-        "importPath": "lib.Singleton",
-        "description": "lib.Singleton",
-        "isExtraImport": true,
-        "detail": "lib.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "Singleton",
-        "importPath": "lib.Singleton",
-        "description": "lib.Singleton",
-        "isExtraImport": true,
-        "detail": "lib.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
         "label": "ABC",
         "importPath": "abc",
         "description": "abc",
@@ -880,6 +871,55 @@
         "description": "src.site.browser.BrowserDriver",
         "isExtraImport": true,
         "detail": "src.site.browser.BrowserDriver",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
         "documentation": {}
     },
     {
@@ -1582,11 +1622,11 @@
         "documentation": {}
     },
     {
-        "label": "Site",
-        "importPath": "src.site.Site",
-        "description": "src.site.Site",
+        "label": "SiteLoader",
+        "importPath": "src.site.SiteLoader",
+        "description": "src.site.SiteLoader",
         "isExtraImport": true,
-        "detail": "src.site.Site",
+        "detail": "src.site.SiteLoader",
         "documentation": {}
     },
     {
@@ -1595,6 +1635,14 @@
         "description": "ui.Ui_DownloadItem",
         "isExtraImport": true,
         "detail": "ui.Ui_DownloadItem",
+        "documentation": {}
+    },
+    {
+        "label": "notification",
+        "importPath": "plyer",
+        "description": "plyer",
+        "isExtraImport": true,
+        "detail": "plyer",
         "documentation": {}
     },
     {
@@ -2088,21 +2136,30 @@
         "documentation": {}
     },
     {
-        "label": "Site",
-        "kind": 6,
-        "importPath": "src.site.Site",
-        "description": "src.site.Site",
-        "peekOfCode": "class Site():\n    def __init__(self, url: str):\n        self.config = Config()\n        return self.load_site_class(url)\n    def load_site_class(self, url):\n        config = self.config.get_site_config(url)\n        if config is None:\n            raise Exception(\"Could not find config\")\n        class_module = getattr(\n            importlib.import_module(\"src.site.\" + config[\"class_name\"]),",
-        "detail": "src.site.Site",
-        "documentation": {}
-    },
-    {
         "label": "SiteBase",
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
         "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, config: Config):\n        self.browserDriver = BrowserDriver()\n        self.browser = self.browserDriver.browser\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]\n    @property",
         "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteLoaderSignals",
+        "kind": 6,
+        "importPath": "src.site.SiteLoader",
+        "description": "src.site.SiteLoader",
+        "peekOfCode": "class SiteLoaderSignals(QObject):\n    on_site_loaded = Signal()\nclass SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, config):\n        QThread.__init__(self, parent)\n        self.__config = config\n        self.site_class = None\n    def run(self):\n        self.load_site_class()",
+        "detail": "src.site.SiteLoader",
+        "documentation": {}
+    },
+    {
+        "label": "SiteLoader",
+        "kind": 6,
+        "importPath": "src.site.SiteLoader",
+        "description": "src.site.SiteLoader",
+        "peekOfCode": "class SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, config):\n        QThread.__init__(self, parent)\n        self.__config = config\n        self.site_class = None\n    def run(self):\n        self.load_site_class()\n    def load_site_class(self):\n        config = self.__config",
+        "detail": "src.site.SiteLoader",
         "documentation": {}
     },
     {
@@ -2299,7 +2356,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str):\n        print(\"📢[DownloadItem.py:10]: \", url)\n        super(DownloadItem, self).__init__()\n        self.config = Config()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = self.load_site_class(self.url)\n        # print(\"📢[DownloadItem.py:16]: \", self.site)",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str):\n        super(DownloadItem, self).__init__()\n        self.config = Config()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.__init_site(url)\n    def __init_site(self, url):\n        config = self.config.get_site_config(url)",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
