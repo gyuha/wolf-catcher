@@ -35,6 +35,7 @@ class DownloadItem(QWidget):
         self.__init_site()
     
     def __init_connect(self):
+        self.ui.delete_button.setEnabled(False)
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
 
     @property
@@ -42,19 +43,24 @@ class DownloadItem(QWidget):
         return self.name + self.id
 
     def __init_site(self):
-        self.siteLoader = SiteLoader(self, self.site_config)
-        self.siteLoader.signals.on_site_loaded.connect(self.__on_site_loaded)
-        self.siteLoader.start()
+        self.site_loader = SiteLoader(self, self.site_config)
+        self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
+        self.site_loader.start()
 
     def __on_site_loaded(self):
-        self.site = self.siteLoader.site_class
+        self.site = self.site_loader.site_class
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
         self.browserGet.signals.get_state.connect(self.__on_get_state)
         self.__get_url_capter_info()
 
     def __get_url_capter_info(self):
-        self.browserGet.condition(GET_TYPE.CHAPTER_INFO, self.url)
+        self.browserGet.condition(
+            GET_TYPE.CHAPTER_INFO, 
+            self.url,
+            self.site_config["url_format"]["list"]["visible_condition"]["type"],
+            self.site_config["url_format"]["list"]["visible_condition"]["text"],
+            )
         self.browserGet.start()
 
     @Slot(GET_TYPE, GET_STATE)
@@ -66,10 +72,12 @@ class DownloadItem(QWidget):
                 app_name="Wolf",
                 timeout=3,  # seconds
             )
-        elif state != GET_STATE.LOADING:
+            print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
+        elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
-            pass
+            print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
+            self.ui.delete_button.setEnabled(True)
     
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)

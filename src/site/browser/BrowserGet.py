@@ -55,11 +55,14 @@ class BrowserGet(QThread):
         self.__get_type = type
         self.__url = url
         self.__find_by = find_by
+        print("📢[BrowserGet.py:58]: ", self.__find_by)
         self.__condition = condition
+        print("📢[BrowserGet.py:59]: ", self.__condition)
 
     def __get(self):
         self.signals.get_state.emit(self.__get_type, GET_STATE.LOADING)
         self.get_state = GET_STATE.LOADING
+        print("📢[BrowserGet.py:63]: ", self.get_state)
 
         self.__browser.get(self.__url)
         wait = WebDriverWait(self.__browser, timeout=self.__timeout)
@@ -68,6 +71,7 @@ class BrowserGet(QThread):
             wait.until(
                 visibility_of_element_located((self.__find_by, self.__condition))
             )
+            print("📢[BrowserGet.py:72]: ", self.__find_by)
             self.signals.get_state.emit(self.__get_type, GET_STATE.DONE)
         except TimeoutException:
             self.signals.get_state.emit(self.__get_type, GET_STATE.ERROR)
