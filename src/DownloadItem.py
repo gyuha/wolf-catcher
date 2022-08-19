@@ -9,8 +9,12 @@ from src.site.SiteBase import SiteBase
 from util.Config import Config
 from plyer import notification
 
+class DownloadItemSignals(QObject):
+    remove_item = Signal(str)
 
 class DownloadItem(QWidget):
+    signals = DownloadItemSignals()
+
     def __init__(self, id: str, site_config):
         super(DownloadItem, self).__init__()
 
@@ -27,7 +31,11 @@ class DownloadItem(QWidget):
         self.url = site_config["url"] + site_config["url_format"]["list"]["filter"]
         self.url = self.url.format(self.id)
 
+        self.__init_connect()
         self.__init_site()
+    
+    def __init_connect(self):
+        self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
 
     @property
     def key(self):
@@ -62,3 +70,6 @@ class DownloadItem(QWidget):
             return
         elif state == GET_STATE.DONE:
             pass
+    
+    def __on_click_delete_button(self):
+        self.signals.remove_item.emit(self.key)

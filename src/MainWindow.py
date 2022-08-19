@@ -60,29 +60,38 @@ class MainWindow(QMainWindow):
         if mat:
             return mat.group(1), site_config
         return None, None
+    
+    def __check_exist_item(self, id, site_config) -> bool:
+        key = site_config["name"] + id
+        if key in self.item_dict:
+            toast(self, "이미 등록된 키입니다.")
+            return False
+        return True
 
     # region item_list
     def add_item(self, url: str):
         id, site_config = self.__url_validate(url)
-        print('📢[MainWindow.py:64]: ', id)
-        if id is None or site_config is None:
-            toast(self, "아이디를 찾을 수 없습니다.")
+
+        if self.__check_exist_item(id, site_config) == False:
             return
 
+        self.item_dict[site_config["name"] + id] = None # 임시로 미리 등록 해 준다.
         widget = DownloadItem(id, site_config)
-        self.item_dict[widget.key] = widget
+
+        widget.signals.remove_item.connect(self.remove_item)
+
         title_item = QListWidgetItem(self.ui.item_list)
+        self.item_dict[widget.key] = title_item
         title_item.setSizeHint(widget.sizeHint())
         self.ui.item_list.addItem(title_item)
         self.ui.item_list.setItemWidget(title_item, widget)
         self.item_counter += 1
 
-    @Slot()
-    def remove_item(self):
-        widget = self.sender()
-        item = self.item_dict[widget.key]
+    @Slot(str)
+    def remove_item(self, key: str):
+        item = self.item_dict[key]
         self.ui.item_list.takeItem(self.ui.item_list.row(item))
-        del self.item_dict[widget.key]
+        del self.item_dict[key]
 
     @Slot()
     def clear_item_list(self):

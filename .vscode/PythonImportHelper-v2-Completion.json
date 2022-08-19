@@ -2442,11 +2442,20 @@
         "documentation": {}
     },
     {
+        "label": "DownloadItemSignals",
+        "kind": 6,
+        "importPath": "src.DownloadItem",
+        "description": "src.DownloadItem",
+        "peekOfCode": "class DownloadItemSignals(QObject):\n    remove_item = Signal(str)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config",
+        "detail": "src.DownloadItem",
+        "documentation": {}
+    },
+    {
         "label": "DownloadItem",
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:\n            return\n        self.name = site_config[\"name\"]",
+        "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:\n            return",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

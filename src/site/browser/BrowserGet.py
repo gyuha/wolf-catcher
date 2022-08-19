@@ -47,7 +47,7 @@ class BrowserGet(QThread):
         if self.state == GET_STATE.LOADING:
             raise Exception("Now loading...")
         self.__get()
-        self.quit()
+        # self.quit()
 
     def condition(
         self, type: GET_TYPE, url: str, find_by: By = By.XPATH, condition: str = "html"
