@@ -35,21 +35,27 @@ class DownloadItem(QWidget):
         self.site = self.siteLoader.site_class
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
-        self.get_url_capter_info()
+        self.browserGet.signals.get_state.connect(self.__on_get_state)
+        self.__get_url_capter_info()
 
-    def get_url_capter_info(self):
+    def __get_url_capter_info(self):
         self.browserGet.condition(GET_TYPE.CHAPTER_INFO, self.url)
         self.browserGet.start()
         # print('📢[DownloadItem.py:17]: ', self.url)
         # self.site.get_chapter_info(self.url)
 
     @Slot(GET_TYPE, GET_STATE)
-    def on_get_url_complete(self, type: GET_TYPE, state: GET_STATE):
-        if state != GET_STATE.DONE:
+    def __on_get_state(self, type: GET_TYPE, state: GET_STATE):
+        print('📢[DownloadItem.py:48]: ', state)
+        print('📢[DownloadItem.py:48]: ', type)
+        if state != GET_STATE.ERROR:
             notification.notify(
                 title="안내",
                 message="챕터의 내용을 받지 못 했습니다.",
                 app_name="Wolf",
-                app_icon="bluemen_white.ico",  # 'C:\\icon_32x32.ico'
                 timeout=3,  # seconds
             )
+        elif state != GET_STATE.LOADING:
+            return;
+        elif state == GET_STATE.DONE:
+            pass
