@@ -11,24 +11,31 @@ from plyer import notification
 
 
 class DownloadItem(QWidget):
-    def __init__(self, url: str):
+    def __init__(self, id: str, site_config):
         super(DownloadItem, self).__init__()
 
-        self.config = Config()
         self.ui = Ui_DownloadItem()
         self.ui.setupUi(self)
 
-        self.url = url
+        self.id = id
 
-        self.__init_site(url)
-
-    def __init_site(self, url):
-        config = self.config.get_site_config(url)
-        if config == None:
+        self.site_config = site_config
+        if site_config == None:
             return
-        self.siteLoader = SiteLoader(self, config)
+
+        self.name = site_config["name"]
+        self.url = site_config["url"] + site_config["url_format"]["list"]["filter"]
+        self.url = self.url.format(self.id)
+
+        self.__init_site()
+
+    @property
+    def key(self):
+        return self.name + self.id
+
+    def __init_site(self):
+        self.siteLoader = SiteLoader(self, self.site_config)
         self.siteLoader.signals.on_site_loaded.connect(self.__on_site_loaded)
-        self.siteLoader.is_loading = True
         self.siteLoader.start()
 
     def __on_site_loaded(self):
@@ -41,14 +48,10 @@ class DownloadItem(QWidget):
     def __get_url_capter_info(self):
         self.browserGet.condition(GET_TYPE.CHAPTER_INFO, self.url)
         self.browserGet.start()
-        # print('📢[DownloadItem.py:17]: ', self.url)
-        # self.site.get_chapter_info(self.url)
 
     @Slot(GET_TYPE, GET_STATE)
     def __on_get_state(self, type: GET_TYPE, state: GET_STATE):
-        print('📢[DownloadItem.py:48]: ', state)
-        print('📢[DownloadItem.py:48]: ', type)
-        if state != GET_STATE.ERROR:
+        if state == GET_STATE.ERROR:
             notification.notify(
                 title="안내",
                 message="챕터의 내용을 받지 못 했습니다.",
@@ -56,6 +59,6 @@ class DownloadItem(QWidget):
                 timeout=3,  # seconds
             )
         elif state != GET_STATE.LOADING:
-            return;
+            return
         elif state == GET_STATE.DONE:
             pass

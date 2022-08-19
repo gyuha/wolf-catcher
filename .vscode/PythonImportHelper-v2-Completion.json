@@ -72,6 +72,62 @@
         "documentation": {}
     },
     {
+        "label": "QtCore",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtGui",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtWidgets",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtWidgets",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
         "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -932,6 +988,14 @@
         "documentation": {}
     },
     {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
         "label": "unittest",
         "kind": 6,
         "isExtraImport": true,
@@ -1548,19 +1612,19 @@
         "documentation": {}
     },
     {
-        "label": "QtWidgets",
-        "importPath": "PySide6",
-        "description": "PySide6",
+        "label": "QToaster",
+        "importPath": "lib.QToaster",
+        "description": "lib.QToaster",
         "isExtraImport": true,
-        "detail": "PySide6",
+        "detail": "lib.QToaster",
         "documentation": {}
     },
     {
-        "label": "QtCore",
-        "importPath": "PySide6",
-        "description": "PySide6",
+        "label": "QToaster",
+        "importPath": "lib.QToaster",
+        "description": "lib.QToaster",
         "isExtraImport": true,
-        "detail": "PySide6",
+        "detail": "lib.QToaster",
         "documentation": {}
     },
     {
@@ -1667,6 +1731,14 @@
         "description": "util.Clipboard",
         "isExtraImport": true,
         "detail": "util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
         "documentation": {}
     },
     {
@@ -2064,6 +2136,15 @@
         "documentation": {}
     },
     {
+        "label": "QToaster",
+        "kind": 6,
+        "importPath": "src.lib.QToaster",
+        "description": "src.lib.QToaster",
+        "peekOfCode": "class QToaster(QtWidgets.QFrame):\n    closed = QtCore.Signal()\n    def __init__(self, *args, **kwargs):\n        super(QToaster, self).__init__(*args, **kwargs)\n        QtWidgets.QHBoxLayout(self)\n        self.setSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)\n        self.setStyleSheet(\n            \"\"\"\n            QToaster {\n                border: 1px solid black;",
+        "detail": "src.lib.QToaster",
+        "documentation": {}
+    },
+    {
         "label": "QtSingleton",
         "kind": 6,
         "importPath": "src.lib.QtSingleton",
@@ -2176,7 +2257,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config: Config):\n        super().__init__(config)\n    # @Slot(int)\n    # def url_get_state(self, state: int):\n    #     print(\"📢[Wfwf.py:15]: \", state)\n    #     title = self.browerDriver.browser.find_element(\n    #         \"xpath\", '//*[@id=\"content\"]/div[2]/div[3]/h1'\n    #     ).text\n    #     print(\"📢[Wfwf.py:20]: \", title)",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config: Config):\n        super().__init__(config)\n    def get_title_id(self, url: str) -> str:\n        return \"\"\n    # @Slot(int)\n    # def url_get_state(self, state: int):\n    #     print(\"📢[Wfwf.py:15]: \", state)\n    #     title = self.browerDriver.browser.find_element(\n    #         \"xpath\", '//*[@id=\"content\"]/div[2]/div[3]/h1'",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -2329,7 +2410,16 @@
         "kind": 2,
         "importPath": "src.util.message",
         "description": "src.util.message",
-        "peekOfCode": "def alert(text):\n    error_dialog = QtWidgets.QErrorMessage()\n    error_dialog.showMessage(text)",
+        "peekOfCode": "def alert(text):\n    error_dialog = QtWidgets.QErrorMessage()\n    error_dialog.showMessage(text)\ndef toast(self, text):\n    QToaster.showMessage(self, text, corner=QtCore.Qt.TopRightCorner, timeout=1000, closable=False)",
+        "detail": "src.util.message",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "kind": 2,
+        "importPath": "src.util.message",
+        "description": "src.util.message",
+        "peekOfCode": "def toast(self, text):\n    QToaster.showMessage(self, text, corner=QtCore.Qt.TopRightCorner, timeout=1000, closable=False)",
         "detail": "src.util.message",
         "documentation": {}
     },
@@ -2356,7 +2446,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str):\n        super(DownloadItem, self).__init__()\n        self.config = Config()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.__init_site(url)\n    def __init_site(self, url):\n        config = self.config.get_site_config(url)",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:\n            return\n        self.name = site_config[\"name\"]",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
@@ -2365,7 +2455,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()\n        self.init_slot()\n        # self.ui.item_list.setItemWidget()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()\n        self.init_slot()\n        self.item_dict: dict[str, QListWidgetItem] = {}",
         "detail": "src.MainWindow",
         "documentation": {}
     },

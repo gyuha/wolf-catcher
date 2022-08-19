@@ -35,30 +35,29 @@ class SeleniumWorker(QThread):
         self.__init_driver()
 
     def __init_driver(self):
-        print("[{}] Web Driver loading...".format(
-            self.__browser_type), end="\r")
+        print("[{}] Web Driver loading...".format(self.__browser_type), end="\r")
 
-        if self.__browser_type == 'chrome':
-            """ 
+        if self.__browser_type == "chrome":
+            """
             Chrome
             """
-            driver_file = './driver/chromedriver.exe'
+            driver_file = "./driver/chromedriver.exe"
             options = ChromeOptions()
             options.headless = self.config.setting["headless"]
             self.__browser = webdriver.Chrome(
-                executable_path=driver_file,
-                options=options)
+                executable_path=driver_file, options=options
+            )
 
-        elif self.__browser_type == 'firefox':
+        elif self.__browser_type == "firefox":
             """
             Firefox
             """
-            driver_file = './driver/geckodriver.exe'
+            driver_file = "./driver/geckodriver.exe"
             options = FirefoxOptions()
             options.headless = self.config.setting["headless"]
             self.__browser = webdriver.Firefox(
-                executable_path=driver_file,
-                options=options)
+                executable_path=driver_file, options=options
+            )
 
         if self.__browser:
             self.__browser.implicitly_wait(5)

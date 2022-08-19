@@ -3,6 +3,7 @@ from util.Config import Config
 from util.SeleniumWorker import SeleniumWorker
 from src.site.SiteBase import SiteBase
 from selenium.webdriver.common.by import By
+from urllib.parse import urlparse
 
 
 @SiteBase.register
@@ -10,6 +11,9 @@ class Wfwf(SiteBase):
     def __init__(self, config: Config):
         super().__init__(config)
 
+
+    def get_title_id(self, url: str) -> str:
+        return ""
     # @Slot(int)
     # def url_get_state(self, state: int):
     #     print("📢[Wfwf.py:15]: ", state)
