@@ -1,5 +1,4 @@
 from enum import Enum
-from src.site.SiteBase import SiteBase
 from util.Config import Config
 
 from PySide6.QtCore import QObject, QThread, Signal
@@ -13,26 +12,13 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 
 from lib.exceptions import GetTimeoutException
-from src.browser.BrowserWorker import WorkerState
 
 
-class WorkerState(Enum):
-    none = 1
-    loading = 2
-    done = 3
-    error = 4
+class BrowserDriver():
 
-
-class BrowserWorkerSignal(QObject):
-    url_get_state = Signal(WorkerState)
-
-
-class BrowserWorker():
-
-    def __init__(self, parent: SiteBase):
+    def __init__(self):
         self.config = Config()
-        self.state = WorkerState.none
-        self.__timeout = self.config.setting["browser"]["timeout"]
+        # self.__timeout = self.config.setting["browser"]["timeout"]
         self.__browser_type = self.config.setting["browser"]
         self.__init_driver()
 
@@ -62,8 +48,8 @@ class BrowserWorker():
                 executable_path=driver_file,
                 options=options)
 
-        if self.__browser:
-            self.__browser.implicitly_wait(5)
+        # if self.__browser:
+        #     self.__browser.implicitly_wait(5)
 
 
     @property
@@ -80,10 +66,3 @@ class BrowserWorker():
         if self.__browser:
             self.__browser.close()
             self.__browser = self.driver_init()
-
-
-    def get(self):
-        if self.state == WorkerState.loading:
-            raise Exception('now loading')
-        
-        self.browser.get(self.__url)

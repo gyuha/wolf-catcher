@@ -18,8 +18,10 @@ from util.Config import Config
 
 import urllib
 
+
 class SeleniumWorkerSignals(QObject):
     url_get_state = Signal(int)
+
 
 class SeleniumWorker(QThread):
     signals = SeleniumWorkerSignals()
@@ -31,7 +33,6 @@ class SeleniumWorker(QThread):
         self.__timeout = 5
         self.__browser_type = self.config.setting["browser"]
         self.__init_driver()
-
 
     def __init_driver(self):
         print("[{}] Web Driver loading...".format(
@@ -62,15 +63,13 @@ class SeleniumWorker(QThread):
         if self.__browser:
             self.__browser.implicitly_wait(5)
 
-
-    def set_url_info(self, url: str, find_by: str="xpath", condition: str="html"):
+    def set_url_info(self, url: str, find_by: str = "xpath", condition: str = "html"):
         self.__url = url
         self.__find_by = find_by
         self.__condition = condition
 
     def run(self):
         self.get_with_retry()
-
 
     @property
     def browser(self):
@@ -83,66 +82,23 @@ class SeleniumWorker(QThread):
     @property
     def is_complete(self):
         return self.__is_complete
-    
+
     @property
     def url(self):
         return self.__url
-    
+
     @url.setter
     def url(self, value):
         self.__url = value
-
-
 
     def driver_close(self):
         if self.__browser:
             self.__browser.close()
 
-
     def reconnect(self):
         if self.__browser:
             self.__browser.close()
             self.__browser = self.driver_init()
-
-
-    def condition(self, type, text):
-        pass
-
-
-    def condition_by(self, type):
-        if type == "id":
-            return By.ID
-        elif type == "class":
-            return By.CLASS_NAME
-        elif type == "xpath":
-            return By.XPATH
-
-
-    # @retry(GetTimeoutException, tries=__tries)
-    def get_with_retry(self):
-        if self.__is_getting:
-            return
-
-        self.__is_getting = True
-
-        self.__browser.get(self.__url)
-
-        wait = WebDriverWait(self.__browser, timeout=self.__timeout)
-
-        try:
-            element = wait.until(
-                visibility_of_element_located((
-                    self.__find_by, 
-                   self.__condition 
-                ))
-            )
-            self.__is_getting = False
-            self.signals.url_get_state.emit(1)
-        except TimeoutException:
-            raise GetTimeoutException
-        finally:
-            self.__is_getting = False
-    
 
     @property
     def page_source(self):
