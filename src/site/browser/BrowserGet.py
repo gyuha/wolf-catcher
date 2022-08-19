@@ -24,12 +24,12 @@ class GET_TYPE(Enum):
     IMAGE_LIST = 1
 
 
-class WebGetSignal(QObject):
+class BrowserGetSignals(QObject):
     get_state = Signal(GET_TYPE, GET_STATE)
 
 
-class WebGet(QThread):
-    signal = WebGetSignal()
+class BrowserGet(QThread):
+    signals = BrowserGetSignals()
 
     def __init__(self, browser):
         self.config = Config()
@@ -45,6 +45,7 @@ class WebGet(QThread):
         if self.state == GET_STATE.LOADING:
             raise Exception("Now loading...")
         self.__get()
+        self.quit()
 
     def condition(
         self, type: GET_TYPE, url: str, find_by: By = By.XPATH, condition: str = "html"

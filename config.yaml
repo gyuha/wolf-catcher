@@ -1,5 +1,5 @@
 setting:
-  browser: chrome
+  browser: firefox
   headless: false
   tries: 5
   timeout: 10

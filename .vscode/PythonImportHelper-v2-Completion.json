@@ -552,6 +552,14 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
         "label": "webdriver",
         "importPath": "selenium",
         "description": "selenium",
@@ -785,6 +793,30 @@
         "documentation": {}
     },
     {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
         "label": "ABC",
         "importPath": "abc",
         "description": "abc",
@@ -857,22 +889,6 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
         "documentation": {}
     },
     {
@@ -1542,6 +1558,30 @@
         "documentation": {}
     },
     {
+        "label": "BrowserGet",
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
+        "label": "GET_STATE",
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
+        "label": "GET_TYPE",
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
         "label": "Site",
         "importPath": "src.site.Site",
         "description": "src.site.Site",
@@ -2003,6 +2043,42 @@
         "documentation": {}
     },
     {
+        "label": "GET_STATE",
+        "kind": 6,
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "peekOfCode": "class GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)",
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
+        "label": "GET_TYPE",
+        "kind": 6,
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser",
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
+        "label": "BrowserGetSignals",
+        "kind": 6,
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "peekOfCode": "class BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property",
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
+        "label": "BrowserGet",
+        "kind": 6,
+        "importPath": "src.site.browser.BrowserGet",
+        "description": "src.site.browser.BrowserGet",
+        "peekOfCode": "class BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property\n    def browser(self):\n        return self.__browser",
+        "detail": "src.site.browser.BrowserGet",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "kind": 6,
         "importPath": "src.site.browser.Session",
@@ -2012,47 +2088,11 @@
         "documentation": {}
     },
     {
-        "label": "GET_STATE",
-        "kind": 6,
-        "importPath": "src.site.browser.WebGet",
-        "description": "src.site.browser.WebGet",
-        "peekOfCode": "class GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)",
-        "detail": "src.site.browser.WebGet",
-        "documentation": {}
-    },
-    {
-        "label": "GET_TYPE",
-        "kind": 6,
-        "importPath": "src.site.browser.WebGet",
-        "description": "src.site.browser.WebGet",
-        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser",
-        "detail": "src.site.browser.WebGet",
-        "documentation": {}
-    },
-    {
-        "label": "WebGetSignal",
-        "kind": 6,
-        "importPath": "src.site.browser.WebGet",
-        "description": "src.site.browser.WebGet",
-        "peekOfCode": "class WebGetSignal(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property",
-        "detail": "src.site.browser.WebGet",
-        "documentation": {}
-    },
-    {
-        "label": "WebGet",
-        "kind": 6,
-        "importPath": "src.site.browser.WebGet",
-        "description": "src.site.browser.WebGet",
-        "peekOfCode": "class WebGet(QThread):\n    signal = WebGetSignal()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property\n    def browser(self):\n        return self.__browser",
-        "detail": "src.site.browser.WebGet",
-        "documentation": {}
-    },
-    {
         "label": "Site",
         "kind": 6,
         "importPath": "src.site.Site",
         "description": "src.site.Site",
-        "peekOfCode": "class Site():\n    def __init__(self, url: str) -> None:\n        self.config = Config()\n        self.load_site_class(url)\n    def load_site_class(cls, url):\n        config = cls.config.get_site_config(url)\n        if config is None:\n            raise Exception(\"Could not find config\")\n        class_module = getattr(\n            importlib.import_module(\"src.site.\" + config[\"class_name\"]),",
+        "peekOfCode": "class Site():\n    def __init__(self, url: str):\n        self.config = Config()\n        return self.load_site_class(url)\n    def load_site_class(self, url):\n        config = self.config.get_site_config(url)\n        if config is None:\n            raise Exception(\"Could not find config\")\n        class_module = getattr(\n            importlib.import_module(\"src.site.\" + config[\"class_name\"]),",
         "detail": "src.site.Site",
         "documentation": {}
     },
@@ -2259,7 +2299,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str):\n        print('📢[DownloadItem.py:10]: ', url)\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = Site(url)\n        print('📢[DownloadItem.py:16]: ', self.site)\n        # 리스트 받기",
+        "peekOfCode": "class DownloadItem(QWidget):\n    def __init__(self, url: str):\n        print(\"📢[DownloadItem.py:10]: \", url)\n        super(DownloadItem, self).__init__()\n        self.config = Config()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.url = url\n        self.site = self.load_site_class(self.url)\n        # print(\"📢[DownloadItem.py:16]: \", self.site)",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

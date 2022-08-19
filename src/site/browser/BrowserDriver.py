@@ -48,8 +48,8 @@ class BrowserDriver():
                 executable_path=driver_file,
                 options=options)
 
-        # if self.__browser:
-        #     self.__browser.implicitly_wait(5)
+        if self.__browser:
+            self.__browser.implicitly_wait(5)
 
 
     @property
