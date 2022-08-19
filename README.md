@@ -25,6 +25,7 @@ peotry install
 ### Python 기본 문법
 * [파이썬 - 기본을 갈고 닦자!](https://wikidocs.net/book/1553)
 * [파이썬 코딩 도장](https://dojang.io/course/view.php?id=7)
+* [레벨업 파이썬](https://wikidocs.net/book/4170)
 
 ### PySide Or PyQT
 * [Qt for Python](https://doc.qt.io/qtforpython/index.html)

@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 @SiteBase.register
 class Wfwf(SiteBase):
     def __init__(self, seleniumWorker: SeleniumWorker,  config: Config):
-        SiteBase.__init__(self, seleniumWorker, config)
+        super().__init__(self, seleniumWorker, config)
         self.seleniumWorker.signals.url_get_state.connect(self.url_get_state)
     
     @Slot(int)
