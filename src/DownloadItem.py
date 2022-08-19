@@ -19,7 +19,7 @@ class DownloadItem(QWidget):
         self.url = url
         self.site = self.load_site_class(self.url)
         # print("📢[DownloadItem.py:16]: ", self.site)
-        self.browserGet = BrowserGet(self.site.browerDriver)
+        self.browserGet = BrowserGet(self, self.site.browser)
 
         # 리스트 받기
         self.dowload_capter_list()

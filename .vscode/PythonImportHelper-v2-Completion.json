@@ -2056,7 +2056,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
-        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser",
+        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, parent, browser):\n        QThread.__init__(self, parent)\n        self.__parent = parent",
         "detail": "src.site.browser.BrowserGet",
         "documentation": {}
     },
@@ -2065,7 +2065,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
-        "peekOfCode": "class BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property",
+        "peekOfCode": "class BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, parent, browser):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]",
         "detail": "src.site.browser.BrowserGet",
         "documentation": {}
     },
@@ -2074,7 +2074,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
-        "peekOfCode": "class BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, browser):\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property\n    def browser(self):\n        return self.__browser",
+        "peekOfCode": "class BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, parent, browser):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.config = Config()\n        self.__browser = browser\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = GET_STATE.READY\n    @property",
         "detail": "src.site.browser.BrowserGet",
         "documentation": {}
     },
@@ -2101,7 +2101,7 @@
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, config: Config):\n        self.browerDriver = BrowserDriver()\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]\n    @property\n    def site_name(self):",
+        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, config: Config):\n        self.browserDriver = BrowserDriver()\n        self.browser = self.browserDriver.browser\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]\n    @property",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },

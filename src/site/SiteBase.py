@@ -11,7 +11,8 @@ from src.site.browser.BrowserDriver import BrowserDriver
 
 class SiteBase(ABC):
     def __init__(self, config: Config):
-        self.browerDriver = BrowserDriver()
+        self.browserDriver = BrowserDriver()
+        self.browser = self.browserDriver.browser
 
         self.name = config["name"]
         self.url = config["url"]

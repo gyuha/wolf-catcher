@@ -19,12 +19,12 @@ class Wfwf(SiteBase):
     #     print("📢[Wfwf.py:20]: ", title)
 
     def get_chapter_info(self, url: str):
-        self.browerDriver.set_url_info(
+        self.browserDriver.set_url_info(
             url,
             self.url_format["list"]["visible_condition"]["type"],
             self.url_format["list"]["visible_condition"]["text"],
         )
-        self.browerDriver.start()
+        self.browserDriver.start()
         # self.seleniumWorker.get_with_retry(
         #     url,
         #     self.url_format["list"]["visible_condition"]["type"],

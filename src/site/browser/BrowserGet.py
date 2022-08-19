@@ -31,7 +31,9 @@ class BrowserGetSignals(QObject):
 class BrowserGet(QThread):
     signals = BrowserGetSignals()
 
-    def __init__(self, browser):
+    def __init__(self, parent, browser):
+        QThread.__init__(self, parent)
+        self.__parent = parent
         self.config = Config()
         self.__browser = browser
         self.__timeout = self.config.setting["timeout"]
