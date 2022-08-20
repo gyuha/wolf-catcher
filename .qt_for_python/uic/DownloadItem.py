@@ -32,8 +32,8 @@ public:
     QLabel *title_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *folder_open_button;
-    QPushButton *delete_button;
     QPushButton *cancel_button;
+    QPushButton *delete_button;
     QHBoxLayout *horizontalLayout_3;
     QProgressBar *progress_bar;
     QSpacerItem *horizontalSpacer_2;
@@ -82,26 +82,26 @@ public:
 
         horizontalLayout_2->addWidget(folder_open_button);
 
+        cancel_button = new QPushButton(DownloadItem);
+        cancel_button->setObjectName(QString::fromUtf8("cancel_button"));
+        cancel_button->setEnabled(true);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/icons/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cancel_button->setIcon(icon1);
+        cancel_button->setFlat(true);
+
+        horizontalLayout_2->addWidget(cancel_button);
+
         delete_button = new QPushButton(DownloadItem);
         delete_button->setObjectName(QString::fromUtf8("delete_button"));
         delete_button->setLayoutDirection(Qt::LeftToRight);
         delete_button->setAutoFillBackground(false);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
-        delete_button->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
+        delete_button->setIcon(icon2);
         delete_button->setFlat(true);
 
         horizontalLayout_2->addWidget(delete_button);
-
-        cancel_button = new QPushButton(DownloadItem);
-        cancel_button->setObjectName(QString::fromUtf8("cancel_button"));
-        cancel_button->setEnabled(true);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/icon/icons/cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cancel_button->setIcon(icon2);
-        cancel_button->setFlat(true);
-
-        horizontalLayout_2->addWidget(cancel_button);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -148,8 +148,8 @@ public:
         image_label->setText(QString());
         title_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
         folder_open_button->setText(QString());
-        delete_button->setText(QString());
         cancel_button->setText(QString());
+        delete_button->setText(QString());
         status_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
     } // retranslateUi
 

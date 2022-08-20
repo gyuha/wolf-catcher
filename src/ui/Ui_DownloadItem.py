@@ -63,26 +63,26 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_2.addWidget(self.folder_open_button)
 
+        self.cancel_button = QPushButton(DownloadItem)
+        self.cancel_button.setObjectName(u"cancel_button")
+        self.cancel_button.setEnabled(True)
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/stop.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancel_button.setIcon(icon1)
+        self.cancel_button.setFlat(True)
+
+        self.horizontalLayout_2.addWidget(self.cancel_button)
+
         self.delete_button = QPushButton(DownloadItem)
         self.delete_button.setObjectName(u"delete_button")
         self.delete_button.setLayoutDirection(Qt.LeftToRight)
         self.delete_button.setAutoFillBackground(False)
-        icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.delete_button.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.delete_button.setIcon(icon2)
         self.delete_button.setFlat(True)
 
         self.horizontalLayout_2.addWidget(self.delete_button)
-
-        self.cancel_button = QPushButton(DownloadItem)
-        self.cancel_button.setObjectName(u"cancel_button")
-        self.cancel_button.setEnabled(True)
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/cancel.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel_button.setIcon(icon2)
-        self.cancel_button.setFlat(True)
-
-        self.horizontalLayout_2.addWidget(self.cancel_button)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -128,8 +128,8 @@ class Ui_DownloadItem(object):
         self.image_label.setText("")
         self.title_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
         self.folder_open_button.setText("")
-        self.delete_button.setText("")
         self.cancel_button.setText("")
+        self.delete_button.setText("")
         self.status_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
     # retranslateUi
 
