@@ -49,6 +49,7 @@ class DownloadItem(QWidget):
 
     def __on_site_loaded(self):
         self.site = self.site_loader.site_class
+        self.site.id = self.id
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
         self.browserGet.signals.get_state.connect(self.__on_get_state)
@@ -76,8 +77,17 @@ class DownloadItem(QWidget):
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
-            print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
-            self.ui.delete_button.setEnabled(True)
+            self.__on_get_done(type)
+            # print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
+            # self.ui.delete_button.setEnabled(True)
+    
+
+    def __on_get_done(self, type: GET_TYPE):
+        if type == GET_TYPE.CHAPTER_INFO:
+            self.site.get_chapter_info_parser(self.browser)
+            pass
+        elif type == GET_TYPE.IMAGE_LIST:
+            pass
     
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)

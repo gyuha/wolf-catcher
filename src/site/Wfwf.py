@@ -1,6 +1,6 @@
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 from util.Config import Config
-from util.SeleniumWorker import SeleniumWorker
+from selenium import webdriver
 from src.site.SiteBase import SiteBase
 from selenium.webdriver.common.by import By
 from urllib.parse import urlparse
@@ -22,13 +22,21 @@ class Wfwf(SiteBase):
     #     ).text
     #     print("📢[Wfwf.py:20]: ", title)
 
-    def get_chapter_info(self, url: str):
-        self.browserDriver.set_url_info(
-            url,
-            self.url_format["list"]["visible_condition"]["type"],
-            self.url_format["list"]["visible_condition"]["text"],
-        )
-        self.browserDriver.start()
+    def get_chapter_info_parser(self, driver: webdriver):
+        print('📢[Wfwf.py:26]', self.id)
+        title = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1').text
+        print('📢[Wfwf.py:27]: ', title)
+        tag = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[3]/div[2]').text
+        print('📢[Wfwf.py:28]: ', tag)
+        thumbnail = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[2]/img').get_attribute('src')
+        print('📢[Wfwf.py:28]: ', thumbnail)
+
+        # self.browserDriver.set_url_info(
+        #     url,
+        #     self.url_format["list"]["visible_condition"]["type"],
+        #     self.url_format["list"]["visible_condition"]["text"],
+        # )
+        # self.browserDriver.start()
         # self.seleniumWorker.get_with_retry(
         #     url,
         #     self.url_format["list"]["visible_condition"]["type"],

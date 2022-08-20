@@ -4,6 +4,7 @@ import pathlib
 import re
 from src.util.file_name import strip_file_path
 from util.Config import Config
+from selenium import webdriver
 from util.SeleniumWorker import SeleniumWorker
 from selenium.webdriver.common.by import By
 from src.site.browser.BrowserDriver import BrowserDriver
@@ -14,6 +15,7 @@ class SiteBase(ABC):
         self.browserDriver = BrowserDriver()
         self.browser = self.browserDriver.browser
 
+        self.id = ""
         self.name = config["name"]
         self.url = config["url"]
         self.file_extensions = config["file_extensions"]
@@ -25,7 +27,7 @@ class SiteBase(ABC):
         return self.name
 
     @abstractmethod
-    async def get_chapter_info(self, url):
+    async def get_chapter_info_parser(self, driver: webdriver):
         pass
 
     @abstractmethod
@@ -58,8 +60,3 @@ class SiteBase(ABC):
         pathlib.Path(path).mkdir(parents=True, exist_ok=True)
         return path
 
-    def __find_type(self, type: str) -> By:
-        if type == "xpath":
-            return By.XPATH
-
-        return By

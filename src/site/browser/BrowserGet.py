@@ -1,6 +1,7 @@
 from enum import Enum
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,7 +32,7 @@ class BrowserGetSignals(QObject):
 class BrowserGet(QThread):
     signals = BrowserGetSignals()
 
-    def __init__(self, parent, browser):
+    def __init__(self, parent, browser: webdriver):
         QThread.__init__(self, parent)
         self.__parent = parent
         self.config = Config()

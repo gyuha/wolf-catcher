@@ -18,7 +18,7 @@ site:
         re: .*/cl\?toon=\D*(\d+)
         visible_condition:
           type: xpath
-          text: //*[@id="content"]/div[3]/div[1]/div
+          text: //*[@id="content"]/div[2]/div[3]/h1
       capter:
         filter: /cv?toon={0}&num={1}
         re: /cv?toon=(\d+)
