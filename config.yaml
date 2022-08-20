@@ -9,7 +9,7 @@ site:
     title: 늑대 닷컴
     url: https://wfwf221.com
     file_extensions: cbz
-    download_path: wfwf
+    download_path: ./wfwf
     filter:
       - https://wfwf[0-9]+.com/cl\?toon=[0-9]+
     url_format:

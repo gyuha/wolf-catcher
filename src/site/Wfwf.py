@@ -24,12 +24,33 @@ class Wfwf(SiteBase):
 
     def get_chapter_info_parser(self, driver: webdriver):
         print('📢[Wfwf.py:26]', self.id)
-        title = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1').text
+        title = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1').text.strip()
         print('📢[Wfwf.py:27]: ', title)
-        tag = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[3]/div[2]').text
-        print('📢[Wfwf.py:28]: ', tag)
+
+        if not title:
+            raise Exception('제목을 찾을 수 없습니다.')
+
+        self.path = self.download_path_init(self.download_path, title)
+        self.title_info.set_path(self.download_path, title)
+        self.title_info.load()
+
+        text = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[3]/div[2]').text
+        tags = text.split(":")[1].strip().split("/")
+
+        text = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[3]/div[1]').text
+        print('📢[Wfwf.py:28]: ', tags)
+        print('📢[Wfwf.py:32]: ', text)
         thumbnail = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[2]/img').get_attribute('src')
         print('📢[Wfwf.py:28]: ', thumbnail)
+
+        self.download_thumbnail(thumbnail, "")
+
+        info = self.title_info.info
+        info["title"] = title
+        info["tags"] = tags
+        info["id"] = self.id
+
+        self.title_info.save()
 
         # self.browserDriver.set_url_info(
         #     url,

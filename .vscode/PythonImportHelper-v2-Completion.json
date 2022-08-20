@@ -922,6 +922,14 @@
         "documentation": {}
     },
     {
+        "label": "TitleInfo",
+        "importPath": "src.site.TitleInfo",
+        "description": "src.site.TitleInfo",
+        "isExtraImport": true,
+        "detail": "src.site.TitleInfo",
+        "documentation": {}
+    },
+    {
         "label": "strip_file_path",
         "importPath": "src.util.file_name",
         "description": "src.util.file_name",
@@ -995,12 +1003,12 @@
         "documentation": {}
     },
     {
-        "label": "json",
+        "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
         "documentation": {}
     },
     {
@@ -1516,15 +1524,6 @@
         "importPath": "zipfile",
         "description": "zipfile",
         "detail": "zipfile",
-        "documentation": {}
-    },
-    {
-        "label": "yaml",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "yaml",
-        "description": "yaml",
-        "detail": "yaml",
         "documentation": {}
     },
     {
@@ -2264,7 +2263,7 @@
         "kind": 6,
         "importPath": "src.site.TitleInfo",
         "description": "src.site.TitleInfo",
-        "peekOfCode": "class TitleInfo:\n    def __init__(self):\n        self.id = None\n        # 챕터 정보\n        self.info = {\n            'author': '',\n            'skip': 0,\n            'title': '',\n            'tags': [],\n            'id': 0,",
+        "peekOfCode": "class TitleInfo:\n    def __init__(self):\n        self.id = None\n        # 챕터 정보\n        self.info = {\n            \"author\": \"\",\n            \"skip\": 0,\n            \"title\": \"\",\n            \"series\": \"\",\n            \"tags\": [],",
         "detail": "src.site.TitleInfo",
         "documentation": {}
     },

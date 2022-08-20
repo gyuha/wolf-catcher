@@ -50,6 +50,8 @@ class DownloadItem(QWidget):
     def __on_site_loaded(self):
         self.site = self.site_loader.site_class
         self.site.id = self.id
+        self.site.parent = self
+
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
         self.browserGet.signals.get_state.connect(self.__on_get_state)
@@ -91,3 +93,8 @@ class DownloadItem(QWidget):
     
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
+
+
+    def download_thumbnail(self, url, file_path):
+        print('📢[DownloadItem.py:99]: ', file_path)
+        print('📢[DownloadItem.py:99]: ', url)

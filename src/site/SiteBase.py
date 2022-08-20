@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import os
 import pathlib
 import re
+from src.site.TitleInfo import TitleInfo
 from src.util.file_name import strip_file_path
 from util.Config import Config
 from selenium import webdriver
@@ -22,6 +23,11 @@ class SiteBase(ABC):
         self.download_path = config["download_path"]
         self.url_format = config["url_format"]
 
+        self.title_info = TitleInfo()
+
+        self.path = "" # 다운로드 경로
+        self.parent = None
+
     @property
     def site_name(self):
         return self.name
@@ -38,25 +44,28 @@ class SiteBase(ABC):
         """
         윈도우에서 사용이 가능한 파일 명으로 변경
         """
-        path = re.sub(r"NEW\t+", "", path)
+        title = re.sub(r"NEW\t+", "", title)
 
-        path = path.replace("\n", "")
-        path = re.sub(r"\t.*$", "", path)
-        path = (
-            path.replace(":", "")
+        title = title.replace("\n", "")
+        title = re.sub(r"\t.*$", "", title)
+        title = (
+            title.replace(":", "")
             .replace("?", "")
             .replace("/", "")
             .replace("!", "")
             .replace("\\", "")
         )
-        path = path.replace("「", " ").replace("」", "").replace(".", "")
-        path = path.replace("<", "").replace(">", "")
+        title = title.replace("「", " ").replace("」", "").replace(".", "")
+        title = title.replace("<", "").replace(">", "")
 
-        path = path.strip()
-        return path
+        title = title.strip()
+        return title
 
-    def dowload_path(self, base_path: str, title: str) -> str:
-        path = os.path.join(base_path, self.strip_file_path(title))
+    def download_path_init(self, base_path: str, title: str) -> str:
+        path = os.path.join(base_path, self.strip_title_for_path(title))
         pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+        self.path = path
         return path
 
+    def download_thumbnail(self, url, file_path):
+        self.parent.download_thumbnail(url, file_path)
