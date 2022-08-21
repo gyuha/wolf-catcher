@@ -1,7 +1,11 @@
+import os
+import PySide6
 import importlib
 import time
 from PySide6.QtWidgets import QWidget
-from PySide6.QtCore import QObject, QThread, Signal, Slot
+from PySide6 import QtGui
+from PySide6.QtCore import QObject, QThread, Signal, Slot, QSize, Qt
+from src.site.TitleInfo import TitleInfo
 from src.site.browser.BrowserGet import BrowserGet, GET_STATE, GET_TYPE
 from src.site.SiteLoader import SiteLoader
 from ui.Ui_DownloadItem import Ui_DownloadItem
@@ -34,9 +38,9 @@ class DownloadItem(QWidget):
         self.name = site_config["name"]
         self.url = site_config["url"] + site_config["url_format"]["list"]["filter"]
         self.url = self.url.format(self.id)
+        self.info = TitleInfo()
 
-        self.downloader = Downloader(site_config["url"])
-
+        self.__init_downloader()
         self.__init_connect()
         self.__init_site()
 
@@ -52,6 +56,11 @@ class DownloadItem(QWidget):
         self.site_loader = SiteLoader(self, self.site_config)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
+    
+    def __init_downloader(self):
+        self.downloader = Downloader(self.site_config["url"])
+        self.downloader.id = self.id
+        self.downloader.signals.download_state.connect(self.__on_download_state)
 
     def __on_site_loaded(self):
         """
@@ -106,9 +115,31 @@ class DownloadItem(QWidget):
         self.signals.remove_item.emit(self.key)
 
     def download_thumbnail(self, url: str, file_path: str):
-        self.downloader.id = self.id
+        if os.path.exists(file_path):
+            self.__thumbnail()
+            return
+
         self.downloader.add_image_files(DOWNLOAD_TYPE.THUMBNAIL, [[url, file_path]])
         self.downloader.download_run()
         # downloader.add_files(DOWNLOAD_TYPE.THUMBNAIL)
         # print('📢[DownloadItem.py:99]: ', file_path)
         # print('📢[DownloadItem.py:99]: ', url)
+    
+    def update_info(self, info: TitleInfo):
+        self.info = info
+        self.ui.title_label.setText(f'{self.id} : {info["title"]}')
+    
+    @Slot(int, DOWNLOAD_TYPE, int, int)
+    def __on_download_state(self, id, type, count, total):
+        if self.id != id:
+            return;
+        
+        if type == DOWNLOAD_TYPE.THUMBNAIL:
+            print('📢[DownloadItem.py:127]: ', DOWNLOAD_TYPE.THUMBNAIL)
+            self.__thumbnail()
+            return
+
+    def __thumbnail(self):
+        pixmap  = QtGui.QPixmap(self.site.thumbnail_path)
+        pixmap = pixmap.scaled(QSize(60, 60), aspectMode=Qt.KeepAspectRatio)
+        self.ui.image_label.setPixmap(pixmap)

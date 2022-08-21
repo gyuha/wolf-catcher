@@ -26,6 +26,7 @@ class SiteBase(ABC):
 
         self.path = "" # 다운로드 경로
         self.parent = None
+        self.thumbnail_path = ""
 
     @property
     def site_name(self):

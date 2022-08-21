@@ -24,7 +24,7 @@ HEADERS = {
 
 
 class DownloaderSignal(QObject):
-    download_state = Signal(int, DOWNLOAD_TYPE, int)
+    download_state = Signal(int, DOWNLOAD_TYPE, int, int)  # id, type, current, total
     download_error = Signal(str)
 
 
@@ -35,6 +35,7 @@ class Downloader:
         self.files = []
         self.downloading = False
         self.send_count = 0
+        self.tital_count = 0
         self.referer = referer
         self.id = None
 
@@ -47,6 +48,8 @@ class Downloader:
         cpus = cpu_count()
         pool = ThreadPool(cpus - 1)
         self.send_count = 0
+        self.tital_count = len(self.files)
+
         try:
             results = pool.imap_unordered(self.__download_url_to_file, self.files)
             for result in results:
@@ -55,11 +58,9 @@ class Downloader:
             pool.close()
             pool.join()
             self.downloading = False
-            print("📢[Downloader.py:49]: ", self.downloading)
 
     # @retry(exceptions=Exception, tries=5, delay=0)
     def __download_url_to_file(self, args: list) -> None:
-        print('📢[Downloader.py:63]: ', args)
         url, path = args[0], args[1]
 
         headers = HEADERS
@@ -84,7 +85,9 @@ class Downloader:
 
     def __download_state_emit(self):
         self.send_count = self.send_count + 1
-        self.signals.download_state.emit(self.id, self.send_count)
+        self.signals.download_state.emit(
+            self.id, self.type, self.send_count, self.tital_count
+        )
 
     def __save_file(self, path: str, response: Response):
         # pathlib.Path(path).mkdir(parents=True, exist_ok=True)

@@ -45,7 +45,6 @@ class Wfwf(SiteBase):
 
         thumbnail = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[2]/img').get_attribute('src')
 
-        self.download_thumbnail(thumbnail, os.path.join(self.path, "thumbnail.jpg"))
 
         info = self.title_info.info
         info["title"] = title
@@ -55,7 +54,11 @@ class Wfwf(SiteBase):
         info["series"] = series
         info["thumbnail"] = thumbnail
 
+        self.thumbnail_path = os.path.join(self.path, "thumbnail.jpg")
+
         self.title_info.save()
+        self.parent.update_info(info)
+        self.download_thumbnail(thumbnail, self.thumbnail_path)
 
         # self.browserDriver.set_url_info(
         #     url,

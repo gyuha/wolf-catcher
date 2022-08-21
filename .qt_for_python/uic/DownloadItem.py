@@ -116,7 +116,7 @@ public:
         sizePolicy.setHeightForWidth(progress_bar->sizePolicy().hasHeightForWidth());
         progress_bar->setSizePolicy(sizePolicy);
         progress_bar->setMaximumSize(QSize(150, 15));
-        progress_bar->setValue(24);
+        progress_bar->setValue(0);
 
         horizontalLayout_3->addWidget(progress_bar);
 
@@ -146,11 +146,11 @@ public:
     {
         DownloadItem->setWindowTitle(QCoreApplication::translate("DownloadItem", "Form", nullptr));
         image_label->setText(QString());
-        title_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
+        title_label->setText(QCoreApplication::translate("DownloadItem", "Loading", nullptr));
         folder_open_button->setText(QString());
         cancel_button->setText(QString());
         delete_button->setText(QString());
-        status_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
+        status_label->setText(QString());
     } // retranslateUi
 
 };

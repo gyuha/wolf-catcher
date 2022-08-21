@@ -97,7 +97,7 @@ class Ui_DownloadItem(object):
         sizePolicy.setHeightForWidth(self.progress_bar.sizePolicy().hasHeightForWidth())
         self.progress_bar.setSizePolicy(sizePolicy)
         self.progress_bar.setMaximumSize(QSize(150, 15))
-        self.progress_bar.setValue(24)
+        self.progress_bar.setValue(0)
 
         self.horizontalLayout_3.addWidget(self.progress_bar)
 
@@ -126,10 +126,10 @@ class Ui_DownloadItem(object):
     def retranslateUi(self, DownloadItem):
         DownloadItem.setWindowTitle(QCoreApplication.translate("DownloadItem", u"Form", None))
         self.image_label.setText("")
-        self.title_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
+        self.title_label.setText(QCoreApplication.translate("DownloadItem", u"Loading", None))
         self.folder_open_button.setText("")
         self.cancel_button.setText("")
         self.delete_button.setText("")
-        self.status_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
+        self.status_label.setText("")
     # retranslateUi
 
