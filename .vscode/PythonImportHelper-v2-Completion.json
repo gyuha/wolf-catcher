@@ -2126,7 +2126,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
-        "peekOfCode": "class GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)",
+        "peekOfCode": "class GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass GET_TYPE(Enum):\n    TITLE_INFO = 0\n    CHAPTER_INFO = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)",
         "detail": "src.site.browser.BrowserGet",
         "documentation": {}
     },
@@ -2135,7 +2135,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
-        "peekOfCode": "class GET_TYPE(Enum):\n    CHAPTER_INFO = 0\n    IMAGE_LIST = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, parent, browser: webdriver):\n        QThread.__init__(self, parent)\n        self.__parent = parent",
+        "peekOfCode": "class GET_TYPE(Enum):\n    TITLE_INFO = 0\n    CHAPTER_INFO = 1\nclass BrowserGetSignals(QObject):\n    get_state = Signal(GET_TYPE, GET_STATE)\nclass BrowserGet(QThread):\n    signals = BrowserGetSignals()\n    def __init__(self, parent, browser: webdriver):\n        QThread.__init__(self, parent)\n        self.__parent = parent",
         "detail": "src.site.browser.BrowserGet",
         "documentation": {}
     },
@@ -2207,7 +2207,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config: Config):\n        super().__init__(config)\n    def get_title_id(self, url: str) -> str:\n        return \"\"\n    def get_chapter_info_parser(self, driver: webdriver):\n        title = driver.find_element(By.XPATH, '//*[@id=\"content\"]/div[2]/div[3]/h1').text.strip()\n        if not title:\n            raise Exception('제목을 찾을 수 없습니다.')\n        self.path = self.download_path_init(self.download_path, title)",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config: Config):\n        super().__init__(config)\n        self.chapter_list = []\n        self.current_chapter = 0\n        self.chapter_images = []\n    def get_title_id(self, url: str) -> str:\n        return \"\"\n    def get_chapter_info_parser(self, driver: webdriver):\n        title = driver.find_element(",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },

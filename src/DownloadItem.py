@@ -36,7 +36,7 @@ class DownloadItem(QWidget):
             return
 
         self.name = site_config["name"]
-        self.url = site_config["url"] + site_config["url_format"]["list"]["filter"]
+        self.url = site_config["url"] + site_config["url_format"]["title"]["filter"]
         self.url = self.url.format(self.id)
         self.info = TitleInfo()
 
@@ -77,17 +77,34 @@ class DownloadItem(QWidget):
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
         self.browserGet.signals.get_state.connect(self.__on_get_state)
-        self.__get_url_capter_info()
+        self.__get_url_title_info()
 
-    def __get_url_capter_info(self):
+    def __get_url_title_info(self):
         """
-        챕터 내용 읽기
+        타이틀 읽기 -> 챕터 목록
         """
         self.browserGet.condition(
-            GET_TYPE.CHAPTER_INFO,
+            GET_TYPE.TITLE_INFO,
             self.url,
-            self.site_config["url_format"]["list"]["visible_condition"]["type"],
-            self.site_config["url_format"]["list"]["visible_condition"]["text"],
+            self.site_config["url_format"]["title"]["visible_condition"]["type"],
+            self.site_config["url_format"]["title"]["visible_condition"]["text"],
+        )
+        self.browserGet.start()
+    
+    def __get_chapter_info(self):
+        """
+        챕터 내용 읽기 -> 이미지 목록
+        """
+        url = self.site.get_current_url()
+        print('📢[DownloadItem.py:99]: ', url)
+        if url is None:
+            print('📢[DownloadItem.py:97]', "!!!! 끝")
+            return
+        self.browserGet.condition(
+            GET_TYPE.CHAPTER_INFO,
+            url,
+            self.site_config["url_format"]["chapter"]["visible_condition"]["type"],
+            self.site_config["url_format"]["chapter"]["visible_condition"]["text"]
         )
         self.browserGet.start()
 
@@ -109,10 +126,13 @@ class DownloadItem(QWidget):
             # self.ui.delete_button.setEnabled(True)
 
     def __on_get_done(self, type: GET_TYPE):
-        if type == GET_TYPE.CHAPTER_INFO:
+        if type == GET_TYPE.TITLE_INFO:
             self.site.get_chapter_info_parser(self.browser)
-            pass
-        elif type == GET_TYPE.IMAGE_LIST:
+            print('📢[DownloadItem.py:131]')
+            self.__get_chapter_info()
+            return
+        elif type == GET_TYPE.CHAPTER_INFO:
+            self.site.get_img_list(self.browser)
             pass
 
     def __on_click_delete_button(self):

@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         if site_config is None:
             toast(self, "사이트를 찾을 수 없습니다.")
             return
-        mat = re.match(site_config["url_format"]["list"]["re"], url)
+        mat = re.match(site_config["url_format"]["title"]["re"], url)
         if mat:
             return mat.group(1), site_config
         return None, None

@@ -13,13 +13,13 @@ site:
     filter:
       - https://wfwf[0-9]+.com/cl\?toon=[0-9]+
     url_format:
-      list:
+      title:
         filter: /cl?toon={0}
         re: .*/cl\?toon=\D*(\d+)
         visible_condition:
           type: xpath
           text: //*[@id="content"]/div[2]/div[3]/h1
-      capter:
+      chapter:
         filter: /cv?toon={0}&num={1}
         re: /cv?toon=(\d+)
         visible_condition:
