@@ -1,3 +1,4 @@
+import os
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 from util.Config import Config
 from selenium import webdriver
@@ -38,17 +39,21 @@ class Wfwf(SiteBase):
         tags = text.split(":")[1].strip().split("/")
 
         text = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[3]/div[1]').text
-        print('📢[Wfwf.py:28]: ', tags)
-        print('📢[Wfwf.py:32]: ', text)
-        thumbnail = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[2]/img').get_attribute('src')
-        print('📢[Wfwf.py:28]: ', thumbnail)
+        sp = text.split("작가 :")
+        author = sp[1].strip()
+        series = sp[0].split("연재일 :")[1].strip()
 
-        self.download_thumbnail(thumbnail, "")
+        thumbnail = driver.find_element(By.XPATH, '/html/body/section/div[2]/div[2]/img').get_attribute('src')
+
+        self.download_thumbnail(thumbnail, os.path.join(self.path, "thumbnail.jpg"))
 
         info = self.title_info.info
         info["title"] = title
         info["tags"] = tags
         info["id"] = self.id
+        info["author"] = author
+        info["series"] = series
+        info["thumbnail"] = thumbnail
 
         self.title_info.save()
 

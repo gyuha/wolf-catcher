@@ -6,7 +6,6 @@ from src.site.TitleInfo import TitleInfo
 from src.util.file_name import strip_file_path
 from util.Config import Config
 from selenium import webdriver
-from util.SeleniumWorker import SeleniumWorker
 from selenium.webdriver.common.by import By
 from src.site.browser.BrowserDriver import BrowserDriver
 
