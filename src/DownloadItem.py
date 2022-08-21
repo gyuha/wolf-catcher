@@ -9,6 +9,8 @@ from src.site.SiteBase import SiteBase
 from util.Config import Config
 from plyer import notification
 
+from util.Downloader import DOWNLOAD_TYPE, Downloader
+
 class DownloadItemSignals(QObject):
     remove_item = Signal(str)
 
@@ -95,6 +97,8 @@ class DownloadItem(QWidget):
         self.signals.remove_item.emit(self.key)
 
 
-    def download_thumbnail(self, url, file_path):
-        print('📢[DownloadItem.py:99]: ', file_path)
-        print('📢[DownloadItem.py:99]: ', url)
+    def download_thumbnail(self, url: str, file_path: str):
+        downloader = Downloader()
+        downloader.add_files(DOWNLOAD_TYPE.THUMBNAIL) 
+        # print('📢[DownloadItem.py:99]: ', file_path)
+        # print('📢[DownloadItem.py:99]: ', url)

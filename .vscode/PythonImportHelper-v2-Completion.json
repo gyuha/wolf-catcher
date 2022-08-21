@@ -512,30 +512,6 @@
         "documentation": {}
     },
     {
-        "label": "QObject",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QThread",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "Signal",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
         "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -576,11 +552,11 @@
         "documentation": {}
     },
     {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
         "isExtraImport": true,
-        "detail": "util.Config",
+        "detail": "enum",
         "documentation": {}
     },
     {
@@ -653,14 +629,6 @@
         "description": "util.Config",
         "isExtraImport": true,
         "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
         "documentation": {}
     },
     {
@@ -713,22 +681,6 @@
     },
     {
         "label": "Options",
-        "importPath": "selenium.webdriver.chrome.options",
-        "description": "selenium.webdriver.chrome.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.chrome.options",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.firefox.options",
-        "description": "selenium.webdriver.firefox.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.firefox.options",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
         "importPath": "selenium.webdriver.firefox.options",
         "description": "selenium.webdriver.firefox.options",
         "isExtraImport": true,
@@ -757,22 +709,6 @@
         "description": "selenium.webdriver.support.ui",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support.ui",
-        "documentation": {}
-    },
-    {
-        "label": "WebDriverWait",
-        "importPath": "selenium.webdriver.support.ui",
-        "description": "selenium.webdriver.support.ui",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.ui",
-        "documentation": {}
-    },
-    {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
         "documentation": {}
     },
     {
@@ -824,14 +760,6 @@
         "documentation": {}
     },
     {
-        "label": "TimeoutException",
-        "importPath": "selenium.common.exceptions",
-        "description": "selenium.common.exceptions",
-        "isExtraImport": true,
-        "detail": "selenium.common.exceptions",
-        "documentation": {}
-    },
-    {
         "label": "visibility_of_element_located",
         "importPath": "selenium.webdriver.support.expected_conditions",
         "description": "selenium.webdriver.support.expected_conditions",
@@ -845,22 +773,6 @@
         "description": "selenium.webdriver.support.expected_conditions",
         "isExtraImport": true,
         "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "visibility_of_element_located",
-        "importPath": "selenium.webdriver.support.expected_conditions",
-        "description": "selenium.webdriver.support.expected_conditions",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "GetTimeoutException",
-        "importPath": "lib.exceptions",
-        "description": "lib.exceptions",
-        "isExtraImport": true,
-        "detail": "lib.exceptions",
         "documentation": {}
     },
     {
@@ -1643,40 +1555,6 @@
         "documentation": {}
     },
     {
-        "label": "Signals",
-        "importPath": "signal",
-        "description": "signal",
-        "isExtraImport": true,
-        "detail": "signal",
-        "documentation": {}
-    },
-    {
-        "label": "urllib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "urllib",
-        "description": "urllib",
-        "detail": "urllib",
-        "documentation": {}
-    },
-    {
-        "label": "asyncio",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "detail": "asyncio",
-        "documentation": {}
-    },
-    {
-        "label": "Queue",
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "isExtraImport": true,
-        "detail": "asyncio",
-        "documentation": {}
-    },
-    {
         "label": "BrowserGet",
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
@@ -1725,6 +1603,22 @@
         "documentation": {}
     },
     {
+        "label": "DOWNLOAD_TYPE",
+        "importPath": "util.Downloader",
+        "description": "util.Downloader",
+        "isExtraImport": true,
+        "detail": "util.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "Downloader",
+        "importPath": "util.Downloader",
+        "description": "util.Downloader",
+        "isExtraImport": true,
+        "detail": "util.Downloader",
+        "documentation": {}
+    },
+    {
         "label": "DownloadItem",
         "importPath": "DownloadItem",
         "description": "DownloadItem",
@@ -1754,6 +1648,23 @@
         "description": "util.message",
         "isExtraImport": true,
         "detail": "util.message",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "Queue",
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "isExtraImport": true,
+        "detail": "asyncio",
         "documentation": {}
     },
     {
@@ -2340,11 +2251,29 @@
         "documentation": {}
     },
     {
+        "label": "DOWNLOAD_TYPE",
+        "kind": 6,
+        "importPath": "src.util.Downloader",
+        "description": "src.util.Downloader",
+        "peekOfCode": "class DOWNLOAD_TYPE(Enum):\n    THUMBNAIL = 1\n    IMAGES = 2\nclass DOWNLOAD_TYPE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}",
+        "detail": "src.util.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "DOWNLOAD_TYPE",
+        "kind": 6,
+        "importPath": "src.util.Downloader",
+        "description": "src.util.Downloader",
+        "peekOfCode": "class DOWNLOAD_TYPE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(int, DOWNLOAD_TYPE, int)\n    download_error = Signal(str)",
+        "detail": "src.util.Downloader",
+        "documentation": {}
+    },
+    {
         "label": "DownloaderSignal",
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n    def add_files(self, path: str, urls: list, referer):",
+        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(int, DOWNLOAD_TYPE, int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self, referer: str):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n        self.referer",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -2353,7 +2282,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n    def add_files(self, path: str, urls: list, referer):\n        self.files = [];\n        for url in urls:\n            self.files.append([url, path, referer, len(self.files) + 1])",
+        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self, referer: str):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n        self.referer\n    def add_thumbnail(self, path: str, url: str) -> None:\n        self.type = DOWNLOAD_TYPE.THUMBNAIL\n        self.files = []",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -2362,7 +2291,7 @@
         "kind": 5,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self):\n        self.files = []",
+        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(int, DOWNLOAD_TYPE, int)\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self, referer: str):\n        self.files = []",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -2436,24 +2365,6 @@
         "description": "src.util.message",
         "peekOfCode": "def toast(self, text):\n    QToaster.showMessage(self, text, corner=QtCore.Qt.TopRightCorner, timeout=1000, closable=False)",
         "detail": "src.util.message",
-        "documentation": {}
-    },
-    {
-        "label": "SeleniumWorkerSignals",
-        "kind": 6,
-        "importPath": "src.util.SeleniumWorker",
-        "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorkerSignals(QObject):\n    url_get_state = Signal(int)\nclass SeleniumWorker(QThread):\n    signals = SeleniumWorkerSignals()\n    def __init__(self, parent):\n        super().__init__(parent)\n        self.config = Config()\n        self.__is_getting = False\n        self.__timeout = 5\n        self.__browser_type = self.config.setting[\"browser\"]",
-        "detail": "src.util.SeleniumWorker",
-        "documentation": {}
-    },
-    {
-        "label": "SeleniumWorker",
-        "kind": 6,
-        "importPath": "src.util.SeleniumWorker",
-        "description": "src.util.SeleniumWorker",
-        "peekOfCode": "class SeleniumWorker(QThread):\n    signals = SeleniumWorkerSignals()\n    def __init__(self, parent):\n        super().__init__(parent)\n        self.config = Config()\n        self.__is_getting = False\n        self.__timeout = 5\n        self.__browser_type = self.config.setting[\"browser\"]\n        self.__init_driver()\n    def __init_driver(self):",
-        "detail": "src.util.SeleniumWorker",
         "documentation": {}
     },
     {
