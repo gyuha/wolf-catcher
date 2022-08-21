@@ -40,6 +40,7 @@ class DownloadItem(QWidget):
         self.url = self.url.format(self.id)
         self.info = TitleInfo()
 
+        self.__init_text()
         self.__init_downloader()
         self.__init_connect()
         self.__init_site()
@@ -47,6 +48,9 @@ class DownloadItem(QWidget):
     def __init_connect(self):
         self.ui.delete_button.setEnabled(False)
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
+    
+    def __init_text(self):
+        self.ui.title_label.setText(self.id)
 
     @property
     def key(self):
@@ -119,6 +123,7 @@ class DownloadItem(QWidget):
             self.__thumbnail()
             return
 
+        self.downloader.id = self.id
         self.downloader.add_image_files(DOWNLOAD_TYPE.THUMBNAIL, [[url, file_path]])
         self.downloader.download_run()
         # downloader.add_files(DOWNLOAD_TYPE.THUMBNAIL)
@@ -129,17 +134,22 @@ class DownloadItem(QWidget):
         self.info = info
         self.ui.title_label.setText(f'{self.id} : {info["title"]}')
     
-    @Slot(int, DOWNLOAD_TYPE, int, int)
+    @Slot(str, DOWNLOAD_TYPE, int, int)
     def __on_download_state(self, id, type, count, total):
-        if self.id != id:
+        """
+        다운로드 완료 후 처리
+        """
+        print('📢[DownloadItem.py:137]: ', self.id)
+        print('📢[DownloadItem.py:138]: ', id)
+        if str(self.id) != str(id):
             return;
         
         if type == DOWNLOAD_TYPE.THUMBNAIL:
-            print('📢[DownloadItem.py:127]: ', DOWNLOAD_TYPE.THUMBNAIL)
             self.__thumbnail()
             return
 
     def __thumbnail(self):
+        print('📢[DownloadItem.py:145]: ', self.site.thumbnail_path)
         pixmap  = QtGui.QPixmap(self.site.thumbnail_path)
-        pixmap = pixmap.scaled(QSize(60, 60), aspectMode=Qt.KeepAspectRatio)
+        pixmap = pixmap.scaled(QSize(60, 60))
         self.ui.image_label.setPixmap(pixmap)

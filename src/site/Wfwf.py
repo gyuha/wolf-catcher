@@ -15,18 +15,9 @@ class Wfwf(SiteBase):
 
     def get_title_id(self, url: str) -> str:
         return ""
-    # @Slot(int)
-    # def url_get_state(self, state: int):
-    #     print("📢[Wfwf.py:15]: ", state)
-    #     title = self.browerDriver.browser.find_element(
-    #         "xpath", '//*[@id="content"]/div[2]/div[3]/h1'
-    #     ).text
-    #     print("📢[Wfwf.py:20]: ", title)
 
     def get_chapter_info_parser(self, driver: webdriver):
-        print('📢[Wfwf.py:26]', self.id)
         title = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1').text.strip()
-        print('📢[Wfwf.py:27]: ', title)
 
         if not title:
             raise Exception('제목을 찾을 수 없습니다.')
@@ -60,26 +51,15 @@ class Wfwf(SiteBase):
         self.parent.update_info(info)
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
-        # self.browserDriver.set_url_info(
-        #     url,
-        #     self.url_format["list"]["visible_condition"]["type"],
-        #     self.url_format["list"]["visible_condition"]["text"],
-        # )
-        # self.browserDriver.start()
-        # self.seleniumWorker.get_with_retry(
-        #     url,
-        #     self.url_format["list"]["visible_condition"]["type"],
-        #     self.url_format["list"]["visible_condition"]["text"]
-        # )
-        # browser = self.seleniumWorker.browser
-        # title = browser.find_element(
-        #     'xpath',
-        #     "//*[@id=\"content\"]/div[2]/div[3]/h1").text
-        # print('📢[Wfwf.py:20]: ', title)
-        # print('📢[Wfwf.py:18]', self.seleniumWorker.page_source)
+        self.get_chapter_list(driver)
 
-    def get_chapter_list(self, url):
-        print("📢[Wfwf.py:14]: ", url)
+
+    def get_chapter_list(self, driver: webdriver):
+        chapters = driver.find_elements(By.CSS_SELECTOR, "#content > div.box > div.group.left-box > div.webtoon-bbs-list.bbs-list > ul:nth-child(1) > li > a")
+        chapters = list(reversed(chapters))
+        for chapter in chapters:
+            print('📢[Wfwf.py:60]: ', chapter.get_attribute('href'))
+
 
     def get_img_list(self, url):
         print("📢[Wfwf.py:17]: ", url)

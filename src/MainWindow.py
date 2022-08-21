@@ -40,15 +40,14 @@ class MainWindow(QMainWindow):
 
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
-        print("📢[MainWindow.py:52]: ", config)
-        print("📢[MainWindow.py:52]: ", text)
         self.ui.statusbar.showMessage(text)
         # self.add_item_list(text, site);
     
     def get_button(self):
 
         # QToaster.showMessage(self, "test", corner=QtCore.Qt.TopLeftCorner, timeout=1000, closable=False)
-        url = "https://wfwf221.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
+        # url = "https://wfwf221.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
+        url = "https://wfwf221.com/cl?toon=16309&title=%B1%D8%B6%F4%B0%A1"
         self.add_item(url)
 
     def __url_validate(self, url) -> str:

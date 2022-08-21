@@ -24,7 +24,7 @@ HEADERS = {
 
 
 class DownloaderSignal(QObject):
-    download_state = Signal(int, DOWNLOAD_TYPE, int, int)  # id, type, current, total
+    download_state = Signal(str, DOWNLOAD_TYPE, int, int)  # id, type, current, total
     download_error = Signal(str)
 
 
@@ -84,8 +84,9 @@ class Downloader:
             print("Exception in download_url_to_file(): ", e)
 
     def __download_state_emit(self):
-        self.send_count = self.send_count + 1
-        self.signals.download_state.emit(
+            self.send_count = self.send_count + 1
+            print('📢[Downloader.py:90]: ', self.id, self.type, self.send_count, self.tital_count)
+            self.signals.download_state.emit(
             self.id, self.type, self.send_count, self.tital_count
         )
 
