@@ -26,7 +26,7 @@ class GET_TYPE(Enum):
 
 
 class BrowserGetSignals(QObject):
-    get_state = Signal(GET_TYPE, GET_STATE)
+    get_state = Signal(str, GET_TYPE, GET_STATE)
 
 
 class BrowserGet(QThread):
@@ -39,6 +39,7 @@ class BrowserGet(QThread):
         self.__browser = browser
         self.__timeout = self.config.setting["timeout"]
         self.state = GET_STATE.READY
+        self.id = ""
 
     @property
     def browser(self):
@@ -59,7 +60,7 @@ class BrowserGet(QThread):
         self.__condition = condition
 
     def __get(self):
-        self.signals.get_state.emit(self.__get_type, GET_STATE.LOADING)
+        self.signals.get_state.emit(self.id, self.__get_type, GET_STATE.LOADING)
         self.get_state = GET_STATE.LOADING
 
         self.__browser.get(self.__url)
@@ -69,9 +70,9 @@ class BrowserGet(QThread):
             wait.until(
                 visibility_of_element_located((self.__find_by, self.__condition))
             )
-            self.signals.get_state.emit(self.__get_type, GET_STATE.DONE)
+            self.signals.get_state.emit(self.id, self.__get_type, GET_STATE.DONE)
         except TimeoutException:
-            self.signals.get_state.emit(self.__get_type, GET_STATE.ERROR)
+            self.signals.get_state.emit(self.id, self.__get_type, GET_STATE.ERROR)
             raise GetTimeoutException
         finally:
             self.get_state = GET_STATE.READY

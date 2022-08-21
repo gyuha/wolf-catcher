@@ -1,4 +1,5 @@
 import os
+import pathlib
 import PySide6
 import importlib
 import time
@@ -13,7 +14,7 @@ from src.site.SiteBase import SiteBase
 from util.Config import Config
 from plyer import notification
 
-from util.Downloader import DOWNLOAD_TYPE, Downloader
+from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
 
 
 class DownloadItemSignals(QObject):
@@ -76,6 +77,7 @@ class DownloadItem(QWidget):
 
         self.browser = self.site.browser
         self.browserGet = BrowserGet(self, self.browser)
+        self.browserGet.id = self.id
         self.browserGet.signals.get_state.connect(self.__on_get_state)
         self.__get_url_title_info()
 
@@ -95,10 +97,9 @@ class DownloadItem(QWidget):
         """
         챕터 내용 읽기 -> 이미지 목록
         """
-        url = self.site.get_current_url()
-        print('📢[DownloadItem.py:99]: ', url)
-        if url is None:
-            print('📢[DownloadItem.py:97]', "!!!! 끝")
+        subject, url = self.site.get_current_chapter()
+        if subject is None:
+            self.__set_done()
             return
         self.browserGet.condition(
             GET_TYPE.CHAPTER_INFO,
@@ -108,8 +109,10 @@ class DownloadItem(QWidget):
         )
         self.browserGet.start()
 
-    @Slot(GET_TYPE, GET_STATE)
-    def __on_get_state(self, type: GET_TYPE, state: GET_STATE):
+    @Slot(str, GET_TYPE, GET_STATE)
+    def __on_get_state(self, id: str, type: GET_TYPE, state: GET_STATE):
+        if self.id != id:
+            return
         if state == GET_STATE.ERROR:
             notification.notify(
                 title="안내",
@@ -117,7 +120,6 @@ class DownloadItem(QWidget):
                 app_name="Wolf",
                 timeout=3,  # seconds
             )
-            print("📢[DownloadItem.py:73]: ", GET_STATE.DONE)
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
@@ -128,11 +130,13 @@ class DownloadItem(QWidget):
     def __on_get_done(self, type: GET_TYPE):
         if type == GET_TYPE.TITLE_INFO:
             self.site.get_chapter_info_parser(self.browser)
-            print('📢[DownloadItem.py:131]')
             self.__get_chapter_info()
+            self.ui.progress_bar.setValue(self.site.progress)
             return
         elif type == GET_TYPE.CHAPTER_INFO:
             self.site.get_img_list(self.browser)
+            self.__download_chapter_images()
+            self.ui.progress_bar.setValue(self.site.progress)
             pass
 
     def __on_click_delete_button(self):
@@ -150,26 +154,68 @@ class DownloadItem(QWidget):
         # print('📢[DownloadItem.py:99]: ', file_path)
         # print('📢[DownloadItem.py:99]: ', url)
     
+    def __download_chapter_images(self):
+        self.downloader.id = self.id
+        chapter_title, _ = self.site.get_current_chapter()
+        chapter_images = self.site.chapter_images
+
+        file_path = os.path.join(
+            self.site.path, 
+            self.site.strip_title_for_path(chapter_title))
+        pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
+
+        image_list = []
+        image_num = 0
+        for image in chapter_images:
+            image_num += 1
+            file_path = os.path.join(
+                self.site.path, 
+                self.site.strip_title_for_path(chapter_title),
+                f'{image_num:03d}.jpg')
+            image_list.append([image, file_path])
+        self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
+        self.downloader.download_run()
+        
+
+    
     def update_info(self, info: TitleInfo):
         self.info = info
         self.ui.title_label.setText(f'{self.id} : {info["title"]}')
     
-    @Slot(str, DOWNLOAD_TYPE, int, int)
-    def __on_download_state(self, id, type, count, total):
+    @Slot(str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int)
+    def __on_download_state(self, id, type, state, count, total):
         """
         다운로드 완료 후 처리
         """
-        print('📢[DownloadItem.py:137]: ', self.id)
-        print('📢[DownloadItem.py:138]: ', id)
         if str(self.id) != str(id):
             return;
         
         if type == DOWNLOAD_TYPE.THUMBNAIL:
             self.__thumbnail()
             return
+        
+        if type == DOWNLOAD_TYPE.IMAGES:
+            print('📢[DownloadItem.py:198]: ', f'{count}/{total}')
+            self.ui.status_label.setText(f'{count}/{total}')
+            if state == DOWNLOAD_STATE.DONE:
+                self.__on_download_done()
+            return
+
+    def __on_download_done(self):
+        self.site.set_next_chapter()
+        if self.site.progress > 100:
+            self.__set_done()
+            return;
+        self.__get_chapter_info()
+    
+    def __set_done(self):
+        """
+        완료 처리
+        """
+        self.ui.status_label.setText("완료")
+        self.ui.progress_bar.setValue(100)
 
     def __thumbnail(self):
-        print('📢[DownloadItem.py:145]: ', self.site.thumbnail_path)
         pixmap  = QtGui.QPixmap(self.site.thumbnail_path)
         pixmap = pixmap.scaled(QSize(60, 60))
         self.ui.image_label.setPixmap(pixmap)

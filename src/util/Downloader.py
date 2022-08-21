@@ -24,7 +24,9 @@ HEADERS = {
 
 
 class DownloaderSignal(QObject):
-    download_state = Signal(str, DOWNLOAD_TYPE, int, int)  # id, type, current, total
+    download_state = Signal(
+        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int
+    )  # id, type, current, total
     download_error = Signal(str)
 
 
@@ -35,13 +37,14 @@ class Downloader:
         self.files = []
         self.downloading = False
         self.send_count = 0
-        self.tital_count = 0
+        self.total_count = 0
         self.referer = referer
         self.id = None
 
     def add_image_files(self, type: DOWNLOAD_TYPE, image_list: list) -> None:
         self.type = type
         self.files = image_list
+        self.total_count = len(self.files)
 
     def download_run(self) -> None:
         self.downloading = True
@@ -52,12 +55,19 @@ class Downloader:
 
         try:
             results = pool.imap_unordered(self.__download_url_to_file, self.files)
-            for result in results:
-                print("url:", result)
+            # for result in results:
+            #     print("url:", result)
         finally:
             pool.close()
             pool.join()
             self.downloading = False
+            self.signals.download_state.emit(
+                self.id,
+                self.type,
+                DOWNLOAD_STATE.DONE,
+                self.send_count,
+                self.total_count,
+            )
 
     # @retry(exceptions=Exception, tries=5, delay=0)
     def __download_url_to_file(self, args: list) -> None:
@@ -84,10 +94,9 @@ class Downloader:
             print("Exception in download_url_to_file(): ", e)
 
     def __download_state_emit(self):
-            self.send_count = self.send_count + 1
-            print('📢[Downloader.py:90]: ', self.id, self.type, self.send_count, self.tital_count)
-            self.signals.download_state.emit(
-            self.id, self.type, self.send_count, self.tital_count
+        self.send_count = self.send_count + 1
+        self.signals.download_state.emit(
+            self.id, self.type, DOWNLOAD_STATE.DOING, self.send_count, self.total_count
         )
 
     def __save_file(self, path: str, response: Response):

@@ -14,6 +14,7 @@ class Wfwf(SiteBase):
 
         self.chapter_list = []
         self.current_chapter = 0
+        self.total_chapter = 0
         self.chapter_images = []
 
     def get_title_id(self, url: str) -> str:
@@ -67,13 +68,23 @@ class Wfwf(SiteBase):
         print('📢[Wfwf.py:66]')
 
     def get_chapter_list(self, driver: webdriver):
+        driver.execute_script('$(".badge").remove()')
+        driver.execute_script('$(".date").remove()')
         chapters = driver.find_elements(
             By.CSS_SELECTOR,
             "#content > div.box > div.group.left-box > div.webtoon-bbs-list.bbs-list > ul:nth-child(1) > li > a",
         )
+        self.total_chapter = len(chapters)
         chapters = list(reversed(chapters))
         for chapter in chapters:
-            self.chapter_list.append(chapter.get_attribute("href"))
+            href = chapter.get_attribute("href")
+            subject = chapter.find_element(By.CLASS_NAME, "list-box").text
+            sp = subject.split("\n")
+            subject = f'{sp[0].strip().zfill(3)}-{sp[1].strip()}'
+            self.chapter_list.append([
+                subject,
+                href
+            ])
 
     def get_img_list(self, driver: webdriver):
         images = driver.find_elements(By.CSS_SELECTOR,
@@ -81,13 +92,17 @@ class Wfwf(SiteBase):
         )
         for image in images:
             self.chapter_images.append(image.get_attribute("src"))
-        print('📢[Wfwf.py:84]: ', self.chapter_images)
+    
+    def set_next_chapter(self):
+        self.current_chapter += 1
+        self.title_info.info["skip"] = self.current_chapter
+        self.title_info.save()
 
-    def get_current_url(self):
-        if self.current_chapter >= len(self.chapter_list):
-            return None
+    def get_current_chapter(self):
+        if self.current_chapter >= self.total_chapter:
+            return [None, None]
         return self.chapter_list[self.current_chapter]
 
     @property
     def progress(self):
-        return int(self.current_chapter / self.total_chapter * 100)
+        return int((self.current_chapter + 1) / self.total_chapter * 100)
