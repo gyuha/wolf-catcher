@@ -52,6 +52,7 @@ class DownloadItem(QWidget):
 
     def __init_text(self):
         self.ui.title_label.setText(self.id)
+        self.ui.status_label.setText("정보 조회 중")
 
     @property
     def key(self):
@@ -169,14 +170,18 @@ class DownloadItem(QWidget):
 
         image_list = []
         image_num = 0
+        title_path = os.path.join(
+                self.site.path,
+                self.site.strip_title_for_path(chapter_title)
+            )
         for image in chapter_images:
             image_num += 1
             file_path = os.path.join(
-                self.site.path,
-                self.site.strip_title_for_path(chapter_title),
-                f"{image_num:03d}.jpg",
+                title_path,
+                f"{image_num:03d}.jpg"
             )
             image_list.append([image, file_path])
+        self.downloader.set_title_path(title_path)
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
 
@@ -197,9 +202,12 @@ class DownloadItem(QWidget):
             return
 
         if type == DOWNLOAD_TYPE.IMAGES:
-            # print("📢[DownloadItem.py:198]: ", f"{count}/{total}")
-            # self.ui.status_label.setText(f"{count}/{total}")
+            if state == DOWNLOAD_STATE.COMPRESS:
+                self.ui.status_label.setText("압축중")
+                return
+                
             self.ui.progress_bar.setValue(int(float(count)/float(total) * 100))
+
             if state == DOWNLOAD_STATE.DONE:
                 self.__on_download_done()
             return
