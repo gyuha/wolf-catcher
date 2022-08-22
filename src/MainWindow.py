@@ -79,8 +79,9 @@ class MainWindow(QMainWindow):
         self.item_dict[site_config["name"] + id] = None # 임시로 미리 등록 해 준다.
         widget = DownloadItem(id, site_config)
 
-        widget.signals.remove_item.connect(self.remove_item)
-        widget.signals.download_state.connect(self.__on_download_state)
+        if self.item_counter == 0:
+            widget.signals.remove_item.connect(self.remove_item)
+            widget.signals.download_state.connect(self.__on_download_state)
 
         title_item = QListWidgetItem(self.ui.item_list)
         self.item_dict[widget.key] = title_item
@@ -88,7 +89,7 @@ class MainWindow(QMainWindow):
         self.ui.item_list.addItem(title_item)
         self.ui.item_list.setItemWidget(title_item, widget)
         self.item_counter += 1
-        if self.item_counter == 1:
+        if self.__check_download_possible():
             self.__start_download()
 
     @Slot(str)
@@ -103,16 +104,37 @@ class MainWindow(QMainWindow):
         self.item_dict.clear()
     
     @Slot(str, DOWNLOAD_ITEM_STATE)
-    def __on_download_state(self, id: str, state: DOWNLOAD_ITEM_STATE):
+    def __on_download_state(self, key: str, state: DOWNLOAD_ITEM_STATE):
+        print('📢[MainWindow.py:107]: ', key)
+        print('📢[MainWindow.py:108]: ', self.current_key)
+        if self.current_key != key:
+            return
+        print('📢[MainWindow.py:109]: ', state)
         if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
+            print('📢[MainWindow.py:114] !!!!')
             self.__start_download()
     
-    def __start_download(self):
+    def __check_download_possible(self):
+        """
+        현재 다운로드 중인게 있는지 체크
+        """
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
             if widget is not None:
+                if widget.state == DOWNLOAD_ITEM_STATE.DOING:
+                    return False
+            return True
+    
+    def __start_download(self):
+        print('📢[MainWindow.py:129]: ', self.ui.item_list.count())
+        for i in range(self.ui.item_list.count()):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                print('📢[MainWindow.py:133]: ', widget.state)
                 if widget.state == DOWNLOAD_ITEM_STATE.READY:
+                    self.current_key = widget.key
                     widget.start()
                     break;
 

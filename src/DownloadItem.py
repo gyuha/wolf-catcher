@@ -62,7 +62,7 @@ class DownloadItem(QWidget):
 
     def __init_text(self):
         self.ui.title_label.setText(self.id)
-        self.ui.status_label.setText("정보 조회 중")
+        self.ui.status_label.setText("대기")
 
     @property
     def key(self):
@@ -73,6 +73,7 @@ class DownloadItem(QWidget):
         self.site_loader = SiteLoader(self, self.site_config)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
+        self.ui.status_label.setText("정보 조회 중")
 
     def __init_downloader(self):
         self.downloader = Downloader(self, self.site_config["url"])
@@ -133,7 +134,7 @@ class DownloadItem(QWidget):
                 timeout=3,  # seconds
             )
             self.state = DOWNLOAD_ITEM_STATE.ERROR
-            self.signals.download_state.emit(self.id, self.state)
+            self.signals.download_state.emit(self.key, self.state)
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
@@ -234,8 +235,8 @@ class DownloadItem(QWidget):
         self.ui.status_label.setText("완료")
         self.ui.progress_bar.setValue(100)
 
-        self.state = DOWNLOAD_STATE.DONE
-        self.signals.download_state.emit(self.id, self.state)
+        self.state = DOWNLOAD_ITEM_STATE.DONE
+        self.signals.download_state.emit(self.key, self.state)
 
     def __thumbnail(self):
         pixmap = QtGui.QPixmap(self.site.thumbnail_path)

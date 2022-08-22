@@ -1,6 +1,6 @@
 setting:
   browser: firefox
-  headless: true
+  headless: false
   tries: 5
   timeout: 10
 site:
