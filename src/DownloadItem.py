@@ -1,3 +1,4 @@
+from enum import Enum
 import os
 import pathlib
 import PySide6
@@ -15,6 +16,12 @@ from util.Config import Config
 from plyer import notification
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
+
+
+class DOWNLOAD_ITEM_STATE(Enum):
+    READY = 0
+    DOING = 1
+    DONE = 2
 
 
 class DownloadItemSignals(QObject):
@@ -44,7 +51,8 @@ class DownloadItem(QWidget):
         self.__init_text()
         self.__init_downloader()
         self.__init_connect()
-        self.__init_site()
+        self.state = DOWNLOAD_ITEM_STATE.READY
+        # self.__init_site()
 
     def __init_connect(self):
         self.ui.delete_button.setEnabled(False)
@@ -58,7 +66,8 @@ class DownloadItem(QWidget):
     def key(self):
         return self.name + self.id
 
-    def __init_site(self):
+    def start(self):
+        self.state = DOWNLOAD_ITEM_STATE.DOING
         self.site_loader = SiteLoader(self, self.site_config)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
@@ -139,12 +148,10 @@ class DownloadItem(QWidget):
             self.__download_chapter_images()
             self.__set_status_text()
             pass
-    
+
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
-        self.ui.status_label.setText(
-            f'[{self.site.total_chapter}] {subject}'
-        )
+        self.ui.status_label.setText(f"[{self.site.total_chapter}] {subject}")
 
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
@@ -171,15 +178,11 @@ class DownloadItem(QWidget):
         image_list = []
         image_num = 0
         title_path = os.path.join(
-                self.site.path,
-                self.site.strip_title_for_path(chapter_title)
-            )
+            self.site.path, self.site.strip_title_for_path(chapter_title)
+        )
         for image in chapter_images:
             image_num += 1
-            file_path = os.path.join(
-                title_path,
-                f"{image_num:03d}.jpg"
-            )
+            file_path = os.path.join(title_path, f"{image_num:03d}.jpg")
             image_list.append([image, file_path])
         self.downloader.set_title_path(title_path)
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
@@ -205,8 +208,8 @@ class DownloadItem(QWidget):
             if state == DOWNLOAD_STATE.COMPRESS:
                 self.ui.status_label.setText("압축중")
                 return
-                
-            self.ui.progress_bar.setValue(int(float(count)/float(total) * 100))
+
+            self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
 
             if state == DOWNLOAD_STATE.DONE:
                 self.__on_download_done()

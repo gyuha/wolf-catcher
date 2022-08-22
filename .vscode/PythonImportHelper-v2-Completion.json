@@ -625,6 +625,14 @@
         "documentation": {}
     },
     {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
         "label": "Config",
         "importPath": "util.Config",
         "description": "util.Config",
@@ -1701,6 +1709,14 @@
         "documentation": {}
     },
     {
+        "label": "DOWNLOAD_ITEM_STATE",
+        "importPath": "DownloadItem",
+        "description": "DownloadItem",
+        "isExtraImport": true,
+        "detail": "DownloadItem",
+        "documentation": {}
+    },
+    {
         "label": "DownloadItem",
         "importPath": "DownloadItem",
         "description": "DownloadItem",
@@ -2432,6 +2448,15 @@
         "documentation": {}
     },
     {
+        "label": "DOWNLOAD_ITEM_STATE",
+        "kind": 6,
+        "importPath": "src.DownloadItem",
+        "description": "src.DownloadItem",
+        "peekOfCode": "class DOWNLOAD_ITEM_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\nclass DownloadItemSignals(QObject):\n    remove_item = Signal(str)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()",
+        "detail": "src.DownloadItem",
+        "documentation": {}
+    },
+    {
         "label": "DownloadItemSignals",
         "kind": 6,
         "importPath": "src.DownloadItem",
@@ -2454,7 +2479,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.init_connect()\n        self.init_slot()\n        self.item_dict: dict[str, QListWidgetItem] = {}",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()\n        self.__init_slot()\n        self.item_dict: dict[str, QListWidgetItem] = {}",
         "detail": "src.MainWindow",
         "documentation": {}
     },

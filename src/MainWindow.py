@@ -1,8 +1,10 @@
 import re
+import threading
+import time
 from PySide6 import QtCore
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
-from DownloadItem import DownloadItem
+from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
 
 from ui.Ui_MainWindow import Ui_MainWindow
@@ -24,19 +26,24 @@ class MainWindow(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.init_connect()
-        self.init_slot()
+        self.__init_connect()
+        self.__init_slot()
         self.item_dict: dict[str, QListWidgetItem] = {}
         self.item_counter = 0
 
+        self.__init_worker()
         # self.ui.item_list.setItemWidget()
 
-    def init_connect(self):
+    def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
 
-    def init_slot(self):
+    def __init_slot(self):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
+    
+    def __init_worker(self):
+        worker_thread = threading.Thread(target=self.__worker)
+        worker_thread.start()
 
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
@@ -96,5 +103,17 @@ class MainWindow(QMainWindow):
     def clear_item_list(self):
         self.ui.item_list.clear()
         self.item_dict.clear()
+    
+    def __worker(self):
+        while True:
+            for key in self.item_dict:
+                item = self.item_dict[key]
+                widget = self.ui.item_list.itemWidget(self.ui.item_list.row(item))
+                print('📢[MainWindow.py:111]: ', widget)
+                if widget.state == DOWNLOAD_ITEM_STATE.DONE:
+                    self.remove_item(key)
+                elif widget.state == DOWNLOAD_ITEM_STATE.READY:
+                    item.start()
+            time.sleep(0.1)
 
     # endregion
