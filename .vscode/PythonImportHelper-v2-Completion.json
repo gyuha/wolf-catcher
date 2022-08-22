@@ -1807,6 +1807,15 @@
         "documentation": {}
     },
     {
+        "label": "Ui_MainWindo",
+        "kind": 6,
+        "importPath": ".qt_for_python.uic.MainWindow",
+        "description": ".qt_for_python.uic.MainWindow",
+        "peekOfCode": "class Ui_MainWindow\n{\npublic:\n    QAction *action_always_top;\n    QAction *action_clipboard_toggle;\n    QAction *action_exit;\n    QWidget *centralwidget;\n    QVBoxLayout *verticalLayout;\n    QListWidget *item_list;\n    QHBoxLayout *horizontalLayout;",
+        "detail": ".qt_for_python.uic.MainWindow",
+        "documentation": {}
+    },
+    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.Scripts.activate_this",
