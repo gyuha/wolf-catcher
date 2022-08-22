@@ -1302,14 +1302,6 @@
         "documentation": {}
     },
     {
-        "label": "QFrame",
-        "importPath": "PySide6.QtWidgets",
-        "description": "PySide6.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide6.QtWidgets",
-        "documentation": {}
-    },
-    {
         "label": "QHBoxLayout",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -1815,24 +1807,6 @@
         "documentation": {}
     },
     {
-        "label": "Ui_DownloadIte",
-        "kind": 6,
-        "importPath": ".qt_for_python.uic.DownloadItem",
-        "description": ".qt_for_python.uic.DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QFrame *line;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;",
-        "detail": ".qt_for_python.uic.DownloadItem",
-        "documentation": {}
-    },
-    {
-        "label": "Ui_MainWindo",
-        "kind": 6,
-        "importPath": ".qt_for_python.uic.MainWindow",
-        "description": ".qt_for_python.uic.MainWindow",
-        "peekOfCode": "class Ui_MainWindow\n{\npublic:\n    QAction *action_always_top;\n    QAction *action_clipboard_toggle;\n    QAction *action_exit;\n    QWidget *centralwidget;\n    QVBoxLayout *verticalLayout;\n    QListWidget *item_list;\n    QHBoxLayout *horizontalLayout;",
-        "detail": ".qt_for_python.uic.MainWindow",
-        "documentation": {}
-    },
-    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.Scripts.activate_this",
@@ -2314,7 +2288,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
         "description": "src.ui.Ui_DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        DownloadItem.setStyleSheet(u\"#DownloadItem {\\n\"\n\" border-top: 1px solid #ccc;\\n\"\n\"}\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)",
+        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        DownloadItem.setStyleSheet(u\"\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)",
         "detail": "src.ui.Ui_DownloadItem",
         "documentation": {}
     },

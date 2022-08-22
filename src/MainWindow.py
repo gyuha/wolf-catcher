@@ -33,6 +33,7 @@ class MainWindow(QMainWindow):
         self.__init_slot()
         self.item_dict: dict[str, QListWidgetItem] = {}
         self.item_counter = 0
+        self.ui.item_list.setStyleSheet( "QListWidget::item { border-bottom: 1px solid #eee; }" );
 
 
     def __init_connect(self):

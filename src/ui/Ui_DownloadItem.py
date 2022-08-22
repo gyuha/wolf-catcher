@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QProgressBar, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QProgressBar,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 import resources_rc
 
 class Ui_DownloadItem(object):
@@ -25,9 +25,7 @@ class Ui_DownloadItem(object):
         if not DownloadItem.objectName():
             DownloadItem.setObjectName(u"DownloadItem")
         DownloadItem.resize(592, 70)
-        DownloadItem.setStyleSheet(u"#DownloadItem {\n"
-" border-top: 1px solid #ccc;\n"
-"}")
+        DownloadItem.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -36,19 +34,15 @@ class Ui_DownloadItem(object):
         self.image_label.setObjectName(u"image_label")
         self.image_label.setMinimumSize(QSize(60, 60))
         self.image_label.setMaximumSize(QSize(60, 60))
-        self.image_label.setAutoFillBackground(True)
+        self.image_label.setAutoFillBackground(False)
+        self.image_label.setStyleSheet(u"#image_label {\n"
+" background-color: #eee;\n"
+"}")
 
         self.horizontalLayout.addWidget(self.image_label)
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.line = QFrame(DownloadItem)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.HLine)
-        self.line.setFrameShadow(QFrame.Sunken)
-
-        self.verticalLayout.addWidget(self.line)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.title_label = QLabel(DownloadItem)
