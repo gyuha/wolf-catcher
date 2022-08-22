@@ -31,8 +31,6 @@ class MainWindow(QMainWindow):
         self.item_dict: dict[str, QListWidgetItem] = {}
         self.item_counter = 0
 
-        self.__init_worker()
-        # self.ui.item_list.setItemWidget()
 
     def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
@@ -41,13 +39,10 @@ class MainWindow(QMainWindow):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
     
-    def __init_worker(self):
-        worker_thread = threading.Thread(target=self.__worker)
-        worker_thread.start()
-
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
         self.ui.statusbar.showMessage(text)
+        self.add_item(text)
         # self.add_item_list(text, site);
     
     def get_button(self):
@@ -85,6 +80,7 @@ class MainWindow(QMainWindow):
         widget = DownloadItem(id, site_config)
 
         widget.signals.remove_item.connect(self.remove_item)
+        widget.signals.download_state.connect(self.__on_download_state)
 
         title_item = QListWidgetItem(self.ui.item_list)
         self.item_dict[widget.key] = title_item
@@ -92,6 +88,8 @@ class MainWindow(QMainWindow):
         self.ui.item_list.addItem(title_item)
         self.ui.item_list.setItemWidget(title_item, widget)
         self.item_counter += 1
+        if self.item_counter == 1:
+            self.__start_download()
 
     @Slot(str)
     def remove_item(self, key: str):
@@ -104,16 +102,18 @@ class MainWindow(QMainWindow):
         self.ui.item_list.clear()
         self.item_dict.clear()
     
-    def __worker(self):
-        while True:
-            for key in self.item_dict:
-                item = self.item_dict[key]
-                widget = self.ui.item_list.itemWidget(self.ui.item_list.row(item))
-                print('📢[MainWindow.py:111]: ', widget)
-                if widget.state == DOWNLOAD_ITEM_STATE.DONE:
-                    self.remove_item(key)
-                elif widget.state == DOWNLOAD_ITEM_STATE.READY:
-                    item.start()
-            time.sleep(0.1)
+    @Slot(str, DOWNLOAD_ITEM_STATE)
+    def __on_download_state(self, id: str, state: DOWNLOAD_ITEM_STATE):
+        if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
+            self.__start_download()
+    
+    def __start_download(self):
+        for i in range(self.ui.item_list.count()):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                if widget.state == DOWNLOAD_ITEM_STATE.READY:
+                    widget.start()
+                    break;
 
     # endregion

@@ -22,10 +22,12 @@ class DOWNLOAD_ITEM_STATE(Enum):
     READY = 0
     DOING = 1
     DONE = 2
+    ERROR = 3
 
 
 class DownloadItemSignals(QObject):
     remove_item = Signal(str)
+    download_state = Signal(str, DOWNLOAD_ITEM_STATE)
 
 
 class DownloadItem(QWidget):
@@ -130,6 +132,8 @@ class DownloadItem(QWidget):
                 app_name="Wolf",
                 timeout=3,  # seconds
             )
+            self.state = DOWNLOAD_ITEM_STATE.ERROR
+            self.signals.download_state.emit(self.id, self.state)
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
@@ -229,6 +233,9 @@ class DownloadItem(QWidget):
         self.ui.delete_button.setEnabled(True)
         self.ui.status_label.setText("완료")
         self.ui.progress_bar.setValue(100)
+
+        self.state = DOWNLOAD_STATE.DONE
+        self.signals.download_state.emit(self.id, self.state)
 
     def __thumbnail(self):
         pixmap = QtGui.QPixmap(self.site.thumbnail_path)

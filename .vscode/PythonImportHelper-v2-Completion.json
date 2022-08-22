@@ -2452,7 +2452,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DOWNLOAD_ITEM_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\nclass DownloadItemSignals(QObject):\n    remove_item = Signal(str)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()",
+        "peekOfCode": "class DOWNLOAD_ITEM_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\n    ERROR = 3\nclass DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
@@ -2461,7 +2461,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItemSignals(QObject):\n    remove_item = Signal(str)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config",
+        "peekOfCode": "class DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

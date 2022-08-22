@@ -18,6 +18,10 @@ peotry install
 > https://github.com/python-poetry/poetry/issues/1413#issuecomment-557195997
 
 
+## TODO
+- [ ] 페이지 로딩 속도 개선
+- [ ] ID 저장 데이터 베이스 제작
+- [ ] 처음 로딩 시 상태 텍스트 
 
 ---
 
