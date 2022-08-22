@@ -46,11 +46,7 @@ class MainWindow(QMainWindow):
         # self.add_item_list(text, site);
     
     def get_button(self):
-
-        # QToaster.showMessage(self, "test", corner=QtCore.Qt.TopLeftCorner, timeout=1000, closable=False)
-        # url = "https://wfwf221.com/cl?toon=13955&title=%C3%BC%C0%CE%BC%D2%B8%C7%C0%FC%B1%E2%C5%E9%B8%C7"
-        url = "https://wfwf221.com/cl?toon=16309&title=%B1%D8%B6%F4%B0%A1"
-        self.add_item(url)
+        self.__start_download()
 
     def __url_validate(self, url) -> str:
         site_config = self.config.get_site_config(url)
@@ -89,8 +85,7 @@ class MainWindow(QMainWindow):
         self.ui.item_list.addItem(title_item)
         self.ui.item_list.setItemWidget(title_item, widget)
         self.item_counter += 1
-        if self.__check_download_possible():
-            self.__start_download()
+        self.__start_download()
 
     @Slot(str)
     def remove_item(self, key: str):
@@ -105,13 +100,9 @@ class MainWindow(QMainWindow):
     
     @Slot(str, DOWNLOAD_ITEM_STATE)
     def __on_download_state(self, key: str, state: DOWNLOAD_ITEM_STATE):
-        print('📢[MainWindow.py:107]: ', key)
-        print('📢[MainWindow.py:108]: ', self.current_key)
         if self.current_key != key:
             return
-        print('📢[MainWindow.py:109]: ', state)
         if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
-            print('📢[MainWindow.py:114] !!!!')
             self.__start_download()
     
     def __check_download_possible(self):
@@ -127,12 +118,13 @@ class MainWindow(QMainWindow):
             return True
     
     def __start_download(self):
+        if self.__check_download_possible() == False:
+            return
         print('📢[MainWindow.py:129]: ', self.ui.item_list.count())
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
             if widget is not None:
-                print('📢[MainWindow.py:133]: ', widget.state)
                 if widget.state == DOWNLOAD_ITEM_STATE.READY:
                     self.current_key = widget.key
                     widget.start()

@@ -156,7 +156,7 @@ class DownloadItem(QWidget):
 
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
-        self.ui.status_label.setText(f"[{self.site.total_chapter}] {subject}")
+        self.ui.status_label.setText(f"[{self.site.current_chapter}/{self.site.total_chapter}] {subject}")
 
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
@@ -195,7 +195,7 @@ class DownloadItem(QWidget):
 
     def update_info(self, info: TitleInfo):
         self.info = info
-        self.ui.title_label.setText(f'{self.id} : {info["title"]}')
+        self.ui.title_label.setText(f'{self.id} {info["title"]}')
 
     @Slot(str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int)
     def __on_download_state(self, id, type, state, count, total):
