@@ -497,6 +497,38 @@
         "documentation": {}
     },
     {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "Signal",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -1472,6 +1504,24 @@
         "documentation": {}
     },
     {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -1526,15 +1576,6 @@
         "description": "multiprocessing.pool",
         "isExtraImport": true,
         "detail": "multiprocessing.pool",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
         "documentation": {}
     },
     {
@@ -1714,15 +1755,6 @@
         "description": "random",
         "isExtraImport": true,
         "detail": "random",
-        "documentation": {}
-    },
-    {
-        "label": "threading",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
         "documentation": {}
     },
     {
@@ -2305,7 +2337,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()\n    def __init__(self, referer: str = \"\"):\n        self.files = []\n        self.downloading = False",
+        "peekOfCode": "class DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self, parent, referer: str = \"\"):\n        QThread.__init__(self, parent)\n        self._parent = parent",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -2314,7 +2346,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class Downloader:\n    signals = DownloaderSignal()\n    def __init__(self, referer: str = \"\"):\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n        self.total_count = 0\n        self.referer = referer\n        self.id = None\n    def add_image_files(self, type: DOWNLOAD_TYPE, image_list: list) -> None:",
+        "peekOfCode": "class Downloader(QThread):\n    signals = DownloaderSignal()\n    def __init__(self, parent, referer: str = \"\"):\n        QThread.__init__(self, parent)\n        self._parent = parent\n        self.files = []\n        self.downloading = False\n        self.send_count = 0\n        self.total_count = 0\n        self.current_index = 0",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -2323,7 +2355,7 @@
         "kind": 5,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader:\n    signals = DownloaderSignal()",
+        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader(QThread):\n    signals = DownloaderSignal()",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
