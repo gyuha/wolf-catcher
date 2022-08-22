@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QProgressBar,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+    QProgressBar, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_DownloadItem(object):
@@ -25,6 +25,9 @@ class Ui_DownloadItem(object):
         if not DownloadItem.objectName():
             DownloadItem.setObjectName(u"DownloadItem")
         DownloadItem.resize(592, 70)
+        DownloadItem.setStyleSheet(u"#DownloadItem {\n"
+" border-top: 1px solid #ccc;\n"
+"}")
         self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -39,6 +42,13 @@ class Ui_DownloadItem(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.line = QFrame(DownloadItem)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.HLine)
+        self.line.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout.addWidget(self.line)
+
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.title_label = QLabel(DownloadItem)
@@ -87,6 +97,28 @@ class Ui_DownloadItem(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.tag_label = QLabel(DownloadItem)
+        self.tag_label.setObjectName(u"tag_label")
+        font1 = QFont()
+        font1.setBold(True)
+        self.tag_label.setFont(font1)
+        self.tag_label.setStyleSheet(u"color: #777777;")
+
+        self.horizontalLayout_4.addWidget(self.tag_label)
+
+        self.id_label = QLabel(DownloadItem)
+        self.id_label.setObjectName(u"id_label")
+        self.id_label.setMaximumSize(QSize(100, 16777215))
+        self.id_label.setFont(font1)
+        self.id_label.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_4.addWidget(self.id_label)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
+
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.status_label = QLabel(DownloadItem)
@@ -130,6 +162,8 @@ class Ui_DownloadItem(object):
         self.folder_open_button.setText("")
         self.cancel_button.setText("")
         self.delete_button.setText("")
+        self.tag_label.setText("")
+        self.id_label.setText(QCoreApplication.translate("DownloadItem", u"0", None))
         self.status_label.setText("")
     # retranslateUi
 

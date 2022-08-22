@@ -126,10 +126,11 @@ class Downloader(QThread):
                 raise Exception("Response error : {}" % (response.code))
 
             self.__save_file(path, response)
-            self.__download_state_emit()
-            self.pool_count -= 1
         except Exception as e:
             print("Exception in download_url_to_file(): ", e)
+        finally:
+            self.__download_state_emit()
+            self.pool_count -= 1
 
     def __download_state_emit(self):
         self.send_count = self.send_count + 1

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
@@ -28,12 +29,16 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *image_label;
     QVBoxLayout *verticalLayout;
+    QFrame *line;
     QHBoxLayout *horizontalLayout_2;
     QLabel *title_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *folder_open_button;
     QPushButton *cancel_button;
     QPushButton *delete_button;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *tag_label;
+    QLabel *id_label;
     QHBoxLayout *horizontalLayout_3;
     QLabel *status_label;
     QSpacerItem *horizontalSpacer_2;
@@ -44,6 +49,9 @@ public:
         if (DownloadItem->objectName().isEmpty())
             DownloadItem->setObjectName(QString::fromUtf8("DownloadItem"));
         DownloadItem->resize(592, 70);
+        DownloadItem->setStyleSheet(QString::fromUtf8("#DownloadItem {\n"
+" border-bottom: 1px solid #ccc;\n"
+"}"));
         horizontalLayout = new QHBoxLayout(DownloadItem);
         horizontalLayout->setSpacing(5);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -52,12 +60,22 @@ public:
         image_label->setObjectName(QString::fromUtf8("image_label"));
         image_label->setMinimumSize(QSize(60, 60));
         image_label->setMaximumSize(QSize(60, 60));
-        image_label->setAutoFillBackground(true);
+        image_label->setAutoFillBackground(false);
+        image_label->setStyleSheet(QString::fromUtf8("#image_label {\n"
+" background-color: white;\n"
+"}"));
 
         horizontalLayout->addWidget(image_label);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        line = new QFrame(DownloadItem);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout->addWidget(line);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         title_label = new QLabel(DownloadItem);
@@ -106,6 +124,28 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        tag_label = new QLabel(DownloadItem);
+        tag_label->setObjectName(QString::fromUtf8("tag_label"));
+        QFont font1;
+        font1.setBold(true);
+        tag_label->setFont(font1);
+        tag_label->setStyleSheet(QString::fromUtf8("color: #777777;"));
+
+        horizontalLayout_4->addWidget(tag_label);
+
+        id_label = new QLabel(DownloadItem);
+        id_label->setObjectName(QString::fromUtf8("id_label"));
+        id_label->setMaximumSize(QSize(100, 16777215));
+        id_label->setFont(font1);
+        id_label->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_4->addWidget(id_label);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         status_label = new QLabel(DownloadItem);
@@ -150,6 +190,8 @@ public:
         folder_open_button->setText(QString());
         cancel_button->setText(QString());
         delete_button->setText(QString());
+        tag_label->setText(QString());
+        id_label->setText(QCoreApplication::translate("DownloadItem", "0", nullptr));
         status_label->setText(QString());
     } // retranslateUi
 

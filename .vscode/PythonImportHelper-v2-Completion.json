@@ -137,6 +137,14 @@
         "documentation": {}
     },
     {
+        "label": "QtGui",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
         "label": "QtCore",
         "importPath": "PySide6",
         "description": "PySide6",
@@ -1294,6 +1302,14 @@
         "documentation": {}
     },
     {
+        "label": "QFrame",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QHBoxLayout",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -1803,7 +1819,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.DownloadItem",
         "description": ".qt_for_python.uic.DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
+        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QFrame *line;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;",
         "detail": ".qt_for_python.uic.DownloadItem",
         "documentation": {}
     },
@@ -2298,7 +2314,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
         "description": "src.ui.Ui_DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)\n        self.image_label = QLabel(DownloadItem)",
+        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        DownloadItem.setStyleSheet(u\"#DownloadItem {\\n\"\n\" border-top: 1px solid #ccc;\\n\"\n\"}\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)",
         "detail": "src.ui.Ui_DownloadItem",
         "documentation": {}
     },
@@ -2487,7 +2503,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()\n        self.__init_slot()\n        self.item_dict: dict[str, QListWidgetItem] = {}",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon('logo.png'))\n        self.setWindowTitle(\"Wolf catcher\")\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()",
         "detail": "src.MainWindow",
         "documentation": {}
     },

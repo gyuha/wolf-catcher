@@ -59,9 +59,11 @@ class DownloadItem(QWidget):
     def __init_connect(self):
         self.ui.delete_button.setEnabled(False)
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
+        self.ui.folder_open_button.clicked.connect(self.__on_click_open_folder)
 
     def __init_text(self):
-        self.ui.title_label.setText(self.id)
+        self.ui.title_label.setText("----")
+        self.ui.id_label.setText(self.id)
         self.ui.status_label.setText("대기")
 
     @property
@@ -105,6 +107,7 @@ class DownloadItem(QWidget):
             self.site_config["url_format"]["title"]["visible_condition"]["text"],
         )
         self.browserGet.start()
+        self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] 조회 중")
 
     def __get_chapter_info(self):
         """
@@ -139,7 +142,6 @@ class DownloadItem(QWidget):
             return
         elif state == GET_STATE.DONE:
             self.__on_get_done(type)
-            # print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
 
     def __on_get_done(self, type: GET_TYPE):
         if type == GET_TYPE.TITLE_INFO:
@@ -160,6 +162,11 @@ class DownloadItem(QWidget):
 
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
+    
+    def __on_click_open_folder(self):
+        path = os.path.realpath(self.site.path)
+        if os.path.exists(path):
+            os.startfile(path)
 
     def download_thumbnail(self, url: str, file_path: str):
         if os.path.exists(file_path):
@@ -182,20 +189,25 @@ class DownloadItem(QWidget):
 
         image_list = []
         image_num = 0
-        title_path = os.path.join(
+        self.title_path = os.path.join(
             self.site.path, self.site.strip_title_for_path(chapter_title)
         )
         for image in chapter_images:
             image_num += 1
-            file_path = os.path.join(title_path, f"{image_num:03d}.jpg")
+            file_path = os.path.join(self.title_path, f"{image_num:03d}.jpg")
             image_list.append([image, file_path])
-        self.downloader.set_title_path(title_path)
+        self.downloader.set_title_path(self.title_path)
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
 
     def update_info(self, info: TitleInfo):
         self.info = info
-        self.ui.title_label.setText(f'{self.id} {info["title"]}')
+        try:
+            self.ui.title_label.setText(f'{info["title"]}')
+            self.ui.tag_label.setText(f'{"/".join(info["tags"])}')
+        except Exception as e:
+            print('📢[DownloadItem.py:209]: ', e)
+            
 
     @Slot(str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int)
     def __on_download_state(self, id, type, state, count, total):

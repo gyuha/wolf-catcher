@@ -28,8 +28,9 @@ class Wfwf(SiteBase):
         if not title:
             raise Exception("제목을 찾을 수 없습니다.")
 
-        self.path = self.download_path_init(self.download_path, title)
-        self.title_info.set_path(self.download_path, title)
+        strip_title = self.strip_title_for_path(title)
+        self.path = self.download_path_init(self.download_path, strip_title)
+        self.title_info.set_path(self.download_path, strip_title)
         self.title_info.load()
 
         text = driver.find_element(
@@ -90,6 +91,7 @@ class Wfwf(SiteBase):
         images = driver.find_elements(By.CSS_SELECTOR,
             "body > section.webtoon-body > div.group.image-view > img"
         )
+        self.chapter_images = []
         for image in images:
             self.chapter_images.append(image.get_attribute("src"))
     

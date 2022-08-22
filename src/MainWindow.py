@@ -2,6 +2,7 @@ import re
 import threading
 import time
 from PySide6 import QtCore
+from PySide6 import QtGui
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
@@ -24,6 +25,8 @@ class MainWindow(QMainWindow):
 
         self.clipbard = Clipboard()
 
+        self.setWindowIcon(QtGui.QIcon('logo.png'))
+        self.setWindowTitle("Wolf catcher")
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.__init_connect()

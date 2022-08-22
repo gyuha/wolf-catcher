@@ -50,6 +50,9 @@ class BrowserGet(QThread):
             raise Exception("Now loading...")
         self.__get()
         # self.quit()
+    
+    def stop(self):
+        self.quit()
 
     def condition(
         self, type: GET_TYPE, url: str, find_by: By = By.XPATH, condition: str = "html"
@@ -76,3 +79,4 @@ class BrowserGet(QThread):
             raise GetTimeoutException
         finally:
             self.get_state = GET_STATE.READY
+        self.stop()
