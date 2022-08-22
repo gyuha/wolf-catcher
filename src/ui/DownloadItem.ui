@@ -137,21 +137,9 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QProgressBar" name="progress_bar">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>15</height>
-          </size>
-         </property>
-         <property name="value">
-          <number>0</number>
+        <widget class="QLabel" name="status_label">
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -169,9 +157,21 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="status_label">
-         <property name="text">
-          <string>                             </string>
+        <widget class="QProgressBar" name="progress_bar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>15</height>
+          </size>
+         </property>
+         <property name="value">
+          <number>0</number>
          </property>
         </widget>
        </item>

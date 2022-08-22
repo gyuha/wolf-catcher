@@ -35,9 +35,9 @@ public:
     QPushButton *cancel_button;
     QPushButton *delete_button;
     QHBoxLayout *horizontalLayout_3;
-    QProgressBar *progress_bar;
-    QSpacerItem *horizontalSpacer_2;
     QLabel *status_label;
+    QSpacerItem *horizontalSpacer_2;
+    QProgressBar *progress_bar;
 
     void setupUi(QWidget *DownloadItem)
     {
@@ -108,6 +108,15 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        status_label = new QLabel(DownloadItem);
+        status_label->setObjectName(QString::fromUtf8("status_label"));
+
+        horizontalLayout_3->addWidget(status_label);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
         progress_bar = new QProgressBar(DownloadItem);
         progress_bar->setObjectName(QString::fromUtf8("progress_bar"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -119,15 +128,6 @@ public:
         progress_bar->setValue(0);
 
         horizontalLayout_3->addWidget(progress_bar);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_2);
-
-        status_label = new QLabel(DownloadItem);
-        status_label->setObjectName(QString::fromUtf8("status_label"));
-
-        horizontalLayout_3->addWidget(status_label);
 
 
         verticalLayout->addLayout(horizontalLayout_3);

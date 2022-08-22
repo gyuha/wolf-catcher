@@ -67,7 +67,6 @@ class Downloader(QThread):
         
     
     def create_download_thread(self, data):
-        print('📢[Downloader.py:62]: ', data)
         self.pool_count += 1
         download_thread = threading.Thread(target=self.__download_url_to_file, args=(data[0], data[1]))
         download_thread.start()
@@ -102,8 +101,6 @@ class Downloader(QThread):
 
     # @retry(exceptions=Exception, tries=5, delay=0)
     def __download_url_to_file(self, url, path) -> None:
-        print('📢[Downloader.py:97]: ', path)
-        print('📢[Downloader.py:97]: ', url)
         # print('📢[Downloader.py:97]: ', args)
         # url, path = args[0], args[1]
 

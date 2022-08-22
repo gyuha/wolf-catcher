@@ -125,19 +125,25 @@ class DownloadItem(QWidget):
         elif state == GET_STATE.DONE:
             self.__on_get_done(type)
             # print('📢[DownloadItem.py:73]: ', GET_STATE.DONE)
-            # self.ui.delete_button.setEnabled(True)
 
     def __on_get_done(self, type: GET_TYPE):
         if type == GET_TYPE.TITLE_INFO:
             self.site.get_chapter_info_parser(self.browser)
             self.__get_chapter_info()
-            self.ui.progress_bar.setValue(self.site.progress)
+            # self.ui.progress_bar.setValue(self.site.progress)
+            self.__set_status_text()
             return
         elif type == GET_TYPE.CHAPTER_INFO:
             self.site.get_img_list(self.browser)
             self.__download_chapter_images()
-            self.ui.progress_bar.setValue(self.site.progress)
+            self.__set_status_text()
             pass
+    
+    def __set_status_text(self):
+        subject = self.site.get_current_chapter()[0]
+        self.ui.status_label.setText(
+            f'[{self.site.total_chapter}] {subject}'
+        )
 
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
@@ -191,8 +197,9 @@ class DownloadItem(QWidget):
             return
 
         if type == DOWNLOAD_TYPE.IMAGES:
-            print("📢[DownloadItem.py:198]: ", f"{count}/{total}")
-            self.ui.status_label.setText(f"{count}/{total}")
+            # print("📢[DownloadItem.py:198]: ", f"{count}/{total}")
+            # self.ui.status_label.setText(f"{count}/{total}")
+            self.ui.progress_bar.setValue(int(float(count)/float(total) * 100))
             if state == DOWNLOAD_STATE.DONE:
                 self.__on_download_done()
             return
@@ -208,6 +215,7 @@ class DownloadItem(QWidget):
         """
         완료 처리
         """
+        self.ui.delete_button.setEnabled(True)
         self.ui.status_label.setText("완료")
         self.ui.progress_bar.setValue(100)
 

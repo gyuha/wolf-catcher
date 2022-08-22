@@ -89,6 +89,15 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.status_label = QLabel(DownloadItem)
+        self.status_label.setObjectName(u"status_label")
+
+        self.horizontalLayout_3.addWidget(self.status_label)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
+
         self.progress_bar = QProgressBar(DownloadItem)
         self.progress_bar.setObjectName(u"progress_bar")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -100,15 +109,6 @@ class Ui_DownloadItem(object):
         self.progress_bar.setValue(0)
 
         self.horizontalLayout_3.addWidget(self.progress_bar)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
-
-        self.status_label = QLabel(DownloadItem)
-        self.status_label.setObjectName(u"status_label")
-
-        self.horizontalLayout_3.addWidget(self.status_label)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
