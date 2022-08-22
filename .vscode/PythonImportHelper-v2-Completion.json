@@ -849,6 +849,14 @@
         "documentation": {}
     },
     {
+        "label": "presence_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
         "label": "GetTimeoutException",
         "importPath": "lib.exceptions",
         "description": "lib.exceptions",

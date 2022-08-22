@@ -156,7 +156,7 @@ class DownloadItem(QWidget):
 
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
-        self.ui.status_label.setText(f"[{self.site.current_chapter}/{self.site.total_chapter}] {subject}")
+        self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] {subject}")
 
     def __on_click_delete_button(self):
         self.signals.remove_item.emit(self.key)
@@ -211,7 +211,7 @@ class DownloadItem(QWidget):
 
         if type == DOWNLOAD_TYPE.IMAGES:
             if state == DOWNLOAD_STATE.COMPRESS:
-                self.ui.status_label.setText("압축중")
+                self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] 압축중")
                 return
 
             self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))

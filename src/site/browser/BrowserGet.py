@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.expected_conditions import visibility_of_element_located
+from selenium.webdriver.support.expected_conditions import visibility_of_element_located, presence_of_element_located
 
 from lib.exceptions import GetTimeoutException
 from util.Config import Config
@@ -68,7 +68,7 @@ class BrowserGet(QThread):
 
         try:
             wait.until(
-                visibility_of_element_located((self.__find_by, self.__condition))
+                presence_of_element_located((self.__find_by, self.__condition))
             )
             self.signals.get_state.emit(self.id, self.__get_type, GET_STATE.DONE)
         except TimeoutException:

@@ -57,7 +57,7 @@ class Downloader(QThread):
         self.title_path = title_path
 
     def run(self):
-        cpus = int(cpu_count() / 1.5)
+        cpus = cpu_count()
         self.current_index = 0
         self.send_count = 0
         while self.send_count < self.total_count:
