@@ -945,6 +945,14 @@
         "documentation": {}
     },
     {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
         "label": "webdriver",
         "importPath": "selenium",
         "description": "selenium",
@@ -1924,6 +1932,14 @@
         "documentation": {}
     },
     {
+        "label": "DatabaseManager",
+        "importPath": "src.util.DatabaseManager",
+        "description": "src.util.DatabaseManager",
+        "isExtraImport": true,
+        "detail": "src.util.DatabaseManager",
+        "documentation": {}
+    },
+    {
         "label": "DOWNLOAD_ITEM_STATE",
         "importPath": "DownloadItem",
         "description": "DownloadItem",
@@ -2405,7 +2421,7 @@
         "kind": 6,
         "importPath": "src.model.Product",
         "description": "src.model.Product",
-        "peekOfCode": "class Product(Base):\n    __tablename__ = \"product\"\n    id = Column(String, primary_key=True)\n    title = Column(String)\n    author = Column(String)\n    path = Column(String)\n    tags = Column(String)\n    visible = Column(Boolean, default=False)\n    download_count = Column(Integer, default=0)\n    def __repr__(self):",
+        "peekOfCode": "class Product(Base):\n    __tablename__ = \"product\"\n    id = Column(String, primary_key=True)\n    site = Column(String)\n    title = Column(String)\n    author = Column(String)\n    path = Column(String)\n    tags = Column(String)\n    visible = Column(Boolean, default=False)\n    download_count = Column(Integer, default=0)",
         "detail": "src.model.Product",
         "documentation": {}
     },
@@ -2576,7 +2592,7 @@
         "kind": 6,
         "importPath": "src.util.DatabaseManager",
         "description": "src.util.DatabaseManager",
-        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        Base.metadata.create_all(self.engine)\n    def insert_product(\n        self, id, title=\"\", author=\"\", path=\"\", tags=\"\", visible=True, download_count=0\n    ):",
+        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        Base.metadata.create_all(self.engine)\n    def insert_product(\n        self,\n        id,",
         "detail": "src.util.DatabaseManager",
         "documentation": {}
     },
@@ -2668,6 +2684,15 @@
         "description": "src.DownloadItem",
         "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:\n            return",
         "detail": "src.DownloadItem",
+        "documentation": {}
+    },
+    {
+        "label": "ADD_BY",
+        "kind": 6,
+        "importPath": "src.MainWindow",
+        "description": "src.MainWindow",
+        "peekOfCode": "class ADD_BY(Enum):\n    DATABASE = 0\n    CLIPBOARD = 1\nclass MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon('logo.png'))\n        self.setWindowTitle(\"Wolf catcher\")",
+        "detail": "src.MainWindow",
         "documentation": {}
     },
     {

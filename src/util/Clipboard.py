@@ -19,7 +19,7 @@ class Clipboard(QObject):
 
         if not text.strip() or self.last_text.__eq__(text):
             return
-        site = self.config.get_site_config(text)
+        site = self.config.get_site_config_by_url(text)
 
         if not site:
             return;

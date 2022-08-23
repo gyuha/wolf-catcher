@@ -22,13 +22,22 @@ class DatabaseManager(metaclass=Singleton):
         Base.metadata.create_all(self.engine)
 
     def insert_product(
-        self, id, title="", author="", path="", tags="", visible=True, download_count=0
+        self,
+        id,
+        title="",
+        author="",
+        path="",
+        tags="",
+        visible=True,
+        download_count=0,
+        site="wfwf"
     ):
         if self.get_product(id) is not None:
             return
 
         product = Product(
             id=id,
+            site=site,
             title=title,
             author=author,
             path=path,
@@ -47,7 +56,7 @@ class DatabaseManager(metaclass=Singleton):
             print(e)
         return None
 
-    def get_updated_product(
+    def updated_product(
         self, id, title, author, path, tags, visible=0, download_count=0
     ):
         try:
@@ -61,14 +70,14 @@ class DatabaseManager(metaclass=Singleton):
                     "download_count": download_count,
                 }
             )
-            self.session.commit()
+            return self.session.commit()
         except Exception as e:
             print(e)
         return None
 
     def get_visible_products(self):
         try:
-            self.session.query(Product).filter(Product.visible == True).all()
+            return self.session.query(Product).filter(Product.visible == True).all()
         except Exception as e:
             print(e)
         return None
@@ -76,7 +85,7 @@ class DatabaseManager(metaclass=Singleton):
     def set_visible_product(self, id: str, visible: bool):
         try:
             self.session.query(Product).filter_by(id=id).update({"visible": visible})
-            self.session.commit()
+            return self.session.commit()
         except NoResultFound as e:
             print(e)
         return None

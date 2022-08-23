@@ -28,8 +28,13 @@ class Config(metaclass=Singleton):
         with open('config.yaml', 'r', encoding='utf-8') as file:
             self.__data = yaml.load(file, Loader=yaml.FullLoader)
 
+    def get_site_config_by_name(self, name):
+        for data in self.__data["site"]:
+            if data["name"] == name:
+                return data
+        return None
 
-    def get_site_config(self, url: str):
+    def get_site_config_by_url(self, url: str):
         for data in self.__data["site"]:
             for filter in data["filter"]:
                 if re.search(filter, url):

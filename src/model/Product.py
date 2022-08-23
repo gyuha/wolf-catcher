@@ -20,6 +20,7 @@ class Product(Base):
     __tablename__ = "product"
 
     id = Column(String, primary_key=True)
+    site = Column(String)
     title = Column(String)
     author = Column(String)
     path = Column(String)

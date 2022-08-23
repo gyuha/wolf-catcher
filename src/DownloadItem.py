@@ -16,6 +16,7 @@ from util.Config import Config
 from plyer import notification
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
+from src.util.DatabaseManager import DatabaseManager
 
 
 class DOWNLOAD_ITEM_STATE(Enum):
@@ -54,6 +55,7 @@ class DownloadItem(QWidget):
         self.__init_downloader()
         self.__init_connect()
         self.state = DOWNLOAD_ITEM_STATE.READY
+        self.db = DatabaseManager()
         # self.__init_site()
 
     def __init_connect(self):
@@ -205,6 +207,13 @@ class DownloadItem(QWidget):
         try:
             self.ui.title_label.setText(f'{info["title"]}')
             self.ui.tag_label.setText(f'{"/".join(info["tags"])}')
+            self.db.updated_product(
+                self.id,
+                info["title"],
+                info["author"],
+                "",
+                "/".join(info["tags"])
+            )
         except Exception as e:
             print('📢[DownloadItem.py:209]: ', e)
             

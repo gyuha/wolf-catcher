@@ -1,3 +1,4 @@
+from enum import Enum
 import re
 import threading
 import time
@@ -16,6 +17,10 @@ from util.message import toast
 
 
 # from util.Scraper import Scraper
+
+class ADD_BY(Enum):
+    DATABASE = 0
+    CLIPBOARD = 1
 
 
 class MainWindow(QMainWindow):
@@ -36,6 +41,7 @@ class MainWindow(QMainWindow):
         self.item_counter = 0
         self.ui.item_list.setStyleSheet( "QListWidget::item { border-bottom: 1px solid #eee; }" );
         self.databaseManager = DatabaseManager()
+        self.__get_items_by_database()
 
 
     def __init_connect(self):
@@ -45,17 +51,28 @@ class MainWindow(QMainWindow):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
     
+    def __get_items_by_database(self):
+        prds = self.databaseManager.get_visible_products()
+        if prds is None: return
+        for prd in prds:
+            site_config = self.config.get_site_config_by_name(prd.site)
+            if site_config is None: return
+            self.add_item(prd.id, site_config, ADD_BY.DATABASE)
+    
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
         self.ui.statusbar.showMessage(text)
-        self.add_item(text)
-        # self.add_item_list(text, site);
+
+        id, site_config = self.__url_validate(text)
+        if id is None:
+            return
+        self.add_item(id, site_config, ADD_BY.CLIPBOARD)
     
     def get_button(self):
         self.__start_download()
 
     def __url_validate(self, url) -> str:
-        site_config = self.config.get_site_config(url)
+        site_config = self.config.get_site_config_by_url(url)
         if site_config is None:
             toast(self, "사이트를 찾을 수 없습니다.")
             return
@@ -72,11 +89,13 @@ class MainWindow(QMainWindow):
         return True
 
     # region item_list
-    def add_item(self, url: str):
-        id, site_config = self.__url_validate(url)
+    def add_item(self, id: str, site_config, by: ADD_BY):
 
         if self.__check_exist_item(id, site_config) == False:
             return
+
+        if by == ADD_BY.CLIPBOARD:
+            self.databaseManager.insert_product(id)
 
         self.item_dict[site_config["name"] + id] = None # 임시로 미리 등록 해 준다.
         widget = DownloadItem(id, site_config)
@@ -110,6 +129,14 @@ class MainWindow(QMainWindow):
             return
         if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
             self.__start_download()
+    
+    def __get_widget(self, key: str):
+        for i in range(self.ui.item_list.count()):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                return widget
+        return None
     
     def __check_download_possible(self):
         """
