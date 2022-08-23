@@ -17,14 +17,18 @@ peotry install
 > 🚀 See below for PySide6 installation error in poety </br>
 > https://github.com/python-poetry/poetry/issues/1413#issuecomment-557195997
 
+## 빌드
+콘솔 창이 뜨지 않게 하기 위해서는 아래와 같은 작업을 해 줘야 한다.
+* [Pyinstaller 사용시 selenium의 chromedriver 콘솔창 제거하는 방법](https://hydragon-cv.info/entry/Pyinstaller-%EC%82%AC%EC%9A%A9%EC%8B%9C-selenium%EC%9D%98-chromedriver-%EC%BD%98%EC%86%94%EC%B0%BD-%EC%A0%9C%EA%B1%B0%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95?category=960692)
 
 ## TODO
-- [ ] 다운로드 목록 관리 - SQLite로 해 보자
-- [ ] ID 저장 데이터 베이스 제작
-- [ ] 페이지 로딩 속도 개선
-- [ ] 처음 로딩 시 상태 텍스트 
+- [x] 다운로드 목록 관리 - SQLite로 해 보자
+- [x] ID 저장 데이터 베이스 제작
+- [x] 페이지 로딩 속도 개선
+- [x] 처음 로딩 시 상태 텍스트 
 
 ---
+
 
 ## References
 ### Python 기본 문법
