@@ -45,5 +45,6 @@ env.bak/
 venv.bak/
 
 *.log
+*.db
 
 wfwf

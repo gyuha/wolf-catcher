@@ -11,6 +11,7 @@ from lib.QToaster import QToaster
 from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
 from util.Config import Config
+from util.DatabaseManager import DatabaseManager
 from util.message import toast
 
 
@@ -34,6 +35,7 @@ class MainWindow(QMainWindow):
         self.item_dict: dict[str, QListWidgetItem] = {}
         self.item_counter = 0
         self.ui.item_list.setStyleSheet( "QListWidget::item { border-bottom: 1px solid #eee; }" );
+        self.databaseManager = DatabaseManager()
 
 
     def __init_connect(self):

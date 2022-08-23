@@ -609,416 +609,12 @@
         "documentation": {}
     },
     {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "util.Config",
-        "description": "util.Config",
-        "isExtraImport": true,
-        "detail": "util.Config",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
-        "documentation": {}
-    },
-    {
-        "label": "webdriver",
-        "importPath": "selenium",
-        "description": "selenium",
-        "isExtraImport": true,
-        "detail": "selenium",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.chrome.options",
-        "description": "selenium.webdriver.chrome.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.chrome.options",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.chrome.options",
-        "description": "selenium.webdriver.chrome.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.chrome.options",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.firefox.options",
-        "description": "selenium.webdriver.firefox.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.firefox.options",
-        "documentation": {}
-    },
-    {
-        "label": "Options",
-        "importPath": "selenium.webdriver.firefox.options",
-        "description": "selenium.webdriver.firefox.options",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.firefox.options",
-        "documentation": {}
-    },
-    {
-        "label": "WebDriverWait",
-        "importPath": "selenium.webdriver.support.ui",
-        "description": "selenium.webdriver.support.ui",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.ui",
-        "documentation": {}
-    },
-    {
-        "label": "WebDriverWait",
-        "importPath": "selenium.webdriver.support.ui",
-        "description": "selenium.webdriver.support.ui",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.ui",
-        "documentation": {}
-    },
-    {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
-        "documentation": {}
-    },
-    {
-        "label": "TimeoutException",
-        "importPath": "selenium.common.exceptions",
-        "description": "selenium.common.exceptions",
-        "isExtraImport": true,
-        "detail": "selenium.common.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "TimeoutException",
-        "importPath": "selenium.common.exceptions",
-        "description": "selenium.common.exceptions",
-        "isExtraImport": true,
-        "detail": "selenium.common.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "visibility_of_element_located",
-        "importPath": "selenium.webdriver.support.expected_conditions",
-        "description": "selenium.webdriver.support.expected_conditions",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "visibility_of_element_located",
-        "importPath": "selenium.webdriver.support.expected_conditions",
-        "description": "selenium.webdriver.support.expected_conditions",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "presence_of_element_located",
-        "importPath": "selenium.webdriver.support.expected_conditions",
-        "description": "selenium.webdriver.support.expected_conditions",
-        "isExtraImport": true,
-        "detail": "selenium.webdriver.support.expected_conditions",
-        "documentation": {}
-    },
-    {
-        "label": "GetTimeoutException",
-        "importPath": "lib.exceptions",
-        "description": "lib.exceptions",
-        "isExtraImport": true,
-        "detail": "lib.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "GetTimeoutException",
-        "importPath": "lib.exceptions",
-        "description": "lib.exceptions",
-        "isExtraImport": true,
-        "detail": "lib.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "Singleton",
-        "importPath": "src.lib.Singleton",
-        "description": "src.lib.Singleton",
-        "isExtraImport": true,
-        "detail": "src.lib.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "ABC",
-        "importPath": "abc",
-        "description": "abc",
-        "isExtraImport": true,
-        "detail": "abc",
-        "documentation": {}
-    },
-    {
-        "label": "abstractmethod",
-        "importPath": "abc",
-        "description": "abc",
-        "isExtraImport": true,
-        "detail": "abc",
-        "documentation": {}
-    },
-    {
-        "label": "pathlib",
+        "label": "PySide6.QtGui",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "TitleInfo",
-        "importPath": "src.site.TitleInfo",
-        "description": "src.site.TitleInfo",
-        "isExtraImport": true,
-        "detail": "src.site.TitleInfo",
-        "documentation": {}
-    },
-    {
-        "label": "TitleInfo",
-        "importPath": "src.site.TitleInfo",
-        "description": "src.site.TitleInfo",
-        "isExtraImport": true,
-        "detail": "src.site.TitleInfo",
-        "documentation": {}
-    },
-    {
-        "label": "BrowserDriver",
-        "importPath": "src.site.browser.BrowserDriver",
-        "description": "src.site.browser.BrowserDriver",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserDriver",
-        "documentation": {}
-    },
-    {
-        "label": "importlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "importlib",
-        "description": "importlib",
-        "detail": "importlib",
-        "documentation": {}
-    },
-    {
-        "label": "Singleton",
-        "importPath": "lib.Singleton",
-        "description": "lib.Singleton",
-        "isExtraImport": true,
-        "detail": "lib.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "Singleton",
-        "importPath": "lib.Singleton",
-        "description": "lib.Singleton",
-        "isExtraImport": true,
-        "detail": "lib.Singleton",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "SiteBase",
-        "importPath": "src.site.SiteBase",
-        "description": "src.site.SiteBase",
-        "isExtraImport": true,
-        "detail": "src.site.SiteBase",
-        "documentation": {}
-    },
-    {
-        "label": "yaml",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "yaml",
-        "description": "yaml",
-        "detail": "yaml",
-        "documentation": {}
-    },
-    {
-        "label": "urlparse",
-        "importPath": "urllib.parse",
-        "description": "urllib.parse",
-        "isExtraImport": true,
-        "detail": "urllib.parse",
-        "documentation": {}
-    },
-    {
-        "label": "unittest",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "unittest",
-        "description": "unittest",
-        "detail": "unittest",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "detail": "PySide6.QtGui",
         "documentation": {}
     },
     {
@@ -1286,6 +882,643 @@
         "documentation": {}
     },
     {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "lib.Singleton",
+        "description": "lib.Singleton",
+        "isExtraImport": true,
+        "detail": "lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "select",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Date",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "select",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Date",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "NoResultFound",
+        "importPath": "sqlalchemy.orm.exc",
+        "description": "sqlalchemy.orm.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm.exc",
+        "documentation": {}
+    },
+    {
+        "label": "MultipleResultsFound",
+        "importPath": "sqlalchemy.orm.exc",
+        "description": "sqlalchemy.orm.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm.exc",
+        "documentation": {}
+    },
+    {
+        "label": "NoResultFound",
+        "importPath": "sqlalchemy.orm.exc",
+        "description": "sqlalchemy.orm.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm.exc",
+        "documentation": {}
+    },
+    {
+        "label": "MultipleResultsFound",
+        "importPath": "sqlalchemy.orm.exc",
+        "description": "sqlalchemy.orm.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm.exc",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.firefox.options",
+        "description": "selenium.webdriver.firefox.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.firefox.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.firefox.options",
+        "description": "selenium.webdriver.firefox.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.firefox.options",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "visibility_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
+        "label": "visibility_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
+        "label": "presence_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
+        "label": "GetTimeoutException",
+        "importPath": "lib.exceptions",
+        "description": "lib.exceptions",
+        "isExtraImport": true,
+        "detail": "lib.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "GetTimeoutException",
+        "importPath": "lib.exceptions",
+        "description": "lib.exceptions",
+        "isExtraImport": true,
+        "detail": "lib.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "Singleton",
+        "importPath": "src.lib.Singleton",
+        "description": "src.lib.Singleton",
+        "isExtraImport": true,
+        "detail": "src.lib.Singleton",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "TitleInfo",
+        "importPath": "src.site.TitleInfo",
+        "description": "src.site.TitleInfo",
+        "isExtraImport": true,
+        "detail": "src.site.TitleInfo",
+        "documentation": {}
+    },
+    {
+        "label": "TitleInfo",
+        "importPath": "src.site.TitleInfo",
+        "description": "src.site.TitleInfo",
+        "isExtraImport": true,
+        "detail": "src.site.TitleInfo",
+        "documentation": {}
+    },
+    {
+        "label": "BrowserDriver",
+        "importPath": "src.site.browser.BrowserDriver",
+        "description": "src.site.browser.BrowserDriver",
+        "isExtraImport": true,
+        "detail": "src.site.browser.BrowserDriver",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "SiteBase",
+        "importPath": "src.site.SiteBase",
+        "description": "src.site.SiteBase",
+        "isExtraImport": true,
+        "detail": "src.site.SiteBase",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
         "label": "QApplication",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -1520,6 +1753,14 @@
         "documentation": {}
     },
     {
+        "label": "Product",
+        "importPath": "src.model.Product",
+        "description": "src.model.Product",
+        "isExtraImport": true,
+        "detail": "src.model.Product",
+        "documentation": {}
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -1696,6 +1937,14 @@
         "description": "util.Clipboard",
         "isExtraImport": true,
         "detail": "util.Clipboard",
+        "documentation": {}
+    },
+    {
+        "label": "DatabaseManager",
+        "importPath": "util.DatabaseManager",
+        "description": "util.DatabaseManager",
+        "isExtraImport": true,
+        "detail": "util.DatabaseManager",
         "documentation": {}
     },
     {
@@ -2127,12 +2376,21 @@
         "documentation": {}
     },
     {
-        "label": "Site",
+        "label": "Product",
         "kind": 6,
-        "importPath": "src.model.Site",
-        "description": "src.model.Site",
-        "peekOfCode": "class Site()",
-        "detail": "src.model.Site",
+        "importPath": "src.model.Product",
+        "description": "src.model.Product",
+        "peekOfCode": "class Product(Base):\n    __tablename__ = \"product\"\n    id = Column(String, primary_key=True)\n    title = Column(String)\n    author = Column(String)\n    path = Column(String)\n    tags = Column(String)\n    visible = Column(Boolean, default=False)\n    download_count = Column(Integer, default=0)\n    def __repr__(self):",
+        "detail": "src.model.Product",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "src.model.Product",
+        "description": "src.model.Product",
+        "peekOfCode": "Base = declarative_base()\nclass Product(Base):\n    __tablename__ = \"product\"\n    id = Column(String, primary_key=True)\n    title = Column(String)\n    author = Column(String)\n    path = Column(String)\n    tags = Column(String)\n    visible = Column(Boolean, default=False)\n    download_count = Column(Integer, default=0)",
+        "detail": "src.model.Product",
         "documentation": {}
     },
     {
@@ -2295,6 +2553,24 @@
         "description": "src.util.Config",
         "peekOfCode": "class Config(metaclass=Singleton):\n    @property\n    def data(self):\n        return self.__data\n    @data.setter\n    def data(self, value):\n        self.__data = value\n    @property\n    def setting(self):\n        return self.__data[\"setting\"]",
         "detail": "src.util.Config",
+        "documentation": {}
+    },
+    {
+        "label": "DatabaseManager",
+        "kind": 6,
+        "importPath": "src.util.DatabaseManager",
+        "description": "src.util.DatabaseManager",
+        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        print(\"📢[DatabaseManager.py:13]: \", config.setting[\"db\"])\n        Base.metadata.create_all(self.engine)\n        self.insert_product(\"123\", \"제목\", \"asdf\", \"path\", \"test,asdf\")\n        self.get_product(\"123\")",
+        "detail": "src.util.DatabaseManager",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "src.util.DatabaseManager",
+        "description": "src.util.DatabaseManager",
+        "peekOfCode": "Base = declarative_base()\nfrom src.model.Product import Product\nclass DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        print(\"📢[DatabaseManager.py:13]: \", config.setting[\"db\"])\n        Base.metadata.create_all(self.engine)",
+        "detail": "src.util.DatabaseManager",
         "documentation": {}
     },
     {
