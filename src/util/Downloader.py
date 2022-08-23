@@ -87,7 +87,6 @@ class Downloader(QThread):
         self.create_compress_thread()
 
     def create_compress_thread(self):
-        print("📢[Downloader.py:91]: ", self.title_path, self.title_path + ".cbz")
         compress_thread = threading.Thread(
             target=self.__zip_folder, args=(self.title_path, self.title_path + ".cbz")
         )

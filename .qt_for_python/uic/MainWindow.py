@@ -48,7 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(434, 631);
+        MainWindow->resize(582, 633);
         action_always_top = new QAction(MainWindow);
         action_always_top->setObjectName(QString::fromUtf8("action_always_top"));
         action_always_top->setCheckable(true);
@@ -93,7 +93,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 434, 22));
+        menubar->setGeometry(QRect(0, 0, 582, 22));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         menu_2 = new QMenu(menubar);

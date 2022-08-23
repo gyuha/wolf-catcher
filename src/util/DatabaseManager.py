@@ -16,7 +16,7 @@ class DatabaseManager(metaclass=Singleton):
     def __init__(self):
         super(DatabaseManager, self).__init__()
         config = Config()
-        self.engine = create_engine(config.setting["db"], echo=True, future=True)
+        self.engine = create_engine(config.setting["db"], echo=False, future=True)
         self.session = Session(bind=self.engine)
 
         Base.metadata.create_all(self.engine)

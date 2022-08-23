@@ -7,14 +7,16 @@ from util.Config import Config
 
 
 class SiteLoaderSignals(QObject):
-    on_site_loaded = Signal()
+    on_site_loaded = Signal(str)
 
 
 class SiteLoader(QThread):
     signals = SiteLoaderSignals()
 
-    def __init__(self, parent, config):
+    def __init__(self, parent, key, config):
         QThread.__init__(self, parent)
+        self.parent = parent
+        self.__key = key
         self.__config = config
         self.site_class = None
 
@@ -30,4 +32,4 @@ class SiteLoader(QThread):
         )
 
         self.site_class = class_module(config)
-        self.signals.on_site_loaded.emit()
+        self.signals.on_site_loaded.emit(self.__key)

@@ -46,7 +46,7 @@ public:
     {
         if (DownloadItem->objectName().isEmpty())
             DownloadItem->setObjectName(QString::fromUtf8("DownloadItem"));
-        DownloadItem->resize(592, 70);
+        DownloadItem->resize(725, 94);
         DownloadItem->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(DownloadItem);
         horizontalLayout->setSpacing(5);
@@ -54,8 +54,8 @@ public:
         horizontalLayout->setContentsMargins(5, 5, 5, 5);
         image_label = new QLabel(DownloadItem);
         image_label->setObjectName(QString::fromUtf8("image_label"));
-        image_label->setMinimumSize(QSize(60, 60));
-        image_label->setMaximumSize(QSize(60, 60));
+        image_label->setMinimumSize(QSize(80, 80));
+        image_label->setMaximumSize(QSize(80, 80));
         image_label->setAutoFillBackground(false);
         image_label->setStyleSheet(QString::fromUtf8("#image_label {\n"
 " background-color: #eee;\n"
@@ -65,6 +65,7 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(-1, 5, -1, -1);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         title_label = new QLabel(DownloadItem);
@@ -73,6 +74,7 @@ public:
         font.setPointSize(11);
         font.setBold(true);
         title_label->setFont(font);
+        title_label->setWordWrap(true);
 
         horizontalLayout_2->addWidget(title_label);
 

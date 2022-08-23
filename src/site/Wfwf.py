@@ -64,7 +64,6 @@ class Wfwf(SiteBase):
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
         self.get_chapter_list(driver)
-        print('📢[Wfwf.py:66]')
 
     def get_chapter_list(self, driver: webdriver):
         driver.execute_script('$(".badge").remove()')

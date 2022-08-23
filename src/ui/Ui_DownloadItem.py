@@ -24,7 +24,7 @@ class Ui_DownloadItem(object):
     def setupUi(self, DownloadItem):
         if not DownloadItem.objectName():
             DownloadItem.setObjectName(u"DownloadItem")
-        DownloadItem.resize(592, 70)
+        DownloadItem.resize(725, 94)
         DownloadItem.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
@@ -32,8 +32,8 @@ class Ui_DownloadItem(object):
         self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
         self.image_label = QLabel(DownloadItem)
         self.image_label.setObjectName(u"image_label")
-        self.image_label.setMinimumSize(QSize(60, 60))
-        self.image_label.setMaximumSize(QSize(60, 60))
+        self.image_label.setMinimumSize(QSize(80, 80))
+        self.image_label.setMaximumSize(QSize(80, 80))
         self.image_label.setAutoFillBackground(False)
         self.image_label.setStyleSheet(u"#image_label {\n"
 " background-color: #eee;\n"
@@ -43,6 +43,7 @@ class Ui_DownloadItem(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(-1, 5, -1, -1)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.title_label = QLabel(DownloadItem)
@@ -51,6 +52,7 @@ class Ui_DownloadItem(object):
         font.setPointSize(11)
         font.setBold(True)
         self.title_label.setFont(font)
+        self.title_label.setWordWrap(True)
 
         self.horizontalLayout_2.addWidget(self.title_label)
 

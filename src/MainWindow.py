@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
             "QListWidget::item { border-bottom: 1px solid #eee; }"
         )
         self.db = DatabaseManager()
+        self.current_key = ""
         self.__get_items_by_database()
 
     def __init_connect(self):
@@ -192,6 +193,8 @@ class MainWindow(QMainWindow):
             widget = self.ui.item_list.itemWidget(item)
             if widget is not None:
                 if widget.state == DOWNLOAD_ITEM_STATE.READY:
+                    if self.current_key == widget.key:
+                        continue
                     self.current_key = widget.key
                     widget.start()
                     return

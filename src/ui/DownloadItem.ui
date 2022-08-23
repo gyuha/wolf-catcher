@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
-    <height>70</height>
+    <width>725</width>
+    <height>94</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,14 +36,14 @@
     <widget class="QLabel" name="image_label">
      <property name="minimumSize">
       <size>
-       <width>60</width>
-       <height>60</height>
+       <width>80</width>
+       <height>80</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>60</width>
-       <height>60</height>
+       <width>80</width>
+       <height>80</height>
       </size>
      </property>
      <property name="autoFillBackground">
@@ -61,6 +61,9 @@
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="topMargin">
+      <number>5</number>
+     </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -73,6 +76,9 @@
          </property>
          <property name="text">
           <string>Loading</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -155,7 +161,7 @@
           <string notr="true">color: #777777;</string>
          </property>
          <property name="text">
-          <string>               </string>
+          <string/>
          </property>
         </widget>
        </item>

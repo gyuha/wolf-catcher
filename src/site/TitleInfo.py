@@ -34,5 +34,4 @@ class TitleInfo:
 
     def save(self):
         with open(self.path, "w", encoding="utf-8") as outfile:
-            print("📢[TitleInfo.py:38]: ", self.info)
             yaml.dump(self.info, outfile, allow_unicode=True)

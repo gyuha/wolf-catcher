@@ -1868,6 +1868,14 @@
         "documentation": {}
     },
     {
+        "label": "Wfwf",
+        "importPath": "src.site.Wfwf",
+        "description": "src.site.Wfwf",
+        "isExtraImport": true,
+        "detail": "src.site.Wfwf",
+        "documentation": {}
+    },
+    {
         "label": "BrowserGet",
         "importPath": "src.site.browser.BrowserGet",
         "description": "src.site.browser.BrowserGet",
@@ -2509,7 +2517,7 @@
         "kind": 6,
         "importPath": "src.site.SiteLoader",
         "description": "src.site.SiteLoader",
-        "peekOfCode": "class SiteLoaderSignals(QObject):\n    on_site_loaded = Signal()\nclass SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, config):\n        QThread.__init__(self, parent)\n        self.__config = config\n        self.site_class = None\n    def run(self):\n        self.load_site_class()",
+        "peekOfCode": "class SiteLoaderSignals(QObject):\n    on_site_loaded = Signal(str)\nclass SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, key, config):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        self.__key = key\n        self.__config = config\n        self.site_class = None",
         "detail": "src.site.SiteLoader",
         "documentation": {}
     },
@@ -2518,7 +2526,7 @@
         "kind": 6,
         "importPath": "src.site.SiteLoader",
         "description": "src.site.SiteLoader",
-        "peekOfCode": "class SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, config):\n        QThread.__init__(self, parent)\n        self.__config = config\n        self.site_class = None\n    def run(self):\n        self.load_site_class()\n    def load_site_class(self):\n        config = self.__config",
+        "peekOfCode": "class SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent, key, config):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        self.__key = key\n        self.__config = config\n        self.site_class = None\n    def run(self):\n        self.load_site_class()",
         "detail": "src.site.SiteLoader",
         "documentation": {}
     },
@@ -2563,7 +2571,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
         "description": "src.ui.Ui_DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(592, 70)\n        DownloadItem.setStyleSheet(u\"\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)",
+        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(725, 94)\n        DownloadItem.setStyleSheet(u\"\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)",
         "detail": "src.ui.Ui_DownloadItem",
         "documentation": {}
     },
@@ -2572,7 +2580,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_MainWindow",
         "description": "src.ui.Ui_MainWindow",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(434, 631)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")\n        self.action_always_top.setCheckable(True)\n        self.action_clipboard_toggle = QAction(MainWindow)\n        self.action_clipboard_toggle.setObjectName(u\"action_clipboard_toggle\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(582, 633)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")\n        self.action_always_top.setCheckable(True)\n        self.action_clipboard_toggle = QAction(MainWindow)\n        self.action_clipboard_toggle.setObjectName(u\"action_clipboard_toggle\")",
         "detail": "src.ui.Ui_MainWindow",
         "documentation": {}
     },
@@ -2608,7 +2616,7 @@
         "kind": 6,
         "importPath": "src.util.DatabaseManager",
         "description": "src.util.DatabaseManager",
-        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        Base.metadata.create_all(self.engine)\n    def insert_product(\n        self,\n        id,",
+        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=False, future=True)\n        self.session = Session(bind=self.engine)\n        Base.metadata.create_all(self.engine)\n    def insert_product(\n        self,\n        id,",
         "detail": "src.util.DatabaseManager",
         "documentation": {}
     },
@@ -2680,7 +2688,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DOWNLOAD_ITEM_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 2\n    ERROR = 3\nclass DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()",
+        "peekOfCode": "class DOWNLOAD_ITEM_STATE(Enum):\n    READY = 1\n    DOING = 2\n    DONE = 3\n    ERROR = 4\nclass DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

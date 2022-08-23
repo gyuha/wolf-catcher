@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(434, 631)
+        MainWindow.resize(582, 633)
         self.action_always_top = QAction(MainWindow)
         self.action_always_top.setObjectName(u"action_always_top")
         self.action_always_top.setCheckable(True)
@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 434, 22))
+        self.menubar.setGeometry(QRect(0, 0, 582, 22))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
         self.menu_2 = QMenu(self.menubar)

@@ -1,12 +1,14 @@
 from enum import Enum
 import os
 import pathlib
+import re
 import PySide6
 import importlib
 import time
 from PySide6.QtWidgets import QWidget
 from PySide6 import QtGui
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QSize, Qt
+from src.site.Wfwf import Wfwf
 from src.site.TitleInfo import TitleInfo
 from src.site.browser.BrowserGet import BrowserGet, GET_STATE, GET_TYPE
 from src.site.SiteLoader import SiteLoader
@@ -21,10 +23,10 @@ from util.message import toast
 
 
 class DOWNLOAD_ITEM_STATE(Enum):
-    READY = 0
-    DOING = 1
-    DONE = 2
-    ERROR = 3
+    READY = 1
+    DOING = 2
+    DONE = 3
+    ERROR = 4
 
 
 class DownloadItemSignals(QObject):
@@ -64,6 +66,7 @@ class DownloadItem(QWidget):
         self.ui.folder_open_button.clicked.connect(self.__on_click_open_folder)
 
     def __init_text(self):
+        self.ui.title_label.setWordWrap(True)
         self.ui.title_label.setText("----")
         self.ui.id_label.setText(self.id)
         self.ui.status_label.setText("대기")
@@ -71,23 +74,26 @@ class DownloadItem(QWidget):
     @property
     def key(self):
         return self.name + self.id
-
+    
     def start(self):
         self.state = DOWNLOAD_ITEM_STATE.DOING
-        self.site_loader = SiteLoader(self, self.site_config)
+        self.site_loader = SiteLoader(self, self.key, self.site_config)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
-        self.ui.status_label.setText("정보 조회 중")
+        self.ui.status_label.setText("웹 초기화 중")
 
     def __init_downloader(self):
         self.downloader = Downloader(self, self.site_config["url"])
         self.downloader.id = self.id
         self.downloader.signals.download_state.connect(self.__on_download_state)
 
-    def __on_site_loaded(self):
+    @Slot(str)
+    def __on_site_loaded(self, key):
         """
         사이트의 내용이 완료
         """
+        if key != self.key:
+            return
         self.site = self.site_loader.site_class
         self.site.id = self.id
         self.site.parent = self
@@ -109,7 +115,10 @@ class DownloadItem(QWidget):
             self.site_config["url_format"]["title"]["visible_condition"]["text"],
         )
         self.browserGet.start()
-        self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] 조회 중")
+        current = self.site.current_chapter+1
+        if current > self.site.total_chapter:
+            current = self.site.total_chapter
+        self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 조회 중")
 
     def __get_chapter_info(self):
         """
@@ -163,6 +172,8 @@ class DownloadItem(QWidget):
         current = self.site.current_chapter+1
         if current > self.site.total_chapter:
             current = self.site.total_chapter
+        if subject == None:
+            subject = "완료"
         self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] {subject}")
 
     def __on_click_delete_button(self):
@@ -221,8 +232,9 @@ class DownloadItem(QWidget):
                     "",
                     "/".join(info["tags"])
                 )
+            self.__thumbnail()
         except Exception as e:
-            print('📢[DownloadItem.py:209]: ', e)
+            print('📢[DownloadItem.py:240]: ', e)
             
 
     @Slot(str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int)
@@ -239,7 +251,10 @@ class DownloadItem(QWidget):
 
         if type == DOWNLOAD_TYPE.IMAGES:
             if state == DOWNLOAD_STATE.COMPRESS:
-                self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] 압축중")
+                current = self.site.current_chapter+1
+                if current > self.site.total_chapter:
+                    current = self.site.total_chapter
+                self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 압축중")
                 return
 
             self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
@@ -259,15 +274,38 @@ class DownloadItem(QWidget):
         """
         완료 처리
         """
-        self.ui.status_label.setText("완료")
+        # self.ui.status_label.setText("완료")
+        self.__set_status_text()
         self.ui.progress_bar.setValue(100)
 
         self.state = DOWNLOAD_ITEM_STATE.DONE
         self.signals.download_state.emit(self.key, self.state)
+    
+    def strip_title_for_path(self, title: str) -> str:
+        """
+        윈도우에서 사용이 가능한 파일 명으로 변경
+        """
+        title = re.sub(r"NEW\t+", "", title)
+
+        title = title.replace("\n", "")
+        title = re.sub(r"\t.*$", "", title)
+        title = (
+            title.replace(":", "")
+            .replace("?", "")
+            .replace("/", "")
+            .replace("!", "")
+            .replace("\\", "")
+        )
+        title = title.replace("「", " ").replace("」", "").replace(".", "")
+        title = title.replace("<", "").replace(">", "")
+
+        title = title.strip()
+        return title
 
     def __thumbnail(self):
-        if not os.path.exists(self.site.thumbnail_path):
+        thumbnail_path = os.path.join(self.site_config["download_path"], self.strip_title_for_path(self.info["title"]), "thumbnail.jpg")
+        if not os.path.exists(thumbnail_path):
             return
-        pixmap = QtGui.QPixmap(self.site.thumbnail_path)
-        pixmap = pixmap.scaled(QSize(60, 60))
+        pixmap = QtGui.QPixmap(thumbnail_path)
+        pixmap = pixmap.scaled(QSize(80, 80))
         self.ui.image_label.setPixmap(pixmap)
