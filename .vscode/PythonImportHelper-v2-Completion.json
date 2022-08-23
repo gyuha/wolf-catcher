@@ -939,14 +939,6 @@
         "documentation": {}
     },
     {
-        "label": "strip_file_path",
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "isExtraImport": true,
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
         "label": "BrowserDriver",
         "importPath": "src.site.browser.BrowserDriver",
         "description": "src.site.browser.BrowserDriver",
@@ -1579,61 +1571,11 @@
         "documentation": {}
     },
     {
-        "label": "Pool",
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "isExtraImport": true,
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
-        "label": "cpu_count",
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "isExtraImport": true,
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
         "label": "ThreadPool",
         "importPath": "multiprocessing.pool",
         "description": "multiprocessing.pool",
         "isExtraImport": true,
         "detail": "multiprocessing.pool",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "images_compress",
-        "importPath": "util.image",
-        "description": "util.image",
-        "isExtraImport": true,
-        "detail": "util.image",
-        "documentation": {}
-    },
-    {
-        "label": "math",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "math",
-        "description": "math",
-        "detail": "math",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -1804,6 +1746,15 @@
         "description": "MainWindow",
         "isExtraImport": true,
         "detail": "MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "Ui_DownloadIte",
+        "kind": 6,
+        "importPath": ".qt_for_python.uic.DownloadItem",
+        "description": ".qt_for_python.uic.DownloadItem",
+        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
+        "detail": ".qt_for_python.uic.DownloadItem",
         "documentation": {}
     },
     {
@@ -2176,6 +2127,15 @@
         "documentation": {}
     },
     {
+        "label": "Site",
+        "kind": 6,
+        "importPath": "src.model.Site",
+        "description": "src.model.Site",
+        "peekOfCode": "class Site()",
+        "detail": "src.model.Site",
+        "documentation": {}
+    },
+    {
         "label": "BrowserDriver",
         "kind": 6,
         "importPath": "src.site.browser.BrowserDriver",
@@ -2380,60 +2340,6 @@
         "description": "src.util.Downloader",
         "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader(QThread):\n    signals = DownloaderSignal()",
         "detail": "src.util.Downloader",
-        "documentation": {}
-    },
-    {
-        "label": "strip_file_path",
-        "kind": 2,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "def strip_file_path(path):\n    \"\"\"\n    윈도우에서 사용이 가능한 파일 명으로 변경\n    \"\"\"\n    path = re.sub(r\"NEW\\t+\", \"\", path)\n    path = path.replace('\\n', '')\n    path = re.sub(r\"\\t.*$\", \"\", path)\n    path = path.replace(':', '').replace('?', '').replace(\n        '/', '').replace('!', '').replace('\\\\', '')\n    path = path.replace(\"「\", \" \").replace(\"」\", '').replace(\".\", \"\")",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "images_download",
-        "kind": 2,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "def images_download(title, save_path, images):\n    pathlib.Path(save_path).mkdir(parents=True, exist_ok=True)\n    target = []\n    # c = Config()\n    for i, img in enumerate(images):\n        # img = re.sub(r\"mangashow\\d.me\", c.getName(), img[0])\n        target.append([img, save_path, i+1])\n    pool = Pool(processes=cpu_count())\n    try:\n        # for tar in target:",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "timed_loop",
-        "kind": 2,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "def timed_loop(iterator, timeout):\n    start_time = time.time()\n    iterator = iter(iterator)\n    while True:\n        elapsed_time = time.time() - start_time\n        if elapsed_time > timeout:\n            raise TimeoutError(\"long_running_function took too long!\")\n        try:\n            yield next(iterator)\n        except StopIteration:",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "zip_folder",
-        "kind": 2,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "def zip_folder(filename, path):\n    zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n    for f in os.listdir(path):\n        zipf.write(os.path.join(path, f), os.path.basename(f))\n    zipf.close()",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "CUSTOM_USER_AGENT",
-        "kind": 5,
-        "importPath": "src.util.file_name",
-        "description": "src.util.file_name",
-        "peekOfCode": "CUSTOM_USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \\\n(KHTML, like Gecko) Chrome/40.0.2214.91 Safari/537.36'\ndef strip_file_path(path):\n    \"\"\"\n    윈도우에서 사용이 가능한 파일 명으로 변경\n    \"\"\"\n    path = re.sub(r\"NEW\\t+\", \"\", path)\n    path = path.replace('\\n', '')\n    path = re.sub(r\"\\t.*$\", \"\", path)\n    path = path.replace(':', '').replace('?', '').replace(",
-        "detail": "src.util.file_name",
-        "documentation": {}
-    },
-    {
-        "label": "images_compress",
-        "kind": 2,
-        "importPath": "src.util.image",
-        "description": "src.util.image",
-        "peekOfCode": "def images_compress(save_path):\n    for f in os.listdir(save_path):\n        fname = os.path.join(save_path, f)\n        __convert(fname)\nif __name__ == \"__main__\":\n    images_compress(\"...\")",
-        "detail": "src.util.image",
         "documentation": {}
     },
     {

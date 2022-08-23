@@ -3,6 +3,7 @@ setting:
   headless: true
   tries: 5
   timeout: 10
+  db: sqlite:///data.db
 site:
   - name: wfwf
     class_name: Wfwf
