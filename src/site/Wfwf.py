@@ -60,7 +60,7 @@ class Wfwf(SiteBase):
         self.current_chapter = int(info["skip"])
 
         self.title_info.save()
-        self.parent.update_info(info)
+        self.parent.update_info(info, True)
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
         self.get_chapter_list(driver)

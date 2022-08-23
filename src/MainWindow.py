@@ -8,6 +8,7 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
+from src.site.TitleInfo import TitleInfo
 
 from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
@@ -92,6 +93,18 @@ class MainWindow(QMainWindow):
             return False
         return True
 
+    def __widget_title_info(self, id):
+        prd = self.db.get_product(id)
+        if prd is None:
+            return None
+        info = {
+            "title": prd.title,
+            "author": prd.author,
+            "tags": prd.tags.split("/"),
+            "id": id
+        }
+        return info 
+
     # region item_list
     def add_item(self, id: str, site_config, by: ADD_BY):
 
@@ -100,9 +113,13 @@ class MainWindow(QMainWindow):
 
         if by == ADD_BY.CLIPBOARD:
             self.db.insert_product(id)
-
+        
         self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
         widget = DownloadItem(id, site_config)
+
+        info = self.__widget_title_info(id)
+        if info is not None:
+            widget.update_info(info, False)
 
         if self.item_counter == 0:
             widget.signals.remove_item.connect(self.remove_item)
@@ -118,12 +135,20 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def remove_item(self, key: str):
+        wd = self.__get_widget(key)
+        if wd is not None:
+            self.db.set_visible_product(wd.id, False)
         item = self.item_dict[key]
         self.ui.item_list.takeItem(self.ui.item_list.row(item))
         del self.item_dict[key]
 
     @Slot()
     def clear_item_list(self):
+        for i in range(self.ui.item_list.count()):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                self.db.set_visible_product(widget.id, False)
         self.ui.item_list.clear()
         self.item_dict.clear()
 
@@ -132,9 +157,9 @@ class MainWindow(QMainWindow):
         if self.current_key != key:
             return
         if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
+            # 완료 된 목록 끄기
             widget = self.__get_widget(key)
             if widget is not None:
-                print("📢[MainWindow.py:133]: ", widget.id)
                 self.db.set_visible_product(widget.id, False)
             self.__start_download()
 
@@ -142,8 +167,8 @@ class MainWindow(QMainWindow):
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
-            if widget is not None:
-                return widget
+            if widget is not None and widget.key == key:
+                    return widget
         return None
 
     def __check_download_possible(self):
@@ -161,7 +186,7 @@ class MainWindow(QMainWindow):
     def __start_download(self):
         if self.__check_download_possible() == False:
             return
-        print("📢[MainWindow.py:129]: ", self.ui.item_list.count())
+
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
@@ -169,6 +194,6 @@ class MainWindow(QMainWindow):
                 if widget.state == DOWNLOAD_ITEM_STATE.READY:
                     self.current_key = widget.key
                     widget.start()
-                    break
+                    return
 
     # endregion

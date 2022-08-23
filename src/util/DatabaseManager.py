@@ -33,7 +33,7 @@ class DatabaseManager(metaclass=Singleton):
         site="wfwf"
     ):
         if self.get_product(id) is not None:
-            self.set_visible_products(id, True)
+            self.set_visible_product(id, True)
             return
 
         product = Product(
@@ -58,7 +58,7 @@ class DatabaseManager(metaclass=Singleton):
         return None
 
     def updated_product(
-        self, id, title, author, path, tags, visible=0, download_count=0
+        self, id, title, author, path, tags
     ):
         try:
             self.session.query(Product).filter_by(id=id).update(
@@ -67,8 +67,6 @@ class DatabaseManager(metaclass=Singleton):
                     "author": author,
                     "path": path,
                     "tags": tags,
-                    "visible": visible,
-                    "download_count": download_count,
                 }
             )
             return self.session.commit()
@@ -85,7 +83,7 @@ class DatabaseManager(metaclass=Singleton):
 
     def set_visible_product(self, id: str, visible: bool):
         try:
-            self.session.query(Product).filter_by(id=id).update({"visible": visible})
+            self.session.query(Product).filter(Product.id == id).update({"visible": visible})
             return self.session.commit()
         except NoResultFound as e:
             print(e)

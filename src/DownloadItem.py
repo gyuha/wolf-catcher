@@ -17,6 +17,7 @@ from plyer import notification
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
 from src.util.DatabaseManager import DatabaseManager
+from util.message import toast
 
 
 class DOWNLOAD_ITEM_STATE(Enum):
@@ -59,7 +60,6 @@ class DownloadItem(QWidget):
         # self.__init_site()
 
     def __init_connect(self):
-        self.ui.delete_button.setEnabled(False)
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
         self.ui.folder_open_button.clicked.connect(self.__on_click_open_folder)
 
@@ -160,9 +160,15 @@ class DownloadItem(QWidget):
 
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
-        self.ui.status_label.setText(f"[{self.site.current_chapter+1}/{self.site.total_chapter}] {subject}")
+        current = self.site.current_chapter+1
+        if current > self.site.total_chapter:
+            current = self.site.total_chapter
+        self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] {subject}")
 
     def __on_click_delete_button(self):
+        if self.state == DOWNLOAD_ITEM_STATE.DOING:
+            toast(self, "지울 수 없습니다.")
+            return
         self.signals.remove_item.emit(self.key)
     
     def __on_click_open_folder(self):
@@ -202,19 +208,19 @@ class DownloadItem(QWidget):
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
 
-    def update_info(self, info: TitleInfo):
+    def update_info(self, info, update = True):
         self.info = info
         try:
             self.ui.title_label.setText(f'{info["title"]}')
             self.ui.tag_label.setText(f'{"/".join(info["tags"])}')
-            self.db.updated_product(
-                self.id,
-                info["title"],
-                info["author"],
-                "",
-                "/".join(info["tags"]),
-                True
-            )
+            if update:
+                self.db.updated_product(
+                    self.id,
+                    info["title"],
+                    info["author"],
+                    "",
+                    "/".join(info["tags"])
+                )
         except Exception as e:
             print('📢[DownloadItem.py:209]: ', e)
             
@@ -253,7 +259,6 @@ class DownloadItem(QWidget):
         """
         완료 처리
         """
-        self.ui.delete_button.setEnabled(True)
         self.ui.status_label.setText("완료")
         self.ui.progress_bar.setValue(100)
 

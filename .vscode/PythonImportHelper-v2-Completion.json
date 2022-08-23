@@ -1179,6 +1179,14 @@
         "documentation": {}
     },
     {
+        "label": "TitleInfo",
+        "importPath": "src.site.TitleInfo",
+        "description": "src.site.TitleInfo",
+        "isExtraImport": true,
+        "detail": "src.site.TitleInfo",
+        "documentation": {}
+    },
+    {
         "label": "BrowserDriver",
         "importPath": "src.site.browser.BrowserDriver",
         "description": "src.site.browser.BrowserDriver",
@@ -1940,6 +1948,22 @@
         "documentation": {}
     },
     {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
+        "documentation": {}
+    },
+    {
         "label": "DOWNLOAD_ITEM_STATE",
         "importPath": "DownloadItem",
         "description": "DownloadItem",
@@ -1977,14 +2001,6 @@
         "description": "util.DatabaseManager",
         "isExtraImport": true,
         "detail": "util.DatabaseManager",
-        "documentation": {}
-    },
-    {
-        "label": "toast",
-        "importPath": "util.message",
-        "description": "util.message",
-        "isExtraImport": true,
-        "detail": "util.message",
         "documentation": {}
     },
     {
