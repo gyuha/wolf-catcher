@@ -33,6 +33,7 @@ class DatabaseManager(metaclass=Singleton):
         site="wfwf"
     ):
         if self.get_product(id) is not None:
+            self.set_visible_products(id, True)
             return
 
         product = Product(

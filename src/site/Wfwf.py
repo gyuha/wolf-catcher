@@ -59,8 +59,6 @@ class Wfwf(SiteBase):
 
         self.current_chapter = int(info["skip"])
 
-        self.thumbnail_path = os.path.join(self.path, "thumbnail.jpg")
-
         self.title_info.save()
         self.parent.update_info(info)
         self.download_thumbnail(thumbnail, self.thumbnail_path)

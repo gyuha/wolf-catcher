@@ -2691,7 +2691,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class ADD_BY(Enum):\n    DATABASE = 0\n    CLIPBOARD = 1\nclass MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon('logo.png'))\n        self.setWindowTitle(\"Wolf catcher\")",
+        "peekOfCode": "class ADD_BY(Enum):\n    DATABASE = 0\n    CLIPBOARD = 1\nclass MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon(\"logo.png\"))\n        self.setWindowTitle(\"Wolf catcher\")",
         "detail": "src.MainWindow",
         "documentation": {}
     },
@@ -2700,7 +2700,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon('logo.png'))\n        self.setWindowTitle(\"Wolf catcher\")\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super(MainWindow, self).__init__()\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon(\"logo.png\"))\n        self.setWindowTitle(\"Wolf catcher\")\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()",
         "detail": "src.MainWindow",
         "documentation": {}
     },

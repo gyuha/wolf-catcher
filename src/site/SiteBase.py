@@ -25,11 +25,14 @@ class SiteBase(ABC):
 
         self.path = "" # 다운로드 경로
         self.parent = None
-        self.thumbnail_path = ""
 
     @property
     def site_name(self):
         return self.name
+    
+    @property
+    def thumbnail_path(self):
+        return os.path.join(self.path, "thumbnail.jpg")
 
     @abstractmethod
     async def get_chapter_info_parser(self, driver: webdriver):

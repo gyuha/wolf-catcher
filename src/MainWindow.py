@@ -18,6 +18,7 @@ from util.message import toast
 
 # from util.Scraper import Scraper
 
+
 class ADD_BY(Enum):
     DATABASE = 0
     CLIPBOARD = 1
@@ -31,7 +32,7 @@ class MainWindow(QMainWindow):
 
         self.clipbard = Clipboard()
 
-        self.setWindowIcon(QtGui.QIcon('logo.png'))
+        self.setWindowIcon(QtGui.QIcon("logo.png"))
         self.setWindowTitle("Wolf catcher")
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -39,10 +40,11 @@ class MainWindow(QMainWindow):
         self.__init_slot()
         self.item_dict: dict[str, QListWidgetItem] = {}
         self.item_counter = 0
-        self.ui.item_list.setStyleSheet( "QListWidget::item { border-bottom: 1px solid #eee; }" );
-        self.databaseManager = DatabaseManager()
+        self.ui.item_list.setStyleSheet(
+            "QListWidget::item { border-bottom: 1px solid #eee; }"
+        )
+        self.db = DatabaseManager()
         self.__get_items_by_database()
-
 
     def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
@@ -50,15 +52,17 @@ class MainWindow(QMainWindow):
     def __init_slot(self):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
-    
+
     def __get_items_by_database(self):
-        prds = self.databaseManager.get_visible_products()
-        if prds is None: return
+        prds = self.db.get_visible_products()
+        if prds is None:
+            return
         for prd in prds:
             site_config = self.config.get_site_config_by_name(prd.site)
-            if site_config is None: return
+            if site_config is None:
+                return
             self.add_item(prd.id, site_config, ADD_BY.DATABASE)
-    
+
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):
         self.ui.statusbar.showMessage(text)
@@ -67,7 +71,7 @@ class MainWindow(QMainWindow):
         if id is None:
             return
         self.add_item(id, site_config, ADD_BY.CLIPBOARD)
-    
+
     def get_button(self):
         self.__start_download()
 
@@ -80,7 +84,7 @@ class MainWindow(QMainWindow):
         if mat:
             return mat.group(1), site_config
         return None, None
-    
+
     def __check_exist_item(self, id, site_config) -> bool:
         key = site_config["name"] + id
         if key in self.item_dict:
@@ -95,9 +99,9 @@ class MainWindow(QMainWindow):
             return
 
         if by == ADD_BY.CLIPBOARD:
-            self.databaseManager.insert_product(id)
+            self.db.insert_product(id)
 
-        self.item_dict[site_config["name"] + id] = None # 임시로 미리 등록 해 준다.
+        self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
         widget = DownloadItem(id, site_config)
 
         if self.item_counter == 0:
@@ -122,14 +126,18 @@ class MainWindow(QMainWindow):
     def clear_item_list(self):
         self.ui.item_list.clear()
         self.item_dict.clear()
-    
+
     @Slot(str, DOWNLOAD_ITEM_STATE)
     def __on_download_state(self, key: str, state: DOWNLOAD_ITEM_STATE):
         if self.current_key != key:
             return
         if state == DOWNLOAD_ITEM_STATE.DONE or state == DOWNLOAD_ITEM_STATE.ERROR:
+            widget = self.__get_widget(key)
+            if widget is not None:
+                print("📢[MainWindow.py:133]: ", widget.id)
+                self.db.set_visible_product(widget.id, False)
             self.__start_download()
-    
+
     def __get_widget(self, key: str):
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
@@ -137,7 +145,7 @@ class MainWindow(QMainWindow):
             if widget is not None:
                 return widget
         return None
-    
+
     def __check_download_possible(self):
         """
         현재 다운로드 중인게 있는지 체크
@@ -149,11 +157,11 @@ class MainWindow(QMainWindow):
                 if widget.state == DOWNLOAD_ITEM_STATE.DOING:
                     return False
             return True
-    
+
     def __start_download(self):
         if self.__check_download_possible() == False:
             return
-        print('📢[MainWindow.py:129]: ', self.ui.item_list.count())
+        print("📢[MainWindow.py:129]: ", self.ui.item_list.count())
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
@@ -161,6 +169,6 @@ class MainWindow(QMainWindow):
                 if widget.state == DOWNLOAD_ITEM_STATE.READY:
                     self.current_key = widget.key
                     widget.start()
-                    break;
+                    break
 
     # endregion

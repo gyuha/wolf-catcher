@@ -212,7 +212,8 @@ class DownloadItem(QWidget):
                 info["title"],
                 info["author"],
                 "",
-                "/".join(info["tags"])
+                "/".join(info["tags"]),
+                True
             )
         except Exception as e:
             print('📢[DownloadItem.py:209]: ', e)
@@ -260,6 +261,8 @@ class DownloadItem(QWidget):
         self.signals.download_state.emit(self.key, self.state)
 
     def __thumbnail(self):
+        if not os.path.exists(self.site.thumbnail_path):
+            return
         pixmap = QtGui.QPixmap(self.site.thumbnail_path)
         pixmap = pixmap.scaled(QSize(60, 60))
         self.ui.image_label.setPixmap(pixmap)
