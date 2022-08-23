@@ -7,11 +7,9 @@ from sqlalchemy import Column, Date, Integer, String, Boolean
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.orm.exc import MultipleResultsFound
 import os
+from model.Base import Base
+from model.Product import Product
 from util.Config import Config
-
-Base = declarative_base()
-
-from src.model.Product import Product
 
 
 class DatabaseManager(metaclass=Singleton):
@@ -51,4 +49,3 @@ class DatabaseManager(metaclass=Singleton):
         except NoResultFound as e:
             print(e)
         return None
-

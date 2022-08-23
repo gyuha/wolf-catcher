@@ -1,15 +1,18 @@
-import PySide6.QtGui
-from lib.Singleton import Singleton
-from sqlalchemy import ForeignKey
-from sqlalchemy import create_engine, select
+from sqlalchemy import (
+    Boolean,
+    Column,
+    Date,
+    ForeignKey,
+    Integer,
+    String,
+    create_engine,
+    select,
+)
 from sqlalchemy.orm import Session, declarative_base
-from sqlalchemy import Column, Date, Integer, String, Boolean
-from sqlalchemy.orm.exc import NoResultFound
-from sqlalchemy.orm.exc import MultipleResultsFound
-import os
+from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from util.Config import Config
 
-Base = declarative_base()
+from model.Base import Base
 
 
 class Product(Base):
