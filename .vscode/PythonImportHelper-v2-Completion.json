@@ -2576,7 +2576,7 @@
         "kind": 6,
         "importPath": "src.util.DatabaseManager",
         "description": "src.util.DatabaseManager",
-        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        print(\"📢[DatabaseManager.py:13]: \", config.setting[\"db\"])\n        Base.metadata.create_all(self.engine)\n        self.insert_product(\"123\", \"제목\", \"asdf\", \"path\", \"test,asdf\")\n        self.get_product(\"123\")",
+        "peekOfCode": "class DatabaseManager(metaclass=Singleton):\n    def __init__(self):\n        super(DatabaseManager, self).__init__()\n        config = Config()\n        self.engine = create_engine(config.setting[\"db\"], echo=True, future=True)\n        self.session = Session(bind=self.engine)\n        Base.metadata.create_all(self.engine)\n    def insert_product(\n        self, id, title=\"\", author=\"\", path=\"\", tags=\"\", visible=True, download_count=0\n    ):",
         "detail": "src.util.DatabaseManager",
         "documentation": {}
     },

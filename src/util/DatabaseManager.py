@@ -18,16 +18,15 @@ class DatabaseManager(metaclass=Singleton):
         config = Config()
         self.engine = create_engine(config.setting["db"], echo=True, future=True)
         self.session = Session(bind=self.engine)
-        print("📢[DatabaseManager.py:13]: ", config.setting["db"])
 
         Base.metadata.create_all(self.engine)
 
-        self.insert_product("123", "제목", "asdf", "path", "test,asdf")
-        self.get_product("123")
-
     def insert_product(
-        self, id, title, author, path, tags, visible=True, download_count=0
+        self, id, title="", author="", path="", tags="", visible=True, download_count=0
     ):
+        if self.get_product(id) is not None:
+            return
+
         product = Product(
             id=id,
             title=title,
@@ -44,8 +43,40 @@ class DatabaseManager(metaclass=Singleton):
         try:
             p = self.session.query(Product).filter(Product.id == id).first()
             return p
-        except MultipleResultsFound as e:
+        except Exception as e:
             print(e)
+        return None
+
+    def get_updated_product(
+        self, id, title, author, path, tags, visible=0, download_count=0
+    ):
+        try:
+            self.session.query(Product).filter_by(id=id).update(
+                {
+                    "title": title,
+                    "author": author,
+                    "path": path,
+                    "tags": tags,
+                    "visible": visible,
+                    "download_count": download_count,
+                }
+            )
+            self.session.commit()
+        except Exception as e:
+            print(e)
+        return None
+
+    def get_visible_products(self):
+        try:
+            self.session.query(Product).filter(Product.visible == True).all()
+        except Exception as e:
+            print(e)
+        return None
+
+    def set_visible_product(self, id: str, visible: bool):
+        try:
+            self.session.query(Product).filter_by(id=id).update({"visible": visible})
+            self.session.commit()
         except NoResultFound as e:
             print(e)
         return None
