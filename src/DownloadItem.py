@@ -280,7 +280,7 @@ class DownloadItem(QWidget):
         # self.ui.status_label.setText("완료")
         self.__set_status_text()
         self.ui.progress_bar.setValue(100)
-        self.site.browser.driver_close()
+        self.site.browserDriver.driver_close()
         self.state = DOWNLOAD_ITEM_STATE.DONE
         self.ui.state_label.setText("DONE")
         self.signals.download_state.emit(self.key, self.state)
