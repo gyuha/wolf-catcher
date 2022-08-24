@@ -16,10 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QListWidget, QListWidgetItem,
-    QMainWindow, QMenu, QMenuBar, QPushButton,
-    QSizePolicy, QSpacerItem, QStatusBar, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
+    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -50,14 +50,33 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.downloaded_label = QLabel(self.centralwidget)
+        self.downloaded_label.setObjectName(u"downloaded_label")
+        font = QFont()
+        font.setBold(True)
+        self.downloaded_label.setFont(font)
+
+        self.horizontalLayout.addWidget(self.downloaded_label)
+
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout.addWidget(self.label_3)
+
+        self.total_label = QLabel(self.centralwidget)
+        self.total_label.setObjectName(u"total_label")
+        self.total_label.setFont(font)
+
+        self.horizontalLayout.addWidget(self.total_label)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
-
-        self.pushButton_2 = QPushButton(self.centralwidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-
-        self.horizontalLayout.addWidget(self.pushButton_2)
 
         self.getButton = QPushButton(self.centralwidget)
         self.getButton.setObjectName(u"getButton")
@@ -68,26 +87,18 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
+        MainWindow.setStatusBar(self.statusbar)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 582, 22))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
-        self.menu_2 = QMenu(self.menubar)
-        self.menu_2.setObjectName(u"menu_2")
-        self.menu_3 = QMenu(self.menubar)
-        self.menu_3.setObjectName(u"menu_3")
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menu.menuAction())
-        self.menubar.addAction(self.menu_3.menuAction())
-        self.menubar.addAction(self.menu_2.menuAction())
         self.menu.addAction(self.action_exit)
-        self.menu_3.addAction(self.action_always_top)
-        self.menu_3.addAction(self.action_clipboard_toggle)
 
         self.retranslateUi(MainWindow)
 
@@ -99,10 +110,11 @@ class Ui_MainWindow(object):
         self.action_always_top.setText(QCoreApplication.translate("MainWindow", u"\ud56d\uc0c1\uc704", None))
         self.action_clipboard_toggle.setText(QCoreApplication.translate("MainWindow", u"\ud074\ub9bd\ubcf4\ub4dc\uc5d0\uc11c \ucd94\uac00", None))
         self.action_exit.setText(QCoreApplication.translate("MainWindow", u"\uc885\ub8cc(&q)", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.getButton.setText(QCoreApplication.translate("MainWindow", u"Get Button", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\ub2e4\uc6b4\ub85c\ub4dc : ", None))
+        self.downloaded_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"  /  \uc804\uccb4 :", None))
+        self.total_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.getButton.setText(QCoreApplication.translate("MainWindow", u"\uc8fc\uc18c \uc5c5\ub370\uc774\ud2b8", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\uc791\uc5c5", None))
-        self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\ub3c4\uc6c0\ub9d0", None))
-        self.menu_3.setTitle(QCoreApplication.translate("MainWindow", u"\uc635\uc158", None))
     # retranslateUi
 

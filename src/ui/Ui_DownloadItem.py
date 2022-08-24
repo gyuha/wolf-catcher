@@ -15,16 +15,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QProgressBar,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLayout,
+    QProgressBar, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_DownloadItem(object):
     def setupUi(self, DownloadItem):
         if not DownloadItem.objectName():
             DownloadItem.setObjectName(u"DownloadItem")
-        DownloadItem.resize(725, 94)
+        DownloadItem.resize(684, 112)
         DownloadItem.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
@@ -43,11 +43,19 @@ class Ui_DownloadItem(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setSizeConstraint(QLayout.SetMaximumSize)
         self.verticalLayout.setContentsMargins(-1, 5, -1, -1)
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.title_label = QLabel(DownloadItem)
         self.title_label.setObjectName(u"title_label")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
+        self.title_label.setSizePolicy(sizePolicy)
+        self.title_label.setMinimumSize(QSize(0, 0))
         font = QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -57,7 +65,7 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_2.addWidget(self.title_label)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
@@ -81,6 +89,7 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_2.addWidget(self.delete_button)
 
+        self.horizontalLayout_2.setStretch(0, 1)
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
@@ -106,6 +115,9 @@ class Ui_DownloadItem(object):
         self.state_label = QLabel(DownloadItem)
         self.state_label.setObjectName(u"state_label")
         self.state_label.setMaximumSize(QSize(40, 16777215))
+        font2 = QFont()
+        font2.setPointSize(8)
+        self.state_label.setFont(font2)
         self.state_label.setStyleSheet(u"#state_label {\n"
 "color: #888;\n"
 "}")
@@ -128,11 +140,11 @@ class Ui_DownloadItem(object):
 
         self.progress_bar = QProgressBar(DownloadItem)
         self.progress_bar.setObjectName(u"progress_bar")
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.progress_bar.sizePolicy().hasHeightForWidth())
-        self.progress_bar.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.progress_bar.sizePolicy().hasHeightForWidth())
+        self.progress_bar.setSizePolicy(sizePolicy1)
         self.progress_bar.setMaximumSize(QSize(150, 15))
         self.progress_bar.setValue(0)
 
@@ -141,6 +153,7 @@ class Ui_DownloadItem(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
+        self.verticalLayout.setStretch(0, 1)
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
@@ -154,12 +167,12 @@ class Ui_DownloadItem(object):
     def retranslateUi(self, DownloadItem):
         DownloadItem.setWindowTitle(QCoreApplication.translate("DownloadItem", u"Form", None))
         self.image_label.setText("")
-        self.title_label.setText(QCoreApplication.translate("DownloadItem", u"Loading", None))
+        self.title_label.setText(QCoreApplication.translate("DownloadItem", u"Title", None))
         self.folder_open_button.setText("")
         self.delete_button.setText("")
         self.tag_label.setText("")
-        self.id_label.setText(QCoreApplication.translate("DownloadItem", u"0", None))
-        self.state_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
+        self.id_label.setText(QCoreApplication.translate("DownloadItem", u"ID", None))
+        self.state_label.setText(QCoreApplication.translate("DownloadItem", u"STATE", None))
         self.status_label.setText("")
     # retranslateUi
 

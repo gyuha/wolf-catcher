@@ -10,8 +10,8 @@ from src.site.browser.BrowserDriver import BrowserDriver
 
 
 class SiteBase(ABC):
-    def __init__(self, config: Config):
-        self.browserDriver = BrowserDriver()
+    def __init__(self, browserDriver: BrowserDriver, config: Config):
+        self.browserDriver = browserDriver
         self.browser = self.browserDriver.browser
 
         self.id = ""

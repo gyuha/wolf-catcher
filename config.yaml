@@ -1,7 +1,7 @@
 setting:
   link_url: https://nicelink18.com/
   browser: firefox
-  headless: true
+  headless: false
   tries: 5
   timeout: 10
   db: sqlite:///data.db

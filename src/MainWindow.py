@@ -8,6 +8,7 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
+from src.site.browser.BrowserDriver import BrowserDriver
 from src.site.TitleInfo import TitleInfo
 
 from ui.Ui_MainWindow import Ui_MainWindow
@@ -46,6 +47,7 @@ class MainWindow(QMainWindow):
         )
         self.db = DatabaseManager()
         self.current_key = ""
+        self.browserDriver = BrowserDriver()
         self.__get_items_by_database()
 
     def __init_connect(self):
@@ -116,7 +118,7 @@ class MainWindow(QMainWindow):
             self.db.insert_product(id)
         
         self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
-        widget = DownloadItem(id, site_config)
+        widget = DownloadItem(self.browserDriver, id, site_config)
 
         info = self.__widget_title_info(id)
         if info is not None:
@@ -169,8 +171,20 @@ class MainWindow(QMainWindow):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)
             if widget is not None and widget.key == key:
-                    return widget
+                return widget
         return None
+
+    def __update_count(self):
+        self.ui.total_label.setText(str(self.ui.item_list.count()))
+        count = 0
+        for i in range(self.ui.item_list.count()):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                if widget.state == DOWNLOAD_ITEM_STATE.DONE:
+                    count += 1
+        self.ui.downloaded_label.setText(str(count))
+        
 
     def __check_download_possible(self):
         """
@@ -182,12 +196,13 @@ class MainWindow(QMainWindow):
             if widget is not None:
                 if widget.state == DOWNLOAD_ITEM_STATE.DOING:
                     return False
-            return True
+        return True
 
     def __start_download(self):
         if self.__check_download_possible() == False:
             return
 
+        self.__update_count()
         for i in range(self.ui.item_list.count()):
             item = self.ui.item_list.item(i)
             widget = self.ui.item_list.itemWidget(item)

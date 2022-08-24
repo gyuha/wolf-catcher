@@ -46,7 +46,7 @@ public:
     {
         if (DownloadItem->objectName().isEmpty())
             DownloadItem->setObjectName(QString::fromUtf8("DownloadItem"));
-        DownloadItem->resize(725, 94);
+        DownloadItem->resize(684, 112);
         DownloadItem->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(DownloadItem);
         horizontalLayout->setSpacing(5);
@@ -65,11 +65,19 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         verticalLayout->setContentsMargins(-1, 5, -1, -1);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
         title_label = new QLabel(DownloadItem);
         title_label->setObjectName(QString::fromUtf8("title_label"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(1);
+        sizePolicy.setVerticalStretch(1);
+        sizePolicy.setHeightForWidth(title_label->sizePolicy().hasHeightForWidth());
+        title_label->setSizePolicy(sizePolicy);
+        title_label->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
@@ -79,7 +87,7 @@ public:
 
         horizontalLayout_2->addWidget(title_label);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
@@ -103,6 +111,7 @@ public:
 
         horizontalLayout_2->addWidget(delete_button);
 
+        horizontalLayout_2->setStretch(0, 1);
 
         verticalLayout->addLayout(horizontalLayout_2);
 
@@ -128,6 +137,9 @@ public:
         state_label = new QLabel(DownloadItem);
         state_label->setObjectName(QString::fromUtf8("state_label"));
         state_label->setMaximumSize(QSize(40, 16777215));
+        QFont font2;
+        font2.setPointSize(8);
+        state_label->setFont(font2);
         state_label->setStyleSheet(QString::fromUtf8("#state_label {\n"
 "color: #888;\n"
 "}"));
@@ -150,11 +162,11 @@ public:
 
         progress_bar = new QProgressBar(DownloadItem);
         progress_bar->setObjectName(QString::fromUtf8("progress_bar"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(progress_bar->sizePolicy().hasHeightForWidth());
-        progress_bar->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(progress_bar->sizePolicy().hasHeightForWidth());
+        progress_bar->setSizePolicy(sizePolicy1);
         progress_bar->setMaximumSize(QSize(150, 15));
         progress_bar->setValue(0);
 
@@ -163,6 +175,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        verticalLayout->setStretch(0, 1);
 
         horizontalLayout->addLayout(verticalLayout);
 
@@ -177,12 +190,12 @@ public:
     {
         DownloadItem->setWindowTitle(QCoreApplication::translate("DownloadItem", "Form", nullptr));
         image_label->setText(QString());
-        title_label->setText(QCoreApplication::translate("DownloadItem", "Loading", nullptr));
+        title_label->setText(QCoreApplication::translate("DownloadItem", "Title", nullptr));
         folder_open_button->setText(QString());
         delete_button->setText(QString());
         tag_label->setText(QString());
-        id_label->setText(QCoreApplication::translate("DownloadItem", "0", nullptr));
-        state_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
+        id_label->setText(QCoreApplication::translate("DownloadItem", "ID", nullptr));
+        state_label->setText(QCoreApplication::translate("DownloadItem", "STATE", nullptr));
         status_label->setText(QString());
     } // retranslateUi
 

@@ -13,11 +13,12 @@ class SiteLoaderSignals(QObject):
 class SiteLoader(QThread):
     signals = SiteLoaderSignals()
 
-    def __init__(self, parent, key, config):
+    def __init__(self, parent):
         QThread.__init__(self, parent)
         self.parent = parent
-        self.__key = key
-        self.__config = config
+        self.browserDriver = parent.browserDriver
+        self.__key = parent.key
+        self.__config = parent.site_config
         self.site_class = None
 
     def run(self):
@@ -31,5 +32,5 @@ class SiteLoader(QThread):
             config["class_name"],
         )
 
-        self.site_class = class_module(config)
+        self.site_class = class_module(self.browserDriver, config)
         self.signals.on_site_loaded.emit(self.__key)

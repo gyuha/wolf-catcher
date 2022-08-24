@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>725</width>
-    <height>94</height>
+    <width>684</width>
+    <height>112</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,14 +60,32 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,0">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
      <property name="topMargin">
       <number>5</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,0,0,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
        <item>
         <widget class="QLabel" name="title_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -75,7 +93,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Loading</string>
+          <string>Title</string>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -92,7 +110,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
@@ -165,7 +183,7 @@
           </font>
          </property>
          <property name="text">
-          <string>0</string>
+          <string>ID</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -180,13 +198,18 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">#state_label {
 color: #888;
 }</string>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>STATE</string>
          </property>
         </widget>
        </item>

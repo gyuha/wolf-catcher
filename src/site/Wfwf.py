@@ -9,8 +9,8 @@ from urllib.parse import urlparse
 
 @SiteBase.register
 class Wfwf(SiteBase):
-    def __init__(self, config: Config):
-        super().__init__(config)
+    def __init__(self, browserDriver, config: Config):
+        super().__init__(browserDriver, config)
 
         self.chapter_list = []
         self.current_chapter = 0

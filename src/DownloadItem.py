@@ -37,11 +37,12 @@ class DownloadItemSignals(QObject):
 class DownloadItem(QWidget):
     signals = DownloadItemSignals()
 
-    def __init__(self, id: str, site_config):
+    def __init__(self, browserDriver, id: str, site_config):
         super(DownloadItem, self).__init__()
 
         self.ui = Ui_DownloadItem()
         self.ui.setupUi(self)
+        self.browserDriver = browserDriver
 
         self.id = id
 
@@ -79,7 +80,7 @@ class DownloadItem(QWidget):
     def start(self):
         self.state = DOWNLOAD_ITEM_STATE.DOING
         self.ui.state_label.setText("DOING")
-        self.site_loader = SiteLoader(self, self.key, self.site_config)
+        self.site_loader = SiteLoader(self)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
         self.ui.status_label.setText("웹 초기화 중")
@@ -280,7 +281,7 @@ class DownloadItem(QWidget):
         # self.ui.status_label.setText("완료")
         self.__set_status_text()
         self.ui.progress_bar.setValue(100)
-        self.site.browserDriver.driver_close()
+        # self.site.browserDriver.driver_close()
         self.state = DOWNLOAD_ITEM_STATE.DONE
         self.ui.state_label.setText("DONE")
         self.signals.download_state.emit(self.key, self.state)
