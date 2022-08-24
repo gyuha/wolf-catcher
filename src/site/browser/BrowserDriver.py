@@ -65,4 +65,4 @@ class BrowserDriver():
     def reconnect(self):
         if self.__browser:
             self.__browser.close()
-            self.__browser = self.driver_init()
+        self.__browser = self.driver_init()
