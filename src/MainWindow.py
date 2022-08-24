@@ -15,6 +15,7 @@ from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
 from util.Config import Config
 from util.DatabaseManager import DatabaseManager
+from util.UpdateDomain import UpdateDomain
 from util.message import toast
 
 
@@ -52,6 +53,7 @@ class MainWindow(QMainWindow):
 
     def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
+        self.ui.complete_delete_button.clicked.connect(self.__complete_delete)
 
     def __init_slot(self):
         """Initial Slots"""
@@ -78,7 +80,9 @@ class MainWindow(QMainWindow):
         self.add_item(id, site_config, ADD_BY.CLIPBOARD)
 
     def get_button(self):
-        self.__start_download()
+        # self.__start_download()
+        update_domain = UpdateDomain(self)
+        update_domain.start()
 
     def __url_validate(self, url) -> str:
         site_config = self.config.get_site_config_by_url(url)
@@ -215,4 +219,12 @@ class MainWindow(QMainWindow):
                     widget.start()
                     return
 
+    def __complete_delete(self):
+        for i in reversed(range(self.ui.item_list.count())):
+            item = self.ui.item_list.item(i)
+            widget = self.ui.item_list.itemWidget(item)
+            if widget is not None:
+                if widget.state == DOWNLOAD_ITEM_STATE.DONE:
+                    self.remove_item(widget.key)
+        self.__update_count()
     # endregion

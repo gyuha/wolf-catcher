@@ -84,6 +84,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.getButton)
 
+        self.complete_delete_button = QPushButton(self.centralwidget)
+        self.complete_delete_button.setObjectName(u"complete_delete_button")
+
+        self.horizontalLayout.addWidget(self.complete_delete_button)
+
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -113,6 +118,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"  /  \uc804\uccb4 : ", None))
         self.total_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.getButton.setText(QCoreApplication.translate("MainWindow", u"\uc8fc\uc18c \uc5c5\ub370\uc774\ud2b8", None))
+        self.complete_delete_button.setText(QCoreApplication.translate("MainWindow", u"\uc644\ub8cc \uc0ad\uc81c", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\uc791\uc5c5", None))
     # retranslateUi
 

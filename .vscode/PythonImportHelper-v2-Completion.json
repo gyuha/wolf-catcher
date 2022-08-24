@@ -1940,6 +1940,54 @@
         "documentation": {}
     },
     {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
+        "documentation": {}
+    },
+    {
+        "label": "toast",
+        "importPath": "util.message",
+        "description": "util.message",
+        "isExtraImport": true,
+        "detail": "util.message",
+        "documentation": {}
+    },
+    {
+        "label": "notification",
+        "importPath": "plyer",
+        "description": "plyer",
+        "isExtraImport": true,
+        "detail": "plyer",
+        "documentation": {}
+    },
+    {
+        "label": "notification",
+        "importPath": "plyer",
+        "description": "plyer",
+        "isExtraImport": true,
+        "detail": "plyer",
+        "documentation": {}
+    },
+    {
         "label": "Wfwf",
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
@@ -1988,14 +2036,6 @@
         "documentation": {}
     },
     {
-        "label": "notification",
-        "importPath": "plyer",
-        "description": "plyer",
-        "isExtraImport": true,
-        "detail": "plyer",
-        "documentation": {}
-    },
-    {
         "label": "DOWNLOAD_STATE",
         "importPath": "util.Downloader",
         "description": "util.Downloader",
@@ -2025,22 +2065,6 @@
         "description": "src.util.DatabaseManager",
         "isExtraImport": true,
         "detail": "src.util.DatabaseManager",
-        "documentation": {}
-    },
-    {
-        "label": "toast",
-        "importPath": "util.message",
-        "description": "util.message",
-        "isExtraImport": true,
-        "detail": "util.message",
-        "documentation": {}
-    },
-    {
-        "label": "toast",
-        "importPath": "util.message",
-        "description": "util.message",
-        "isExtraImport": true,
-        "detail": "util.message",
         "documentation": {}
     },
     {
@@ -2081,6 +2105,14 @@
         "description": "util.DatabaseManager",
         "isExtraImport": true,
         "detail": "util.DatabaseManager",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateDomain",
+        "importPath": "util.UpdateDomain",
+        "description": "util.UpdateDomain",
+        "isExtraImport": true,
+        "detail": "util.UpdateDomain",
         "documentation": {}
     },
     {
@@ -2760,7 +2792,7 @@
         "kind": 6,
         "importPath": "src.util.UpdateDomain",
         "description": "src.util.UpdateDomain",
-        "peekOfCode": "class UpdateDomain(QThread):\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.browserDriver = parent.browserDriver\n        self.config = Config()\n    def run(self):\n        pass\n    def update_domain(self):\n        pass",
+        "peekOfCode": "class UpdateDomain(QThread):\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        self.config = Config()\n    def run(self):\n        self.update_domain()\n    def update_domain(self):\n        try:\n            html = requests.get(self.config.setting[\"link_url\"])",
         "detail": "src.util.UpdateDomain",
         "documentation": {}
     },

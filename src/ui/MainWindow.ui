@@ -114,6 +114,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="complete_delete_button">
+        <property name="text">
+         <string>완료 삭제</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>

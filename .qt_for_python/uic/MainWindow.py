@@ -41,6 +41,7 @@ public:
     QLabel *total_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *getButton;
+    QPushButton *complete_delete_button;
     QMenuBar *menubar;
     QMenu *menu;
 
@@ -107,6 +108,11 @@ public:
 
         horizontalLayout->addWidget(getButton);
 
+        complete_delete_button = new QPushButton(centralwidget);
+        complete_delete_button->setObjectName(QString::fromUtf8("complete_delete_button"));
+
+        horizontalLayout->addWidget(complete_delete_button);
+
 
         verticalLayout->addLayout(horizontalLayout);
 
@@ -137,6 +143,7 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "  /  \354\240\204\354\262\264 : ", nullptr));
         total_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         getButton->setText(QCoreApplication::translate("MainWindow", "\354\243\274\354\206\214 \354\227\205\353\215\260\354\235\264\355\212\270", nullptr));
+        complete_delete_button->setText(QCoreApplication::translate("MainWindow", "\354\231\204\353\243\214 \354\202\255\354\240\234", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\354\236\221\354\227\205", nullptr));
     } // retranslateUi
 

@@ -21,6 +21,7 @@ selenium-wire = "^4.6.5"
 arsenic = "^21.8"
 plyer = "^2.0.0"
 SQLAlchemy = "^1.4.40"
+lxml = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 pyinstaller = "^5.3"
