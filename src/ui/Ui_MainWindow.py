@@ -18,8 +18,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
     QListWidgetItem, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
-    QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -50,6 +50,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(10, 5, 10, 5)
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
 
@@ -87,9 +88,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 582, 22))
@@ -112,7 +110,7 @@ class Ui_MainWindow(object):
         self.action_exit.setText(QCoreApplication.translate("MainWindow", u"\uc885\ub8cc(&q)", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\ub2e4\uc6b4\ub85c\ub4dc : ", None))
         self.downloaded_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"  /  \uc804\uccb4 :", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"  /  \uc804\uccb4 : ", None))
         self.total_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.getButton.setText(QCoreApplication.translate("MainWindow", u"\uc8fc\uc18c \uc5c5\ub370\uc774\ud2b8", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\uc791\uc5c5", None))

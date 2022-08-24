@@ -66,6 +66,7 @@ class MainWindow(QMainWindow):
             if site_config is None:
                 return
             self.add_item(prd.id, site_config, ADD_BY.DATABASE)
+        self.__update_count()
 
     @Slot(str, object)
     def add_clipboard(self, text: str, config: object):

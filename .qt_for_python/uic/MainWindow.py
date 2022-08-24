@@ -20,7 +20,6 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -42,7 +41,6 @@ public:
     QLabel *total_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *getButton;
-    QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menu;
 
@@ -75,6 +73,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(10, 5, 10, 5);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
 
@@ -112,9 +111,6 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 582, 22));
@@ -138,7 +134,7 @@ public:
         action_exit->setText(QCoreApplication::translate("MainWindow", "\354\242\205\353\243\214(&q)", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\353\213\244\354\232\264\353\241\234\353\223\234 : ", nullptr));
         downloaded_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "  /  \354\240\204\354\262\264 :", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "  /  \354\240\204\354\262\264 : ", nullptr));
         total_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         getButton->setText(QCoreApplication::translate("MainWindow", "\354\243\274\354\206\214 \354\227\205\353\215\260\354\235\264\355\212\270", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\354\236\221\354\227\205", nullptr));

@@ -44,6 +44,18 @@
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
@@ -66,7 +78,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>  /  전체 :</string>
+         <string>  /  전체 : </string>
         </property>
        </widget>
       </item>
@@ -106,7 +118,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
