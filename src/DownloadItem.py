@@ -58,6 +58,7 @@ class DownloadItem(QWidget):
         self.__init_downloader()
         self.__init_connect()
         self.state = DOWNLOAD_ITEM_STATE.READY
+        self.ui.state_label.setText("READY")
         self.db = DatabaseManager()
         # self.__init_site()
 
@@ -77,6 +78,7 @@ class DownloadItem(QWidget):
     
     def start(self):
         self.state = DOWNLOAD_ITEM_STATE.DOING
+        self.ui.state_label.setText("DOING")
         self.site_loader = SiteLoader(self, self.key, self.site_config)
         self.site_loader.signals.on_site_loaded.connect(self.__on_site_loaded)
         self.site_loader.start()
@@ -148,6 +150,7 @@ class DownloadItem(QWidget):
                 timeout=3,  # seconds
             )
             self.state = DOWNLOAD_ITEM_STATE.ERROR
+            self.ui.state_label.setText("ERROR")
             self.signals.download_state.emit(self.key, self.state)
         elif state == GET_STATE.LOADING:
             return
@@ -279,6 +282,7 @@ class DownloadItem(QWidget):
         self.ui.progress_bar.setValue(100)
 
         self.state = DOWNLOAD_ITEM_STATE.DONE
+        self.ui.state_label.setText("DONE")
         self.signals.download_state.emit(self.key, self.state)
     
     def strip_title_for_path(self, title: str) -> str:

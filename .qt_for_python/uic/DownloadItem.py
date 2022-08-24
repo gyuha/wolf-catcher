@@ -32,11 +32,11 @@ public:
     QLabel *title_label;
     QSpacerItem *horizontalSpacer;
     QPushButton *folder_open_button;
-    QPushButton *cancel_button;
     QPushButton *delete_button;
     QHBoxLayout *horizontalLayout_4;
     QLabel *tag_label;
     QLabel *id_label;
+    QLabel *state_label;
     QHBoxLayout *horizontalLayout_3;
     QLabel *status_label;
     QSpacerItem *horizontalSpacer_2;
@@ -74,7 +74,8 @@ public:
         font.setPointSize(11);
         font.setBold(true);
         title_label->setFont(font);
-        title_label->setWordWrap(true);
+        title_label->setScaledContents(true);
+        title_label->setWordWrap(false);
 
         horizontalLayout_2->addWidget(title_label);
 
@@ -91,23 +92,13 @@ public:
 
         horizontalLayout_2->addWidget(folder_open_button);
 
-        cancel_button = new QPushButton(DownloadItem);
-        cancel_button->setObjectName(QString::fromUtf8("cancel_button"));
-        cancel_button->setEnabled(true);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icon/icons/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cancel_button->setIcon(icon1);
-        cancel_button->setFlat(true);
-
-        horizontalLayout_2->addWidget(cancel_button);
-
         delete_button = new QPushButton(DownloadItem);
         delete_button->setObjectName(QString::fromUtf8("delete_button"));
         delete_button->setLayoutDirection(Qt::LeftToRight);
         delete_button->setAutoFillBackground(false);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
-        delete_button->setIcon(icon2);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
+        delete_button->setIcon(icon1);
         delete_button->setFlat(true);
 
         horizontalLayout_2->addWidget(delete_button);
@@ -133,6 +124,15 @@ public:
         id_label->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_4->addWidget(id_label);
+
+        state_label = new QLabel(DownloadItem);
+        state_label->setObjectName(QString::fromUtf8("state_label"));
+        state_label->setMaximumSize(QSize(40, 16777215));
+        state_label->setStyleSheet(QString::fromUtf8("#state_label {\n"
+"color: #888;\n"
+"}"));
+
+        horizontalLayout_4->addWidget(state_label);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -179,10 +179,10 @@ public:
         image_label->setText(QString());
         title_label->setText(QCoreApplication::translate("DownloadItem", "Loading", nullptr));
         folder_open_button->setText(QString());
-        cancel_button->setText(QString());
         delete_button->setText(QString());
         tag_label->setText(QString());
         id_label->setText(QCoreApplication::translate("DownloadItem", "0", nullptr));
+        state_label->setText(QCoreApplication::translate("DownloadItem", "TextLabel", nullptr));
         status_label->setText(QString());
     } // retranslateUi
 

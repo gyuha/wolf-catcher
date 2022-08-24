@@ -1,4 +1,5 @@
 setting:
+  link_url: https://nicelink18.com/
   browser: firefox
   headless: true
   tries: 5

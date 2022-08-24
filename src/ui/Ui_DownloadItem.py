@@ -52,7 +52,8 @@ class Ui_DownloadItem(object):
         font.setPointSize(11)
         font.setBold(True)
         self.title_label.setFont(font)
-        self.title_label.setWordWrap(True)
+        self.title_label.setScaledContents(True)
+        self.title_label.setWordWrap(False)
 
         self.horizontalLayout_2.addWidget(self.title_label)
 
@@ -69,23 +70,13 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_2.addWidget(self.folder_open_button)
 
-        self.cancel_button = QPushButton(DownloadItem)
-        self.cancel_button.setObjectName(u"cancel_button")
-        self.cancel_button.setEnabled(True)
-        icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/stop.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel_button.setIcon(icon1)
-        self.cancel_button.setFlat(True)
-
-        self.horizontalLayout_2.addWidget(self.cancel_button)
-
         self.delete_button = QPushButton(DownloadItem)
         self.delete_button.setObjectName(u"delete_button")
         self.delete_button.setLayoutDirection(Qt.LeftToRight)
         self.delete_button.setAutoFillBackground(False)
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.delete_button.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.delete_button.setIcon(icon1)
         self.delete_button.setFlat(True)
 
         self.horizontalLayout_2.addWidget(self.delete_button)
@@ -111,6 +102,15 @@ class Ui_DownloadItem(object):
         self.id_label.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_4.addWidget(self.id_label)
+
+        self.state_label = QLabel(DownloadItem)
+        self.state_label.setObjectName(u"state_label")
+        self.state_label.setMaximumSize(QSize(40, 16777215))
+        self.state_label.setStyleSheet(u"#state_label {\n"
+"color: #888;\n"
+"}")
+
+        self.horizontalLayout_4.addWidget(self.state_label)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -156,10 +156,10 @@ class Ui_DownloadItem(object):
         self.image_label.setText("")
         self.title_label.setText(QCoreApplication.translate("DownloadItem", u"Loading", None))
         self.folder_open_button.setText("")
-        self.cancel_button.setText("")
         self.delete_button.setText("")
         self.tag_label.setText("")
         self.id_label.setText(QCoreApplication.translate("DownloadItem", u"0", None))
+        self.state_label.setText(QCoreApplication.translate("DownloadItem", u"TextLabel", None))
         self.status_label.setText("")
     # retranslateUi
 

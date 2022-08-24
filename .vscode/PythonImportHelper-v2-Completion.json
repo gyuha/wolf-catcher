@@ -593,6 +593,54 @@
         "documentation": {}
     },
     {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QSize",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -806,6 +854,14 @@
         "description": "sqlalchemy.orm.exc",
         "isExtraImport": true,
         "detail": "sqlalchemy.orm.exc",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
         "documentation": {}
     },
     {
@@ -2681,6 +2737,15 @@
         "description": "src.util.message",
         "peekOfCode": "def toast(self, text):\n    QToaster.showMessage(self, text, corner=QtCore.Qt.TopRightCorner, timeout=1000, closable=False)",
         "detail": "src.util.message",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateDomain",
+        "kind": 6,
+        "importPath": "src.util.UpdateDomain",
+        "description": "src.util.UpdateDomain",
+        "peekOfCode": "class UpdateDomain(QThread):\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.config = Config()",
+        "detail": "src.util.UpdateDomain",
         "documentation": {}
     },
     {
