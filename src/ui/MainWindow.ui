@@ -142,6 +142,7 @@
    </widget>
    <addaction name="menu"/>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <action name="action_always_top">
    <property name="checkable">
     <bool>true</bool>

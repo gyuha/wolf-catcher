@@ -20,6 +20,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -44,6 +45,7 @@ public:
     QPushButton *complete_delete_button;
     QMenuBar *menubar;
     QMenu *menu;
+    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -123,6 +125,9 @@ public:
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         MainWindow->setMenuBar(menubar);
+        statusbar = new QStatusBar(MainWindow);
+        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(menu->menuAction());
         menu->addAction(action_exit);

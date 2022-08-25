@@ -1783,6 +1783,14 @@
         "documentation": {}
     },
     {
+        "label": "QStatusBar",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
         "label": "QVBoxLayout",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
