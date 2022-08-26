@@ -108,6 +108,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="site_open_button">
+        <property name="text">
+         <string>사이트 열기</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="getButton">
         <property name="text">
          <string>주소 업데이트</string>

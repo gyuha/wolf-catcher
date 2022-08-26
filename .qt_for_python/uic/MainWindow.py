@@ -41,6 +41,7 @@ public:
     QLabel *label_3;
     QLabel *total_label;
     QSpacerItem *horizontalSpacer;
+    QPushButton *site_open_button;
     QPushButton *getButton;
     QPushButton *complete_delete_button;
     QMenuBar *menubar;
@@ -105,6 +106,11 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
+        site_open_button = new QPushButton(centralwidget);
+        site_open_button->setObjectName(QString::fromUtf8("site_open_button"));
+
+        horizontalLayout->addWidget(site_open_button);
+
         getButton = new QPushButton(centralwidget);
         getButton->setObjectName(QString::fromUtf8("getButton"));
 
@@ -147,6 +153,7 @@ public:
         downloaded_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "  /  \354\240\204\354\262\264 : ", nullptr));
         total_label->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        site_open_button->setText(QCoreApplication::translate("MainWindow", "\354\202\254\354\235\264\355\212\270 \354\227\264\352\270\260", nullptr));
         getButton->setText(QCoreApplication::translate("MainWindow", "\354\243\274\354\206\214 \354\227\205\353\215\260\354\235\264\355\212\270", nullptr));
         complete_delete_button->setText(QCoreApplication::translate("MainWindow", "\354\231\204\353\243\214 \354\202\255\354\240\234", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\354\236\221\354\227\205", nullptr));

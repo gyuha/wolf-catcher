@@ -1,7 +1,8 @@
+import datetime
 from sqlalchemy import (
     Boolean,
     Column,
-    Date,
+    DateTime,
     ForeignKey,
     Integer,
     String,
@@ -27,6 +28,7 @@ class Product(Base):
     tags = Column(String)
     visible = Column(Boolean, default=False)
     download_count = Column(Integer, default=0)
+    at = Column(DateTime, default=datetime.datetime.now)
 
     def __repr__(self):
         return "<Product(id='{}', title='{}', path='{}', tags='{}', download_count='{})>".format(

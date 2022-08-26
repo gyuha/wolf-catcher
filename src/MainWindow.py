@@ -54,6 +54,7 @@ class MainWindow(QMainWindow):
     def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)
         self.ui.complete_delete_button.clicked.connect(self.__complete_delete)
+        self.ui.site_open_button.clicked.connect(self.__on_site_open_button)
 
     def __init_slot(self):
         """Initial Slots"""
@@ -228,3 +229,7 @@ class MainWindow(QMainWindow):
                     self.remove_item(widget.key)
         self.__update_count()
     # endregion
+
+    def __on_site_open_button(self):
+        url = QtCore.QUrl(self.config.setting["link_url"])
+        QtGui.QDesktopServices.openUrl(url)

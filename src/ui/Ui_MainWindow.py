@@ -79,6 +79,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
+        self.site_open_button = QPushButton(self.centralwidget)
+        self.site_open_button.setObjectName(u"site_open_button")
+
+        self.horizontalLayout.addWidget(self.site_open_button)
+
         self.getButton = QPushButton(self.centralwidget)
         self.getButton.setObjectName(u"getButton")
 
@@ -120,6 +125,7 @@ class Ui_MainWindow(object):
         self.downloaded_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"  /  \uc804\uccb4 : ", None))
         self.total_label.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.site_open_button.setText(QCoreApplication.translate("MainWindow", u"\uc0ac\uc774\ud2b8 \uc5f4\uae30", None))
         self.getButton.setText(QCoreApplication.translate("MainWindow", u"\uc8fc\uc18c \uc5c5\ub370\uc774\ud2b8", None))
         self.complete_delete_button.setText(QCoreApplication.translate("MainWindow", u"\uc644\ub8cc \uc0ad\uc81c", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\uc791\uc5c5", None))

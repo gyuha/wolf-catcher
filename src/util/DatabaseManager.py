@@ -1,14 +1,13 @@
-import PySide6.QtGui
+import datetime
+
 from lib.Singleton import Singleton
-from sqlalchemy import ForeignKey
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import Session, declarative_base
-from sqlalchemy import Column, Date, Integer, String, Boolean
-from sqlalchemy.orm.exc import NoResultFound
-from sqlalchemy.orm.exc import MultipleResultsFound
-import os
 from model.Base import Base
 from model.Product import Product
+from sqlalchemy import (Boolean, Column, DateTime, ForeignKey, Integer, String,
+                        asc, create_engine, desc, select)
+from sqlalchemy.orm import Session, declarative_base
+from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
+
 from util.Config import Config
 
 
@@ -67,6 +66,7 @@ class DatabaseManager(metaclass=Singleton):
                     "author": author,
                     "path": path,
                     "tags": tags,
+                    "at": datetime.datetime.now()
                 }
             )
             return self.session.commit()
@@ -76,7 +76,7 @@ class DatabaseManager(metaclass=Singleton):
 
     def get_visible_products(self):
         try:
-            return self.session.query(Product).filter(Product.visible == True).all()
+            return self.session.query(Product).filter(Product.visible == True).order_by(Product.at).all()
         except Exception as e:
             print(e)
         return None
@@ -88,3 +88,4 @@ class DatabaseManager(metaclass=Singleton):
         except NoResultFound as e:
             print(e)
         return None
+    

@@ -1,37 +1,29 @@
 setting:
-  link_url: https://nicelink18.com/
   browser: firefox
-  headless: false
-  tries: 5
-  timeout: 10
   db: sqlite:///data.db
+  headless: false
+  link_url: https://nicelink18.com/
+  timeout: 10
+  tries: 5
 site:
-  - name: wfwf
-    class_name: Wfwf
-    title: 늑대 닷컴
-    url: https://wfwf221.com
-    file_extensions: cbz
-    download_path: ./wfwf
-    filter:
-      - https://wfwf[0-9]+.com/cl\?toon=[0-9]+
-    url_format:
-      title:
-        filter: /cl?toon={0}
-        re: .*/cl\?toon=\D*(\d+)
-        visible_condition:
-          type: xpath
-          text: //*[@id="content"]/div[2]/div[3]/h1
-      chapter:
-        filter: /cv?toon={0}&num={1}
-        re: /cv?toon=(\d+)
-        visible_condition:
-          type: xpath
-          text: /html/body/section[1]/div[5]/img
-  # - name: manatoki
-  #   class_name: Manatoki
-  #   title: 마나토끼
-  #   url: https://manatoki148.net/
-  #   file_extensions: cbz
-  #   download_path: manatoki
-  #   filter:
-  #     - manatoki
+- class_name: Wfwf
+  download_path: ./wfwf
+  file_extensions: cbz
+  filter:
+  - https://wfwf[0-9]+.com/cl\?toon=[0-9]+
+  name: wfwf
+  title: 늑대 닷컴
+  url: https://wfwf222.com
+  url_format:
+    chapter:
+      filter: /cv?toon={0}&num={1}
+      re: /cv?toon=(\d+)
+      visible_condition:
+        text: /html/body/section[1]/div[5]/img
+        type: xpath
+    title:
+      filter: /cl?toon={0}
+      re: .*/cl\?toon=\D*(\d+)
+      visible_condition:
+        text: //*[@id="content"]/div[2]/div[3]/h1
+        type: xpath

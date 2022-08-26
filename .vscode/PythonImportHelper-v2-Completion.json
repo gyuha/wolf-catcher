@@ -665,6 +665,15 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "Boolean",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -681,7 +690,7 @@
         "documentation": {}
     },
     {
-        "label": "Date",
+        "label": "DateTime",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -729,23 +738,7 @@
         "documentation": {}
     },
     {
-        "label": "ForeignKey",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "isExtraImport": true,
-        "detail": "sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "create_engine",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "isExtraImport": true,
-        "detail": "sqlalchemy",
-        "documentation": {}
-    },
-    {
-        "label": "select",
+        "label": "Boolean",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -761,7 +754,15 @@
         "documentation": {}
     },
     {
-        "label": "Date",
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -785,7 +786,31 @@
         "documentation": {}
     },
     {
-        "label": "Boolean",
+        "label": "asc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "desc",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "select",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -841,7 +866,7 @@
         "documentation": {}
     },
     {
-        "label": "NoResultFound",
+        "label": "MultipleResultsFound",
         "importPath": "sqlalchemy.orm.exc",
         "description": "sqlalchemy.orm.exc",
         "isExtraImport": true,
@@ -849,7 +874,7 @@
         "documentation": {}
     },
     {
-        "label": "MultipleResultsFound",
+        "label": "NoResultFound",
         "importPath": "sqlalchemy.orm.exc",
         "description": "sqlalchemy.orm.exc",
         "isExtraImport": true,
@@ -1339,15 +1364,6 @@
         "importPath": "unittest",
         "description": "unittest",
         "detail": "unittest",
-        "documentation": {}
-    },
-    {
-        "label": "PySide6.QtGui",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "PySide6.QtGui",
-        "description": "PySide6.QtGui",
-        "detail": "PySide6.QtGui",
         "documentation": {}
     },
     {
