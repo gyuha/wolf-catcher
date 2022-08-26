@@ -22,6 +22,7 @@ class UpdateDomain(QThread):
             t = bs.select("body > section > div > ul > li:nth-child(1) > a")
             href = t[0].get('href')
             self.config.data["site"][0]["url"] = href
+            self.config.data["site"][1]["url"] = href
             self.config.save()
             notification.notify(title="업데이트", message=href, app_name="Wolf", timeout=3)
         except Exception as e:

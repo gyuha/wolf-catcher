@@ -33,17 +33,25 @@ class Wfwf(SiteBase):
         self.title_info.set_path(self.download_path, strip_title)
         self.title_info.load()
 
-        text = driver.find_element(
-            By.XPATH, "/html/body/section/div[2]/div[3]/div[2]"
-        ).text
+        if self.name == "wfwf":
+            text = driver.find_element(
+                By.XPATH, "/html/body/section/div[2]/div[3]/div[2]"
+            ).text
+        else:
+            text = driver.find_element(
+                By.XPATH, "/html/body/section/div[2]/div[3]/div[1]"
+            ).text
         tags = text.split(":")[1].strip().split("/")
 
-        text = driver.find_element(
-            By.XPATH, "/html/body/section/div[2]/div[3]/div[1]"
-        ).text
-        sp = text.split("작가 :")
-        author = sp[1].strip()
-        series = sp[0].split("연재일 :")[1].strip()
+        author = ""
+        series = ""
+        if self.name == "wfwf":
+            text = driver.find_element(
+                By.XPATH, "/html/body/section/div[2]/div[3]/div[1]"
+            ).text
+            sp = text.split("작가 :")
+            author = sp[1].strip()
+            series = sp[0].split("연재일 :")[1].strip()
 
         thumbnail = driver.find_element(
             By.XPATH, "/html/body/section/div[2]/div[2]/img"

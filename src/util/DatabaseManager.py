@@ -23,13 +23,13 @@ class DatabaseManager(metaclass=Singleton):
     def insert_product(
         self,
         id,
+        site="wfwf",
         title="",
         author="",
         path="",
         tags="",
         visible=True,
         download_count=0,
-        site="wfwf"
     ):
         if self.get_product(id) is not None:
             self.set_visible_product(id, True)

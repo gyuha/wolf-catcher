@@ -14,6 +14,7 @@ class SiteBase(ABC):
         self.browserDriver = browserDriver
         self.browser = self.browserDriver.browser
 
+        self.config = config
         self.id = ""
         self.name = config["name"]
         self.url = config["url"]

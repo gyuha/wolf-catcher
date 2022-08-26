@@ -79,6 +79,7 @@ class MainWindow(QMainWindow):
         if id is None:
             return
         self.add_item(id, site_config, ADD_BY.CLIPBOARD)
+        self.__update_count()
 
     def get_button(self):
         # self.__start_download()
@@ -121,7 +122,7 @@ class MainWindow(QMainWindow):
             return
 
         if by == ADD_BY.CLIPBOARD:
-            self.db.insert_product(id)
+            self.db.insert_product(id, site_config["name"])
         
         self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
         widget = DownloadItem(self.browserDriver, id, site_config)

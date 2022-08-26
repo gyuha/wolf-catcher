@@ -2636,7 +2636,7 @@
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, browserDriver: BrowserDriver, config: Config):\n        self.browserDriver = browserDriver\n        self.browser = self.browserDriver.browser\n        self.id = \"\"\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]",
+        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, browserDriver: BrowserDriver, config: Config):\n        self.browserDriver = browserDriver\n        self.browser = self.browserDriver.browser\n        self.config = config\n        self.id = \"\"\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },
