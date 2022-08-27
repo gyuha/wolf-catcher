@@ -119,7 +119,7 @@ class Downloader(QThread):
         session.headers.update(headers)
 
         try:
-            response = session.get(url, stream=True, verify=False)
+            response = session.get(url, stream=True, verify=False, timeout=(3, 15))
 
             if response.status_code > 200:
                 raise Exception("Response error : {}" % (response.code))

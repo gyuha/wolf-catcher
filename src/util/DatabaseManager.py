@@ -44,6 +44,7 @@ class DatabaseManager(metaclass=Singleton):
             tags=tags,
             visible=visible,
             download_count=download_count,
+            at=datetime.datetime.now()
         )
         self.session.add(product)
         self.session.commit()

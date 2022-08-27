@@ -99,6 +99,7 @@ class Wfwf(SiteBase):
         self.chapter_images = []
         for image in images:
             self.chapter_images.append(image.get_attribute("src"))
+        return len(self.chapter_images) > 0
     
     def set_next_chapter(self):
         self.current_chapter += 1

@@ -153,6 +153,9 @@ class DownloadItem(QWidget):
             self.state = DOWNLOAD_ITEM_STATE.ERROR
             self.ui.state_label.setText("ERROR")
             self.signals.download_state.emit(self.key, self.state)
+
+            # 다음 챕터
+            self.__on_download_done()
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
@@ -164,12 +167,10 @@ class DownloadItem(QWidget):
             self.__get_chapter_info()
             # self.ui.progress_bar.setValue(self.site.progress)
             self.__set_status_text()
-            return
         elif type == GET_TYPE.CHAPTER_INFO:
             self.site.get_img_list(self.browser)
             self.__download_chapter_images()
             self.__set_status_text()
-            pass
 
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
