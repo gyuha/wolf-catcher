@@ -144,18 +144,28 @@ class DownloadItem(QWidget):
         if self.id != id:
             return
         if state == GET_STATE.ERROR:
-            notification.notify(
-                title="안내",
-                message="챕터의 내용을 받지 못 했습니다.",
-                app_name="Wolf",
-                timeout=3,  # seconds
-            )
-            self.state = DOWNLOAD_ITEM_STATE.ERROR
-            self.ui.state_label.setText("ERROR")
-            self.signals.download_state.emit(self.key, self.state)
+            if type == GET_TYPE.CHAPTER_INFO:
+                notification.notify(
+                    title="안내",
+                    message="챕터의 내용을 받지 못 했습니다.",
+                    app_name="Wolf",
+                    timeout=3,  # seconds
+                )
+                self.state = DOWNLOAD_ITEM_STATE.ERROR
+                self.ui.state_label.setText("ERROR")
+                self.signals.download_state.emit(self.key, self.state)
 
-            # 다음 챕터
-            self.__on_download_done()
+                # 다음 챕터
+                self.__on_get_done(type)
+            else:
+                notification.notify(
+                    title="안내",
+                    message="이미지 목록을 읽기 실패",
+                    app_name="Wolf",
+                    timeout=3,  # seconds
+                )
+
+                self.__on_download_done()
         elif state == GET_STATE.LOADING:
             return
         elif state == GET_STATE.DONE:
