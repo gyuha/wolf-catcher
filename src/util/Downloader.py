@@ -122,7 +122,7 @@ class Downloader(QThread):
             response = session.get(url, stream=True, verify=False, timeout=(3, 10))
 
             if response.status_code > 200:
-                raise Exception("Response error : {}" % (response.code))
+                raise Exception("Response error : {}" % (response.status_code))
 
             self.__save_file(path, response)
         except Exception as e:
@@ -145,8 +145,16 @@ class Downloader(QThread):
                     f.write(chunk)
         except Exception as e:
             print("Exception in __save_file(): ", e)
+    
+    def get_files_count(self, folder_path):
+        dirListing = os.listdir(folder_path)
+        return len(dirListing)
 
     def __zip_folder(self, path: str, filename: str, remove_origin=True):
+        if self.get_files_count(path) == 0:
+            self.__get_done(path, remove_origin)
+            return
+
         """
         폴더 압축하기
         """
@@ -164,6 +172,10 @@ class Downloader(QThread):
             zipf.write(os.path.join(path, f), os.path.basename(f))
         zipf.close()
 
+        self.__get_done(path, remove_origin)
+
+    
+    def __get_done(self, path:str, remove_origin: bool):
         if remove_origin:
             shutil.rmtree(path, ignore_errors=True)
 

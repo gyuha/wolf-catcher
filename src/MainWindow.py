@@ -111,9 +111,9 @@ class MainWindow(QMainWindow):
             "title": prd.title,
             "author": prd.author,
             "tags": prd.tags.split("/"),
-            "id": id
+            "id": id,
         }
-        return info 
+        return info
 
     # region item_list
     def add_item(self, id: str, site_config, by: ADD_BY):
@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
 
         if by == ADD_BY.CLIPBOARD:
             self.db.insert_product(id, site_config["name"])
-        
+
         self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
         widget = DownloadItem(self.browserDriver, id, site_config)
 
@@ -191,7 +191,6 @@ class MainWindow(QMainWindow):
                 if widget.state == DOWNLOAD_ITEM_STATE.DONE:
                     count += 1
         self.ui.downloaded_label.setText(str(count))
-        
 
     def __check_download_possible(self):
         """
@@ -229,8 +228,12 @@ class MainWindow(QMainWindow):
                 if widget.state == DOWNLOAD_ITEM_STATE.DONE:
                     self.remove_item(widget.key)
         self.__update_count()
+
     # endregion
 
     def __on_site_open_button(self):
         url = QtCore.QUrl(self.config.setting["link_url"])
         QtGui.QDesktopServices.openUrl(url)
+
+    def closeEvent(self, event):
+        self.browserDriver.driver_close()
