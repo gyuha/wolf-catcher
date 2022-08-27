@@ -9,7 +9,7 @@ a = Analysis(
     pathex=['.\\', '.\\src'],
     binaries=[],
     datas=[
-        ('logo.png', '.'),
+        ('icon.png', '.'),
         ('config.yaml', '.'),
     ],
     hiddenimports=[
