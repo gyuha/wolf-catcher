@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>684</width>
-    <height>112</height>
+    <width>658</width>
+    <height>110</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,13 +37,13 @@
      <property name="minimumSize">
       <size>
        <width>80</width>
-       <height>80</height>
+       <height>90</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>80</width>
-       <height>80</height>
+       <height>90</height>
       </size>
      </property>
      <property name="autoFillBackground">
@@ -68,7 +68,7 @@
       <number>5</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,0,0,0">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,0,0,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -83,7 +83,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>0</height>
+           <height>40</height>
           </size>
          </property>
          <property name="font">
@@ -115,6 +115,23 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="open_link_button">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/icon/icons/link.png</normaloff>:/icon/icons/link.png</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="folder_open_button">

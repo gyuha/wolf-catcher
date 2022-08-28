@@ -2,11 +2,8 @@ from enum import Enum
 import os
 import pathlib
 import re
-import PySide6
-import importlib
-import time
 from PySide6.QtWidgets import QWidget
-from PySide6 import QtGui
+from PySide6 import QtGui, QtCore
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QSize, Qt
 from src.site.Wfwf import Wfwf
 from src.site.TitleInfo import TitleInfo
@@ -15,7 +12,6 @@ from src.site.SiteLoader import SiteLoader
 from ui.Ui_DownloadItem import Ui_DownloadItem
 from src.site.SiteBase import SiteBase
 from util.Config import Config
-from plyer import notification
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
 from src.util.DatabaseManager import DatabaseManager
@@ -66,6 +62,7 @@ class DownloadItem(QWidget):
     def __init_connect(self):
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
         self.ui.folder_open_button.clicked.connect(self.__on_click_open_folder)
+        self.ui.open_link_button.clicked.connect(self.__on_click_open_link)
 
     def __init_text(self):
         self.ui.title_label.setWordWrap(True)
@@ -145,12 +142,7 @@ class DownloadItem(QWidget):
             return
         if state == GET_STATE.ERROR:
             if type == GET_TYPE.CHAPTER_INFO:
-                notification.notify(
-                    title="안내",
-                    message="챕터의 내용을 받지 못 했습니다.",
-                    app_name="Wolf",
-                    timeout=3,  # seconds
-                )
+                toast(self, "챕터의 내용을 받지 못 했습니다.");
                 self.state = DOWNLOAD_ITEM_STATE.ERROR
                 self.ui.state_label.setText("ERROR")
                 self.signals.download_state.emit(self.key, self.state)
@@ -158,12 +150,7 @@ class DownloadItem(QWidget):
                 # 다음 챕터
                 self.__on_get_done(type)
             else:
-                notification.notify(
-                    title="안내",
-                    message="이미지 목록을 읽기 실패",
-                    app_name="Wolf",
-                    timeout=3,  # seconds
-                )
+                toast(self, "이미지 목록을 읽기 실패");
 
                 self.__on_download_done()
         elif state == GET_STATE.LOADING:
@@ -325,3 +312,10 @@ class DownloadItem(QWidget):
         pixmap = QtGui.QPixmap(thumbnail_path)
         pixmap = pixmap.scaled(QSize(80, 80))
         self.ui.image_label.setPixmap(pixmap)
+    
+    def __on_click_open_link(self):
+        link_url = self.site_config["url"]
+        link_url += self.site_config["url_format"]["title"]["filter"].format(self.id)
+        url = QtCore.QUrl(link_url)
+        QtGui.QDesktopServices.openUrl(url)
+

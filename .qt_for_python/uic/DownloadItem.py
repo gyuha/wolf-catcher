@@ -31,6 +31,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *title_label;
     QSpacerItem *horizontalSpacer;
+    QPushButton *open_link_button;
     QPushButton *folder_open_button;
     QPushButton *delete_button;
     QHBoxLayout *horizontalLayout_4;
@@ -46,7 +47,7 @@ public:
     {
         if (DownloadItem->objectName().isEmpty())
             DownloadItem->setObjectName(QString::fromUtf8("DownloadItem"));
-        DownloadItem->resize(684, 112);
+        DownloadItem->resize(658, 110);
         DownloadItem->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout = new QHBoxLayout(DownloadItem);
         horizontalLayout->setSpacing(5);
@@ -54,8 +55,8 @@ public:
         horizontalLayout->setContentsMargins(5, 5, 5, 5);
         image_label = new QLabel(DownloadItem);
         image_label->setObjectName(QString::fromUtf8("image_label"));
-        image_label->setMinimumSize(QSize(80, 80));
-        image_label->setMaximumSize(QSize(80, 80));
+        image_label->setMinimumSize(QSize(80, 90));
+        image_label->setMaximumSize(QSize(80, 90));
         image_label->setAutoFillBackground(false);
         image_label->setStyleSheet(QString::fromUtf8("#image_label {\n"
 " background-color: #eee;\n"
@@ -77,7 +78,7 @@ public:
         sizePolicy.setVerticalStretch(1);
         sizePolicy.setHeightForWidth(title_label->sizePolicy().hasHeightForWidth());
         title_label->setSizePolicy(sizePolicy);
-        title_label->setMinimumSize(QSize(0, 0));
+        title_label->setMinimumSize(QSize(0, 40));
         QFont font;
         font.setPointSize(11);
         font.setBold(true);
@@ -91,11 +92,21 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
+        open_link_button = new QPushButton(DownloadItem);
+        open_link_button->setObjectName(QString::fromUtf8("open_link_button"));
+        open_link_button->setAutoFillBackground(false);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/icons/link.png"), QSize(), QIcon::Normal, QIcon::Off);
+        open_link_button->setIcon(icon);
+        open_link_button->setFlat(true);
+
+        horizontalLayout_2->addWidget(open_link_button);
+
         folder_open_button = new QPushButton(DownloadItem);
         folder_open_button->setObjectName(QString::fromUtf8("folder_open_button"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icon/icons/folder-open.png"), QSize(), QIcon::Normal, QIcon::Off);
-        folder_open_button->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/icons/folder-open.png"), QSize(), QIcon::Normal, QIcon::Off);
+        folder_open_button->setIcon(icon1);
         folder_open_button->setFlat(true);
 
         horizontalLayout_2->addWidget(folder_open_button);
@@ -104,9 +115,9 @@ public:
         delete_button->setObjectName(QString::fromUtf8("delete_button"));
         delete_button->setLayoutDirection(Qt::LeftToRight);
         delete_button->setAutoFillBackground(false);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
-        delete_button->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/icons/trash-delete-bin.png"), QSize(), QIcon::Normal, QIcon::Off);
+        delete_button->setIcon(icon2);
         delete_button->setFlat(true);
 
         horizontalLayout_2->addWidget(delete_button);
@@ -191,6 +202,7 @@ public:
         DownloadItem->setWindowTitle(QCoreApplication::translate("DownloadItem", "Form", nullptr));
         image_label->setText(QString());
         title_label->setText(QCoreApplication::translate("DownloadItem", "Title", nullptr));
+        open_link_button->setText(QString());
         folder_open_button->setText(QString());
         delete_button->setText(QString());
         tag_label->setText(QString());

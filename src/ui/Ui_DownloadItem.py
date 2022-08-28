@@ -24,7 +24,7 @@ class Ui_DownloadItem(object):
     def setupUi(self, DownloadItem):
         if not DownloadItem.objectName():
             DownloadItem.setObjectName(u"DownloadItem")
-        DownloadItem.resize(684, 112)
+        DownloadItem.resize(658, 110)
         DownloadItem.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(DownloadItem)
         self.horizontalLayout.setSpacing(5)
@@ -32,8 +32,8 @@ class Ui_DownloadItem(object):
         self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
         self.image_label = QLabel(DownloadItem)
         self.image_label.setObjectName(u"image_label")
-        self.image_label.setMinimumSize(QSize(80, 80))
-        self.image_label.setMaximumSize(QSize(80, 80))
+        self.image_label.setMinimumSize(QSize(80, 90))
+        self.image_label.setMaximumSize(QSize(80, 90))
         self.image_label.setAutoFillBackground(False)
         self.image_label.setStyleSheet(u"#image_label {\n"
 " background-color: #eee;\n"
@@ -55,7 +55,7 @@ class Ui_DownloadItem(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
         self.title_label.setSizePolicy(sizePolicy)
-        self.title_label.setMinimumSize(QSize(0, 0))
+        self.title_label.setMinimumSize(QSize(0, 40))
         font = QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -69,11 +69,21 @@ class Ui_DownloadItem(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
+        self.open_link_button = QPushButton(DownloadItem)
+        self.open_link_button.setObjectName(u"open_link_button")
+        self.open_link_button.setAutoFillBackground(False)
+        icon = QIcon()
+        icon.addFile(u":/icon/icons/link.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.open_link_button.setIcon(icon)
+        self.open_link_button.setFlat(True)
+
+        self.horizontalLayout_2.addWidget(self.open_link_button)
+
         self.folder_open_button = QPushButton(DownloadItem)
         self.folder_open_button.setObjectName(u"folder_open_button")
-        icon = QIcon()
-        icon.addFile(u":/icon/icons/folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.folder_open_button.setIcon(icon)
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.folder_open_button.setIcon(icon1)
         self.folder_open_button.setFlat(True)
 
         self.horizontalLayout_2.addWidget(self.folder_open_button)
@@ -82,9 +92,9 @@ class Ui_DownloadItem(object):
         self.delete_button.setObjectName(u"delete_button")
         self.delete_button.setLayoutDirection(Qt.LeftToRight)
         self.delete_button.setAutoFillBackground(False)
-        icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.delete_button.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/trash-delete-bin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.delete_button.setIcon(icon2)
         self.delete_button.setFlat(True)
 
         self.horizontalLayout_2.addWidget(self.delete_button)
@@ -168,6 +178,7 @@ class Ui_DownloadItem(object):
         DownloadItem.setWindowTitle(QCoreApplication.translate("DownloadItem", u"Form", None))
         self.image_label.setText("")
         self.title_label.setText(QCoreApplication.translate("DownloadItem", u"Title", None))
+        self.open_link_button.setText("")
         self.folder_open_button.setText("")
         self.delete_button.setText("")
         self.tag_label.setText("")

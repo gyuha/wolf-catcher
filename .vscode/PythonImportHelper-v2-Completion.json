@@ -72,15 +72,6 @@
         "documentation": {}
     },
     {
-        "label": "PySide6",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "PySide6",
-        "description": "PySide6",
-        "detail": "PySide6",
-        "documentation": {}
-    },
-    {
         "label": "QtCore",
         "importPath": "PySide6",
         "description": "PySide6",
@@ -122,6 +113,14 @@
     },
     {
         "label": "QtGui",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "QtCore",
         "importPath": "PySide6",
         "description": "PySide6",
         "isExtraImport": true,
@@ -2004,14 +2003,6 @@
         "documentation": {}
     },
     {
-        "label": "notification",
-        "importPath": "plyer",
-        "description": "plyer",
-        "isExtraImport": true,
-        "detail": "plyer",
-        "documentation": {}
-    },
-    {
         "label": "Wfwf",
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
@@ -2186,7 +2177,7 @@
         "kind": 6,
         "importPath": ".qt_for_python.uic.DownloadItem",
         "description": ".qt_for_python.uic.DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *folder_open_button;",
+        "peekOfCode": "class Ui_DownloadItem\n{\npublic:\n    QHBoxLayout *horizontalLayout;\n    QLabel *image_label;\n    QVBoxLayout *verticalLayout;\n    QHBoxLayout *horizontalLayout_2;\n    QLabel *title_label;\n    QSpacerItem *horizontalSpacer;\n    QPushButton *open_link_button;",
         "detail": ".qt_for_python.uic.DownloadItem",
         "documentation": {}
     },
@@ -2699,7 +2690,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_DownloadItem",
         "description": "src.ui.Ui_DownloadItem",
-        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(684, 112)\n        DownloadItem.setStyleSheet(u\"\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)",
+        "peekOfCode": "class Ui_DownloadItem(object):\n    def setupUi(self, DownloadItem):\n        if not DownloadItem.objectName():\n            DownloadItem.setObjectName(u\"DownloadItem\")\n        DownloadItem.resize(658, 110)\n        DownloadItem.setStyleSheet(u\"\")\n        self.horizontalLayout = QHBoxLayout(DownloadItem)\n        self.horizontalLayout.setSpacing(5)\n        self.horizontalLayout.setObjectName(u\"horizontalLayout\")\n        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)",
         "detail": "src.ui.Ui_DownloadItem",
         "documentation": {}
     },
@@ -2951,7 +2942,7 @@
         "kind": 5,
         "importPath": "resources_rc",
         "description": "resources_rc",
-        "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x04\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x004\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x22$\\\n\\x00\\x00\\x01\\x82}\\x80\\xacP\\\n\\x00\\x00\\x00|\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00CD\\",
+        "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x05\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00|\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00CD\\\n\\x00\\x00\\x01\\x82\\xe3\\xcc\\xdbf\\\n\\x00\\x00\\x004\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x22$\\",
         "detail": "resources_rc",
         "documentation": {}
     }
