@@ -8,7 +8,7 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
-from src.site.browser.BrowserDriver import BrowserDriver
+# from src.site.browser.BrowserDriver import BrowserDriver
 from src.site.TitleInfo import TitleInfo
 
 from ui.Ui_MainWindow import Ui_MainWindow
@@ -48,7 +48,7 @@ class MainWindow(QMainWindow):
         )
         self.db = DatabaseManager()
         self.current_key = ""
-        self.browserDriver = BrowserDriver()
+        # self.browserDriver = BrowserDriver()
         self.__get_items_by_database()
 
     def __init_connect(self):
@@ -125,7 +125,7 @@ class MainWindow(QMainWindow):
             self.db.insert_product(id, site_config["name"])
 
         self.item_dict[site_config["name"] + id] = None  # 임시로 미리 등록 해 준다.
-        widget = DownloadItem(self.browserDriver, id, site_config)
+        widget = DownloadItem(id, site_config)
 
         info = self.__widget_title_info(id)
         if info is not None:

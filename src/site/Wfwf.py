@@ -1,4 +1,5 @@
 import os
+from bs4 import BeautifulSoup as bs
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 from util.Config import Config
 from selenium import webdriver
@@ -9,8 +10,8 @@ from urllib.parse import urlparse
 
 @SiteBase.register
 class Wfwf(SiteBase):
-    def __init__(self, browserDriver, config: Config):
-        super().__init__(browserDriver, config)
+    def __init__(self, config: Config):
+        super().__init__(config)
 
         self.chapter_list = []
         self.current_chapter = 0
@@ -20,10 +21,12 @@ class Wfwf(SiteBase):
     def get_title_id(self, url: str) -> str:
         return ""
 
-    def get_chapter_info_parser(self, driver: webdriver):
-        title = driver.find_element(
-            By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1'
-        ).text.strip()
+    def get_chapter_info_parser(self, content: str):
+        soup = bs(content, "html.parser")
+        title = soup.select("#content > div:nth-child(2) > div.text-box > h1")[0].text
+        # title = driver.find_element(
+        #     By.XPATH, '//*[@id="content"]/div[2]/div[3]/h1'
+        # ).text.strip()
 
         if not title:
             raise Exception("제목을 찾을 수 없습니다.")
@@ -34,28 +37,28 @@ class Wfwf(SiteBase):
         self.title_info.load()
 
         if self.name == "wfwf":
-            text = driver.find_element(
-                By.XPATH, "/html/body/section/div[2]/div[3]/div[2]"
-            ).text
+            text = soup.select(
+                "#content > div:nth-child(2) > div.text-box > div:nth-child(3)"
+            )[0].text
         else:
-            text = driver.find_element(
-                By.XPATH, "/html/body/section/div[2]/div[3]/div[1]"
-            ).text
+            text = soup.select("#content > div:nth-child(2) > div.text-box > div.sub")[
+                0
+            ].text
         tags = text.split(":")[1].strip().split("/")
 
         author = ""
         series = ""
         if self.name == "wfwf":
-            text = driver.find_element(
-                By.XPATH, "/html/body/section/div[2]/div[3]/div[1]"
-            ).text
+            text = soup.select(
+                "#content > div:nth-child(2) > div.text-box > div:nth-child(2)"
+            )[0].text
             sp = text.split("작가 :")
             author = sp[1].strip()
             series = sp[0].split("연재일 :")[1].strip()
 
-        thumbnail = driver.find_element(
-            By.XPATH, "/html/body/section/div[2]/div[2]/img"
-        ).get_attribute("src")
+        thumbnail = soup.select("#content > div:nth-child(2) > div.img-box > img")[0][
+            "src"
+        ]
 
         info = self.title_info.info
         info["title"] = title
@@ -71,37 +74,36 @@ class Wfwf(SiteBase):
         self.parent.update_info(info, True)
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
-        self.get_chapter_list(driver)
+        self.get_chapter_list(soup)
 
-    def get_chapter_list(self, driver: webdriver):
-        driver.execute_script('$(".badge").remove()')
-        driver.execute_script('$(".date").remove()')
-        chapters = driver.find_elements(
-            By.CSS_SELECTOR,
-            "#content > div.box > div.group.left-box > div.webtoon-bbs-list.bbs-list > ul:nth-child(1) > li > a",
+    def get_chapter_list(self, soup: bs):
+        soup.find("div", class_="badge").decompose()
+        soup.find("div", class_="date").decompose()
+
+        chapters = soup.select(
+            ".bbs-list > ul > li > a.view_open"
         )
         self.total_chapter = len(chapters)
         chapters = list(reversed(chapters))
         for chapter in chapters:
-            href = chapter.get_attribute("href")
-            subject = chapter.find_element(By.CLASS_NAME, "list-box").text
+            href = chapter["href"]
+            subject = chapter.text
             sp = subject.split("\n")
-            subject = f'{sp[0].strip().zfill(3)}-{sp[1].strip()}'
-            self.chapter_list.append([
-                subject,
-                href
-            ])
+            subject = f"{sp[2].strip().zfill(3)}-{sp[3].strip()}"
+            self.chapter_list.append([subject, href])
 
-    def get_img_list(self, driver: webdriver):
-        images = driver.find_elements(By.CSS_SELECTOR,
-            "body > section.webtoon-body > div.group.image-view > img"
+    def get_img_list(self, content: str):
+        soup = bs(content, "html.parser")
+        images = soup.select(
+            ".image-view > img"
         )
         self.chapter_images = []
         for image in images:
-            self.chapter_images.append(image.get_attribute("src"))
+            self.chapter_images.append(image["src"])
         return len(self.chapter_images) > 0
-    
+
     def set_next_chapter(self):
+        pass
         self.current_chapter += 1
         self.title_info.info["skip"] = self.current_chapter
         self.title_info.save()

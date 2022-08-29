@@ -7,11 +7,11 @@ from PySide6 import QtGui, QtCore
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QSize, Qt
 from src.site.Wfwf import Wfwf
 from src.site.TitleInfo import TitleInfo
-from src.site.browser.BrowserGet import BrowserGet, GET_STATE, GET_TYPE
 from src.site.SiteLoader import SiteLoader
 from ui.Ui_DownloadItem import Ui_DownloadItem
 from src.site.SiteBase import SiteBase
 from util.Config import Config
+from src.site.browser.RequestGet import RequestGet, REQUEST_GET_STATE, REQUEST_GET_TYPE
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
 from src.util.DatabaseManager import DatabaseManager
@@ -33,12 +33,12 @@ class DownloadItemSignals(QObject):
 class DownloadItem(QWidget):
     signals = DownloadItemSignals()
 
-    def __init__(self, browserDriver, id: str, site_config):
+    def __init__(self, id: str, site_config):
         super(DownloadItem, self).__init__()
 
         self.ui = Ui_DownloadItem()
         self.ui.setupUi(self)
-        self.browserDriver = browserDriver
+        # self.browserDriver = browserDriver
 
         self.id = id
 
@@ -98,23 +98,21 @@ class DownloadItem(QWidget):
         self.site.id = self.id
         self.site.parent = self
 
-        self.browser = self.site.browser
-        self.browserGet = BrowserGet(self, self.browser)
-        self.browserGet.id = self.id
-        self.browserGet.signals.get_state.connect(self.__on_get_state)
+        self.requestGet = RequestGet(self)
+        self.requestGet.id = self.id
+        self.requestGet.signals.get_state.connect(self.__on_get_state)
         self.__get_url_title_info()
 
     def __get_url_title_info(self):
         """
         타이틀 읽기 -> 챕터 목록
         """
-        self.browserGet.condition(
-            GET_TYPE.TITLE_INFO,
+        self.requestGet.condition(
+            REQUEST_GET_TYPE.TITLE_INFO,
             self.url,
-            self.site_config["url_format"]["title"]["visible_condition"]["type"],
-            self.site_config["url_format"]["title"]["visible_condition"]["text"],
+            self.site_config["url_format"]["title"]["condition"]
         )
-        self.browserGet.start()
+        self.requestGet.start()
         current = self.site.current_chapter+1
         if current > self.site.total_chapter:
             current = self.site.total_chapter
@@ -128,20 +126,19 @@ class DownloadItem(QWidget):
         if subject is None:
             self.__set_done()
             return
-        self.browserGet.condition(
-            GET_TYPE.CHAPTER_INFO,
-            url,
-            self.site_config["url_format"]["chapter"]["visible_condition"]["type"],
-            self.site_config["url_format"]["chapter"]["visible_condition"]["text"],
+        self.requestGet.condition(
+            REQUEST_GET_TYPE.CHAPTER_INFO,
+            self.site_config["url"] + url,
+            self.site_config["url_format"]["chapter"]["condition"]
         )
-        self.browserGet.start()
+        self.requestGet.start()
 
-    @Slot(str, GET_TYPE, GET_STATE)
-    def __on_get_state(self, id: str, type: GET_TYPE, state: GET_STATE):
+    @Slot(str, REQUEST_GET_TYPE, REQUEST_GET_STATE)
+    def __on_get_state(self, id: str, type: REQUEST_GET_TYPE, state: REQUEST_GET_STATE):
         if self.id != id:
             return
-        if state == GET_STATE.ERROR:
-            if type == GET_TYPE.CHAPTER_INFO:
+        if state == REQUEST_GET_STATE.ERROR:
+            if type == REQUEST_GET_TYPE.CHAPTER_INFO:
                 toast(self, "챕터의 내용을 받지 못 했습니다.");
                 self.state = DOWNLOAD_ITEM_STATE.ERROR
                 self.ui.state_label.setText("ERROR")
@@ -153,19 +150,19 @@ class DownloadItem(QWidget):
                 toast(self, "이미지 목록을 읽기 실패");
 
                 self.__on_download_done()
-        elif state == GET_STATE.LOADING:
+        elif state == REQUEST_GET_STATE.LOADING:
             return
-        elif state == GET_STATE.DONE:
+        elif state == REQUEST_GET_STATE.DONE:
             self.__on_get_done(type)
 
-    def __on_get_done(self, type: GET_TYPE):
-        if type == GET_TYPE.TITLE_INFO:
-            self.site.get_chapter_info_parser(self.browser)
+    def __on_get_done(self, type: REQUEST_GET_TYPE):
+        if type == REQUEST_GET_TYPE.TITLE_INFO:
+            self.site.get_chapter_info_parser(self.requestGet.content)
             self.__get_chapter_info()
             # self.ui.progress_bar.setValue(self.site.progress)
             self.__set_status_text()
-        elif type == GET_TYPE.CHAPTER_INFO:
-            self.site.get_img_list(self.browser)
+        elif type == REQUEST_GET_TYPE.CHAPTER_INFO:
+            self.site.get_img_list(self.requestGet.content)
             self.__download_chapter_images()
             self.__set_status_text()
 
@@ -259,7 +256,10 @@ class DownloadItem(QWidget):
                 self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 압축중")
                 return
 
-            self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
+            if int(count) == 0 or int(total):
+                self.ui.progress_bar.setValue(0)
+            else:
+                self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
 
             if state == DOWNLOAD_STATE.DONE:
                 self.__on_download_done()

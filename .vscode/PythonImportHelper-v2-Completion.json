@@ -152,6 +152,15 @@
         "documentation": {}
     },
     {
+        "label": "PySide6.QtCore",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QObject",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -177,6 +186,38 @@
     },
     {
         "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -977,11 +1018,11 @@
         "documentation": {}
     },
     {
-        "label": "Base",
-        "importPath": "model.Base",
-        "description": "model.Base",
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
         "isExtraImport": true,
-        "detail": "model.Base",
+        "detail": "util.Config",
         "documentation": {}
     },
     {
@@ -993,11 +1034,11 @@
         "documentation": {}
     },
     {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
+        "label": "Base",
+        "importPath": "model.Base",
+        "description": "model.Base",
         "isExtraImport": true,
-        "detail": "enum",
+        "detail": "model.Base",
         "documentation": {}
     },
     {
@@ -1030,6 +1071,30 @@
         "description": "enum",
         "isExtraImport": true,
         "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
         "documentation": {}
     },
     {
@@ -1082,6 +1147,22 @@
     },
     {
         "label": "Options",
+        "importPath": "selenium.webdriver.chrome.options",
+        "description": "selenium.webdriver.chrome.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.chrome.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "selenium.webdriver.firefox.options",
+        "description": "selenium.webdriver.firefox.options",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.firefox.options",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
         "importPath": "selenium.webdriver.firefox.options",
         "description": "selenium.webdriver.firefox.options",
         "isExtraImport": true,
@@ -1113,11 +1194,11 @@
         "documentation": {}
     },
     {
-        "label": "By",
-        "importPath": "selenium.webdriver.common.by",
-        "description": "selenium.webdriver.common.by",
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
         "isExtraImport": true,
-        "detail": "selenium.webdriver.common.by",
+        "detail": "selenium.webdriver.support.ui",
         "documentation": {}
     },
     {
@@ -1142,6 +1223,30 @@
         "description": "selenium.webdriver.common.by",
         "isExtraImport": true,
         "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
         "documentation": {}
     },
     {
@@ -1185,6 +1290,22 @@
         "documentation": {}
     },
     {
+        "label": "visibility_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
+        "label": "presence_of_element_located",
+        "importPath": "selenium.webdriver.support.expected_conditions",
+        "description": "selenium.webdriver.support.expected_conditions",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.expected_conditions",
+        "documentation": {}
+    },
+    {
         "label": "GetTimeoutException",
         "importPath": "lib.exceptions",
         "description": "lib.exceptions",
@@ -1198,6 +1319,31 @@
         "description": "lib.exceptions",
         "isExtraImport": true,
         "detail": "lib.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "GetTimeoutException",
+        "importPath": "lib.exceptions",
+        "description": "lib.exceptions",
+        "isExtraImport": true,
+        "detail": "lib.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "requests",
+        "description": "requests",
+        "isExtraImport": true,
+        "detail": "requests",
         "documentation": {}
     },
     {
@@ -1267,22 +1413,6 @@
         "documentation": {}
     },
     {
-        "label": "BrowserDriver",
-        "importPath": "src.site.browser.BrowserDriver",
-        "description": "src.site.browser.BrowserDriver",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserDriver",
-        "documentation": {}
-    },
-    {
-        "label": "BrowserDriver",
-        "importPath": "src.site.browser.BrowserDriver",
-        "description": "src.site.browser.BrowserDriver",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserDriver",
-        "documentation": {}
-    },
-    {
         "label": "importlib",
         "kind": 6,
         "isExtraImport": true,
@@ -1346,6 +1476,22 @@
         "importPath": "yaml",
         "description": "yaml",
         "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
         "documentation": {}
     },
     {
@@ -1906,23 +2052,6 @@
         "documentation": {}
     },
     {
-        "label": "requests",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "requests",
-        "description": "requests",
-        "isExtraImport": true,
-        "detail": "requests",
-        "documentation": {}
-    },
-    {
         "label": "cpu_count",
         "importPath": "multiprocessing",
         "description": "multiprocessing",
@@ -1960,14 +2089,6 @@
         "description": "lib.QToaster",
         "isExtraImport": true,
         "detail": "lib.QToaster",
-        "documentation": {}
-    },
-    {
-        "label": "BeautifulSoup",
-        "importPath": "bs4",
-        "description": "bs4",
-        "isExtraImport": true,
-        "detail": "bs4",
         "documentation": {}
     },
     {
@@ -2011,30 +2132,6 @@
         "documentation": {}
     },
     {
-        "label": "BrowserGet",
-        "importPath": "src.site.browser.BrowserGet",
-        "description": "src.site.browser.BrowserGet",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserGet",
-        "documentation": {}
-    },
-    {
-        "label": "GET_STATE",
-        "importPath": "src.site.browser.BrowserGet",
-        "description": "src.site.browser.BrowserGet",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserGet",
-        "documentation": {}
-    },
-    {
-        "label": "GET_TYPE",
-        "importPath": "src.site.browser.BrowserGet",
-        "description": "src.site.browser.BrowserGet",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserGet",
-        "documentation": {}
-    },
-    {
         "label": "SiteLoader",
         "importPath": "src.site.SiteLoader",
         "description": "src.site.SiteLoader",
@@ -2048,6 +2145,30 @@
         "description": "ui.Ui_DownloadItem",
         "isExtraImport": true,
         "detail": "ui.Ui_DownloadItem",
+        "documentation": {}
+    },
+    {
+        "label": "RequestGet",
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "REQUEST_GET_STATE",
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "REQUEST_GET_TYPE",
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "isExtraImport": true,
+        "detail": "src.site.browser.RequestGet",
         "documentation": {}
     },
     {
@@ -2614,6 +2735,51 @@
         "documentation": {}
     },
     {
+        "label": "REQUEST_GET_STATE",
+        "kind": 6,
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "peekOfCode": "class REQUEST_GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass REQUEST_GET_TYPE(Enum):\n    TITLE_INFO = 0\n    CHAPTER_INFO = 1\nclass RequestGetSignal(QObject):\n    get_state = Signal(str, REQUEST_GET_TYPE, REQUEST_GET_STATE)",
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "REQUEST_GET_TYPE",
+        "kind": 6,
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "peekOfCode": "class REQUEST_GET_TYPE(Enum):\n    TITLE_INFO = 0\n    CHAPTER_INFO = 1\nclass RequestGetSignal(QObject):\n    get_state = Signal(str, REQUEST_GET_TYPE, REQUEST_GET_STATE)\nclass RequestGet(QThread):\n    signals = RequestGetSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.__parent = parent",
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "RequestGetSignal",
+        "kind": 6,
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "peekOfCode": "class RequestGetSignal(QObject):\n    get_state = Signal(str, REQUEST_GET_TYPE, REQUEST_GET_STATE)\nclass RequestGet(QThread):\n    signals = RequestGetSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.config = Config()\n        self.site_config = parent.site_config;\n        self.referer = self.site_config[\"url\"]",
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "RequestGet",
+        "kind": 6,
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "peekOfCode": "class RequestGet(QThread):\n    signals = RequestGetSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.__parent = parent\n        self.config = Config()\n        self.site_config = parent.site_config;\n        self.referer = self.site_config[\"url\"]\n        self.__timeout = self.config.setting[\"timeout\"]\n        self.state = REQUEST_GET_STATE.READY",
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
+        "label": "HEADERS",
+        "kind": 5,
+        "importPath": "src.site.browser.RequestGet",
+        "description": "src.site.browser.RequestGet",
+        "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass REQUEST_GET_STATE(Enum):\n    READY = 0\n    LOADING = 1\n    DONE = 2\n    ERROR = 3\nclass REQUEST_GET_TYPE(Enum):\n    TITLE_INFO = 0",
+        "detail": "src.site.browser.RequestGet",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "kind": 6,
         "importPath": "src.site.browser.Session",
@@ -2627,7 +2793,7 @@
         "kind": 6,
         "importPath": "src.site.SiteBase",
         "description": "src.site.SiteBase",
-        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, browserDriver: BrowserDriver, config: Config):\n        self.browserDriver = browserDriver\n        self.browser = self.browserDriver.browser\n        self.config = config\n        self.id = \"\"\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]",
+        "peekOfCode": "class SiteBase(ABC):\n    def __init__(self, config: Config):\n        self.config = config\n        self.id = \"\"\n        self.name = config[\"name\"]\n        self.url = config[\"url\"]\n        self.file_extensions = config[\"file_extensions\"]\n        self.download_path = config[\"download_path\"]\n        self.url_format = config[\"url_format\"]\n        self.title_info = TitleInfo()",
         "detail": "src.site.SiteBase",
         "documentation": {}
     },
@@ -2636,7 +2802,7 @@
         "kind": 6,
         "importPath": "src.site.SiteLoader",
         "description": "src.site.SiteLoader",
-        "peekOfCode": "class SiteLoaderSignals(QObject):\n    on_site_loaded = Signal(str)\nclass SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        self.browserDriver = parent.browserDriver\n        self.__key = parent.key\n        self.__config = parent.site_config",
+        "peekOfCode": "class SiteLoaderSignals(QObject):\n    on_site_loaded = Signal(str)\nclass SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        # self.browserDriver = parent.browserDriver\n        self.__key = parent.key\n        self.__config = parent.site_config",
         "detail": "src.site.SiteLoader",
         "documentation": {}
     },
@@ -2645,7 +2811,7 @@
         "kind": 6,
         "importPath": "src.site.SiteLoader",
         "description": "src.site.SiteLoader",
-        "peekOfCode": "class SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        self.browserDriver = parent.browserDriver\n        self.__key = parent.key\n        self.__config = parent.site_config\n        self.site_class = None\n    def run(self):",
+        "peekOfCode": "class SiteLoader(QThread):\n    signals = SiteLoaderSignals()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n        # self.browserDriver = parent.browserDriver\n        self.__key = parent.key\n        self.__config = parent.site_config\n        self.site_class = None\n    def run(self):",
         "detail": "src.site.SiteLoader",
         "documentation": {}
     },
@@ -2663,7 +2829,7 @@
         "kind": 6,
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
-        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, browserDriver, config: Config):\n        super().__init__(browserDriver, config)\n        self.chapter_list = []\n        self.current_chapter = 0\n        self.total_chapter = 0\n        self.chapter_images = []\n    def get_title_id(self, url: str) -> str:\n        return \"\"\n    def get_chapter_info_parser(self, driver: webdriver):",
+        "peekOfCode": "class Wfwf(SiteBase):\n    def __init__(self, config: Config):\n        super().__init__(config)\n        self.chapter_list = []\n        self.current_chapter = 0\n        self.total_chapter = 0\n        self.chapter_images = []\n    def get_title_id(self, url: str) -> str:\n        return \"\"\n    def get_chapter_info_parser(self, content: str):",
         "detail": "src.site.Wfwf",
         "documentation": {}
     },
@@ -2825,7 +2991,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, browserDriver, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.browserDriver = browserDriver",
+        "peekOfCode": "class DownloadItemSignals(QObject):\n    remove_item = Signal(str)\n    download_state = Signal(str, DOWNLOAD_ITEM_STATE)\nclass DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        # self.browserDriver = browserDriver",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
@@ -2834,7 +3000,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, browserDriver, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        self.browserDriver = browserDriver\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:",
+        "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        # self.browserDriver = browserDriver\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:",
         "detail": "src.DownloadItem",
         "documentation": {}
     },

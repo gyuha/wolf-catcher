@@ -6,13 +6,10 @@ from src.site.TitleInfo import TitleInfo
 from util.Config import Config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from src.site.browser.BrowserDriver import BrowserDriver
 
 
 class SiteBase(ABC):
-    def __init__(self, browserDriver: BrowserDriver, config: Config):
-        self.browserDriver = browserDriver
-        self.browser = self.browserDriver.browser
+    def __init__(self, config: Config):
 
         self.config = config
         self.id = ""
