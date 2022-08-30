@@ -51,10 +51,10 @@ class Downloader(QThread):
         self.pool_count = 0
         self.referer = referer
         self.id = None
-        self.title_path = None
+        self.chapter_path = None
 
-    def set_title_path(self, title_path):
-        self.title_path = title_path
+    def set_chapter_path(self, chapter_path):
+        self.chapter_path = chapter_path
 
     def run(self):
         cpus = cpu_count()
@@ -88,7 +88,7 @@ class Downloader(QThread):
 
     def create_compress_thread(self):
         compress_thread = threading.Thread(
-            target=self.__zip_folder, args=(self.title_path, self.title_path + ".cbz")
+            target=self.__zip_folder, args=(self.chapter_path, self.chapter_path + ".cbz")
         )
         compress_thread.start()
 

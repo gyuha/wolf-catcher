@@ -208,14 +208,14 @@ class DownloadItem(QWidget):
 
         image_list = []
         image_num = 0
-        self.title_path = os.path.join(
+        chapter_path = os.path.join(
             self.site.path, self.site.strip_title_for_path(chapter_title)
         )
         for image in chapter_images:
             image_num += 1
-            file_path = os.path.join(self.title_path, f"{image_num:03d}.jpg")
+            file_path = os.path.join(chapter_path, f"{image_num:03d}.jpg")
             image_list.append([image, file_path])
-        self.downloader.set_title_path(self.title_path)
+        self.downloader.set_chapter_path(chapter_path)
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
 

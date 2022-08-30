@@ -8,7 +8,6 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
-# from src.site.browser.BrowserDriver import BrowserDriver
 from src.site.TitleInfo import TitleInfo
 
 from ui.Ui_MainWindow import Ui_MainWindow
@@ -48,7 +47,6 @@ class MainWindow(QMainWindow):
         )
         self.db = DatabaseManager()
         self.current_key = ""
-        # self.browserDriver = BrowserDriver()
         self.__get_items_by_database()
 
     def __init_connect(self):
@@ -235,5 +233,3 @@ class MainWindow(QMainWindow):
         url = QtCore.QUrl(self.config.setting["link_url"])
         QtGui.QDesktopServices.openUrl(url)
 
-    def closeEvent(self, event):
-        self.browserDriver.driver_close()

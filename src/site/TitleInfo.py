@@ -1,4 +1,5 @@
 import os
+import pathlib
 import yaml
 
 
@@ -33,5 +34,8 @@ class TitleInfo:
             self.info = yaml.load(file, Loader=yaml.FullLoader)
 
     def save(self):
+        if not os.path.exists(self.path):
+            pathlib.Path(os.path.dirname(self.path)).mkdir(parents=True, exist_ok=True)
+
         with open(self.path, "w", encoding="utf-8") as outfile:
             yaml.dump(self.info, outfile, allow_unicode=True)
