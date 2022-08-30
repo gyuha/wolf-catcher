@@ -57,6 +57,7 @@ class DownloadItem(QWidget):
         self.state = DOWNLOAD_ITEM_STATE.READY
         self.ui.state_label.setText("READY")
         self.db = DatabaseManager()
+        self.title_path = ""
         # self.__init_site()
 
     def __init_connect(self):
@@ -73,7 +74,7 @@ class DownloadItem(QWidget):
     @property
     def key(self):
         return self.name + self.id
-    
+
     def start(self):
         self.state = DOWNLOAD_ITEM_STATE.DOING
         self.ui.state_label.setText("DOING")
@@ -110,10 +111,10 @@ class DownloadItem(QWidget):
         self.requestGet.condition(
             REQUEST_GET_TYPE.TITLE_INFO,
             self.url,
-            self.site_config["url_format"]["title"]["condition"]
+            self.site_config["url_format"]["title"]["condition"],
         )
         self.requestGet.start()
-        current = self.site.current_chapter+1
+        current = self.site.current_chapter + 1
         if current > self.site.total_chapter:
             current = self.site.total_chapter
         self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 조회 중")
@@ -129,7 +130,7 @@ class DownloadItem(QWidget):
         self.requestGet.condition(
             REQUEST_GET_TYPE.CHAPTER_INFO,
             self.site_config["url"] + url,
-            self.site_config["url_format"]["chapter"]["condition"]
+            self.site_config["url_format"]["chapter"]["condition"],
         )
         self.requestGet.start()
 
@@ -139,7 +140,7 @@ class DownloadItem(QWidget):
             return
         if state == REQUEST_GET_STATE.ERROR:
             if type == REQUEST_GET_TYPE.CHAPTER_INFO:
-                toast(self, "챕터의 내용을 받지 못 했습니다.");
+                toast(self, "챕터의 내용을 받지 못 했습니다.")
                 self.state = DOWNLOAD_ITEM_STATE.ERROR
                 self.ui.state_label.setText("ERROR")
                 self.signals.download_state.emit(self.key, self.state)
@@ -147,7 +148,7 @@ class DownloadItem(QWidget):
                 # 다음 챕터
                 self.__on_get_done(type)
             else:
-                toast(self, "이미지 목록을 읽기 실패");
+                toast(self, "이미지 목록을 읽기 실패")
 
                 self.__on_download_done()
         elif state == REQUEST_GET_STATE.LOADING:
@@ -168,7 +169,7 @@ class DownloadItem(QWidget):
 
     def __set_status_text(self):
         subject = self.site.get_current_chapter()[0]
-        current = self.site.current_chapter+1
+        current = self.site.current_chapter + 1
         if current > self.site.total_chapter:
             current = self.site.total_chapter
         if subject == None:
@@ -180,9 +181,9 @@ class DownloadItem(QWidget):
             toast(self, "지울 수 없습니다.")
             return
         self.signals.remove_item.emit(self.key)
-    
+
     def __on_click_open_folder(self):
-        path = os.path.realpath(self.site.path)
+        path = os.path.realpath(self.title_path)
         if os.path.exists(path):
             os.startfile(path)
 
@@ -218,23 +219,18 @@ class DownloadItem(QWidget):
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
 
-    def update_info(self, info, update = True):
+    def update_info(self, info, update=True):
         self.info = info
         try:
             self.ui.title_label.setText(f'{info["title"]}')
             self.ui.tag_label.setText(f'{"/".join(info["tags"])}')
             if update:
                 self.db.updated_product(
-                    self.id,
-                    info["title"],
-                    info["author"],
-                    "",
-                    "/".join(info["tags"])
+                    self.id, info["title"], info["author"], "", "/".join(info["tags"])
                 )
             self.__thumbnail()
         except Exception as e:
-            print('📢[DownloadItem.py:240]: ', e)
-            
+            print("📢[DownloadItem.py:240]: ", e)
 
     @Slot(str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int)
     def __on_download_state(self, id, type, state, count, total):
@@ -250,10 +246,12 @@ class DownloadItem(QWidget):
 
         if type == DOWNLOAD_TYPE.IMAGES:
             if state == DOWNLOAD_STATE.COMPRESS:
-                current = self.site.current_chapter+1
+                current = self.site.current_chapter + 1
                 if current > self.site.total_chapter:
                     current = self.site.total_chapter
-                self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 압축중")
+                self.ui.status_label.setText(
+                    f"[{current}/{self.site.total_chapter}] 압축중"
+                )
                 return
 
             if int(count) == 0 or int(total):
@@ -283,7 +281,7 @@ class DownloadItem(QWidget):
         self.state = DOWNLOAD_ITEM_STATE.DONE
         self.ui.state_label.setText("DONE")
         self.signals.download_state.emit(self.key, self.state)
-    
+
     def strip_title_for_path(self, title: str) -> str:
         """
         윈도우에서 사용이 가능한 파일 명으로 변경
@@ -306,16 +304,22 @@ class DownloadItem(QWidget):
         return title
 
     def __thumbnail(self):
-        thumbnail_path = os.path.join(self.site_config["download_path"], self.strip_title_for_path(self.info["title"]), "thumbnail.jpg")
+        self.title_path = os.path.join(
+            self.site_config["download_path"],
+            self.strip_title_for_path(self.info["title"]),
+        )
+        thumbnail_path = os.path.join(
+            self.title_path,
+            "thumbnail.jpg",
+        )
         if not os.path.exists(thumbnail_path):
             return
         pixmap = QtGui.QPixmap(thumbnail_path)
         pixmap = pixmap.scaled(QSize(80, 80))
         self.ui.image_label.setPixmap(pixmap)
-    
+
     def __on_click_open_link(self):
         link_url = self.site_config["url"]
         link_url += self.site_config["url_format"]["title"]["filter"].format(self.id)
         url = QtCore.QUrl(link_url)
         QtGui.QDesktopServices.openUrl(url)
-
