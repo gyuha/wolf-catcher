@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
 
         self.clipbard = Clipboard()
 
-        self.setWindowIcon(QtGui.QIcon("icon.png"))
+        # self.setWindowIcon(QtGui.QIcon("icon.png"))
         self.setWindowTitle("Wolf catcher")
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

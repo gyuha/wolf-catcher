@@ -20,12 +20,16 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
     QListWidgetItem, QMainWindow, QMenu, QMenuBar,
     QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
     QVBoxLayout, QWidget)
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(582, 633)
+        icon = QIcon()
+        icon.addFile(u":/icon/icons/main-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.action_always_top = QAction(MainWindow)
         self.action_always_top.setObjectName(u"action_always_top")
         self.action_always_top.setCheckable(True)

@@ -2865,7 +2865,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_MainWindow",
         "description": "src.ui.Ui_MainWindow",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(582, 633)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")\n        self.action_always_top.setCheckable(True)\n        self.action_clipboard_toggle = QAction(MainWindow)\n        self.action_clipboard_toggle.setObjectName(u\"action_clipboard_toggle\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(582, 633)\n        icon = QIcon()\n        icon.addFile(u\":/icon/icons/main-icon.png\", QSize(), QIcon.Normal, QIcon.Off)\n        MainWindow.setWindowIcon(icon)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")",
         "detail": "src.ui.Ui_MainWindow",
         "documentation": {}
     },
@@ -3009,7 +3009,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class ADD_BY(Enum):\n    DATABASE = 0\n    CLIPBOARD = 1\nclass MainWindow(QMainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon(\"icon.png\"))\n        self.setWindowTitle(\"Wolf catcher\")",
+        "peekOfCode": "class ADD_BY(Enum):\n    DATABASE = 0\n    CLIPBOARD = 1\nclass MainWindow(QMainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.config = Config()\n        self.clipbard = Clipboard()\n        # self.setWindowIcon(QtGui.QIcon(\"icon.png\"))\n        self.setWindowTitle(\"Wolf catcher\")",
         "detail": "src.MainWindow",
         "documentation": {}
     },
@@ -3018,7 +3018,7 @@
         "kind": 6,
         "importPath": "src.MainWindow",
         "description": "src.MainWindow",
-        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.config = Config()\n        self.clipbard = Clipboard()\n        self.setWindowIcon(QtGui.QIcon(\"icon.png\"))\n        self.setWindowTitle(\"Wolf catcher\")\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self, parent=None):\n        super(MainWindow, self).__init__(parent)\n        self.config = Config()\n        self.clipbard = Clipboard()\n        # self.setWindowIcon(QtGui.QIcon(\"icon.png\"))\n        self.setWindowTitle(\"Wolf catcher\")\n        self.ui = Ui_MainWindow()\n        self.ui.setupUi(self)\n        self.__init_connect()",
         "detail": "src.MainWindow",
         "documentation": {}
     },
@@ -3090,7 +3090,7 @@
         "kind": 5,
         "importPath": "resources_rc",
         "description": "resources_rc",
-        "peekOfCode": "qt_resource_data = b\"\\\n\\x00\\x00\\x22 \\\n\\x89\\\nPNG\\x0d\\x0a\\x1a\\x0a\\x00\\x00\\x00\\x0dIHDR\\x00\\\n\\x00\\x01\\xe9\\x00\\x00\\x01\\xd9\\x08\\x06\\x00\\x00\\x00\\xa2\\xb4\\xc3:\\\n\\x00\\x00\\x00\\x01sRGB\\x00\\xae\\xce\\x1c\\xe9\\x00\\x00\\x00\\\n\\x04gAMA\\x00\\x00\\xb1\\x8f\\x0b\\xfca\\x05\\x00\\x00\\x00\\\n\\x09pHYs\\x00\\x00\\x0e\\xc3\\x00\\x00\\x0e\\xc3\\x01\\xc7o\\\n\\xa8d\\x00\\x00!\\xb5IDATx^\\xed\\xddy\\xb0\\\nmU}'\\xf0\\x97\\xc8<\\x88\\x0a\\x88\\x0a\\x0a\\x8e\\xc8\\xa0\\",
+        "peekOfCode": "qt_resource_data = b\"\\\n\\x00\\x00\\x0b:\\\n\\x89\\\nPNG\\x0d\\x0a\\x1a\\x0a\\x00\\x00\\x00\\x0dIHDR\\x00\\\n\\x00\\x01\\x00\\x00\\x00\\x00\\xc1\\x08\\x03\\x00\\x00\\x00\\x17o\\x9e\\xf1\\\n\\x00\\x00\\x00\\x04gAMA\\x00\\x00\\xb1\\x8f\\x0b\\xfca\\x05\\\n\\x00\\x00\\x00 cHRM\\x00\\x00z&\\x00\\x00\\x80\\x84\\\n\\x00\\x00\\xfa\\x00\\x00\\x00\\x80\\xe8\\x00\\x00u0\\x00\\x00\\xea`\\\n\\x00\\x00:\\x98\\x00\\x00\\x17p\\x9c\\xbaQ<\\x00\\x00\\x00\\x07\\\ntIME\\x07\\xe5\\x05\\x06\\x0e%\\x11\\xef\\x0b-\\x22\\x00\\",
         "detail": "resources_rc",
         "documentation": {}
     },
@@ -3099,7 +3099,7 @@
         "kind": 5,
         "importPath": "resources_rc",
         "description": "resources_rc",
-        "peekOfCode": "qt_resource_name = b\"\\\n\\x00\\x04\\\n\\x00\\x06\\xfa^\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\\n\\x00\\x05\\\n\\x00o\\xa6S\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\x00s\\\n\\x00\\x08\\",
+        "peekOfCode": "qt_resource_name = b\"\\\n\\x00\\x04\\\n\\x00\\x06\\xfa^\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\\n\\x00\\x05\\\n\\x00o\\xa6S\\\n\\x00i\\\n\\x00c\\x00o\\x00n\\x00s\\\n\\x00\\x0f\\",
         "detail": "resources_rc",
         "documentation": {}
     },
@@ -3108,7 +3108,7 @@
         "kind": 5,
         "importPath": "resources_rc",
         "description": "resources_rc",
-        "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x05\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00|\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00CD\\\n\\x00\\x00\\x01\\x82\\xe3\\xcc\\xdbf\\\n\\x00\\x00\\x004\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x22$\\",
+        "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x06\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\xa0\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00N\\x82\\\n\\x00\\x00\\x01\\x82\\xe3\\xcc\\xdbf\\\n\\x00\\x00\\x00\\xb6\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00x\\x7f\\",
         "detail": "resources_rc",
         "documentation": {}
     }

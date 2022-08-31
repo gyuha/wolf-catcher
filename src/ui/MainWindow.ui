@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Wolf catcher</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icon/icons/main-icon.png</normaloff>:/icon/icons/main-icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="maximumSize">
     <size>
@@ -175,6 +179,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
