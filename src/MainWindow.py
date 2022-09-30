@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
             for url in event.mimeData().urls():
                 # https://doc.qt.io/qt-5/qurl.html
                 if url.isLocalFile():
-                    return
+                    continue
                 else:
                     self.add_clipboard(url.toString())
         else:
