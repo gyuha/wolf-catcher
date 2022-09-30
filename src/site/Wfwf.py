@@ -78,6 +78,7 @@ class Wfwf(SiteBase):
 
     def get_chapter_list(self, soup: bs):
         soup.find("div", class_="badge").decompose()
+        soup.find("div", class_="badge-up").decompose()
         soup.find("div", class_="date").decompose()
 
         chapters = soup.select(

@@ -4,8 +4,9 @@ import threading
 import time
 from PySide6 import QtCore
 from PySide6 import QtGui
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Slot, Qt
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
+from PySide6.QtGui import QDropEvent, QDragEnterEvent
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
 from src.site.TitleInfo import TitleInfo
@@ -54,9 +55,41 @@ class MainWindow(QMainWindow):
         self.ui.complete_delete_button.clicked.connect(self.__complete_delete)
         self.ui.site_open_button.clicked.connect(self.__on_site_open_button)
 
+        self.ui.item_list.setDragEnabled(True)
+        self.ui.item_list.setAcceptDrops(True)
+        self.ui.item_list.dragEnterEvent = self.__dragEnterEvent
+        self.ui.item_list.dragMoveEvent = self.__dragMoveEvent
+        self.ui.item_list.dropEvent = self.__drop_event
+
     def __init_slot(self):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
+
+    def __dragEnterEvent(self, event: QDragEnterEvent):
+        if event.mimeData().hasUrls:
+            event.accept()
+        else:
+            event.ignore()
+
+    def __dragMoveEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.setDropAction(Qt.CopyAction)
+            event.accept()
+        else:
+            event.ignore()
+
+    def __drop_event(self, event: QDropEvent):
+        if event.mimeData().hasUrls:
+            event.setDropAction(Qt.CopyAction)
+            event.accept()
+            for url in event.mimeData().urls():
+                # https://doc.qt.io/qt-5/qurl.html
+                if url.isLocalFile():
+                    return
+                else:
+                    self.add_clipboard(url.toString())
+        else:
+            event.ignore()
 
     def __get_items_by_database(self):
         prds = self.db.get_visible_products()
@@ -70,7 +103,7 @@ class MainWindow(QMainWindow):
         self.__update_count()
 
     @Slot(str, object)
-    def add_clipboard(self, text: str, config: object):
+    def add_clipboard(self, text: str):
         self.ui.statusbar.showMessage(text)
 
         id, site_config = self.__url_validate(text)
@@ -232,4 +265,3 @@ class MainWindow(QMainWindow):
     def __on_site_open_button(self):
         url = QtCore.QUrl(self.config.setting["link_url"])
         QtGui.QDesktopServices.openUrl(url)
-

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>633</height>
+    <width>597</width>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,17 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QListWidget" name="item_list"/>
+     <widget class="QListWidget" name="item_list">
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DropOnly</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::LinkAction</enum>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -113,6 +123,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="site_open_button">
+        <property name="acceptDrops">
+         <bool>true</bool>
+        </property>
         <property name="text">
          <string>사이트 열기</string>
         </property>
@@ -141,7 +154,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>582</width>
+     <width>597</width>
      <height>22</height>
     </rect>
    </property>

@@ -16,17 +16,17 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
-    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QHBoxLayout, QLabel,
+    QListWidget, QListWidgetItem, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
+    QStatusBar, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(582, 633)
+        MainWindow.resize(597, 691)
         icon = QIcon()
         icon.addFile(u":/icon/icons/main-icon.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -49,6 +49,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.item_list = QListWidget(self.centralwidget)
         self.item_list.setObjectName(u"item_list")
+        self.item_list.setAcceptDrops(True)
+        self.item_list.setDragDropMode(QAbstractItemView.DropOnly)
+        self.item_list.setDefaultDropAction(Qt.LinkAction)
 
         self.verticalLayout.addWidget(self.item_list)
 
@@ -85,6 +88,7 @@ class Ui_MainWindow(object):
 
         self.site_open_button = QPushButton(self.centralwidget)
         self.site_open_button.setObjectName(u"site_open_button")
+        self.site_open_button.setAcceptDrops(True)
 
         self.horizontalLayout.addWidget(self.site_open_button)
 
@@ -104,7 +108,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 582, 22))
+        self.menubar.setGeometry(QRect(0, 0, 597, 22))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menubar)

@@ -689,6 +689,14 @@
         "documentation": {}
     },
     {
+        "label": "Qt",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QFile",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -1776,6 +1784,22 @@
         "documentation": {}
     },
     {
+        "label": "QDropEvent",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QDragEnterEvent",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
         "label": "QApplication",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
@@ -1849,6 +1873,14 @@
     },
     {
         "label": "QWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QAbstractItemView",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
         "isExtraImport": true,
@@ -2865,7 +2897,7 @@
         "kind": 6,
         "importPath": "src.ui.Ui_MainWindow",
         "description": "src.ui.Ui_MainWindow",
-        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(582, 633)\n        icon = QIcon()\n        icon.addFile(u\":/icon/icons/main-icon.png\", QSize(), QIcon.Normal, QIcon.Off)\n        MainWindow.setWindowIcon(icon)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")",
+        "peekOfCode": "class Ui_MainWindow(object):\n    def setupUi(self, MainWindow):\n        if not MainWindow.objectName():\n            MainWindow.setObjectName(u\"MainWindow\")\n        MainWindow.resize(597, 691)\n        icon = QIcon()\n        icon.addFile(u\":/icon/icons/main-icon.png\", QSize(), QIcon.Normal, QIcon.Off)\n        MainWindow.setWindowIcon(icon)\n        self.action_always_top = QAction(MainWindow)\n        self.action_always_top.setObjectName(u\"action_always_top\")",
         "detail": "src.ui.Ui_MainWindow",
         "documentation": {}
     },
