@@ -61,6 +61,9 @@ class MainWindow(QMainWindow):
         self.ui.item_list.dragMoveEvent = self.__dragMoveEvent
         self.ui.item_list.dropEvent = self.__drop_event
 
+        self.ui.cb_use_upscale.setChecked(self.config.setting["use_upscale"])
+        self.ui.cb_use_upscale.clicked.connect(self.__on_change_upscale)
+
     def __init_slot(self):
         """Initial Slots"""
         self.clipbard.add_clipboard.connect(self.add_clipboard)
@@ -77,6 +80,11 @@ class MainWindow(QMainWindow):
             event.accept()
         else:
             event.ignore()
+    
+    def __on_change_upscale(self, event):
+        self.config.setting["use_upscale"] = event
+        self.config.save()
+
 
     def __drop_event(self, event: QDropEvent):
         if event.mimeData().hasUrls:

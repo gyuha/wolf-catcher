@@ -71,6 +71,26 @@
        <number>5</number>
       </property>
       <item>
+       <widget class="QCheckBox" name="cb_use_upscale">
+        <property name="text">
+         <string>업스케이링 사용</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QLabel" name="label">
         <property name="text">
          <string>다운로드 : </string>
