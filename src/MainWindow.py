@@ -49,6 +49,7 @@ class MainWindow(QMainWindow):
         self.db = DatabaseManager()
         self.current_key = ""
         self.__get_items_by_database()
+        self.get_button()
 
     def __init_connect(self):
         self.ui.getButton.clicked.connect(self.get_button)

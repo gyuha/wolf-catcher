@@ -5,7 +5,7 @@ setting:
   link_url: https://nicelink18.com/
   timeout: 10
   tries: 5
-  use_upscale: false
+  use_upscale: true
 site:
 - class_name: Wfwf
   download_path: ./comics

@@ -260,24 +260,14 @@ class DownloadItem(QWidget):
             self.__thumbnail()
             return
 
-        if type == DOWNLOAD_TYPE.IMAGES:
-            # if state == DOWNLOAD_STATE.COMPRESS:
-            #     current = self.site.current_chapter + 1
-            #     if current > self.site.total_chapter:
-            #         current = self.site.total_chapter
-            #     self.ui.status_label.setText(
-            #         f"[{current}/{self.site.total_chapter}] 압축중"
-            #     )
-            #     return
+        if int(count) == 0 or int(total) == 0:
+            self.ui.progress_bar.setValue(0)
+        else:
+            self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
 
-            if int(count) == 0 or int(total):
-                self.ui.progress_bar.setValue(0)
-            else:
-                self.ui.progress_bar.setValue(int(float(count) / float(total) * 100))
-
-            if state == DOWNLOAD_STATE.DONE:
-                self.__on_download_done()
-            return
+        if state == DOWNLOAD_STATE.DONE:
+            self.__on_download_done()
+        return
 
     def __on_download_done(self):
         # 파일 다운로드 완료
