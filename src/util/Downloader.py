@@ -11,6 +11,9 @@ from multiprocessing import cpu_count
 from multiprocessing.pool import ThreadPool
 from PySide6.QtCore import QObject, Signal
 from multiprocessing import cpu_count
+from util.Config import Config
+
+from util.Upscaler import Upscaler
 
 
 class DOWNLOAD_TYPE(Enum):
@@ -21,9 +24,7 @@ class DOWNLOAD_TYPE(Enum):
 class DOWNLOAD_STATE(Enum):
     READY = 0
     DOING = 1
-    UPSCALE = 2
-    COMPRESS = 3
-    DONE = 4
+    DONE = 3
 
 
 HEADERS = {
@@ -53,6 +54,7 @@ class Downloader(QThread):
         self.referer = referer
         self.id = None
         self.chapter_path = None
+        self.config = Config()
 
     def set_chapter_path(self, chapter_path):
         self.chapter_path = chapter_path
@@ -67,31 +69,13 @@ class Downloader(QThread):
                 self.current_index += 1
             time.sleep(0.01)
 
-        if self.type == DOWNLOAD_TYPE.THUMBNAIL:
-            self.signals.download_state.emit(
-                self.id,
-                self.type,
-                DOWNLOAD_STATE.COMPRESS,
-                self.send_count,
-                self.total_count,
-            )
-            return
-
-        # 이미지이면 폴더 압축하기
         self.signals.download_state.emit(
             self.id,
             self.type,
-            DOWNLOAD_STATE.COMPRESS,
+            DOWNLOAD_STATE.DONE,
             self.send_count,
             self.total_count,
         )
-        self.create_compress_thread()
-
-    def create_compress_thread(self):
-        compress_thread = threading.Thread(
-            target=self.__zip_folder, args=(self.chapter_path, self.chapter_path + ".cbz")
-        )
-        compress_thread.start()
 
     def create_download_thread(self, data):
         self.pool_count += 1
@@ -120,7 +104,8 @@ class Downloader(QThread):
         session.headers.update(headers)
 
         try:
-            response = session.get(url, stream=True, verify=False, timeout=(3, 10))
+            response = session.get(
+                url, stream=True, verify=False, timeout=(3, 10))
 
             if response.status_code > 200:
                 raise Exception("Response error : {}" % (response.status_code))
@@ -146,44 +131,3 @@ class Downloader(QThread):
                     f.write(chunk)
         except Exception as e:
             print("Exception in __save_file(): ", e)
-    
-    def get_files_count(self, folder_path):
-        dirListing = os.listdir(folder_path)
-        return len(dirListing)
-
-    def __zip_folder(self, path: str, filename: str, remove_origin=True):
-        if self.get_files_count(path) == 0:
-            self.__get_done(path, remove_origin)
-            return
-
-        """
-        폴더 압축하기
-        """
-        if os.path.exists(filename):
-            self.signals.download_state.emit(
-                self.id,
-                self.type,
-                DOWNLOAD_STATE.DONE,
-                self.send_count,
-                self.total_count,
-            )
-
-        zipf = zipfile.ZipFile(filename, "w", zipfile.ZIP_DEFLATED)
-        for f in os.listdir(path):
-            zipf.write(os.path.join(path, f), os.path.basename(f))
-        zipf.close()
-
-        self.__get_done(path, remove_origin)
-
-    
-    def __get_done(self, path:str, remove_origin: bool):
-        if remove_origin:
-            shutil.rmtree(path, ignore_errors=True)
-
-        self.signals.download_state.emit(
-            self.id,
-            self.type,
-            DOWNLOAD_STATE.DONE,
-            self.send_count,
-            self.total_count,
-        )

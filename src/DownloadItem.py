@@ -10,11 +10,14 @@ from src.site.TitleInfo import TitleInfo
 from src.site.SiteLoader import SiteLoader
 from ui.Ui_DownloadItem import Ui_DownloadItem
 from src.site.SiteBase import SiteBase
+from util.Compressor import COMPRESS_STATE, Compressor
 from util.Config import Config
 from src.site.browser.RequestGet import RequestGet, REQUEST_GET_STATE, REQUEST_GET_TYPE
 
 from util.Downloader import DOWNLOAD_STATE, DOWNLOAD_TYPE, Downloader
 from src.util.DatabaseManager import DatabaseManager
+from util.ImageCompress import ImageCompress
+from util.Upscaler import Upscaler
 from util.message import toast
 
 
@@ -43,6 +46,7 @@ class DownloadItem(QWidget):
         self.id = id
 
         self.site_config = site_config
+        self.config = Config()
         if site_config == None:
             return
 
@@ -54,8 +58,19 @@ class DownloadItem(QWidget):
         self.__init_text()
         self.__init_downloader()
         self.__init_connect()
+
         self.state = DOWNLOAD_ITEM_STATE.READY
         self.ui.state_label.setText("READY")
+
+        self.compressor = Compressor(self)
+        self.compressor.signals.compress_state.connect(self.__on_compress_state)
+
+        self.upscaler = Upscaler()
+        self.upscaler.signals.upscale_state.connect(self.__on_upscale_state)
+
+        self.image_compress = ImageCompress(self)
+        self.image_compress.signals.image_compress_state.connect(self.__on_image_compress_state)
+
         self.db = DatabaseManager()
         self.title_path = ""
         # self.__init_site()
@@ -215,6 +230,7 @@ class DownloadItem(QWidget):
             image_num += 1
             file_path = os.path.join(chapter_path, f"{image_num:03d}.jpg")
             image_list.append([image, file_path])
+        self.chapter_path = chapter_path
         self.downloader.set_chapter_path(chapter_path)
         self.downloader.add_image_files(DOWNLOAD_TYPE.IMAGES, image_list)
         self.downloader.start()
@@ -245,14 +261,14 @@ class DownloadItem(QWidget):
             return
 
         if type == DOWNLOAD_TYPE.IMAGES:
-            if state == DOWNLOAD_STATE.COMPRESS:
-                current = self.site.current_chapter + 1
-                if current > self.site.total_chapter:
-                    current = self.site.total_chapter
-                self.ui.status_label.setText(
-                    f"[{current}/{self.site.total_chapter}] 압축중"
-                )
-                return
+            # if state == DOWNLOAD_STATE.COMPRESS:
+            #     current = self.site.current_chapter + 1
+            #     if current > self.site.total_chapter:
+            #         current = self.site.total_chapter
+            #     self.ui.status_label.setText(
+            #         f"[{current}/{self.site.total_chapter}] 압축중"
+            #     )
+            #     return
 
             if int(count) == 0 or int(total):
                 self.ui.progress_bar.setValue(0)
@@ -264,6 +280,46 @@ class DownloadItem(QWidget):
             return
 
     def __on_download_done(self):
+        # 파일 다운로드 완료
+        if self.config.setting["use_upscale"] == False:
+            self.compressor.set_chapter_path(self.id, self.chapter_path)
+            self.compressor.start()
+            return
+        # 업스케일링 경우
+        self.upscaler.start(self.id, self.chapter_path)
+
+    @Slot(str, bool, int, int)
+    def __on_upscale_state(self, id: str, complete: bool, current: int, total: int):
+        if str(self.id) != id:
+            return
+        if complete == False:
+            self.ui.status_label.setText(f"[{self.site.current_chapter + 1}/{self.site.total_chapter}] 업스케일링중 ({current}/{total})")
+        else:
+            self.image_compress.set_chapter_path(self.id, self.chapter_path)
+            self.image_compress.start()
+
+    @Slot(str, COMPRESS_STATE)
+    def __on_compress_state(self, id: str, state: COMPRESS_STATE):
+        if str(self.id) != str(id):
+            return
+        # 압축 상태
+        if state == COMPRESS_STATE.DONE or state == COMPRESS_STATE.ERROR:
+            self.__set_next()
+    
+
+    @Slot(str, bool, int, int)
+    def __on_image_compress_state(self, id: str, complete: bool, current: int, total: int):
+        if self.id != id:
+            return
+        if complete == False:
+            self.ui.status_label.setText(f"[{self.site.current_chapter + 1}/{self.site.total_chapter}] 이미지 최적화 중 ({current}/{total})")
+        else:
+            self.compressor.set_chapter_path(self.id, self.chapter_path)
+            self.compressor.start()
+
+
+    def __set_next(self):
+        # 다음 챕터 처리
         self.site.set_next_chapter()
         if self.site.progress > 100:
             self.__set_done()

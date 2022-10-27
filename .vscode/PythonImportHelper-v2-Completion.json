@@ -577,7 +577,71 @@
         "documentation": {}
     },
     {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QThread",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Slot",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -641,6 +705,14 @@
         "documentation": {}
     },
     {
+        "label": "QProcess",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
         "label": "QThread",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
@@ -650,14 +722,6 @@
     },
     {
         "label": "Signal",
-        "importPath": "PySide6.QtCore",
-        "description": "PySide6.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide6.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QProcess",
         "importPath": "PySide6.QtCore",
         "description": "PySide6.QtCore",
         "isExtraImport": true,
@@ -1074,6 +1138,14 @@
         "documentation": {}
     },
     {
+        "label": "Config",
+        "importPath": "util.Config",
+        "description": "util.Config",
+        "isExtraImport": true,
+        "detail": "util.Config",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "importPath": "model.Base",
         "description": "model.Base",
@@ -1087,6 +1159,14 @@
         "description": "model.Base",
         "isExtraImport": true,
         "detail": "model.Base",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
         "documentation": {}
     },
     {
@@ -2072,15 +2152,7 @@
         "documentation": {}
     },
     {
-        "label": "QVBoxLayout",
-        "importPath": "PySide6.QtWidgets",
-        "description": "PySide6.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide6.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QWidget",
+        "label": "QProgressBar",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
         "isExtraImport": true,
@@ -2096,7 +2168,15 @@
         "documentation": {}
     },
     {
-        "label": "QProgressBar",
+        "label": "QVBoxLayout",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QWidget",
         "importPath": "PySide6.QtWidgets",
         "description": "PySide6.QtWidgets",
         "isExtraImport": true,
@@ -2145,6 +2225,15 @@
         "documentation": {}
     },
     {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
         "label": "zipfile",
         "kind": 6,
         "isExtraImport": true,
@@ -2154,20 +2243,35 @@
         "documentation": {}
     },
     {
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "cpu_count",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
         "label": "Product",
         "importPath": "model.Product",
         "description": "model.Product",
         "isExtraImport": true,
         "detail": "model.Product",
-        "documentation": {}
-    },
-    {
-        "label": "threading",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
         "documentation": {}
     },
     {
@@ -2180,27 +2284,43 @@
         "documentation": {}
     },
     {
-        "label": "cpu_count",
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "isExtraImport": true,
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
-        "label": "cpu_count",
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "isExtraImport": true,
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
         "label": "ThreadPool",
         "importPath": "multiprocessing.pool",
         "description": "multiprocessing.pool",
         "isExtraImport": true,
         "detail": "multiprocessing.pool",
+        "documentation": {}
+    },
+    {
+        "label": "Upscaler",
+        "importPath": "util.Upscaler",
+        "description": "util.Upscaler",
+        "isExtraImport": true,
+        "detail": "util.Upscaler",
+        "documentation": {}
+    },
+    {
+        "label": "Upscaler",
+        "importPath": "util.Upscaler",
+        "description": "util.Upscaler",
+        "isExtraImport": true,
+        "detail": "util.Upscaler",
+        "documentation": {}
+    },
+    {
+        "label": "optimize",
+        "importPath": "pickletools",
+        "description": "pickletools",
+        "isExtraImport": true,
+        "detail": "pickletools",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -2252,6 +2372,14 @@
         "documentation": {}
     },
     {
+        "label": "ONE_OR_MORE",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
         "label": "Wfwf",
         "importPath": "src.site.Wfwf",
         "description": "src.site.Wfwf",
@@ -2273,6 +2401,22 @@
         "description": "ui.Ui_DownloadItem",
         "isExtraImport": true,
         "detail": "ui.Ui_DownloadItem",
+        "documentation": {}
+    },
+    {
+        "label": "COMPRESS_STATE",
+        "importPath": "util.Compressor",
+        "description": "util.Compressor",
+        "isExtraImport": true,
+        "detail": "util.Compressor",
+        "documentation": {}
+    },
+    {
+        "label": "Compressor",
+        "importPath": "util.Compressor",
+        "description": "util.Compressor",
+        "isExtraImport": true,
+        "detail": "util.Compressor",
         "documentation": {}
     },
     {
@@ -2329,6 +2473,14 @@
         "description": "src.util.DatabaseManager",
         "isExtraImport": true,
         "detail": "src.util.DatabaseManager",
+        "documentation": {}
+    },
+    {
+        "label": "ImageCompress",
+        "importPath": "util.ImageCompress",
+        "description": "util.ImageCompress",
+        "isExtraImport": true,
+        "detail": "util.ImageCompress",
         "documentation": {}
     },
     {
@@ -3007,11 +3159,29 @@
         "documentation": {}
     },
     {
+        "label": "COMPRESS_STATE",
+        "kind": 6,
+        "importPath": "src.util.Compressor",
+        "description": "src.util.Compressor",
+        "peekOfCode": "class COMPRESS_STATE(Enum):\n    READY = 0,\n    DOING = 1,\n    DONE = 2,\n    ERROR = 3,\nclass CompressorSignal(QObject):\n    compress_state = Signal(str, COMPRESS_STATE)\nclass Compressor(QThread):\n    signals = CompressorSignal()\n    def __init__(self, parent):",
+        "detail": "src.util.Compressor",
+        "documentation": {}
+    },
+    {
+        "label": "CompressorSignal",
+        "kind": 6,
+        "importPath": "src.util.Compressor",
+        "description": "src.util.Compressor",
+        "peekOfCode": "class CompressorSignal(QObject):\n    compress_state = Signal(str, COMPRESS_STATE)\nclass Compressor(QThread):\n    signals = CompressorSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n    def set_chapter_path(self, id: str, chapter_path: str):\n        self.id = id\n        self.chapter_path = chapter_path",
+        "detail": "src.util.Compressor",
+        "documentation": {}
+    },
+    {
         "label": "Compressor",
         "kind": 6,
         "importPath": "src.util.Compressor",
         "description": "src.util.Compressor",
-        "peekOfCode": "class Compressor:\n    @classmethod\n    def zip_folder(cls, filename: str, path: str, remove_origin = False):\n        \"\"\"\n        폴더 압축하기\n        \"\"\"\n        zipf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)\n        for f in os.listdir(path):\n            zipf.write(os.path.join(path, f), os.path.basename(f))\n        zipf.close()",
+        "peekOfCode": "class Compressor(QThread):\n    signals = CompressorSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n    def set_chapter_path(self, id: str, chapter_path: str):\n        self.id = id\n        self.chapter_path = chapter_path\n    def run(self):\n        self.create_compress_thread()",
         "detail": "src.util.Compressor",
         "documentation": {}
     },
@@ -3038,7 +3208,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DOWNLOAD_TYPE(Enum):\n    THUMBNAIL = 1\n    IMAGES = 2\nclass DOWNLOAD_STATE(Enum):\n    READY = 0\n    DOING = 1\n    UPSCALE = 2\n    COMPRESS = 3\n    DONE = 4\nHEADERS = {",
+        "peekOfCode": "class DOWNLOAD_TYPE(Enum):\n    THUMBNAIL = 1\n    IMAGES = 2\nclass DOWNLOAD_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 3\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -3047,7 +3217,7 @@
         "kind": 6,
         "importPath": "src.util.Downloader",
         "description": "src.util.Downloader",
-        "peekOfCode": "class DOWNLOAD_STATE(Enum):\n    READY = 0\n    DOING = 1\n    UPSCALE = 2\n    COMPRESS = 3\n    DONE = 4\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):",
+        "peekOfCode": "class DOWNLOAD_STATE(Enum):\n    READY = 0\n    DOING = 1\n    DONE = 3\nHEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int",
         "detail": "src.util.Downloader",
         "documentation": {}
     },
@@ -3076,6 +3246,24 @@
         "description": "src.util.Downloader",
         "peekOfCode": "HEADERS = {\n    \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36\"\n}\nclass DownloaderSignal(QObject):\n    download_state = Signal(\n        str, DOWNLOAD_TYPE, DOWNLOAD_STATE, int, int\n    )  # id, type, current, total\n    download_error = Signal(str)\nclass Downloader(QThread):\n    signals = DownloaderSignal()",
         "detail": "src.util.Downloader",
+        "documentation": {}
+    },
+    {
+        "label": "ImageCompressSignal",
+        "kind": 6,
+        "importPath": "src.util.ImageCompress",
+        "description": "src.util.ImageCompress",
+        "peekOfCode": "class ImageCompressSignal(QObject):\n    # id, complete, current, total\n    image_compress_state = Signal(str, bool, int, int)\nclass ImageCompress(QThread):\n    signals = ImageCompressSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n    def set_chapter_path(self, id: str, chapter_path: str):\n        self.id = id",
+        "detail": "src.util.ImageCompress",
+        "documentation": {}
+    },
+    {
+        "label": "ImageCompress",
+        "kind": 6,
+        "importPath": "src.util.ImageCompress",
+        "description": "src.util.ImageCompress",
+        "peekOfCode": "class ImageCompress(QThread):\n    signals = ImageCompressSignal()\n    def __init__(self, parent):\n        QThread.__init__(self, parent)\n        self.parent = parent\n    def set_chapter_path(self, id: str, chapter_path: str):\n        self.id = id\n        self.chapter_path = chapter_path\n    def run(self):\n        self.create_compress_thread()",
+        "detail": "src.util.ImageCompress",
         "documentation": {}
     },
     {
@@ -3110,7 +3298,7 @@
         "kind": 6,
         "importPath": "src.util.Upscaler",
         "description": "src.util.Upscaler",
-        "peekOfCode": "class UpscalerSignal(QObject):\n    progress = Signal(bool, int, int)  # run, current, total\nclass Upscaler(QObject):\n    signals = UpscalerSignal()\n    def __init__(self, parent=None):\n        self._parent = parent\n        self.p = None\n        self.total = 0\n        self.path = \"\"\n        self.currentIndex = 0",
+        "peekOfCode": "class UpscalerSignal(QObject):\n    upscale_state = Signal(str, bool, int, int)  # run, current, total\nclass Upscaler(QObject):\n    signals = UpscalerSignal()\n    def __init__(self, parent=None):\n        self._parent = parent\n        self.p = None\n        self.total = 0\n        self.path = \"\"\n        self.currentIndex = 0",
         "detail": "src.util.Upscaler",
         "documentation": {}
     },
@@ -3128,7 +3316,7 @@
         "kind": 6,
         "importPath": "src.util.Upscaler",
         "description": "src.util.Upscaler",
-        "peekOfCode": "class ProgressWindow(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.p = None  # Default empty value.\n        self.btn = QPushButton(\"Execute\")\n        self.btn.pressed.connect(self.start_process)\n        self.pbar = QProgressBar(self)\n        self.upscaler = Upscaler(self)\n        self.upscaler.signals.progress.connect(self.on_progress)\n        l = QVBoxLayout()",
+        "peekOfCode": "class ProgressWindow(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.p = None  # Default empty value.\n        self.btn = QPushButton(\"Execute\")\n        self.btn.pressed.connect(self.start_process)\n        self.pbar = QProgressBar(self)\n        self.upscaler = Upscaler(self)\n        self.upscaler.signals.upscale_state.connect(self.on_progress)\n        l = QVBoxLayout()",
         "detail": "src.util.Upscaler",
         "documentation": {}
     },
@@ -3155,7 +3343,7 @@
         "kind": 6,
         "importPath": "src.DownloadItem",
         "description": "src.DownloadItem",
-        "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        # self.browserDriver = browserDriver\n        self.id = id\n        self.site_config = site_config\n        if site_config == None:",
+        "peekOfCode": "class DownloadItem(QWidget):\n    signals = DownloadItemSignals()\n    def __init__(self, id: str, site_config):\n        super(DownloadItem, self).__init__()\n        self.ui = Ui_DownloadItem()\n        self.ui.setupUi(self)\n        # self.browserDriver = browserDriver\n        self.id = id\n        self.site_config = site_config\n        self.config = Config()",
         "detail": "src.DownloadItem",
         "documentation": {}
     },
