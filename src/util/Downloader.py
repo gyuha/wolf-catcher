@@ -21,8 +21,9 @@ class DOWNLOAD_TYPE(Enum):
 class DOWNLOAD_STATE(Enum):
     READY = 0
     DOING = 1
-    COMPRESS = 2
-    DONE = 3
+    UPSCALE = 2
+    COMPRESS = 3
+    DONE = 4
 
 
 HEADERS = {
