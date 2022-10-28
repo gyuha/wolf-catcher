@@ -52,7 +52,7 @@ class Upscaler(QObject):
         # self.p.readyReadStandardOutput.connect(self.handle_stdout)
         # self.p.readyReadStandardError.connect(self.on_state_error)
         current_file = self.file_path()
-        self.p.start("./realesrgan-ncnn-vulkan",
+        self.p.start("./bin/realesrgan-ncnn-vulkan",
                      ["-i", current_file, "-o", current_file, "-f", "jpg", "-s", "2"])
 
     def on_process_next(self):
