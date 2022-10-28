@@ -75,6 +75,8 @@ class DownloadItem(QWidget):
         self.title_path = ""
         # self.__init_site()
 
+        self.retry_count = 0
+
     def __init_connect(self):
         self.ui.delete_button.clicked.connect(self.__on_click_delete_button)
         self.ui.folder_open_button.clicked.connect(self.__on_click_open_folder)
@@ -129,10 +131,18 @@ class DownloadItem(QWidget):
             self.site_config["url_format"]["title"]["condition"],
         )
         self.requestGet.start()
+        self.__set_current_state_label("조회 중")
+    
+
+    def __set_current_state_label(self, msg: str):
+        """
+        상태 라벨 출력하기
+        """
         current = self.site.current_chapter + 1
         if current > self.site.total_chapter:
             current = self.site.total_chapter
-        self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] 조회 중")
+        self.ui.status_label.setText(f"[{current}/{self.site.total_chapter}] {msg}")
+
 
     def __get_chapter_info(self):
         """
@@ -155,18 +165,18 @@ class DownloadItem(QWidget):
             return
         if state == REQUEST_GET_STATE.ERROR:
             if type == REQUEST_GET_TYPE.CHAPTER_INFO:
-                toast(self, "챕터의 내용을 받지 못 했습니다.")
+                self.ui.status_label.setText("챕터의 내용을 받지 못 했습니다.")
                 self.state = DOWNLOAD_ITEM_STATE.ERROR
-                self.ui.state_label.setText("ERROR")
                 self.signals.download_state.emit(self.key, self.state)
 
                 # 다음 챕터
                 self.__on_get_done(type)
             else:
-                toast(self, "이미지 목록을 읽기 실패")
+                self.__set_current_state_label("이미지 목록을 읽기 실패")
 
                 self.__on_download_done()
         elif state == REQUEST_GET_STATE.LOADING:
+            self.__set_current_state_label("조회중")
             return
         elif state == REQUEST_GET_STATE.DONE:
             self.__on_get_done(type)
@@ -193,7 +203,7 @@ class DownloadItem(QWidget):
 
     def __on_click_delete_button(self):
         if self.state == DOWNLOAD_ITEM_STATE.DOING:
-            toast(self, "지울 수 없습니다.")
+            toast(self, "다운로드 중에는 지울 수 없습니다.")
             return
         self.signals.remove_item.emit(self.key)
 

@@ -24,6 +24,7 @@ class UpdateDomain(QThread):
             self.config.data["site"][0]["url"] = href
             self.config.data["site"][1]["url"] = href
             self.config.save()
-            notification.notify(title="업데이트", message=href, app_name="Wolf", timeout=3)
+            # notification.notify(title="업데이트", message=href, app_name="Wolf", timeout=3)
+            self.parent.ui.statusbar.showMessage(href)
         except Exception as e:
             print('📢 ', e)
