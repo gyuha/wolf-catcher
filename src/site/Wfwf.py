@@ -77,9 +77,13 @@ class Wfwf(SiteBase):
         self.get_chapter_list(soup)
 
     def get_chapter_list(self, soup: bs):
-        soup.find("div", class_="badge").decompose()
-        soup.find("div", class_="badge-up").decompose()
-        soup.find("div", class_="date").decompose()
+        try:
+            soup.find("div", class_="badge").decompose()
+            soup.find("div", class_="badge-up").decompose()
+            soup.find("div", class_="date").decompose()
+        except:
+            print('📢[Wfwf.py:85]: ');
+
 
         chapters = soup.select(
             ".bbs-list > ul > li > a.view_open"
