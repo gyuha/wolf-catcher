@@ -3454,59 +3454,5 @@
         "peekOfCode": "qt_resource_struct = b\"\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x01\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x00\\x00\\x02\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x02\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\x0e\\x00\\x02\\x00\\x00\\x00\\x06\\x00\\x00\\x00\\x03\\\n\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\\n\\x00\\x00\\x00\\xa0\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00N\\x82\\\n\\x00\\x00\\x01\\x82\\xe3\\xcc\\xdbf\\\n\\x00\\x00\\x00\\xb6\\x00\\x00\\x00\\x00\\x00\\x01\\x00\\x00x\\x7f\\",
         "detail": "resources_rc",
         "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'(\\d+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'(\\d+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 10일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'([0-9]+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 120일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 오늘')\nprint('📢[test.py:6]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 어제')\nprint('📢[test.py:8]: ', str)",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'(\\d+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 10일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'([0-9]+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 120일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 오늘')\nprint('📢[test.py:6]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 어제')\nprint('📢[test.py:8]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:5]: ', str)",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'([0-9]+일전$|이틀전$|하루전$|오늘$)', '', '094-동아리 94화 120일전')\nprint('📢[test.py:4]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 오늘')\nprint('📢[test.py:6]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 어제')\nprint('📢[test.py:8]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:5]: ', str)",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 오늘')\nprint('📢[test.py:6]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 어제')\nprint('📢[test.py:8]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:5]: ', str)",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 어제')\nprint('📢[test.py:8]: ', str)\nstr = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:5]: ', str)",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "str = re.sub(r'(.일전$|하루전$|어제$|오늘$)', '', '094-동아리 94화 1일전')\nprint('📢[test.py:5]: ', str)",
-        "detail": "test",
-        "documentation": {}
     }
 ]
