@@ -1,4 +1,5 @@
 import os
+import re
 from bs4 import BeautifulSoup as bs
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 from util.Config import Config
@@ -75,6 +76,9 @@ class Wfwf(SiteBase):
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
         self.get_chapter_list(soup)
+    
+    def remove_badge(self, text: str) -> str:
+        return re.sub(r'(\d+일전$|이틀전$|하루전$|오늘$)', '', text)
 
     def get_chapter_list(self, soup: bs):
         try:
@@ -95,6 +99,7 @@ class Wfwf(SiteBase):
             subject = chapter.text
             sp = subject.split("\n")
             subject = f"{sp[2].strip().zfill(3)}-{sp[3].strip()}"
+            subject = self.remove_badge(subject)
             self.chapter_list.append([subject, href])
 
     def get_img_list(self, content: str):

@@ -14,7 +14,7 @@ site:
   - https://wfwf[0-9]+.com/cl\?toon=[0-9]+
   name: wfwf
   title: 늑대 닷컴
-  url: https://wfwf236.com
+  url: https://wfwf237.com
   url_format:
     chapter:
       condition: /html/body/section[1]/div[5]/img
@@ -31,7 +31,7 @@ site:
   - https://wfwf[0-9]+.com/list\?toon=[0-9]+
   name: wftoon
   title: 늑대 닷컴
-  url: https://wfwf236.com
+  url: https://wfwf237.com
   url_format:
     chapter:
       condition: /html/body/section[1]/div[5]/img

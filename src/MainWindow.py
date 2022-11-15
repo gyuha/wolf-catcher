@@ -62,6 +62,8 @@ class MainWindow(QMainWindow):
         self.ui.item_list.dragMoveEvent = self.__dragMoveEvent
         self.ui.item_list.dropEvent = self.__drop_event
 
+        self.ui.action_exit.triggered.connect(lambda _: self.close())
+
         self.ui.cb_use_upscale.setChecked(self.config.setting["use_upscale"])
         self.ui.cb_use_upscale.clicked.connect(self.__on_change_upscale)
 
