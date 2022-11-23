@@ -1,23 +1,23 @@
-from enum import Enum
 import re
 import threading
 import time
-from PySide6 import QtCore
-from PySide6 import QtGui
-from PySide6.QtCore import Slot, Qt
+from enum import Enum
+
+from PySide6 import QtCore, QtGui
+from PySide6.QtCore import Qt, Slot
+from PySide6.QtGui import QDragEnterEvent, QDropEvent
 from PySide6.QtWidgets import QListWidgetItem, QMainWindow
-from PySide6.QtGui import QDropEvent, QDragEnterEvent
+
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
+from src.site.browser.BrowserDriver import BrowserDriver
 from src.site.TitleInfo import TitleInfo
-
 from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
 from util.Config import Config
 from util.DatabaseManager import DatabaseManager
-from util.UpdateDomain import UpdateDomain
 from util.message import toast
-
+from util.UpdateDomain import UpdateDomain
 
 # from util.Scraper import Scraper
 
@@ -47,6 +47,7 @@ class MainWindow(QMainWindow):
             "QListWidget::item { border-bottom: 1px solid #eee; }"
         )
         self.db = DatabaseManager()
+        self.browser = BrowserDriver()
         self.current_key = ""
         self.__get_items_by_database()
         self.get_button()

@@ -22,6 +22,7 @@ arsenic = "^21.8"
 plyer = "^2.0.0"
 SQLAlchemy = "^1.4.40"
 lxml = "^4.9.1"
+webdriver-manager = "^3.8.5"
 
 [tool.poetry.dev-dependencies]
 pyinstaller = "^5.3"
