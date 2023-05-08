@@ -11,7 +11,10 @@
 ## Before start
 
 ```bash
-peotry install
+pip install virtualenv
+virtualenv -p python3.8.10 .venv
+.\.venv\Scripts\activate
+poetry install
 ```
 
 > 🚀 See below for PySide6 installation error in poety </br>
