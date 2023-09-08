@@ -76,9 +76,10 @@ class Wfwf(SiteBase):
         self.download_thumbnail(thumbnail, self.thumbnail_path)
 
         self.get_chapter_list(soup)
-    
+
     def remove_badge(self, text: str) -> str:
-        return re.sub(r'(\d+일전$|이틀전$|하루전$|오늘$)', '', text)
+        pattern = r"\d+일전|오늘|어제|일전|이틀전|하루전"
+        return re.sub(pattern, "", text)
 
     def get_chapter_list(self, soup: bs):
         try:
@@ -86,12 +87,9 @@ class Wfwf(SiteBase):
             soup.find("div", class_="badge-up").decompose()
             soup.find("div", class_="date").decompose()
         except:
-            print('📢[Wfwf.py:85]: ');
+            print("📢[Wfwf.py:85]: ")
 
-
-        chapters = soup.select(
-            ".bbs-list > ul > li > a.view_open"
-        )
+        chapters = soup.select(".bbs-list > ul > li > a.view_open")
         self.total_chapter = len(chapters)
         chapters = list(reversed(chapters))
         for chapter in chapters:
@@ -104,12 +102,18 @@ class Wfwf(SiteBase):
 
     def get_img_list(self, content: str):
         soup = bs(content, "html.parser")
-        images = soup.select(
-            ".image-view > img"
-        )
+        images = soup.select(".image-view > img")
         self.chapter_images = []
         for image in images:
-            self.chapter_images.append(image["src"])
+            img = ""
+            if "data-original" in image.attrs:
+                img = image.attrs["data-original"]
+            elif "src" in image.attrs:
+                img = image.attrs["src"]
+            else:
+                continue
+
+            self.chapter_images.append(img)
         return len(self.chapter_images) > 0
 
     def set_next_chapter(self):

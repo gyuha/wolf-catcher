@@ -6,8 +6,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import \
-    visibility_of_element_located
+from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -27,9 +26,13 @@ class BrowserDriver:
 
         options = ChromeOptions()
         options.headless = self.config.setting["headless"]
-        self.__browser = webdriver.Chrome(
-            service=ChromeService(ChromeDriverManager().install()), options=options
-        )
+        self.__browser = webdriver.Chrome(options=options)
+        # self.__browser.get("https://www.google.com/")
+        # driver.get("https://www.google.com/")
+        # self.__browser = webdriver.Chrome(
+        #     service=ChromeService(ChromeDriverManager().install()),
+        #     options=options
+        # )
 
         if self.__browser:
             self.__browser.implicitly_wait(5)
