@@ -10,7 +10,8 @@ from PySide6.QtWidgets import QListWidgetItem, QMainWindow
 
 from DownloadItem import DOWNLOAD_ITEM_STATE, DownloadItem
 from lib.QToaster import QToaster
-from src.site.browser.BrowserDriver import BrowserDriver
+
+# from src.site.browser.BrowserDriver import BrowserDriver
 from src.site.TitleInfo import TitleInfo
 from ui.Ui_MainWindow import Ui_MainWindow
 from util.Clipboard import Clipboard
@@ -47,7 +48,7 @@ class MainWindow(QMainWindow):
             "QListWidget::item { border-bottom: 1px solid #eee; }"
         )
         self.db = DatabaseManager()
-        self.browser = BrowserDriver()
+        # self.browser = BrowserDriver()
         self.current_key = ""
         self.__get_items_by_database()
         self.get_button()
@@ -84,11 +85,10 @@ class MainWindow(QMainWindow):
             event.accept()
         else:
             event.ignore()
-    
+
     def __on_change_upscale(self, event):
         self.config.setting["use_upscale"] = event
         self.config.save()
-
 
     def __drop_event(self, event: QDropEvent):
         if event.mimeData().hasUrls:
@@ -160,7 +160,6 @@ class MainWindow(QMainWindow):
 
     # region item_list
     def add_item(self, id: str, site_config, by: ADD_BY):
-
         if self.__check_exist_item(id, site_config) == False:
             return
 

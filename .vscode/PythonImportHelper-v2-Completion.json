@@ -2516,14 +2516,6 @@
         "documentation": {}
     },
     {
-        "label": "BrowserDriver",
-        "importPath": "src.site.browser.BrowserDriver",
-        "description": "src.site.browser.BrowserDriver",
-        "isExtraImport": true,
-        "detail": "src.site.browser.BrowserDriver",
-        "documentation": {}
-    },
-    {
         "label": "Ui_MainWindow",
         "importPath": "ui.Ui_MainWindow",
         "description": "ui.Ui_MainWindow",
@@ -3007,7 +2999,7 @@
         "kind": 6,
         "importPath": "src.site.browser.BrowserDriver",
         "description": "src.site.browser.BrowserDriver",
-        "peekOfCode": "class BrowserDriver:\n    def __init__(self):\n        self.config = Config()\n        # self.__timeout = self.config.setting[\"browser\"][\"timeout\"]\n        self.__browser_type = self.config.setting[\"browser\"]\n        self.__init_driver()\n    def __init_driver(self):\n        print(\"[{}] Web Driver loading...\".format(self.__browser_type), end=\"\\r\")\n        options = ChromeOptions()\n        options.headless = self.config.setting[\"headless\"]",
+        "peekOfCode": "class BrowserDriver:\n    def __init__(self):\n        self.config = Config()\n        # self.__timeout = self.config.setting[\"browser\"][\"timeout\"]\n        self.__browser_type = self.config.setting[\"browser\"]\n        self.__init_driver()\n    def __init_driver(self):\n        print(\"[{}] Web Driver loading...\".format(self.__browser_type), end=\"\\r\")\n        options = ChromeOptions()\n        options.add_argument(\"headless\")",
         "detail": "src.site.browser.BrowserDriver",
         "documentation": {}
     },

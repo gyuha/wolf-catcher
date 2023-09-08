@@ -25,7 +25,11 @@ class BrowserDriver:
         print("[{}] Web Driver loading...".format(self.__browser_type), end="\r")
 
         options = ChromeOptions()
-        options.headless = self.config.setting["headless"]
+        options.add_argument("headless")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        options.add_argument("--incognito")
+        options.add_argument("--disable-popup-blocking")
+        options.add_argument("--force-device-scale-factor=0.8")
         self.__browser = webdriver.Chrome(options=options)
         # self.__browser.get("https://www.google.com/")
         # driver.get("https://www.google.com/")
